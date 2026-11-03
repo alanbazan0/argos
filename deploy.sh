@@ -25,11 +25,11 @@ lftp -c "set ftp:ssl-allow no; \
 curl -f --max-time 900 -X POST "$APP_URL/post_deploy.php" -d "token=$MIGRATE_TOKEN"
 
 # Verificación posterior (igual que el workflow)
-curl -fsS --max-time 60 -o /tmp/argos_index.html "$APP_URL/index.php"
-if grep -q 'localhost' /tmp/argos_index.html; then
-  echo "ERROR: index.php referencia localhost (revisar php/configuracion.php)"
+curl -fsS --max-time 60 -o /tmp/argos_login.html "$APP_URL/inicio_sesion.php"
+if grep -q 'localhost' /tmp/argos_login.html; then
+  echo "ERROR: inicio_sesion.php referencia localhost (revisar php/configuracion.php)"
   exit 1
 fi
-rm -f /tmp/argos_index.html
+rm -f /tmp/argos_login.html
 
 echo "Deploy de argos completado."

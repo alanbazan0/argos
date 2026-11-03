@@ -42,13 +42,13 @@ jobs:
       - name: Llamar endpoint post-deploy
         run: curl -f --max-time 900 -X POST "${{ secrets.APP_URL }}/post_deploy.php" -d "token=${{ secrets.MIGRATE_TOKEN }}"
 
-      # Verificación posterior: el sitio responde y la página principal no apunta a
+      # Verificación posterior: el sitio responde y la página de login no apunta a
       # localhost (una URL de desarrollo en getHandelAPI() rompe el sitio en producción).
       - name: Verificar el sitio
         run: |
-          curl -fsS --max-time 60 -o index.html "${{ secrets.APP_URL }}/index.php"
-          if grep -q 'localhost' index.html; then
-            echo "ERROR: index.php referencia localhost (revisar php/configuracion.php)"
+          curl -fsS --max-time 60 -o login.html "${{ secrets.APP_URL }}/inicio_sesion.php"
+          if grep -q 'localhost' login.html; then
+            echo "ERROR: inicio_sesion.php referencia localhost (revisar php/configuracion.php)"
             exit 1
           fi
           echo "Sitio OK"
