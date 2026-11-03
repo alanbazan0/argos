@@ -469,9 +469,17 @@ $url = isset($_GET['url']) ? $_GET['url'] : "";
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/frases_repositorio.js"></script>
-<script src="<?php echo getHandelAPI()?>/js/presentadores/inicio_sesion_presentador.js"></script>
-<script src="<?php echo getHandelAPI()?>/js/vistas/inicio_sesion_vista.js"></script>
-<script src="js/inicio_sesion_login.js?v=20261103"></script>
+<script src="<?php echo getHandelAPI()?>/js/presentadores/inicio_sesion_presentador.js?v=20261104"></script>
+<script src="<?php echo getHandelAPI()?>/js/vistas/inicio_sesion_vista.js?v=20261104"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%'
+    });
+  });
+</script>
 <img class="est-41" src="img/loader.gif" id="indicador">
 <!--LOGIN-SCRIPTS-END-->
 </body>
