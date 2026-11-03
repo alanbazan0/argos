@@ -21,6 +21,10 @@ class Aplicacion
     
     public function tienePermiso($usuario)
     {
+        // TEMPORAL: mientras ARGOS está en construcción solo entra esta cuenta, aunque otros tengan permiso o sean Administrador
+        // (la sesión puede venir de otra app Handel). Quitar junto con el bloque equivalente de Usuarios.php en handel_api.
+        if(!in_array(strtolower(trim($usuario->nombreUsuario)), array("alanbazan@hotmail.com")))
+            return false;
         return $usuario->tipoUsuarioId == 1 || $usuario->permisoARGOS == 1;
     }
 }
