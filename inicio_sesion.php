@@ -23,7 +23,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : "";
 <!--LOGIN-LIBS-END-->
   <link rel="shortcut icon" href="img/favicon.png"/>
 </head>
-<body data-aplicacionId="ARGOS" data-aplicacionVersion="html" data-url="<?php echo $url; ?>">
+<body data-aplicacionId="ARGOS" data-aplicacionVersion="html" data-url="<?php echo htmlspecialchars($url, ENT_QUOTES); ?>">
 
 <!-- NAV -->
 <nav>

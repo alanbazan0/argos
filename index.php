@@ -1,4 +1,10 @@
-<?php include 'php/configuracion.php'; ?>
+<?php
+include 'php/configuracion.php';
+include 'php/Aplicacion.php';
+
+$aplicacion = new Aplicacion();
+$usuario = $aplicacion->iniciar();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
