@@ -32,7 +32,7 @@ class Menu
             array("Tutoriales",           "tutoriales.php",           "fa-graduation-cap",     null),
         ),
         "Configuración" => array(
-            array("Calibración",          "configuracion_calibracion.php", "fa-sliders",       array(TipoUsuario::ADMINISTRADOR)),
+            array("Calibración",          "configuracion_calibracion.php", "fa-sliders",       null),
             array("Estándares",           "configuracion_estandares.php",  "fa-sitemap",       array(TipoUsuario::ADMINISTRADOR)),
         ),
     );
