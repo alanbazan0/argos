@@ -21,6 +21,15 @@ class Aplicacion
     }
     
     /**
+     * TEMPORAL: el menú de ARGOS está en desarrollo y se libera de forma parcial; por ahora solo lo ve esta cuenta.
+     * Los demás usuarios con permiso entran al panel pero sin menú. Ampliar la lista (o quitar la regla) al liberarlo.
+     */
+    public function puedeVerMenu($usuario)
+    {
+        return in_array(strtolower(trim($usuario->nombreUsuario)), array("alanbazan@hotmail.com"));
+    }
+    
+    /**
      * El login se hace contra handel_api (api.apps-handel.com), que guarda la sesión en /tmp con cookie para todo
      * .apps-handel.com. Argos debe leer la misma sesión; si el .user.ini del servidor no lo trae, se fija aquí.
      * Solo en producción (en local el dominio no coincide).
@@ -37,10 +46,6 @@ class Aplicacion
     
     public function tienePermiso($usuario)
     {
-        // TEMPORAL: mientras ARGOS está en construcción solo entra esta cuenta, aunque otros tengan permiso o sean Administrador
-        // (la sesión puede venir de otra app Handel). Quitar junto con el bloque equivalente de Usuarios.php en handel_api.
-        if(!in_array(strtolower(trim($usuario->nombreUsuario)), array("alanbazan@hotmail.com")))
-            return false;
         return $usuario->tipoUsuarioId == 1 || $usuario->permisoARGOS == 1;
     }
 }

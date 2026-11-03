@@ -14,6 +14,9 @@ $usuario = $aplicacion->iniciar();
   <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
+<?php if($aplicacion->puedeVerMenu($usuario)) { ?>
+  <nav>Menú (en desarrollo)</nav>
+<?php } ?>
   <h1>Panel de control</h1>
   <p>Sesión iniciada como <?php echo htmlspecialchars($usuario->nombre . ' ' . $usuario->apellido, ENT_QUOTES); ?> (<?php echo htmlspecialchars($usuario->nombreUsuario, ENT_QUOTES); ?>).</p>
 </body>
