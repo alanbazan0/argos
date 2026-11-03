@@ -13,6 +13,13 @@ Frontend web de **ARGOS** (análisis y gestión de riesgos: módulo OEA México 
 | Base de datos | tablas `arg_*` (OEA) y `ctpat_*` (CTPAT), con migraciones SQL idempotentes en `handel_api/migraciones/` |
 | Librerías de terceros (Bootstrap 3, jQuery, Font Awesome 4.7, DataTables, toastr, SweetAlert…) | `handel_api/lib/` |
 
+Convenciones de código (las mismas que el módulo de Sellos de `handel_api`; ante la duda, copiar el patrón de ahí):
+
+- **PHP:** repositorios que extienden `ArgosBaseRepositorio` (sentencias preparadas con `filas()`/`ejecutar()`, ids con `siguienteId()` dentro de una transacción, alcance de empresa y sede con `resolverAlcance()`: la empresa y las sedes salen de la sesión, nunca del navegador). Endpoints con el esqueleto de `ArgosConfiguracion.php`: sesión de servidor, `ControlAccesoArgos` (permiso y lista de orígenes), `Cache-Control: no-store`, escrituras solo por POST, `catch (\Throwable)` con `error_log` y mensaje claro, `CodigoError::SESION_CADUCADA`.
+- **Base de datos:** migraciones idempotentes en `handel_api/migraciones/`, sin `AUTO_INCREMENT`, evaluaciones y bitácora solo con INSERT; ejecutarlas con el cliente en UTF-8.
+- **JS:** Repositorio (extiende `ArgosBaseRepositorio`), Presentador y Vista por pantalla en `handel_api/js`; la Vista extiende `Vista`, escapa el texto que inserta en el HTML y pasa el `codigoError` a `mostrarMensajeError`.
+- **Pruebas:** unitarias para las reglas puras (`tests/Unit`), de integración para repositorios contra la base **local** (`tests/Integration`) y de endpoints (`tests/Endpoints`), creadas junto con el código.
+
 Reglas:
 
 - **Si falta una librería, se agrega en `handel_api/lib/` junto con las demás**, nunca dentro de este repo (aquí no hay `lib/`, `vendor/` ni AdminLTE).
