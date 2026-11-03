@@ -31,7 +31,8 @@ body.ar-app{font-family:'DM Sans',system-ui,sans-serif;background:var(--ar-bg);c
 .ar-campana{position:relative;background:none;border:0;font-size:18px;color:var(--ar-ink);padding:4px 8px}
 .ar-campana .ar-contador{position:absolute;top:-2px;right:-2px;background:var(--ar-red);color:#fff;border-radius:10px;font-size:10px;font-weight:700;min-width:16px;height:16px;line-height:16px;text-align:center;padding:0 4px}
 .ar-usuario{display:flex;align-items:center;gap:8px}
-.ar-avatar{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--ar-ink);color:#fff;font-weight:700;font-size:11px;font-family:'Outfit',sans-serif;flex-shrink:0}
+.ar-avatar{position:relative;overflow:hidden;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--ar-ink);color:#fff;font-weight:700;font-size:11px;font-family:'Outfit',sans-serif;flex-shrink:0}
+.ar-avatar img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 .ar-usuario .ar-salir{background:none;border:0;color:var(--ar-muted);font-size:12px}
 .ar-usuario .ar-salir:hover{color:var(--ar-red)}
 

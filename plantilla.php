@@ -31,7 +31,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plantilla";
 $archivo = "plantilla.php";
-$version = "20261105";
+$version = "20261106";
 ?>
 <!DOCTYPE html>
 <html lang="es">

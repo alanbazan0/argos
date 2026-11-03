@@ -67,7 +67,11 @@ class Menu
         $html .= "<div class='ar-empresa'><i class='fa fa-building-o'></i> <span>$empresa</span></div>";
         $html .= "<div class='ar-topbar-fin'>";
         $html .= "<button type='button' class='ar-campana' id='campanaBoton' title='Pendientes'><i class='fa fa-bell-o'></i><span class='ar-contador' id='campanaContador' style='display:none'>0</span></button>";
-        $html .= "<div class='ar-usuario'><span class='ar-avatar'>" . htmlspecialchars($iniciales, ENT_QUOTES, 'UTF-8') . "</span>";
+        // Foto de perfil como en las demás apps (handel_api/php/fotos); si no carga, se quedan las iniciales.
+        $foto = "";
+        if(!empty($usuario->fotoPerfil))
+            $foto = "<img id='imgFotoPefil3' src='" . htmlspecialchars($this->handelAPI . "/" . $usuario->fotoPerfil, ENT_QUOTES, 'UTF-8') . "?" . time() . "' alt=''>";
+        $html .= "<div class='ar-usuario'><span class='ar-avatar'>" . htmlspecialchars($iniciales, ENT_QUOTES, 'UTF-8') . $foto . "</span>";
         $html .= "<span class='ar-nombre'>" . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') . "</span>";
         $html .= "<button type='button' class='ar-salir' onclick='vista.cerrarSesion();' title='Cerrar sesión'><i class='fa fa-sign-out'></i></button></div>";
         $html .= "</div></header>";

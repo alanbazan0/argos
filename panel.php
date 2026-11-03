@@ -11,7 +11,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
-$version = "20261105";
+$version = "20261106";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 ?>
