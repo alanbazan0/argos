@@ -1,0 +1,180 @@
+/* ARGOS · hoja de estilos de la aplicación (barra superior, menú, contenido y componentes).
+   Se carga después de Bootstrap 3 y Font Awesome 4.7 de handel_api, que aportan la rejilla, los formularios,
+   los modales y los íconos; aquí solo va la identidad visual de ARGOS y sus componentes (prefijo "ar-").
+   Las pantallas no llevan estilos en el HTML: todo lo nuevo se agrega en este archivo. */
+
+/* ---------- Tokens ---------- */
+:root{
+  --ar-ink:#071A40; --ar-ink-dk:#040F28; --ar-ink-md:#13295C;
+  --ar-green:#3B7A0E; --ar-green-br:#7CC242; --ar-green-lt:#EDF5E4;
+  --ar-orange:#FF9400; --ar-orange-dk:#E07E00; --ar-orange-lt:#FFF1DE;
+  --ar-bg:#F3F5F9; --ar-bd:#DCE2EC; --ar-text:#14223D; --ar-muted:#56637D; --ar-white:#fff;
+  --ar-red:#D64541; --ar-blue:#1B5FA8;
+  --ar-sh:0 2px 10px rgba(7,26,64,.08); --ar-sh-lg:0 18px 50px rgba(7,26,64,.22);
+  --ar-l1:#B3261E; --ar-l2:#E05038; --ar-l3:#F08A24; --ar-l4:#F5C531; --ar-l5:#6E9E3C; --ar-l6:#A8CB86;
+  --ar-barra:60px; --ar-menu:220px;
+}
+
+/* ---------- Base ---------- */
+body.ar-app{font-family:'DM Sans',system-ui,sans-serif;background:var(--ar-bg);color:var(--ar-text);font-size:13px;line-height:1.5}
+.ar-app h1,.ar-app h2,.ar-app h3,.ar-app h4{font-family:'Outfit',system-ui,sans-serif;color:var(--ar-ink)}
+.ar-app a{color:var(--ar-green)}
+.ar-app a:hover{color:var(--ar-ink)}
+
+/* ---------- Barra superior ---------- */
+.ar-topbar{height:var(--ar-barra);background:#fff;border-bottom:1px solid var(--ar-bd);display:flex;align-items:center;gap:16px;padding:0 18px;position:sticky;top:0;z-index:1030}
+.ar-topbar-toggle{display:none;background:none;border:0;font-size:20px;color:var(--ar-ink);padding:4px 8px}
+.ar-topbar-logo img{height:38px}
+.ar-empresa{display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--ar-bd);border-radius:8px;background:var(--ar-bg);font-weight:500}
+.ar-empresa small{color:var(--ar-muted);font-weight:400}
+.ar-topbar-fin{margin-left:auto;display:flex;align-items:center;gap:14px}
+.ar-campana{position:relative;background:none;border:0;font-size:18px;color:var(--ar-ink);padding:4px 8px}
+.ar-campana .ar-contador{position:absolute;top:-2px;right:-2px;background:var(--ar-red);color:#fff;border-radius:10px;font-size:10px;font-weight:700;min-width:16px;height:16px;line-height:16px;text-align:center;padding:0 4px}
+.ar-usuario{display:flex;align-items:center;gap:8px}
+.ar-avatar{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--ar-ink);color:#fff;font-weight:700;font-size:11px;font-family:'Outfit',sans-serif;flex-shrink:0}
+.ar-usuario .ar-salir{background:none;border:0;color:var(--ar-muted);font-size:12px}
+.ar-usuario .ar-salir:hover{color:var(--ar-red)}
+
+/* ---------- Estructura: menú lateral + contenido ---------- */
+.ar-layout{display:grid;grid-template-columns:var(--ar-menu) 1fr;min-height:calc(100vh - var(--ar-barra))}
+.ar-layout.ar-sin-menu{grid-template-columns:1fr}
+.ar-sidebar{background:var(--ar-ink);padding:18px 12px;color:#fff;position:sticky;top:var(--ar-barra);height:calc(100vh - var(--ar-barra));overflow-y:auto}
+.ar-sidebar .ar-seccion{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin:14px 10px 6px}
+.ar-nav{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.75);text-decoration:none;font-weight:500;margin-bottom:2px}
+.ar-nav i{width:18px;text-align:center}
+.ar-nav:hover{background:rgba(255,255,255,.06);color:#fff;text-decoration:none}
+.ar-nav.ar-activo{background:rgba(124,194,66,.16);color:#fff;box-shadow:inset 3px 0 0 var(--ar-green-br)}
+.ar-nav .ar-ct{margin-left:auto;font-size:10px;background:var(--ar-red);color:#fff;border-radius:10px;padding:0 6px}
+.ar-nav-off{opacity:.4;cursor:not-allowed}
+.ar-nav-off:hover{background:none;color:rgba(255,255,255,.75)}
+.ar-nav-off em{margin-left:auto;font-style:normal;font-size:9px;background:rgba(255,255,255,.12);border-radius:10px;padding:0 6px}
+.ar-main{padding:22px 26px 60px;min-width:0}
+.ar-pie{margin-top:30px;padding-top:14px;border-top:1px solid var(--ar-bd);font-size:11.5px;color:var(--ar-muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* ---------- Encabezado de página ---------- */
+.ar-page-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.ar-page-hd h1{font-size:22px;font-weight:700;margin:0}
+.ar-page-hd p{color:var(--ar-muted);margin:0}
+.ar-crumb{font-size:11px;color:var(--ar-muted);margin-bottom:4px}
+.ar-acciones{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ar-ayuda{background:none;border:0;color:var(--ar-muted);font-size:15px;padding:0 4px}
+
+/* ---------- Botones (sobre Bootstrap) ---------- */
+.ar-app .btn{border-radius:8px;font-weight:600;font-size:12.5px;padding:7px 14px}
+.ar-app .btn-default{background:#fff;border:1px solid var(--ar-bd);color:var(--ar-ink)}
+.ar-app .btn-default:hover,.ar-app .btn-default:focus{border-color:var(--ar-ink);background:#fff;color:var(--ar-ink)}
+.ar-app .btn-primary{background:var(--ar-orange);border-color:var(--ar-orange);color:var(--ar-ink)}
+.ar-app .btn-primary:hover,.ar-app .btn-primary:focus,.ar-app .btn-primary:active{background:var(--ar-orange-dk);border-color:var(--ar-orange-dk);color:var(--ar-ink)}
+.ar-app .btn-dark{background:var(--ar-ink);border-color:var(--ar-ink);color:#fff}
+.ar-app .btn-dark:hover{background:var(--ar-ink-md);color:#fff}
+.ar-app .btn-xs,.ar-app .btn-sm{padding:4px 10px;font-size:11.5px}
+
+/* ---------- Tarjetas y KPI ---------- */
+.ar-card{background:#fff;border:1px solid var(--ar-bd);border-radius:12px;box-shadow:var(--ar-sh);padding:18px;margin-bottom:16px}
+.ar-card h3{font-size:14.5px;font-weight:700;margin:0 0 2px}
+.ar-card .ar-sub{font-size:11.5px;color:var(--ar-muted);margin-bottom:14px}
+.ar-grid{display:grid;gap:16px}
+.ar-g4{grid-template-columns:repeat(4,1fr)}
+.ar-g3{grid-template-columns:repeat(3,1fr)}
+.ar-g2{grid-template-columns:1fr 1fr}
+.ar-g32{grid-template-columns:1.25fr 1fr}
+.ar-kpi{padding:16px 18px;margin-bottom:0}
+.ar-kpi .ar-n{font-family:'Outfit',sans-serif;font-size:30px;font-weight:800;color:var(--ar-ink);line-height:1.1}
+.ar-kpi .ar-l{font-size:12px;color:var(--ar-muted)}
+.ar-kpi .ar-t{font-size:11px;margin-top:6px;font-weight:600}
+.ar-callout{font-size:11.5px;background:var(--ar-green-lt);border:1px solid #CFE3B9;color:#2B5A0A;border-radius:8px;padding:8px 10px;margin-top:12px}
+.ar-callout.ar-aviso{background:var(--ar-orange-lt);border-color:#FFD9A6;color:#7A4300}
+
+/* ---------- Barra de filtros y tablas ---------- */
+.ar-filtros{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ar-filtros .form-control{width:auto;min-width:150px;display:inline-block}
+.ar-tabla{width:100%;border-collapse:collapse;background:#fff}
+.ar-tabla th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ar-muted);font-weight:700;text-align:left;padding:9px 10px;border-bottom:2px solid var(--ar-bd);white-space:nowrap}
+.ar-tabla td{padding:9px 10px;border-bottom:1px solid var(--ar-bd);vertical-align:top}
+.ar-tabla tbody tr:hover{background:#F8FAFD}
+.ar-tabla .ar-grupo td{background:var(--ar-bg);font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink)}
+.ar-tabla .ar-item{font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink);white-space:nowrap}
+.ar-tabla .ar-situacion{display:block;color:var(--ar-muted);font-size:11.5px}
+.ar-tabla-scroll{overflow-x:auto}
+
+/* ---------- Niveles de riesgo 1 (más grave) a 6 ---------- */
+.ar-lv{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;padding:0 7px;border-radius:6px;font-family:'Outfit',sans-serif;font-weight:700;font-size:12px}
+.ar-lv1{background:var(--ar-l1);color:#fff}
+.ar-lv2{background:var(--ar-l2);color:#fff}
+.ar-lv3{background:var(--ar-l3);color:#fff}
+.ar-lv4{background:var(--ar-l4);color:#3A2C00}
+.ar-lv5{background:var(--ar-l5);color:#fff}
+.ar-lv6{background:var(--ar-l6);color:#1F3A10}
+.ar-lv-sin{background:#fff;color:var(--ar-muted);border:1px dashed var(--ar-bd)}
+
+/* ---------- Estados y etiquetas ---------- */
+.ar-st{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap}
+.ar-st-abierto,.ar-st-pendiente,.ar-st-sin-evaluar{background:#E8EDF6;color:var(--ar-ink)}
+.ar-st-en-tratamiento,.ar-st-en-proceso{background:#E3F0FF;color:var(--ar-blue)}
+.ar-st-vencido,.ar-st-vencida{background:#FBE3E1;color:#A92F2C}
+.ar-st-cerrado,.ar-st-completada{background:var(--ar-green-lt);color:#2B5A0A}
+.ar-st-aceptado{background:#F1F1F1;color:#555}
+.ar-st-por-validar{background:var(--ar-orange-lt);color:#7A4300}
+.ar-chip{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:12px;background:var(--ar-bg);border:1px solid var(--ar-bd);color:var(--ar-muted);margin:1px 2px 1px 0;white-space:nowrap}
+.ar-chip.ar-todas{background:var(--ar-ink);border-color:var(--ar-ink);color:#fff}
+
+/* ---------- Semáforo de cumplimiento (verde ≥ 85, amarillo 70–84, rojo < 70) ---------- */
+.ar-sem{display:inline-block;font-family:'Outfit',sans-serif;font-weight:700;padding:2px 10px;border-radius:20px;color:#fff}
+.ar-sem-verde{background:var(--ar-green)}
+.ar-sem-amarillo{background:var(--ar-l4);color:#3A2C00}
+.ar-sem-rojo{background:var(--ar-red)}
+.ar-barra-avance{height:8px;border-radius:6px;background:var(--ar-bd);overflow:hidden}
+.ar-barra-avance>span{display:block;height:100%;background:var(--ar-green-br)}
+
+/* ---------- Mapa de calor 5 × 6 (probabilidad × consecuencia) ---------- */
+.ar-hm{display:grid;grid-template-columns:90px repeat(6,1fr);gap:3px;font-size:11px}
+.ar-hm-eje{display:flex;align-items:center;justify-content:center;color:var(--ar-muted);text-align:center;padding:2px}
+.ar-hm-celda{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:6px;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;cursor:pointer;border:2px solid transparent}
+.ar-hm-celda:hover,.ar-hm-celda.ar-sel{border-color:var(--ar-ink)}
+.ar-hm-celda.ar-vacia{opacity:.3}
+.ar-hm-celda.ar-lv1,.ar-hm-celda.ar-lv2,.ar-hm-celda.ar-lv3,.ar-hm-celda.ar-lv5{color:#fff}
+.ar-hm-delta{font-size:10px;font-weight:600;margin-left:4px}
+
+/* ---------- Formularios y modales (sobre Bootstrap) ---------- */
+.ar-app .form-control{border-radius:8px;border-color:var(--ar-bd);box-shadow:none;font-size:13px}
+.ar-app .form-control:focus{border-color:var(--ar-green);box-shadow:0 0 0 3px rgba(59,122,14,.15)}
+.ar-app label{font-weight:600;color:var(--ar-ink);font-size:12px}
+.ar-app .modal-content{border-radius:14px;border:0;box-shadow:var(--ar-sh-lg)}
+.ar-app .modal-header{border-bottom:1px solid var(--ar-bd)}
+.ar-app .modal-title{font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink)}
+.ar-bloque{border:1px solid var(--ar-bd);border-radius:10px;padding:14px;margin-bottom:14px}
+.ar-bloque>h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ar-muted);margin:0 0 10px}
+.ar-info{color:var(--ar-muted);cursor:help;margin-left:4px}
+
+/* ---------- Pestañas ---------- */
+.ar-app .nav-tabs>li>a{color:var(--ar-muted);font-weight:600;border-radius:8px 8px 0 0}
+.ar-app .nav-tabs>li.active>a,.ar-app .nav-tabs>li.active>a:hover{color:var(--ar-ink);border-bottom-color:#fff;box-shadow:inset 0 3px 0 var(--ar-orange)}
+
+/* ---------- Estado vacío y cargando ---------- */
+.ar-vacio{text-align:center;color:var(--ar-muted);padding:34px 10px}
+.ar-vacio i{font-size:28px;display:block;margin-bottom:8px;color:var(--ar-bd)}
+#indicador{position:fixed;top:50%;left:50%;margin:-24px 0 0 -24px;z-index:99999}
+
+/* ---------- Adaptable ---------- */
+@media (max-width:991px){
+  .ar-topbar-toggle{display:inline-block}
+  .ar-layout{grid-template-columns:1fr}
+  .ar-sidebar{position:fixed;top:var(--ar-barra);left:0;bottom:0;width:var(--ar-menu);height:auto;z-index:1020;transform:translateX(-100%);transition:transform .2s}
+  body.ar-menu-abierto .ar-sidebar{transform:none;box-shadow:var(--ar-sh-lg)}
+  .ar-main{padding:16px 14px 50px}
+  .ar-g4,.ar-g3,.ar-g2,.ar-g32{grid-template-columns:1fr 1fr}
+  .ar-empresa{display:none}
+}
+@media (max-width:575px){
+  .ar-g4,.ar-g3,.ar-g2,.ar-g32{grid-template-columns:1fr}
+  .ar-usuario .ar-nombre{display:none}
+}
+
+/* ---------- Impresión (los niveles conservan su color) ---------- */
+@media print{
+  .ar-topbar,.ar-sidebar,.ar-acciones,.ar-filtros,.ar-pie{display:none!important}
+  .ar-layout{display:block}
+  .ar-main{padding:0}
+  .ar-card{box-shadow:none;break-inside:avoid}
+  .ar-lv,.ar-hm-celda,.ar-sem,.ar-st{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
