@@ -8,6 +8,7 @@ class Aplicacion
      */
     public function iniciar()
     {
+        self::compartirSesion();
         session_start();
         $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
         if($usuario == null || !$this->tienePermiso($usuario))
@@ -17,6 +18,21 @@ class Aplicacion
             exit;
         }
         return $usuario;
+    }
+    
+    /**
+     * El login se hace contra handel_api (api.apps-handel.com), que guarda la sesión en /tmp con cookie para todo
+     * .apps-handel.com. Argos debe leer la misma sesión; si el .user.ini del servidor no lo trae, se fija aquí.
+     * Solo en producción (en local el dominio no coincide).
+     */
+    public static function compartirSesion()
+    {
+        $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+        if(substr($host, -16) === 'apps-handel.com')
+        {
+            ini_set('session.cookie_domain', '.apps-handel.com');
+            ini_set('session.save_path', '/tmp');
+        }
     }
     
     public function tienePermiso($usuario)

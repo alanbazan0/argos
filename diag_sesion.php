@@ -1,5 +1,7 @@
 <?php
 // TEMPORAL: diagnóstico del inicio de sesión (solo muestra datos de la sesión del propio visitante). Borrar después.
+include 'php/Aplicacion.php';
+Aplicacion::compartirSesion();
 session_start();
 header('Content-Type: text/plain; charset=utf-8');
 echo "cookie PHPSESSID: " . (isset($_COOKIE['PHPSESSID']) ? 'si' : 'no') . "\n";
