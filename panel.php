@@ -11,7 +11,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
-$version = "20261104";
+$version = "20261105";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 ?>
@@ -75,6 +75,6 @@ $conMenu = $aplicacion->puedeVerMenu($usuario);
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 <script src="js/plantilla_vista.js?v=<?php echo $version; ?>"></script>
 
-<img src="img/loader.gif" id="indicador" alt="Cargando" hidden>
+<img src="img/cargando.svg" id="indicador" alt="Cargando">
 </body>
 </html>

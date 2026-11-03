@@ -12,7 +12,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : "";
 <meta name="description" content="ARGOS consolida en una sola plataforma el análisis de riesgo OEA México (ISO 31010) y la Evaluación de Riesgo en 5 Pasos de CTPAT. Identifica, analiza, mitiga.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/inicio_sesion.css?v=20261103">
+<link rel="stylesheet" href="css/inicio_sesion.css?v=20261105">
 <!--LOGIN-LIBS-START-->
   <!-- Bootstrap & librerías del login (mismas que CAVI) -->
   <link rel="stylesheet" href="<?php echo getHandelAPI()?>/lib/bootstrap/dist/css/bootstrap.min.css">
@@ -480,7 +480,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : "";
     });
   });
 </script>
-<img class="est-41" src="img/loader.gif" id="indicador">
+<img class="est-41" src="img/cargando.svg" id="indicador" alt="Cargando">
 <!--LOGIN-SCRIPTS-END-->
 </body>
 </html>

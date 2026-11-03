@@ -153,7 +153,7 @@ body.ar-app{font-family:'DM Sans',system-ui,sans-serif;background:var(--ar-bg);c
 /* ---------- Estado vacío y cargando ---------- */
 .ar-vacio{text-align:center;color:var(--ar-muted);padding:34px 10px}
 .ar-vacio i{font-size:28px;display:block;margin-bottom:8px;color:var(--ar-bd)}
-#indicador{position:fixed;top:50%;left:50%;margin:-24px 0 0 -24px;z-index:99999}
+#indicador{display:none;position:fixed;top:50%;left:50%;width:72px;height:72px;margin:-36px 0 0 -36px;z-index:99999}
 
 /* ---------- Adaptable ---------- */
 @media (max-width:991px){

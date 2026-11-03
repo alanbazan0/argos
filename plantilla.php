@@ -31,7 +31,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plantilla";
 $archivo = "plantilla.php";
-$version = "20261104";
+$version = "20261105";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -226,6 +226,6 @@ En esta plantilla se usa la Vista base solo para la sesión y "Cerrar sesión". 
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 <script src="js/plantilla_vista.js?v=<?php echo $version; ?>"></script>
 
-<img src="img/loader.gif" id="indicador" alt="Cargando" hidden>
+<img src="img/cargando.svg" id="indicador" alt="Cargando">
 </body>
 </html>
