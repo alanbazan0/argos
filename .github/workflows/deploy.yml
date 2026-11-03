@@ -1,0 +1,54 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # La config de PHP (.htaccess, .user.ini, php.ini) la administra cPanel
+      # (MultiPHP Manager) y las copias del repo pueden estar desactualizadas:
+      # NO desplegarlas, porque podrían devolver el sitio a otra versión de PHP.
+      - name: Subir por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          protocol: ftp
+          server-dir: /argos.apps-handel.com/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.claude/**
+            **/node_modules/**
+            **/tests/**
+            **/*.md
+            **/.project
+            **/.buildpath
+            **/.settings/**
+            **/deploy.sh
+            **/.env.deploy.example
+            .htaccess
+            .user.ini
+            php.ini
+
+      - name: Llamar endpoint post-deploy
+        run: curl -f --max-time 900 -X POST "${{ secrets.APP_URL }}/post_deploy.php" -d "token=${{ secrets.MIGRATE_TOKEN }}"
+
+      # Verificación posterior: el sitio responde y la página principal no apunta a
+      # localhost (una URL de desarrollo en getHandelAPI() rompe el sitio en producción).
+      - name: Verificar el sitio
+        run: |
+          curl -fsS --max-time 60 -o index.html "${{ secrets.APP_URL }}/index.php"
+          if grep -q 'localhost' index.html; then
+            echo "ERROR: index.php referencia localhost (revisar php/configuracion.php)"
+            exit 1
+          fi
+          echo "Sitio OK"
