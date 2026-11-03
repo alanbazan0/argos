@@ -28,7 +28,7 @@ class Aplicacion
     public static function compartirSesion()
     {
         $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
-        if(substr($host, -16) === 'apps-handel.com')
+        if(substr($host, -15) === 'apps-handel.com')
         {
             ini_set('session.cookie_domain', '.apps-handel.com');
             ini_set('session.save_path', '/tmp');
