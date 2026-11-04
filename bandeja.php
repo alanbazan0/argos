@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Mi bandeja";
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261115";
+$version = "20261116";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -83,6 +83,7 @@ $version = "20261115";
         <div class="ar-card"><h3>Evidencia por validar</h3><div class="ar-sub">Acciones que otra persona marcó como completadas.</div><ul class="ar-lista" id="porValidar"></ul></div>
         <div class="ar-card"><h3>Menciones</h3><div class="ar-sub">Te mencionaron en la bitácora con @.</div><ul class="ar-lista" id="menciones"></ul></div>
       </div>
+      <div class="ar-card"><h3>Revisión anual</h3><div class="ar-sub">Aviso 30 días antes del vencimiento (Administrador y Coordinador).</div><ul class="ar-lista" id="revisionAnual"></ul></div>
       <div class="ar-card"><h3>Riesgos por evaluar en tus sedes</h3><div class="ar-sub">Identificados pero todavía sin probabilidad ni consecuencia.</div><ul class="ar-lista" id="sinEvaluar"></ul></div>
     </section>
 

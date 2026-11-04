@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261115";
+$version = "20261116";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,6 +63,7 @@ $version = "20261115";
       <div class="ar-card">
         <form id="filtrosForm" class="ar-filtros" onsubmit="return false;">
           <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
+          <select class="form-control" id="revisionSelect" aria-label="Periodo"><option value="">Hoy</option></select>
           <label>Periodo al <input type="date" class="form-control" id="alFechaInput"></label>
           <label class="checkbox-inline"><input type="checkbox" id="compararCheck"> Comparar</label>
           <label id="comparaConGrupo" hidden>contra <input type="date" class="form-control" id="comparaConInput"></label>
@@ -116,6 +117,7 @@ $version = "20261115";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_riesgos_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_acciones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_configuracion_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_revisiones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_tablero_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_tablero_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_tablero_vista.js?v=<?php echo $version; ?>"></script>
