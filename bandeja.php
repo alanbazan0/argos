@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Mi bandeja";
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261125";
+$version = "20261126";
 ?>
 <!DOCTYPE html>
 <html lang="es">

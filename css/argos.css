@@ -277,3 +277,11 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-factor{margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--ar-bd)}
 .ar-factor .form-control{margin-top:4px}
 .ar-factores-res{margin:6px 0}
+
+/* ---------- Matriz de riesgo CTPAT 3x3 ---------- */
+.ar-hm-riesgo{grid-template-columns:90px repeat(3,1fr)}
+.ar-riesgo-bajo{background:#C5E3A5;color:#2B5A0A}
+.ar-riesgo-medio{background:#FFE27A;color:#3A2C00}
+.ar-riesgo-alto{background:#E8837F;color:#fff}
+.ar-celda-riesgo{cursor:pointer;min-height:54px}
+.ar-celda-est{text-align:center}
