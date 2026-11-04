@@ -23,6 +23,7 @@ Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los
 - **R-00107 Landing:** «Agendar demo» sigue enviando a Formspree (servicio externo); falta endpoint propio con correo; confirmar si se recorta CTPAT de los textos.
 - **R-00108 Configuración:** solo lectura; falta editar nombres, videos, parámetros y guardar **nuevas versiones de calibración** (borrador → versión, con el aviso de cuántos riesgos cambian de nivel).
 - **R-00109 Registro:** exportar a Excel; vista de mapa de calor; estados Cerrado/Vencido/En tratamiento (dependen de acciones); aviso de duplicados; agregar una sede nueva a «todas las sedes».
+- **R-00110 Evaluación:** hecha (nivel en servidor, por sede o mismo nivel, meta, tratamiento, propuesta de revisar acciones). Falta: el **aviso por correo al responsable** cuando el nivel sube (depende de acciones y de la bandeja, R-00111/R-00112); el motivo «Revisión anual AAAA» (lo pone el flujo de revisiones); mini mapa de calor con la trayectoria por sede en el detalle; la vista previa del nivel en pantalla es aproximada cuando una sede ya tiene una evaluación propia más vieja que la general (el servidor siempre manda); fecha compromiso sugerida de la primera acción (R-12, con acciones).
 - **Todo el resto** (acciones, bandeja, tablero, taller, importación, revisiones, indicadores, reportes, tutoriales y el módulo CTPAT completo): ver los planes de IA 144–171 en Servixia.
 
 ## Trampas conocidas

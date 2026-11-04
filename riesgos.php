@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261110";
+$version = "20261111";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -172,9 +172,60 @@ $version = "20261110";
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="evaluarButton"><i class="fa fa-line-chart"></i> Evaluar</button>
         <button type="button" class="btn btn-default" id="desactivarButton"><i class="fa fa-ban"></i> Desactivar</button>
         <button type="button" class="btn btn-default" id="editarButton"><i class="fa fa-pencil"></i> Editar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Evaluación y reevaluación -->
+<div class="modal fade" id="evaluacionModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="evaluacionTitulo">Evaluar riesgo</h4>
+      </div>
+      <div class="modal-body">
+        <form id="evaluacionForm" onsubmit="return false;">
+          <div class="ar-callout">La evaluación anterior no se modifica: cada evaluación se agrega con su fecha. El nivel lo calcula el sistema con la calibración vigente.</div>
+          <div class="ar-bloque">
+            <h4>Evaluación</h4>
+            <div class="row">
+              <div class="col-sm-5 form-group"><label for="motivoSelect">Motivo</label>
+                <select id="motivoSelect" class="form-control">
+                  <option>Alta del riesgo</option><option>Alta (taller)</option><option>Importación</option><option>Seguimiento de acciones</option>
+                  <option>Incidente</option><option>Cambio en las condiciones de la empresa</option>
+                </select></div>
+              <div class="col-sm-3 form-group"><label for="evaluacionFecha">Fecha</label><input type="date" id="evaluacionFecha" class="form-control"></div>
+              <div class="col-sm-4 form-group"><label>Nivel resultante</label><div id="nivelResultante">—</div></div>
+            </div>
+            <div class="checkbox"><label><input type="checkbox" id="mismoNivelCheck" checked> Mismo nivel de riesgo en todas las sedes</label></div>
+            <div class="ar-tabla-scroll">
+              <table class="ar-tabla">
+                <thead><tr><th>Sede</th><th><i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Elige la frase que mejor describe con qué frecuencia se presenta el evento. El sistema la clasifica en la escala de probabilidad."></i> Probabilidad</th><th><i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Elige la frase que mejor describe el daño si el evento ocurre. El sistema la clasifica en la escala de consecuencia."></i> Consecuencia</th><th>Nivel</th></tr></thead>
+                <tbody id="filasEvaluacion"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="ar-bloque">
+            <h4>Tratamiento</h4>
+            <div class="row">
+              <div class="col-sm-4 form-group"><label for="metaSelect">Nivel meta <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El nivel que se quiere alcanzar después de las acciones. Solo puede ser igual o menos grave que el actual."></i></label><select id="metaSelect" class="form-control"></select></div>
+              <div class="col-sm-4 form-group"><label for="tratamientoSelect">Tratamiento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Mitigar: reducir probabilidad o consecuencia. Evitar: dejar de hacer la actividad. Transferir: pasar el riesgo a un tercero (seguro, contrato). Aceptar: solo en niveles 5 y 6, con justificación."></i></label>
+                <select id="tratamientoSelect" class="form-control"><option value="">Sin definir</option><option>Mitigar</option><option>Evitar</option><option>Transferir</option><option>Aceptar</option></select></div>
+            </div>
+            <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionInput">Justificación de la aceptación</label><textarea id="justificacionInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
+          </div>
+          <div class="form-group"><label for="comentarioEvaluacion">Comentario (queda en la bitácora)</label><textarea id="comentarioEvaluacion" class="form-control" rows="2" maxlength="4000"></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="guardarEvaluacionButton">Guardar evaluación</button>
       </div>
     </div>
   </div>
@@ -202,6 +253,8 @@ $version = "20261110";
 
 <!-- Repositorio, Presentador y Vista de la pantalla (handel_api) -->
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_configuracion_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_evaluaciones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_riesgos_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_riesgos_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_riesgos_vista.js?v=<?php echo $version; ?>"></script>
