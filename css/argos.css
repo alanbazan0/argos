@@ -285,3 +285,6 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-riesgo-alto{background:#E8837F;color:#fff}
 .ar-celda-riesgo{cursor:pointer;min-height:54px}
 .ar-celda-est{text-align:center}
+
+/* ---------- Procedimiento y expediente CTPAT ---------- */
+.ar-proc-texto{white-space:pre-wrap;word-wrap:break-word;font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;border:1px solid var(--ar-bd);border-radius:8px;padding:12px}
