@@ -263,3 +263,12 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-etapa-fin{display:flex;align-items:center;justify-content:center;background:var(--ar-green-lt);border-color:#CFE3B9;font-weight:700;color:#2B5A0A;min-width:120px}
 .ar-flecha{display:flex;align-items:center;color:var(--ar-muted)}
 .ar-etapa-acc{margin-top:6px}
+
+/* ---------- Cuestionario público del socio (CTPAT) ---------- */
+.ar-publico{background:var(--ar-bg)}
+.ar-publico-caja{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+.ar-publico-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ar-pub-est{font-family:'Outfit',sans-serif;font-size:16px;margin:22px 0 8px;color:var(--ar-ink)}
+.ar-pregunta{background:#fff;border:1px solid var(--ar-bd);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.ar-resp{margin-top:6px}
+.ar-publico-pie{position:sticky;bottom:0;background:var(--ar-bg);padding:10px 0;border-top:1px solid var(--ar-bd);margin-top:14px}
