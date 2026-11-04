@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Resumen CTPAT";
 $archivo = "ctpat_resumen.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261112";
+$version = "20261113";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 ?>
@@ -79,6 +79,8 @@ $conMenu = $aplicacion->puedeVerMenu($usuario);
 <script src="<?php echo getHandelAPI()?>/js/clases/configuracion.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_bandeja_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 <script src="js/plantilla_vista.js?v=<?php echo $version; ?>"></script>

@@ -12,4 +12,13 @@ $(function () {
   $('.ar-avatar img').each(function () {
     if (this.complete && this.naturalWidth === 0) { $(this).remove(); }
   }).on('error', function () { $(this).remove(); });
+  // Campana: total de pendientes de Mi bandeja (acciones urgentes + lo que requiere respuesta).
+  $('#campanaBoton').on('click', function () { window.location.href = 'bandeja.php'; });
+  if (typeof ArgosBandejaRepositorio === 'function' && $('#campanaContador').length) {
+    new ArgosBandejaRepositorio().consultar(null, function (r) {
+      if (r && r.mensajeError === '' && r.valor.total > 0) {
+        $('#campanaContador').text(r.valor.total > 99 ? '99+' : r.valor.total).show();
+      }
+    });
+  }
 });

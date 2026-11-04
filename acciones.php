@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261112";
+$version = "20261113";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -177,6 +177,7 @@ $version = "20261112";
 
 <!-- Repositorios, Presentador y Vista de la pantalla (handel_api) -->
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_bandeja_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_riesgos_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_acciones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_acciones_presentador.js?v=<?php echo $version; ?>"></script>

@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261112";
+$version = "20261113";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -254,6 +254,7 @@ $version = "20261112";
 
 <!-- Repositorio, Presentador y Vista de la pantalla (handel_api) -->
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_bandeja_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_configuracion_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_evaluaciones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_acciones_repositorio.js?v=<?php echo $version; ?>"></script>

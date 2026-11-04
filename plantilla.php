@@ -32,7 +32,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plantilla";
 $archivo = "plantilla.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261112";
+$version = "20261113";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -217,6 +217,8 @@ $version = "20261112";
 <script src="<?php echo getHandelAPI()?>/js/componentes/tabla.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_bandeja_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
 
 <!-- Repositorios, Presentador y Vista de ESTA pantalla (en handel_api). Ejemplo:
