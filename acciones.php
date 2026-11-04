@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261113";
+$version = "20261114";
 ?>
 <!DOCTYPE html>
 <html lang="es">
