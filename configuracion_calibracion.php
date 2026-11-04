@@ -17,7 +17,8 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
-$version = "20261108";
+$modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
+$version = "20261109";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,11 +42,11 @@ $version = "20261108";
 </head>
 <body class="ar-app" data-pantalla="calibracion" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
-<?php $menu->renderizarBarraSuperior($usuario); ?>
+<?php $menu->renderizarBarraSuperior($usuario, true, $modulo); ?>
 
 <div class="ar-layout">
   <aside class="ar-sidebar">
-    <?php $menu->renderizar($usuario, $archivo); ?>
+    <?php $menu->renderizar($usuario, $archivo, $modulo); ?>
   </aside>
 
   <main class="ar-main">

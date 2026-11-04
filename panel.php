@@ -11,7 +11,8 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
-$version = "20261108";
+$modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
+$version = "20261109";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 ?>
@@ -36,12 +37,12 @@ $conMenu = $aplicacion->puedeVerMenu($usuario);
 </head>
 <body class="ar-app" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
-<?php $menu->renderizarBarraSuperior($usuario, $conMenu); ?>
+<?php $menu->renderizarBarraSuperior($usuario, $conMenu, $modulo); ?>
 
 <div class="ar-layout<?php echo $conMenu ? '' : ' ar-sin-menu'; ?>">
 <?php if($conMenu) { ?>
   <aside class="ar-sidebar">
-    <?php $menu->renderizar($usuario, $archivo); ?>
+    <?php $menu->renderizar($usuario, $archivo, $modulo); ?>
   </aside>
 <?php } ?>
 

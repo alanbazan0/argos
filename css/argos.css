@@ -27,7 +27,14 @@ body.ar-app{font-family:'DM Sans',system-ui,sans-serif;background:var(--ar-bg);c
 .ar-topbar-logo img{height:38px}
 .ar-empresa{display:flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--ar-bd);border-radius:8px;background:var(--ar-bg);font-weight:500}
 .ar-empresa small{color:var(--ar-muted);font-weight:400}
-.ar-topbar-fin{margin-left:auto;display:flex;align-items:center;gap:14px}
+.ar-modulos{display:flex;margin-left:auto;background:var(--ar-bg);border:1px solid var(--ar-bd);border-radius:9px;padding:3px}
+.ar-mod{padding:6px 14px;border-radius:7px;font-weight:700;font-size:12px;color:var(--ar-muted);text-decoration:none;white-space:nowrap}
+a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
+.ar-mod.ar-on{background:var(--ar-ink);color:#fff}
+.ar-mod.ar-off{opacity:.55;cursor:not-allowed}
+.ar-mod em{font-style:normal;font-size:9px;background:var(--ar-orange-lt);color:#9A5200;padding:1px 6px;border-radius:10px;margin-left:5px}
+.ar-topbar-fin{display:flex;align-items:center;gap:14px;margin-left:auto}
+.ar-modulos+.ar-topbar-fin{margin-left:0}
 .ar-campana{position:relative;background:none;border:0;font-size:18px;color:var(--ar-ink);padding:4px 8px}
 .ar-campana .ar-contador{position:absolute;top:-2px;right:-2px;background:var(--ar-red);color:#fff;border-radius:10px;font-size:10px;font-weight:700;min-width:16px;height:16px;line-height:16px;text-align:center;padding:0 4px}
 .ar-usuario{display:flex;align-items:center;gap:8px}
@@ -165,6 +172,8 @@ body.ar-app{font-family:'DM Sans',system-ui,sans-serif;background:var(--ar-bg);c
   .ar-main{padding:16px 14px 50px}
   .ar-g4,.ar-g3,.ar-g2,.ar-g32{grid-template-columns:1fr 1fr}
   .ar-empresa{display:none}
+  .ar-mod{padding:6px 9px}
+  .ar-mod em{display:none}
 }
 @media (max-width:575px){
   .ar-g4,.ar-g3,.ar-g2,.ar-g32{grid-template-columns:1fr}

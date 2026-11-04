@@ -33,7 +33,8 @@ Reglas:
 ```
 index.php               redirige a panel.php
 inicio_sesion.php       landing + inicio de sesión (Vista y Presentador de handel_api)
-panel.php               pantalla de inicio (hoy un panel vacío)
+panel.php               inicio del módulo OEA (hoy un panel vacío)
+ctpat_resumen.php       inicio del módulo CTPAT (provisional)
 plantilla.php           plantilla de pantalla y guía de estilos (solo la ve quien puede ver el menú)
 php/configuracion.php   getHandelAPI(): host de la API según el entorno
 php/Aplicacion.php      sesión, permiso de acceso a ARGOS y liberación gradual del menú
@@ -50,9 +51,10 @@ post_deploy.php         endpoint post-deploy (verifica archivos críticos)
 ## Cómo crear una pantalla nueva
 
 1. Copiar `plantilla.php` con el nombre de la pantalla (por ejemplo `riesgos.php`) y cambiar `$titulo` y `$archivo`.
+1b. Definir `$modulo` (`oea` o `ctpat`): decide el menú lateral y la opción activa del selector OEA / CTPAT de la barra superior.
 2. Reemplazar el contenido de `<section class="ar-main-contenido">` usando los componentes de `css/argos.css` (la plantilla los muestra todos: tarjetas e indicadores, tabla con filtros, niveles de riesgo 1 a 6, estados, mapa de calor, semáforo, ventana emergente, estado vacío). Si hace falta un estilo nuevo, se agrega a `css/argos.css` con el prefijo `ar-`.
 3. Crear en `handel_api` el endpoint PHP, el Repositorio, el Presentador y la Vista JS de la pantalla, y cargarlos al final de la página (el bloque comentado de `plantilla.php` muestra cómo). La Vista termina con `var vista = new MiVista(); $(document).ready(function(){ vista.inicializar(); });`.
-4. Dar de alta la opción en el arreglo `$opciones` de `php/clases/Menu.php` (título, archivo, ícono y tipos de usuario que la ven). Las opciones cuya página aún no existe se muestran apagadas con la etiqueta «pronto».
+4. Dar de alta la opción en el arreglo `$modulos` de `php/clases/Menu.php` (módulo, sección, título, archivo, ícono y tipos de usuario que la ven) (título, archivo, ícono y tipos de usuario que la ven). Las opciones cuya página aún no existe se muestran apagadas con la etiqueta «pronto».
 5. Quitar la restricción `puedeVerMenu` de la página cuando la pantalla se libere.
 
 ## Acceso y liberación gradual
