@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Tutoriales";
 $archivo = "tutoriales.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261126";
+$version = "20261127";
 ?>
 <!DOCTYPE html>
 <html lang="es">
