@@ -33,6 +33,7 @@ class Menu
                     array("Registro de riesgos",  "riesgos.php",              "fa-list-alt",           null),
                     array("Acciones",             "acciones.php",             "fa-tasks",              null),
                     array("Modo taller",          "taller.php",               "fa-pencil-square-o",    null),
+                    array("Importar desde Excel", "importar.php",             "fa-file-excel-o",       null),
                 ),
                 "Seguimiento" => array(
                     array("Indicadores",          "indicadores.php",          "fa-line-chart",         null),
