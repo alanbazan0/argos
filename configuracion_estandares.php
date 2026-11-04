@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Estándares";
 $archivo = "configuracion_estandares.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261119";
+$version = "20261120";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,13 +57,14 @@ $version = "20261119";
         <h1>Estándares y subestándares</h1>
         <p>Catálogo OEA México y categorías adicionales. El item de cada riesgo es el código del subestándar más un consecutivo.</p>
       </div>
+      <div class="ar-acciones"><button type="button" class="btn btn-primary" id="nuevaCategoriaBoton" hidden><i class="fa fa-plus"></i> Nueva categoría</button></div>
     </div>
 
     <section class="ar-main-contenido">
       <div class="ar-card">
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaEstandares">
-            <thead><tr><th>Código</th><th>Nombre</th><th>Tutorial</th><th>Uso</th></tr></thead>
+            <thead><tr><th>Código</th><th>Nombre</th><th>Tutorial</th><th>Uso</th><th></th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -72,6 +73,19 @@ $version = "20261119";
 
     <?php $menu->renderizarFooter(); ?>
   </main>
+</div>
+
+<div class="modal fade" id="catalogoModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="catalogoTitulo"></h4></div>
+    <div class="modal-body">
+      <div class="form-group"><label for="catNombre">Nombre</label><input type="text" class="form-control" id="catNombre" maxlength="250"></div>
+      <div class="form-group"><label for="catVideo">Enlace del video de YouTube (opcional)</label><input type="url" class="form-control" id="catVideo" placeholder="https://youtu.be/..."></div>
+      <div class="checkbox" id="catActivoGrupo"><label><input type="checkbox" id="catActivo"> Activo (un subestándar con riesgos no se borra: se desactiva)</label></div>
+      <div class="ar-callout">Cambiar un nombre no cambia el item de los riesgos ya registrados. El código de los nuevos lo asigna el sistema.</div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarCatalogoBoton">Guardar</button></div>
+  </div></div>
 </div>
 
 <!-- Ventana emergente de ejemplo: bloques con título, campos con ⓘ y botones de acción -->

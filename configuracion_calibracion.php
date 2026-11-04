@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261119";
+$version = "20261120";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,10 +59,20 @@ $version = "20261119";
       </div>
       <div class="ar-acciones">
         <select id="versionSelect" class="form-control" aria-label="Versión de la calibración"></select>
+        <button type="button" class="btn btn-primary" id="editarBoton" hidden><i class="fa fa-pencil"></i> Editar</button>
       </div>
     </div>
 
     <section class="ar-main-contenido">
+      <div class="ar-card" id="barraEdicion" hidden>
+        <b>Borrador:</b> los cambios no se aplican hasta guardar una nueva versión. Un nivel menos grave no puede ser más grave por tener menos probabilidad ni más consecuencia (la pantalla lo valida al guardar).
+        <div class="ar-acciones" style="margin-top:10px">
+          <button type="button" class="btn btn-default" id="cancelarEdicionBoton">Cancelar</button>
+          <button type="button" class="btn btn-default" id="impactoBoton"><i class="fa fa-search"></i> Ver impacto</button>
+          <button type="button" class="btn btn-success" id="guardarVersionBoton"><i class="fa fa-save"></i> Guardar nueva versión</button>
+        </div>
+        <div class="ar-callout" id="impactoResultado" hidden></div>
+      </div>
       <div class="ar-callout">La calibración es la misma para todos los clientes. Las evaluaciones ya hechas conservan la versión con la que se hicieron; las nuevas usan la vigente.</div>
 
       <div class="ar-grid ar-g2">
@@ -94,6 +104,18 @@ $version = "20261119";
 
     <?php $menu->renderizarFooter(); ?>
   </main>
+</div>
+
+<div class="modal fade" id="versionModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Guardar nueva versión</h4></div>
+    <div class="modal-body">
+      <div class="form-group"><label for="vigenteDesdeInput">Vigente desde (vacío = hoy)</label><input type="date" class="form-control" id="vigenteDesdeInput"></div>
+      <div class="form-group"><label for="notaInput">Nota del cambio (obligatoria)</label><textarea class="form-control" id="notaInput" rows="3" maxlength="500"></textarea></div>
+      <div class="ar-callout">Las evaluaciones ya hechas conservan su versión y su nivel; las nuevas usan esta versión desde la fecha indicada.</div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="confirmarVersionBoton">Guardar versión</button></div>
+  </div></div>
 </div>
 
 <!-- Ventana emergente de ejemplo: bloques con título, campos con ⓘ y botones de acción -->

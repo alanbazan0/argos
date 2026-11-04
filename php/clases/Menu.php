@@ -43,6 +43,7 @@ class Menu
                 "Configuración" => array(
                     array("Calibración",          "configuracion_calibracion.php", "fa-sliders",       null),
                     array("Estándares",           "configuracion_estandares.php",  "fa-sitemap",       array(TipoUsuario::ADMINISTRADOR)),
+                    array("Parámetros",           "configuracion_parametros.php",  "fa-cog",           array(TipoUsuario::ADMINISTRADOR)),
                 ),
             ),
         ),

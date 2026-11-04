@@ -240,3 +240,9 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
   .ar-reporte table{width:100%}
   .ar-reporte tr{break-inside:avoid}
 }
+
+/* ---------- Edición de configuración (R-00108) ---------- */
+.ed-celda-caja{padding:0}
+.ed-celda{width:100%;height:100%;border:0;background:transparent;color:inherit;font-weight:700;text-align:center;appearance:none;-webkit-appearance:none;cursor:pointer}
+.ar-param-campo{display:inline-block;margin:0 14px 6px 0;font-weight:400;font-size:12px}
+.ar-param-campo input{width:90px;display:inline-block}

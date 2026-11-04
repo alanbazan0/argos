@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Resumen CTPAT";
 $archivo = "ctpat_resumen.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261119";
+$version = "20261120";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 ?>
