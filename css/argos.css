@@ -209,3 +209,18 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 /* ---------- Revisiones del Comité (R-00115) ---------- */
 .ar-participantes{display:flex;flex-wrap:wrap;gap:4px 14px;max-height:160px;overflow:auto;border:1px solid var(--ar-bd);border-radius:8px;padding:8px 10px}
 .ar-participante{margin:0!important;font-weight:400}
+
+/* ---------- Modo taller (R-00114) ---------- */
+.ar-tabs{margin-bottom:14px}
+.ar-hoja{overflow-x:auto}
+#hojaTaller{min-width:1250px}
+#hojaTaller td{vertical-align:top;padding:4px}
+#hojaTaller textarea{min-width:170px;resize:vertical}
+#hojaTaller select{min-width:130px}
+.ar-sedes-menu{padding:6px 10px;max-height:240px;overflow:auto}
+.ar-sede-op{display:block;font-weight:400;margin:2px 0;white-space:nowrap}
+.ar-fila-error{background:#FFF5F4}
+.ar-estado-fila{min-width:150px;font-size:11px}
+.ar-proyeccion h2{font-family:'Outfit',sans-serif;margin:4px 0}
+.ar-proy-texto{font-size:15px;line-height:1.4}
+.ar-lv-grande{font-size:18px;padding:3px 12px}
