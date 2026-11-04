@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Preguntas críticas";
 $archivo = "ctpat_tipos_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261129";
+$version = "20261130";
 ?>
 <!DOCTYPE html>
 <html lang="es">

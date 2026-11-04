@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Vulnerabilidades";
 $archivo = "ctpat_vulnerabilidades.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261129";
+$version = "20261130";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,7 +57,7 @@ $version = "20261129";
         <h1>Vulnerabilidades y riesgo</h1>
         <p>Vulnerabilidad del socio = su estándar con la calificación más alta (anexo D). Riesgo de la etapa = amenaza de su zona × vulnerabilidad de su socio.</p>
       </div>
-      <div class="ar-acciones"><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton"><i class="fa fa-file-excel-o"></i> Excel</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
     </div>
 
     <section class="ar-main-contenido">

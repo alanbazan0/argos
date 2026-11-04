@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Amenazas";
 $archivo = "ctpat_amenazas.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261129";
+$version = "20261130";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,7 +57,7 @@ $version = "20261129";
         <h1>Amenazas por zona</h1>
         <p>La amenaza es externa: se evalúa por zona (anexo C), no por socio. Calificación de la zona = su factor más alto; una cadena es de alto riesgo si alguna zona tiene un 3.</p>
       </div>
-      <div class="ar-acciones"><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton"><i class="fa fa-file-excel-o"></i> Excel</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
     </div>
 
     <section class="ar-main-contenido">

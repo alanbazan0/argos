@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261129";
+$version = "20261130";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,7 +57,7 @@ $version = "20261129";
         <h1>Plan de acción</h1>
         <p>Anexo E. Prioridad = riesgo más alto de las etapas del socio; plazo 30, 60 o 90 días. Sin evidencia no se verifica una acción.</p>
       </div>
-      <div class="ar-acciones"><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select><button type="button" class="btn btn-primary" id="nuevaAccionBoton" hidden><i class="fa fa-plus"></i> Nueva acción</button></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton"><i class="fa fa-file-excel-o"></i> Excel</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select><button type="button" class="btn btn-primary" id="nuevaAccionBoton" hidden><i class="fa fa-plus"></i> Nueva acción</button></div>
     </div>
 
     <section class="ar-main-contenido">
