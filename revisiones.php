@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Revisiones del Comité";
 $archivo = "revisiones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261117";
+$version = "20261118";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -115,6 +115,7 @@ $version = "20261117";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_revisiones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_revisiones_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_revisiones_vista.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_exportacion.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 
 <img src="img/cargando.svg" id="indicador" alt="Cargando">

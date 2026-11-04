@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261117";
+$version = "20261118";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,6 +58,7 @@ $version = "20261117";
         <p>Identificación de los riesgos de la empresa por estándar y subestándar. <span id="totalRiesgos"></span></p>
       </div>
       <div class="ar-acciones">
+        <div class="btn-group ar-exportar" data-exportar></div>
         <button type="button" class="btn btn-primary" id="agregarButton"><i class="fa fa-plus"></i> Agregar riesgo</button>
       </div>
     </div>
@@ -261,6 +262,7 @@ $version = "20261117";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_riesgos_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_riesgos_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_riesgos_vista.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_exportacion.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 
 <img src="img/cargando.svg" id="indicador" alt="Cargando">

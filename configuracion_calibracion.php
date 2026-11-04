@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261117";
+$version = "20261118";
 ?>
 <!DOCTYPE html>
 <html lang="es">

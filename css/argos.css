@@ -224,3 +224,19 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-proyeccion h2{font-family:'Outfit',sans-serif;margin:4px 0}
 .ar-proy-texto{font-size:15px;line-height:1.4}
 .ar-lv-grande{font-size:18px;padding:3px 12px}
+
+/* ---------- Reporte imprimible (R-00117) ---------- */
+.ar-reporte section{margin-bottom:26px}
+.ar-rep-portada{text-align:center;padding:30px 0}
+.ar-rep-logo{max-height:70px;margin-bottom:14px}
+.ar-rep-meta{margin:16px auto;text-align:left}
+.ar-rep-meta th{padding:3px 14px 3px 0;color:var(--ar-muted)}
+.ar-rep-tabla td,.ar-rep-tabla th{font-size:11.5px;vertical-align:top}
+.ar-rep-firmas td{height:42px}
+@media print{
+  .ar-sin-imprimir{display:none!important}
+  .ar-rep-nueva{break-before:page}
+  .ar-rep-portada{break-after:page}
+  .ar-reporte table{width:100%}
+  .ar-reporte tr{break-inside:avoid}
+}

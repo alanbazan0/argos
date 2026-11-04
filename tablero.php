@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261117";
+$version = "20261118";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,6 +57,7 @@ $version = "20261117";
         <h1>Tablero</h1>
         <p>Panorama del análisis de riesgo. <span id="periodoTexto"></span></p>
       </div>
+      <div class="ar-acciones"><div class="btn-group ar-exportar" data-exportar></div></div>
     </div>
 
     <section class="ar-main-contenido">
@@ -121,6 +122,7 @@ $version = "20261117";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_tablero_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_tablero_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_tablero_vista.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_exportacion.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 
 <img src="img/cargando.svg" id="indicador" alt="Cargando">
