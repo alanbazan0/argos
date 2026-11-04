@@ -272,3 +272,8 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-pregunta{background:#fff;border:1px solid var(--ar-bd);border-radius:10px;padding:10px 12px;margin-bottom:8px}
 .ar-resp{margin-top:6px}
 .ar-publico-pie{position:sticky;bottom:0;background:var(--ar-bg);padding:10px 0;border-top:1px solid var(--ar-bd);margin-top:14px}
+
+/* ---------- Amenazas CTPAT ---------- */
+.ar-factor{margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--ar-bd)}
+.ar-factor .form-control{margin-top:4px}
+.ar-factores-res{margin:6px 0}
