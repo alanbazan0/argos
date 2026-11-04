@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261120";
+$version = "20261121";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -111,7 +111,7 @@ $version = "20261120";
             <div id="ubicacionEdicion">
               <div class="row">
                 <div class="col-sm-6 form-group"><label for="estandarSelect">Estándar <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Estándar y subestándar de OEA México donde se presenta el riesgo. Si no corresponde a un estándar, usa las categorías adicionales (ruta, climatológicos, geográficos, legales)."></i></label><select id="estandarSelect" class="form-control"></select></div>
-                <div class="col-sm-6 form-group"><label for="subestandarSelect">Subestándar</label><select id="subestandarSelect" class="form-control"></select></div>
+                <div class="col-sm-6 form-group"><label for="subestandarSelect">Subestándar</label><select id="subestandarSelect" class="form-control"></select><a href="tutoriales.php" target="_blank" rel="noopener" id="verTutorialLink" hidden style="font-size:12px"><i class="fa fa-play-circle"></i> Ver tutorial</a></div>
               </div>
               <div class="form-group"><label>Sedes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Sedes donde se presenta la situación. Con «Todas las sedes», cada sede reporta por separado el avance de las acciones."></i></label>
                 <div><label class="checkbox-inline"><input type="checkbox" id="todasSedesCheck"> <b>Todas las sedes</b></label></div>
