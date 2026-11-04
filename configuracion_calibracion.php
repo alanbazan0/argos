@@ -17,7 +17,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
-$version = "20261107";
+$version = "20261108";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -137,6 +137,7 @@ $version = "20261107";
 <script src="<?php echo getHandelAPI()?>/js/clases/tipo_usuario.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/componentes/tabla.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
 
 <!-- Repositorio, Presentador y Vista de la pantalla (handel_api) -->

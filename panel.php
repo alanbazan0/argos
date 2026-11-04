@@ -11,7 +11,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
-$version = "20261107";
+$version = "20261108";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 ?>
@@ -71,6 +71,7 @@ $conMenu = $aplicacion->puedeVerMenu($usuario);
 <script src="<?php echo getHandelAPI()?>/js/librerias/Ajaxv2.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/clases/configuracion.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 <script src="js/plantilla_vista.js?v=<?php echo $version; ?>"></script>

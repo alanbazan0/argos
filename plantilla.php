@@ -31,7 +31,7 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plantilla";
 $archivo = "plantilla.php";
-$version = "20261107";
+$version = "20261108";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -215,6 +215,7 @@ $version = "20261107";
 <script src="<?php echo getHandelAPI()?>/js/clases/tipo_usuario.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/componentes/tabla.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
 
 <!-- Repositorios, Presentador y Vista de ESTA pantalla (en handel_api). Ejemplo:
