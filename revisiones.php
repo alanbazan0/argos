@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Revisiones del Comité";
 $archivo = "revisiones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261122";
+$version = "20261123";
 ?>
 <!DOCTYPE html>
 <html lang="es">
