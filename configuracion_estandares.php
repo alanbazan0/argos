@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Estándares";
 $archivo = "configuracion_estandares.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261111";
+$version = "20261112";
 ?>
 <!DOCTYPE html>
 <html lang="es">

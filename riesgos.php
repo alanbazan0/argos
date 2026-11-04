@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261111";
+$version = "20261112";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -166,6 +166,7 @@ $version = "20261111";
             <div class="ar-bloque"><h4>Identificación</h4><div id="detalleIdentificacion"></div></div>
           </div>
           <div class="col-md-5">
+            <div class="ar-bloque"><h4>Acciones</h4><ul class="ar-lista" id="detalleAcciones"></ul><a class="btn btn-default btn-xs" id="nuevaAccionLink" href="#" hidden><i class="fa fa-plus"></i> Nueva acción</a></div>
             <div class="ar-bloque"><h4>Evaluaciones</h4><ul class="ar-lista" id="detalleEvaluaciones"></ul></div>
             <div class="ar-bloque"><h4>Cambios registrados</h4><ul class="ar-lista" id="detalleBitacora"></ul></div>
           </div>
@@ -255,6 +256,7 @@ $version = "20261111";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_configuracion_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_evaluaciones_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_acciones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_riesgos_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_riesgos_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_riesgos_vista.js?v=<?php echo $version; ?>"></script>
