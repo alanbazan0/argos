@@ -203,6 +203,7 @@ class Menu
     public function renderizarFooter()
     {
         $ano = date("Y");
+        echo "<script src='js/empresa_selector.js?v=" . filemtime(dirname(__DIR__, 2) . '/js/empresa_selector.js') . "' data-api='" . htmlspecialchars($this->handelAPI, ENT_QUOTES, 'UTF-8') . "' defer></script>";
         echo "<script src='js/ver_como.js?v=" . filemtime(dirname(__DIR__, 2) . '/js/ver_como.js') . "' data-api='" . htmlspecialchars($this->handelAPI, ENT_QUOTES, 'UTF-8') . "' defer></script>";
         echo "<footer class='ar-pie'><span>ARGOS · Análisis y gestión de riesgos · v" . $this->version . "</span>"
            . "<span>&copy; $ano <a href='http://handel-sce.net/'>Handel</a>. Todos los derechos reservados.</span></footer>";

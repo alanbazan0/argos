@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Importar desde Excel";
 $archivo = "importar.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261142";
+$version = "20261143";
 ?>
 <!DOCTYPE html>
 <html lang="es">
