@@ -100,7 +100,13 @@ class Menu
         $nombre = trim($usuario->nombre . " " . $usuario->apellido);
         $iniciales = mb_strtoupper(mb_substr($usuario->nombre, 0, 1) . mb_substr($usuario->apellido, 0, 1));
         $empresa = htmlspecialchars($usuario->empresa, ENT_QUOTES, 'UTF-8');
-        $html  = "<header class='ar-topbar'>";
+        // «Ver como»: aviso permanente mientras el Administrador ve ARGOS como otro usuario (solo consulta)
+        $html = "";
+        if(!empty($usuario->verComo))
+            $html .= "<div class='ar-vercomo-aviso' id='verComoAviso'><i class='fa fa-eye'></i> Viendo como <b>" . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8') . "</b> ("
+                . htmlspecialchars(isset($usuario->tipoUsuario) ? $usuario->tipoUsuario : '', ENT_QUOTES, 'UTF-8') . " · " . $empresa . ") — solo consulta. "
+                . "<button type='button' class='btn btn-xs btn-default' id='verComoDetener'>Dejar de ver como</button></div>";
+        $html .= "<header class='ar-topbar'>";
         if($conMenu)
             $html .= "<button type='button' class='ar-topbar-toggle' id='menuToggle' aria-label='Menú'><i class='fa fa-bars'></i></button>";
         $html .= "<a href='panel.php' class='ar-topbar-logo'><img src='img/argos-logo.png' alt='ARGOS'></a>";
@@ -108,6 +114,10 @@ class Menu
         // El selector OEA/CTPAT solo con el menú completo: a quien solo tiene opciones liberadas no se le ofrece CTPAT todavía
         if($conMenu && $this->soloArchivos === null)
             $html .= $this->renderizarSelectorModulo($modulo);
+        // «Ver como»: solo para el Administrador de la sesión real (el servidor lo vuelve a validar)
+        $real = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
+        if(is_object($real) && isset($real->tipoUsuarioId) && (int)$real->tipoUsuarioId === 1)
+            $html .= "<div class='ar-vercomo' id='verComoCaja'><button type='button' class='btn btn-default btn-sm' id='verComoAbrir'><i class='fa fa-eye'></i> Ver como</button></div>";
         $html .= "<div class='ar-topbar-fin'>";
         $html .= "<button type='button' class='ar-campana' id='campanaBoton' title='Pendientes'><i class='fa fa-bell-o'></i><span class='ar-contador' id='campanaContador' style='display:none'>0</span></button>";
         // Foto de perfil como en las demás apps (handel_api/php/fotos); si no carga, se quedan las iniciales.
@@ -193,6 +203,7 @@ class Menu
     public function renderizarFooter()
     {
         $ano = date("Y");
+        echo "<script src='js/ver_como.js?v=" . filemtime(dirname(__DIR__, 2) . '/js/ver_como.js') . "' data-api='" . htmlspecialchars($this->handelAPI, ENT_QUOTES, 'UTF-8') . "' defer></script>";
         echo "<footer class='ar-pie'><span>ARGOS · Análisis y gestión de riesgos · v" . $this->version . "</span>"
            . "<span>&copy; $ano <a href='http://handel-sce.net/'>Handel</a>. Todos los derechos reservados.</span></footer>";
     }

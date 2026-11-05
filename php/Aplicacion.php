@@ -11,6 +11,12 @@ class Aplicacion
         self::compartirSesion();
         session_start();
         $usuario = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
+        // «Ver como»: el Administrador puede ver ARGOS como otro usuario (solo consulta; lo elige en la barra superior).
+        if(self::esAdministradorReal($usuario) && isset($_SESSION['argosVerComo']) && is_object($_SESSION['argosVerComo']))
+        {
+            $usuario = clone $_SESSION['argosVerComo'];
+            $usuario->verComo = true;
+        }
         if($usuario == null || !$this->tienePermiso($usuario))
         {
             $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -20,6 +26,12 @@ class Aplicacion
         return $usuario;
     }
     
+    /** Sesión real de un Administrador Handel (la única que puede usar «Ver como»). */
+    public static function esAdministradorReal($usuario)
+    {
+        return is_object($usuario) && isset($usuario->tipoUsuarioId) && (int)$usuario->tipoUsuarioId === 1;
+    }
+
     /**
      * TEMPORAL: el menú de ARGOS está en desarrollo y se libera de forma parcial; por ahora solo lo ve esta cuenta.
      * Los demás usuarios con permiso entran al panel pero sin menú. Ampliar la lista (o quitar la regla) al liberarlo.
