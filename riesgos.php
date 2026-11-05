@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261144";
+$version = "20261145";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,6 +81,7 @@ $version = "20261144";
             <option value="">Todos los estados</option><option>Sin evaluar</option><option>Abierto</option><option>En tratamiento</option>
             <option>Vencido</option><option>Cerrado</option><option>Aceptado</option>
           </select>
+          <label class="checkbox-inline ar-inactivos"><input type="checkbox" id="inactivosCheck"> Ver desactivados</label>
           <span class="ar-sp"></span>
           <div class="btn-group ar-seg" id="vistaSeg"><button type="button" class="btn btn-default on" data-v="tabla"><i class="fa fa-th-list"></i> Tabla</button><button type="button" class="btn btn-default" data-v="mapa"><i class="fa fa-th"></i> Mapa de calor</button></div>
         </form>
@@ -184,6 +185,7 @@ $version = "20261144";
         <button type="button" class="btn btn-default" id="historialButton" hidden title="Historial de cambios"><i class="fa fa-history"></i> Historial</button>
         <button type="button" class="btn btn-default" id="evaluarButton"><i class="fa fa-line-chart"></i> Evaluar</button>
         <button type="button" class="btn btn-default" id="desactivarButton"><i class="fa fa-ban"></i> Desactivar</button>
+        <button type="button" class="btn btn-success" id="reactivarButton" hidden><i class="fa fa-undo"></i> Reactivar</button>
         <button type="button" class="btn btn-default" id="editarButton"><i class="fa fa-pencil"></i> Editar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
       </div>

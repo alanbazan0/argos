@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Preguntas críticas";
 $archivo = "ctpat_tipos_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261144";
+$version = "20261145";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -88,6 +88,7 @@ $version = "20261144";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/ctpat_ejercicios_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/ctpat_configuracion_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/ctpat_configuracion_presentador.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_historial.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/ctpat_configuracion_vista.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 

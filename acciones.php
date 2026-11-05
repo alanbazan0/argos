@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Acciones y Mi bandeja ya están liberadas para todos con permiso; el resto del menú solo lo ve quien puede ver el menú completo.
+if(!$aplicacion->puedeVerRegistro($usuario))
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261144";
+$version = "20261145";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -182,6 +183,7 @@ $version = "20261144";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_riesgos_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_acciones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_acciones_presentador.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_historial.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_acciones_vista.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/componentes/argos_exportacion.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
