@@ -21,7 +21,7 @@ $titulo = "Parámetros";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "parametros";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261137";
+$version = "20261139";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -141,5 +141,13 @@ $version = "20261137";
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 
 <img src="img/cargando.svg" id="indicador" alt="Cargando">
+
+<div class="modal fade" id="historialModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="historialTitulo"></h4></div>
+    <div class="modal-body"><ul class="ar-lista" id="historialLista"></ul></div>
+    <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div>
+  </div></div>
+</div>
 </body>
 </html>
