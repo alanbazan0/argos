@@ -21,7 +21,7 @@ $titulo = "Estándares";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "estandares";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261139";
+$version = "20261140";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,7 +45,7 @@ $version = "20261139";
 </head>
 <body class="ar-app" data-pantalla="estandares" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
-<?php $menu->renderizarBarraSuperior($usuario, $menuCompleto, $modulo); ?>
+<?php $menu->renderizarBarraSuperior($usuario, true, $modulo); ?>
 
 <div class="ar-layout">
   <aside class="ar-sidebar">

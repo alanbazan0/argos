@@ -12,15 +12,17 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261135";
+$version = "20261139";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
-$conMenu = $aplicacion->puedeVerMenu($usuario);
-// La bandeja es la pantalla de inicio de quien ve el menú.
-if($conMenu)
+$menuCompleto = $aplicacion->puedeVerMenu($usuario);
+// La bandeja es la pantalla de inicio de quien ve el menú completo; el resto ve el menú con solo lo liberado.
+if($menuCompleto)
 {
     header('Location: bandeja.php');
     exit;
 }
+$menu->setSoloArchivos(Aplicacion::archivosLiberados());
+$conMenu = true;
 ?>
 <!DOCTYPE html>
 <html lang="es">

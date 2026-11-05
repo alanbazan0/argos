@@ -105,7 +105,8 @@ class Menu
             $html .= "<button type='button' class='ar-topbar-toggle' id='menuToggle' aria-label='Menú'><i class='fa fa-bars'></i></button>";
         $html .= "<a href='panel.php' class='ar-topbar-logo'><img src='img/argos-logo.png' alt='ARGOS'></a>";
         $html .= "<div class='ar-empresa'><i class='fa fa-building-o'></i> <span>$empresa</span></div>";
-        if($conMenu)
+        // El selector OEA/CTPAT solo con el menú completo: a quien solo tiene opciones liberadas no se le ofrece CTPAT todavía
+        if($conMenu && $this->soloArchivos === null)
             $html .= $this->renderizarSelectorModulo($modulo);
         $html .= "<div class='ar-topbar-fin'>";
         $html .= "<button type='button' class='ar-campana' id='campanaBoton' title='Pendientes'><i class='fa fa-bell-o'></i><span class='ar-contador' id='campanaContador' style='display:none'>0</span></button>";
