@@ -111,8 +111,8 @@ class Menu
             $html .= "<button type='button' class='ar-topbar-toggle' id='menuToggle' aria-label='Menú'><i class='fa fa-bars'></i></button>";
         $html .= "<a href='panel.php' class='ar-topbar-logo'><img src='img/argos-logo.png' alt='ARGOS'></a>";
         $html .= "<div class='ar-empresa'><i class='fa fa-building-o'></i> <span>$empresa</span></div>";
-        // El selector OEA/CTPAT solo con el menú completo: a quien solo tiene opciones liberadas no se le ofrece CTPAT todavía
-        if($conMenu && $this->soloArchivos === null)
+        // Selector OEA/CTPAT para todos; a quien solo tiene opciones liberadas, CTPAT se le muestra apagado («próx.») hasta liberarlo
+        if($conMenu)
             $html .= $this->renderizarSelectorModulo($modulo);
         // «Ver como»: solo para el Administrador de la sesión real (el servidor lo vuelve a validar)
         $real = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
@@ -140,7 +140,7 @@ class Menu
             $titulo = htmlspecialchars($modulo["titulo"], ENT_QUOTES, 'UTF-8');
             if($clave == $actual)
                 $html .= "<span class='ar-mod ar-on' role='tab' aria-selected='true'>$titulo</span>";
-            else if($this->existe($modulo["inicio"]))
+            else if($this->existe($modulo["inicio"]) && !($this->soloArchivos !== null && $clave != "oea"))
                 $html .= "<a class='ar-mod' role='tab' href='" . $modulo["inicio"] . "'>$titulo</a>";
             else
                 $html .= "<span class='ar-mod ar-off' role='tab' title='En desarrollo'>$titulo<em>próx.</em></span>";
