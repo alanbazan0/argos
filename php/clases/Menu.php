@@ -117,7 +117,7 @@ class Menu
         // «Ver como»: solo para el Administrador de la sesión real (el servidor lo vuelve a validar)
         $real = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
         if(is_object($real) && isset($real->tipoUsuarioId) && (int)$real->tipoUsuarioId === 1)
-            $html .= "<div class='ar-vercomo' id='verComoCaja'><button type='button' class='btn btn-default btn-sm' id='verComoAbrir'><i class='fa fa-eye'></i> Ver como</button></div>";
+            $html .= "<div class='ar-vercomo' id='verComoCaja'></div>";
         $html .= "<div class='ar-topbar-fin'>";
         $html .= "<button type='button' class='ar-campana' id='campanaBoton' title='Pendientes'><i class='fa fa-bell-o'></i><span class='ar-contador' id='campanaContador' style='display:none'>0</span></button>";
         // Foto de perfil como en las demás apps (handel_api/php/fotos); si no carga, se quedan las iniciales.

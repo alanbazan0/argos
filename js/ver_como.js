@@ -1,4 +1,5 @@
-// «Ver como» (solo Administrador Handel, solo consulta): elegir empresa y usuario para ver ARGOS como esa persona.
+// «Ver como» (solo Administrador Handel, solo consulta), como en la maqueta: «Ver como: [usuario]» en la barra superior.
+// La lista son los usuarios de la empresa elegida (selector de empresa de la barra superior; por defecto, la del Administrador).
 // JavaScript sin dependencias: se carga desde el pie de cada pantalla (Menu::renderizarFooter). El servidor valida todo otra vez.
 (function () {
   var script = document.currentScript;
@@ -16,49 +17,49 @@
     xhr.send(cuerpo);
   }
   function esc(t) { var d = document.createElement('div'); d.textContent = t == null ? '' : t; return d.innerHTML; }
-  function opciones(filas, texto) { return filas.map(function (f) { return '<option value="' + f.id + '">' + esc(texto(f)) + '</option>'; }).join(''); }
 
   document.addEventListener('DOMContentLoaded', function () {
     var detener = document.getElementById('verComoDetener');
     if (detener) {
       detener.addEventListener('click', function () { llamar({ accion: 'detener' }, function () { window.location.href = 'panel.php'; }); });
     }
-    var abrir = document.getElementById('verComoAbrir');
     var caja = document.getElementById('verComoCaja');
-    if (!abrir || !caja) { return; }
-    abrir.addEventListener('click', function () {
-      if (document.getElementById('verComoPanel')) { return; }
-      var panel = document.createElement('div');
-      panel.id = 'verComoPanel';
-      panel.className = 'ar-vercomo-panel';
-      panel.innerHTML = '<label>Empresa <select id="verComoEmpresa"><option>Cargando…</option></select></label>' +
-        '<label>Usuario <select id="verComoUsuario"><option value="">Elige una empresa</option></select></label>' +
-        '<div class="ar-vercomo-nota">Solo consulta: no se puede guardar nada mientras ves como otro usuario.</div>' +
-        '<div class="ar-vercomo-acc"><button type="button" class="btn btn-success btn-sm" id="verComoIr" disabled>Ver como este usuario</button> ' +
-        '<button type="button" class="btn btn-default btn-sm" id="verComoCerrar">Cancelar</button></div>';
-      caja.appendChild(panel);
-      var selEmpresa = document.getElementById('verComoEmpresa'), selUsuario = document.getElementById('verComoUsuario'), ir = document.getElementById('verComoIr');
-      document.getElementById('verComoCerrar').addEventListener('click', function () { caja.removeChild(panel); });
-      function cargarUsuarios() {
-        selUsuario.innerHTML = '<option value="">Cargando…</option>'; ir.disabled = true;
-        llamar({ accion: 'consultarUsuarios', empresaId: selEmpresa.value }, function (r) {
-          if (r.mensajeError) { selUsuario.innerHTML = '<option value="">' + esc(r.mensajeError) + '</option>'; return; }
-          selUsuario.innerHTML = r.valor.length ? opciones(r.valor, function (u) { return u.nombre + ' · ' + u.tipo + (u.sede ? ' · ' + u.sede : ''); }) : '<option value="">Sin usuarios activos</option>';
-          ir.disabled = r.valor.length === 0;
+    if (!caja) { return; }
+    caja.innerHTML = '<label for="verComoSelect">Ver como:</label><select id="verComoSelect" title="Solo consulta"><option value="">Cargando…</option></select>';
+    var select = document.getElementById('verComoSelect');
+
+    function empresaElegida(estado) {
+      var elegida = null;
+      try { elegida = window.sessionStorage.getItem('argosEmpresaId'); } catch (e) {}
+      if (estado.activo) { return estado.usuario.empresaId; }   // viendo como otro: su empresa
+      if (elegida) { return elegida; }
+      try { return JSON.parse(document.body.getAttribute('data-usuario')).empresaId; } catch (e) { return null; }
+    }
+
+    function cargar() {
+      llamar({ accion: 'estado' }, function (e) {
+        if (e.mensajeError) { select.innerHTML = '<option value="">' + esc(e.mensajeError) + '</option>'; return; }
+        var estado = e.valor;
+        llamar({ accion: 'consultarUsuarios', empresaId: empresaElegida(estado) }, function (r) {
+          if (r.mensajeError) { select.innerHTML = '<option value="">' + esc(r.mensajeError) + '</option>'; return; }
+          var html = '<option value="">Yo (Administrador)</option>';
+          r.valor.forEach(function (u) {
+            html += '<option value="' + u.id + '"' + (estado.activo && estado.usuario.id == u.id ? ' selected' : '') + '>' + esc(u.nombre + ' · ' + u.tipo + (u.sede ? ' · ' + u.sede : '')) + '</option>';
+          });
+          select.innerHTML = html;
         });
-      }
-      llamar({ accion: 'consultarEmpresas' }, function (r) {
-        if (r.mensajeError) { selEmpresa.innerHTML = '<option>' + esc(r.mensajeError) + '</option>'; return; }
-        selEmpresa.innerHTML = opciones(r.valor, function (e) { return e.nombre; });
-        cargarUsuarios();
       });
-      selEmpresa.addEventListener('change', cargarUsuarios);
-      ir.addEventListener('click', function () {
-        llamar({ accion: 'iniciar', usuarioId: selUsuario.value }, function (r) {
-          if (r.mensajeError) { alert(r.mensajeError); return; }
-          window.location.href = 'panel.php';
-        });
+    }
+    cargar();
+
+    select.addEventListener('change', function () {
+      var datos = select.value === '' ? { accion: 'detener' } : { accion: 'iniciar', usuarioId: select.value };
+      llamar(datos, function (r) {
+        if (r.mensajeError) { alert(r.mensajeError); cargar(); return; }
+        window.location.href = 'panel.php';
       });
     });
+    // Si el Administrador cambia de empresa en la barra superior, la lista de usuarios sigue a esa empresa
+    document.addEventListener('change', function (ev) { if (ev.target && ev.target.id === 'empresaSelect') { cargar(); } });
   });
 })();

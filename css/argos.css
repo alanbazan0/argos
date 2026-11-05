@@ -298,11 +298,10 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 tr.ar-riesgo-fila{cursor:pointer}
 tr.ar-riesgo-fila:hover td{background:#F1F7EA}
 
-/* «Ver como» (solo Administrador): aviso permanente y selector de empresa/usuario */
+/* «Ver como» (solo Administrador): como en la maqueta, «Ver como: [usuario]» en la barra superior, y aviso mientras se usa */
 .ar-vercomo-aviso{background:#fff3cd;border-bottom:1px solid #f0d78c;color:#6b5200;padding:6px 16px;font-size:13px;text-align:center}
-.ar-vercomo{position:relative;margin-left:auto;margin-right:10px}
+.ar-vercomo{display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:10px;color:var(--ar-muted);font-size:14px}
 .ar-vercomo+.ar-topbar-fin{margin-left:0}
-.ar-vercomo-panel{position:absolute;right:0;top:110%;z-index:1100;width:340px;background:#fff;border:1px solid var(--ar-bd);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:12px}
-.ar-vercomo-panel label{display:block;font-weight:500;margin-bottom:8px}
-.ar-vercomo-panel select{width:100%;margin-top:2px;padding:6px;border:1px solid var(--ar-bd);border-radius:6px}
-.ar-vercomo-nota{font-size:12px;color:var(--ar-muted);margin-bottom:8px}
+.ar-vercomo label{margin:0;font-weight:500;white-space:nowrap}
+.ar-vercomo select{max-width:300px;padding:7px 12px;border:1px solid var(--ar-bd);border-radius:8px;background:#fff;font:inherit;color:var(--ar-ink);outline:0}
+@media (max-width:900px){.ar-vercomo label{display:none}.ar-vercomo select{max-width:150px}}
