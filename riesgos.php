@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// El Registro de riesgos ya está liberado para todos con permiso; el resto del menú solo lo ve quien puede ver el menú completo.
+if(!$aplicacion->puedeVerRegistro($usuario))
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261134";
+$version = "20261135";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,13 +54,14 @@ $version = "20261134";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › OEA México</div>
         <h1>Registro de riesgos</h1>
-        <p>Identificación de los riesgos de la empresa por estándar y subestándar. <span id="totalRiesgos"></span></p>
+        <p>Organizado por estándar y subestándar OEA, más las categorías de riesgos adicionales. <span id="totalRiesgos"></span></p>
       </div>
       <div class="ar-acciones">
         <div class="btn-group ar-exportar" data-exportar></div>
-        <button type="button" class="btn btn-primary" id="agregarButton"><i class="fa fa-plus"></i> Agregar riesgo</button>
+        <a class="btn btn-default" href="importar.php"><i class="fa fa-upload"></i> Importar Excel (fase 1)</a>
+        <button type="button" class="btn btn-primary" id="agregarButton"><i class="fa fa-plus"></i> Nuevo riesgo</button>
       </div>
     </div>
 
@@ -79,14 +81,19 @@ $version = "20261134";
             <option value="">Todos los estados</option><option>Sin evaluar</option><option>Abierto</option><option>En tratamiento</option>
             <option>Vencido</option><option>Cerrado</option><option>Aceptado</option>
           </select>
+          <span class="ar-sp"></span>
+          <div class="btn-group ar-seg" id="vistaSeg"><button type="button" class="btn btn-default on" data-v="tabla"><i class="fa fa-th-list"></i> Tabla</button><button type="button" class="btn btn-default" data-v="mapa"><i class="fa fa-th"></i> Mapa de calor</button></div>
         </form>
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaRiesgos">
-            <thead><tr><th>Item</th><th>Riesgo</th><th>Departamento</th><th>Sedes</th><th>Fuente</th><th>Nivel</th><th>Estado</th><th></th></tr></thead>
+            <thead><tr><th>Item</th><th>Situación / Riesgo</th><th>Depto.</th><th>Sedes</th><th>Fuente</th><th>Probabilidad</th><th>Consecuencia</th><th>Nivel</th><th>Meta</th><th>Acciones</th><th>Estado</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
+        <div id="mapaRiesgos" hidden><div id="mapaCalor"></div><div class="ar-callout"><b>Regla:</b> esta vista respeta los mismos filtros que la tabla. Sin filtro de sede, un riesgo con niveles distintos por sede se ubica en su nivel más grave; con filtro de sede, se usa el nivel de esa sede. Los riesgos sin evaluar no aparecen en el mapa.</div></div>
         <div class="ar-vacio" id="sinRiesgos" hidden><i class="fa fa-inbox"></i>No hay riesgos con esos filtros.</div>
+        <div class="ar-callout"><b>Regla:</b> <sup>*</sup> = el nivel varía por sede; la tabla muestra el más grave. Al filtrar por sede se muestra el nivel de esa sede.</div>
+        <div class="ar-callout"><b>Regla:</b> el <b>Item</b> se asigna solo: subestándar + consecutivo (1.1.1, 1.1.2…). Nunca se reutiliza un número, aunque el riesgo se cierre.</div>
       </div>
     </section>
 

@@ -288,3 +288,11 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 
 /* ---------- Procedimiento y expediente CTPAT ---------- */
 .ar-proc-texto{white-space:pre-wrap;word-wrap:break-word;font-family:'DM Sans',sans-serif;font-size:13px;background:#fff;border:1px solid var(--ar-bd);border-radius:8px;padding:12px}
+
+/* ---------- Registro de riesgos: alineado con la maqueta ---------- */
+.ar-sp{flex:1}
+.ar-seg .on{background:var(--ar-ink);color:#fff;border-color:var(--ar-ink)}
+.ar-subgrupo td{background:#F6F8FB;font-weight:600;font-size:12.5px;padding-left:22px}
+.ar-subgrupo .ar-agregar-aqui{margin-left:10px;font-weight:500;font-size:11.5px}
+tr.ar-riesgo-fila{cursor:pointer}
+tr.ar-riesgo-fila:hover td{background:#F1F7EA}

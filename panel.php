@@ -12,7 +12,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261134";
+$version = "20261135";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $conMenu = $aplicacion->puedeVerMenu($usuario);
 // La bandeja es la pantalla de inicio de quien ve el menú.
@@ -62,7 +62,7 @@ if($conMenu)
     </div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card ar-vacio"><i class="fa fa-cogs"></i>ARGOS está en construcción. Pronto verás aquí tu bandeja.<br><br><a class="btn btn-default" href="configuracion_calibracion.php"><i class="fa fa-sliders"></i> Configuración · Calibración y catálogos</a></div>
+      <div class="ar-card ar-vacio"><i class="fa fa-cogs"></i>ARGOS está en construcción. Pronto verás aquí tu bandeja.<br><br><a class="btn btn-default" href="riesgos.php"><i class="fa fa-list-alt"></i> Registro de riesgos</a> <a class="btn btn-default" href="configuracion_calibracion.php"><i class="fa fa-sliders"></i> Configuración · Calibración y catálogos</a></div>
     </section>
 
     <?php $menu->renderizarFooter(); ?>

@@ -38,6 +38,18 @@ class Aplicacion
         return $this->tienePermiso($usuario);
     }
 
+    /** Registro de riesgos (R-00109) liberado para todos los usuarios con permiso. */
+    public function puedeVerRegistro($usuario)
+    {
+        return $this->tienePermiso($usuario);
+    }
+
+    /** Pantallas liberadas para todos con permiso (el resto del menú sigue en puedeVerMenu). */
+    public static function archivosLiberados()
+    {
+        return array("riesgos.php", "configuracion_calibracion.php");
+    }
+
     /**
      * El login se hace contra handel_api (api.apps-handel.com), que guarda la sesión en /tmp con cookie para todo
      * .apps-handel.com. Argos debe leer la misma sesión; si el .user.ini del servidor no lo trae, se fija aquí.

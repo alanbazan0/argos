@@ -16,12 +16,12 @@ if(!$aplicacion->puedeVerConfiguracion($usuario))
 $menuCompleto = $aplicacion->puedeVerMenu($usuario);
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
-$menu->setSoloSecciones($menuCompleto ? null : array("Configuración"));
+$menu->setSoloArchivos($menuCompleto ? null : Aplicacion::archivosLiberados());
 $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
 $pestana = "calibracion";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261134";
+$version = "20261135";
 ?>
 <!DOCTYPE html>
 <html lang="es">

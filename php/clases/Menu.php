@@ -146,6 +146,14 @@ class Menu
         $this->soloSecciones = $secciones;
     }
 
+    /** Limita el menú a ciertas pantallas (por archivo); null = todas. Se combina con setSoloSecciones. */
+    private $soloArchivos = null;
+
+    public function setSoloArchivos($archivos)
+    {
+        $this->soloArchivos = $archivos;
+    }
+
     public function renderizar($usuario, $activa = "", $modulo = "oea")
     {
         if(!isset($this->modulos[$modulo]))
@@ -158,6 +166,8 @@ class Menu
             $visibles = array();
             foreach($items as $item)
             {
+                if($this->soloArchivos !== null && !in_array($item[1], $this->soloArchivos, true))
+                    continue;
                 if($item[3] === null || in_array($usuario->tipoUsuarioId, $item[3]))
                     $visibles[] = $item;
             }
