@@ -41,9 +41,7 @@ class Menu
                     array("Tutoriales",           "tutoriales.php",           "fa-graduation-cap",     null),
                 ),
                 "Configuración" => array(
-                    array("Calibración",          "configuracion_calibracion.php", "fa-sliders",       null),
-                    array("Estándares",           "configuracion_estandares.php",  "fa-sitemap",       array(TipoUsuario::ADMINISTRADOR)),
-                    array("Parámetros",           "configuracion_parametros.php",  "fa-cog",           array(TipoUsuario::ADMINISTRADOR)),
+                    array("Calibración y catálogos", "configuracion_calibracion.php", "fa-sliders", null),
                 ),
             ),
         ),

@@ -19,8 +19,9 @@ $menu->setHandelAPI(getHandelAPI());
 $menu->setSoloSecciones($menuCompleto ? null : array("Configuración"));
 $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
+$pestana = "calibracion";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261133";
+$version = "20261134";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,8 +57,8 @@ $version = "20261133";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › Configuración</div>
-        <h1>Calibración</h1>
-        <p id="versionInfo">Cargando…</p>
+        <h1>Calibración y catálogos</h1>
+        <p>Valores globales de la metodología, administrados por Händel.</p>
       </div>
       <div class="ar-acciones">
         <select id="versionSelect" class="form-control" aria-label="Versión de la calibración"></select>
@@ -65,7 +66,16 @@ $version = "20261133";
       </div>
     </div>
 
+    <ul class="nav nav-tabs ar-tabs">
+      <li<?php echo $pestana == 'calibracion' ? ' class="active"' : ''; ?>><a href="configuracion_calibracion.php">Calibración</a></li>
+      <li<?php echo $pestana == 'estandares' ? ' class="active"' : ''; ?>><a href="configuracion_estandares.php">Estándares y subestándares</a></li>
+<?php if((int)$usuario->tipoUsuarioId === 1) { ?>
+      <li<?php echo $pestana == 'parametros' ? ' class="active"' : ''; ?>><a href="configuracion_parametros.php">Parámetros</a></li>
+<?php } ?>
+    </ul>
+
     <section class="ar-main-contenido">
+      <p class="ar-sub" id="versionInfo">Cargando…</p>
       <div class="ar-card" id="barraEdicion" hidden>
         <b>Borrador:</b> los cambios no se aplican hasta guardar una nueva versión. Un nivel menos grave no puede ser más grave por tener menos probabilidad ni más consecuencia (la pantalla lo valida al guardar).
         <div class="ar-acciones" style="margin-top:10px">

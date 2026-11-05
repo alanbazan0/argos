@@ -8,7 +8,7 @@ include 'php/clases/Menu.php';
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
 // Configuración ya está liberada para todos con permiso; el resto del menú solo lo ve quien puede ver el menú completo.
-if(!$aplicacion->puedeVerConfiguracion($usuario) || (int)$usuario->tipoUsuarioId !== 1)
+if(!$aplicacion->puedeVerConfiguracion($usuario))
 {
     header('Location: panel.php');
     exit;
@@ -18,9 +18,10 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $menu->setSoloSecciones($menuCompleto ? null : array("Configuración"));
 $titulo = "Estándares";
-$archivo = "configuracion_estandares.php";
+$archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
+$pestana = "estandares";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261133";
+$version = "20261134";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,13 +57,22 @@ $version = "20261133";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › Configuración</div>
-        <h1>Estándares y subestándares</h1>
-        <p>Catálogo OEA México y categorías adicionales. El item de cada riesgo es el código del subestándar más un consecutivo.</p>
+        <h1>Calibración y catálogos</h1>
+        <p>Valores globales de la metodología, administrados por Händel.</p>
       </div>
       <div class="ar-acciones"><button type="button" class="btn btn-primary" id="nuevaCategoriaBoton" hidden><i class="fa fa-plus"></i> Nueva categoría</button></div>
     </div>
 
+    <ul class="nav nav-tabs ar-tabs">
+      <li<?php echo $pestana == 'calibracion' ? ' class="active"' : ''; ?>><a href="configuracion_calibracion.php">Calibración</a></li>
+      <li<?php echo $pestana == 'estandares' ? ' class="active"' : ''; ?>><a href="configuracion_estandares.php">Estándares y subestándares</a></li>
+<?php if((int)$usuario->tipoUsuarioId === 1) { ?>
+      <li<?php echo $pestana == 'parametros' ? ' class="active"' : ''; ?>><a href="configuracion_parametros.php">Parámetros</a></li>
+<?php } ?>
+    </ul>
+
     <section class="ar-main-contenido">
+      <p class="ar-sub">Catálogo OEA México y categorías adicionales. El item de cada riesgo es el código del subestándar más un consecutivo.</p>
       <div class="ar-card">
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaEstandares">

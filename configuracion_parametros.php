@@ -18,9 +18,10 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $menu->setSoloSecciones($menuCompleto ? null : array("Configuración"));
 $titulo = "Parámetros";
-$archivo = "configuracion_parametros.php";
+$archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
+$pestana = "parametros";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261133";
+$version = "20261134";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,12 +57,21 @@ $version = "20261133";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › Configuración</div>
-        <h1>Parámetros</h1>
-        <p>Pesos, avisos y cortes del sistema. Solo los edita el Administrador Händel; el cambio aplica de inmediato a los cálculos nuevos.</p>
+        <h1>Calibración y catálogos</h1>
+        <p>Valores globales de la metodología, administrados por Händel.</p>
       </div>
     </div>
 
+    <ul class="nav nav-tabs ar-tabs">
+      <li<?php echo $pestana == 'calibracion' ? ' class="active"' : ''; ?>><a href="configuracion_calibracion.php">Calibración</a></li>
+      <li<?php echo $pestana == 'estandares' ? ' class="active"' : ''; ?>><a href="configuracion_estandares.php">Estándares y subestándares</a></li>
+<?php if((int)$usuario->tipoUsuarioId === 1) { ?>
+      <li<?php echo $pestana == 'parametros' ? ' class="active"' : ''; ?>><a href="configuracion_parametros.php">Parámetros</a></li>
+<?php } ?>
+    </ul>
+
     <section class="ar-main-contenido">
+      <p class="ar-sub">Pesos, avisos y cortes del sistema. Solo los edita el Administrador Händel; el cambio aplica de inmediato a los cálculos nuevos.</p>
       <div class="ar-card">
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaParametros">
