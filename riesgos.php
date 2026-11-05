@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261140";
+$version = "20261141";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -181,6 +181,7 @@ $version = "20261140";
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="historialButton" hidden title="Historial de cambios"><i class="fa fa-history"></i> Historial</button>
         <button type="button" class="btn btn-default" id="evaluarButton"><i class="fa fa-line-chart"></i> Evaluar</button>
         <button type="button" class="btn btn-default" id="desactivarButton"><i class="fa fa-ban"></i> Desactivar</button>
         <button type="button" class="btn btn-default" id="editarButton"><i class="fa fa-pencil"></i> Editar</button>
@@ -270,6 +271,7 @@ $version = "20261140";
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_riesgos_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_riesgos_vista.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/componentes/argos_exportacion.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_historial.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>
 
 <img src="img/cargando.svg" id="indicador" alt="Cargando">
