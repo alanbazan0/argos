@@ -140,6 +140,14 @@ class Menu
     }
 
     /** Menú lateral del modulo. $activa = nombre del archivo de la pantalla actual (por ejemplo "riesgos.php"). */
+    /** Limita el menú a ciertas secciones (usuarios a los que solo se les ha liberado una parte); null = todas. */
+    private $soloSecciones = null;
+
+    public function setSoloSecciones($secciones)
+    {
+        $this->soloSecciones = $secciones;
+    }
+
     public function renderizar($usuario, $activa = "", $modulo = "oea")
     {
         if(!isset($this->modulos[$modulo]))
@@ -147,6 +155,8 @@ class Menu
         $html = "";
         foreach($this->modulos[$modulo]["secciones"] as $seccion => $items)
         {
+            if($this->soloSecciones !== null && !in_array($seccion, $this->soloSecciones, true))
+                continue;
             $visibles = array();
             foreach($items as $item)
             {

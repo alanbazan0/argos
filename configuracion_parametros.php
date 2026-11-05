@@ -7,18 +7,20 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Configuración ya está liberada para todos con permiso; el resto del menú solo lo ve quien puede ver el menú completo.
+if(!$aplicacion->puedeVerConfiguracion($usuario) || (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
+$menuCompleto = $aplicacion->puedeVerMenu($usuario);
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloSecciones($menuCompleto ? null : array("Configuración"));
 $titulo = "Parámetros";
 $archivo = "configuracion_parametros.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261131";
+$version = "20261132";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +44,7 @@ $version = "20261131";
 </head>
 <body class="ar-app" data-pantalla="parametros" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
-<?php $menu->renderizarBarraSuperior($usuario, true, $modulo); ?>
+<?php $menu->renderizarBarraSuperior($usuario, $menuCompleto, $modulo); ?>
 
 <div class="ar-layout">
   <aside class="ar-sidebar">

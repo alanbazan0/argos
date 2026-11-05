@@ -30,6 +30,15 @@ class Aplicacion
     }
     
     /**
+     * Opciones ya liberadas para todos los usuarios con permiso (por ahora solo Configuración: calibración, estándares y parámetros).
+     * El resto del menú sigue en puedeVerMenu y se libera poco a poco.
+     */
+    public function puedeVerConfiguracion($usuario)
+    {
+        return $this->tienePermiso($usuario);
+    }
+
+    /**
      * El login se hace contra handel_api (api.apps-handel.com), que guarda la sesión en /tmp con cookie para todo
      * .apps-handel.com. Argos debe leer la misma sesión; si el .user.ini del servidor no lo trae, se fija aquí.
      * Solo en producción (en local el dominio no coincide).
