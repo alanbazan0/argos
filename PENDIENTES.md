@@ -79,3 +79,5 @@ Decisión del usuario: todo lo que dependa de correo y tareas programadas (aviso
 - **2026-11-06 (Tablero liberado):** `tablero.php` en `archivosLiberados()`; `ArgosTablero.php` usa `puedeUsarRegistro`; `ArgosRevisiones.php` deja la acción `consultar` (selector «Revisión AAAA» del Tablero) a todos con permiso, iniciar/aprobar siguen en la lista temporal. Sin liberar: Modo taller, Importar, Indicadores, Revisiones, Tutoriales y todo CTPAT.
 
 - **2026-11-06 (Modo taller liberado):** `taller.php` en `archivosLiberados()`; usa los endpoints de riesgos, evaluaciones, acciones y configuración, que ya estaban abiertos a todos con permiso (cada alta valida sede y rol en el servidor). Sin liberar: Importar, Indicadores, Revisiones, Tutoriales y todo CTPAT.
+
+- **2026-11-06 (OEA completo liberado):** Importar, Indicadores, Revisiones, Tutoriales y el reporte PDF/exportaciones quedan para todos los usuarios con `permiso_argos` (`archivosLiberados()` con todo OEA; endpoints `ArgosImportacion/Indicadores/Revisiones/Reportes` con `puedeUsarRegistro`; roles siguen validados en el servidor). Solo CTPAT sigue en la lista temporal (`ControlAccesoArgos::puedeUsar`).

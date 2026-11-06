@@ -1,7 +1,7 @@
 # Pruebas de aceptación (UAT) — opciones de OEA liberadas
 
 Opciones abiertas a todos los usuarios con permiso de ARGOS: **Mi bandeja**, **Registro de riesgos**, **Acciones** y **Calibración y catálogos**.
-Todo lo demás ( Importar, Indicadores, Revisiones, Tutoriales y CTPAT) sigue solo para alanbazan@hotmail.com.
+Todo OEA está liberado (2026-11-06). Solo CTPAT sigue restringido a alanbazan@hotmail.com.
 
 Probar con un usuario **Coordinador**, uno **Supervisor** y uno **Usuario de sede** de una empresa cliente (activar antes su permiso de ARGOS en la pantalla Usuarios).
 El Administrador puede usar «Ver como» para revisar cada rol sin cambiar de sesión (solo consulta).
@@ -46,3 +46,11 @@ El Administrador puede usar «Ver como» para revisar cada rol sin cambiar de se
 - Coordinador y Supervisor: capturar varios riesgos en una sesión; cada uno queda con su item, su evaluación y (si se piden) sus acciones, y aparece en el Registro.
 - Un Usuario solo puede dar de alta riesgos y evaluar en su sede; intentar otra sede da error.
 - Cada riesgo creado en el taller queda en el historial (visible para el Administrador) con origen «Alta (taller)».
+
+## Importar, Indicadores, Revisiones y Tutoriales (liberados 2026-11-06)
+
+- **Importar desde Excel:** un Coordinador sube el archivo; se revisan los renglones, se importan solo los válidos y cada riesgo queda con origen «Importación» e historial. Un Usuario solo importa a sedes que trabaja.
+- **Indicadores:** Coordinador ve todas las sedes de la empresa y puede «Guardar periodo»; Supervisor y Usuario ven solo sus sedes (en el filtro, el ranking y la tendencia) y no pueden guardar el periodo.
+- **Revisiones del Comité:** todos ven las revisiones y sus exportaciones; solo Administrador y Coordinador pueden iniciar y aprobar (los demás ven «Solo un Coordinador puede aprobarla»).
+- **Tutoriales:** cada tarjeta abre su video incrustado.
+- **Exportar (Registro, Acciones, Revisiones):** el menú Exportar descarga el Excel y abre el reporte PDF para cualquier usuario con permiso.
