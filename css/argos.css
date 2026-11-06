@@ -143,6 +143,10 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-hm-celda{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:6px;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;cursor:pointer;border:2px solid transparent}
 .ar-hm-celda:hover,.ar-hm-celda.ar-sel{border-color:var(--ar-ink)}
 .ar-hm-celda.ar-vacia{opacity:.3}
+.ar-hm-mini{font-size:10px}
+.ar-hm-mini .ar-hm-celda{min-height:28px;font-size:11px;cursor:default}
+.ar-traza{margin-bottom:12px}
+.ar-traza-titulo{margin-bottom:4px}
 .ar-hm-celda.ar-lv1,.ar-hm-celda.ar-lv2,.ar-hm-celda.ar-lv3,.ar-hm-celda.ar-lv5{color:#fff}
 .ar-hm-delta{font-size:10px;font-weight:600;margin-left:4px}
 

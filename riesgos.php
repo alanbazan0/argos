@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261146";
+$version = "20261147";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -176,7 +176,7 @@ $version = "20261146";
           </div>
           <div class="col-md-5">
             <div class="ar-bloque"><h4>Acciones</h4><ul class="ar-lista" id="detalleAcciones"></ul><a class="btn btn-default btn-xs" id="nuevaAccionLink" href="#" hidden><i class="fa fa-plus"></i> Nueva acción</a></div>
-            <div class="ar-bloque"><h4>Evaluaciones</h4><ul class="ar-lista" id="detalleEvaluaciones"></ul></div>
+            <div class="ar-bloque"><h4>Evaluaciones</h4><div id="detalleTrayectoria"></div><ul class="ar-lista" id="detalleEvaluaciones"></ul></div>
             <div class="ar-bloque"><h4>Cambios registrados</h4><ul class="ar-lista" id="detalleBitacora"></ul></div>
           </div>
         </div>
