@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261147";
+$version = "20261148";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -70,6 +70,7 @@ $version = "20261147";
           <input type="text" class="form-control" id="textoFiltro" placeholder="Buscar acción, riesgo o item">
           <select class="form-control" id="responsableFiltro" aria-label="Responsable"></select>
           <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
+          <select class="form-control ar-filtro-revision" id="revisionFiltro" aria-label="Revisión del Comité" style="display:none"></select>
           <select class="form-control" id="estadoFiltro" aria-label="Estado">
             <option value="">Todos los estados</option><option>Pendiente</option><option>En proceso</option><option>Vencida</option><option>Completada</option>
           </select>
