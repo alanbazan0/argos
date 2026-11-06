@@ -1,4 +1,4 @@
-// Selector de empresa de la barra superior (Administrador, Coordinador y Supervisor; como en la maqueta). El nombre de la empresa
+// Selector de empresa de la barra superior (Administrador y Coordinador; como en la maqueta). El nombre de la empresa
 // pasa a ser una lista con las empresas a las que el usuario tiene acceso (el servidor valida cada consulta). La elección se guarda
 // en sessionStorage ('argosEmpresaId'); las pantallas que dependen de la empresa la leen y se actualizan con
 // window.argosAlCambiarEmpresa (si no la definen, la página se recarga). JavaScript sin dependencias, cargado desde el pie.
@@ -13,7 +13,7 @@
     var usuario = null;
     try { usuario = JSON.parse(document.body.getAttribute('data-usuario')); } catch (e) {}
     // Mientras se ve como otro usuario se muestra su empresa y no se cambia
-    if (!chip || !usuario || [1, 2, 5].indexOf(parseInt(usuario.tipoUsuarioId, 10)) < 0 || document.getElementById('verComoAviso')) { return; }
+    if (!chip || !usuario || [1, 2].indexOf(parseInt(usuario.tipoUsuarioId, 10)) < 0 || document.getElementById('verComoAviso')) { return; }
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', API + '/php/repositorios/ArgosRiesgos.php', true);
