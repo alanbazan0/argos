@@ -261,7 +261,7 @@ $version = "20261152";
 <script src="<?php echo getHandelAPI()?>/js/componentes/tabla.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
-<script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
+<script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261110a"></script>
 
 <!-- Repositorio, Presentador y Vista de la pantalla (handel_api) -->
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>

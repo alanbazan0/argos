@@ -466,7 +466,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : "";
 <script src="<?php echo getHandelAPI()?>/lib/form-validation/jquery.validate.min.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/clases/configuracion.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
-<script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261028"></script>
+<script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261110a"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/frases_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/inicio_sesion_presentador.js?v=20261104"></script>
