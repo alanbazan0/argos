@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Indicadores";
 $archivo = "indicadores.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261146";
+$version = "20261147";
 ?>
 <!DOCTYPE html>
 <html lang="es">
