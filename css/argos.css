@@ -161,9 +161,9 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-bloque>h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ar-muted);margin:0 0 10px}
 /* Título de sección de formulario: círculo numerado + título (mismo formato de la maqueta). Aplica en los formularios con .ar-form-secciones */
 .ar-form-secciones{counter-reset:arsec}
-.ar-form-secciones .ar-bloque{border:0;border-radius:0;padding:0;margin-bottom:22px}
-.ar-form-secciones .ar-bloque>h4{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700;text-transform:none;letter-spacing:0;color:var(--ar-ink);margin:0 0 14px}
-.ar-form-secciones .ar-bloque>h4::before{counter-increment:arsec;content:counter(arsec);flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--ar-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}
+.ar-form-secciones .ar-bloque{border:0;border-radius:0;padding:0;margin-bottom:16px}
+.ar-form-secciones .ar-bloque>h4{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;text-transform:none;letter-spacing:0;color:var(--ar-ink);margin:0 0 10px}
+.ar-form-secciones .ar-bloque>h4::before{counter-increment:arsec;content:counter(arsec);flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--ar-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
 .ar-info{color:var(--ar-muted);cursor:help;margin-left:4px}
 
 /* ---------- Listas de historial (evaluaciones, cambios) ---------- */
