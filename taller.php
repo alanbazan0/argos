@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Modo taller";
 $archivo = "taller.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261151";
+$version = "20261153";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,36 +81,64 @@ $version = "20261151";
 
       <div id="faseDos" hidden>
         <div class="ar-card ar-vacio" id="faseDosVacio" hidden></div>
-        <div id="faseDosTarjeta" class="ar-grid ar-g32">
-          <div class="ar-card ar-proyeccion">
-            <div class="ar-sub" id="avanceFase2"></div>
-            <h2 id="proyItem"></h2>
-            <p class="ar-situacion" id="proySubestandar"></p>
-            <p><b>Situación</b></p><p id="proySituacion" class="ar-proy-texto"></p>
-            <p><b>Riesgo</b></p><p id="proyRiesgo" class="ar-proy-texto"></p>
-            <p class="text-muted">Departamento: <span id="proyDepto"></span> · Fuente: <span id="proyFuente"></span><br>Sedes: <span id="proySedes"></span></p>
-          </div>
-          <div class="ar-card">
-            <div class="ar-callout" id="sinPermisoRiesgo" hidden>Este riesgo incluye sedes que no puedes evaluar. Pásalo con «Omitir».</div>
-            <form id="evaluarForm" onsubmit="return false;">
-              <h3>Evaluación</h3>
-              <div class="form-group"><label for="probSelect">Probabilidad</label><select class="form-control" id="probSelect"></select></div>
-              <div class="form-group"><label for="consSelect">Consecuencia</label><select class="form-control" id="consSelect"></select></div>
-              <p>Nivel: <span id="nivelProyectado">—</span></p>
-              <div id="accionOpcional">
-                <label class="checkbox-inline"><input type="checkbox" id="conAccionCheck"> Agregar la primera acción</label>
-                <div id="accionBloque" hidden style="margin-top:10px">
-                  <div class="form-group"><label for="descripcionAccion">Acción</label><textarea class="form-control" id="descripcionAccion" rows="2"></textarea></div>
-                  <div class="form-group"><label for="responsableSelect">Responsable</label><select class="form-control" id="responsableSelect"></select></div>
-                  <div class="form-group"><label for="apoyoSelect">Apoyo (opcional)</label><select class="form-control" id="apoyoSelect"></select></div>
-                  <div class="form-group"><label for="fechaAccionInput">Fecha compromiso</label><input type="date" class="form-control" id="fechaAccionInput"><small class="text-muted" id="fechaSugeridaTexto"></small></div>
+        <div id="faseDosContenido">
+          <div class="ar-fila-progreso"><b id="avanceFase2"></b><span class="text-muted">Ideal para proyectar en pantalla durante el taller</span></div>
+          <div class="ar-progreso"><div id="barraFase2"></div></div>
+          <div class="ar-grid ar-g32">
+            <div class="ar-card ar-proyeccion">
+              <h2 id="proyItem"></h2>
+              <p class="ar-situacion" id="proySubestandar"></p>
+              <p class="ar-proy-k">Situación</p><p id="proySituacion" class="ar-proy-texto ar-proy-grande"></p>
+              <p class="ar-proy-k">¿Por qué es un riesgo?</p><p id="proyPorque" class="ar-proy-texto"></p>
+              <p class="ar-proy-k">Riesgo</p><p id="proyRiesgo" class="ar-proy-texto"><b></b></p>
+              <p class="ar-proy-k">Fuente · ¿quién lo origina?</p><p id="proyFuente" class="ar-proy-texto"></p>
+              <p class="ar-proy-k">Sedes</p><p id="proySedes" class="ar-proy-texto"></p>
+              <p class="ar-proy-k">Departamento</p><p id="proyDepto" class="ar-proy-texto"></p>
+            </div>
+            <div class="ar-card">
+              <div class="ar-callout" id="sinPermisoRiesgo" hidden>Este riesgo es solo de sedes que no puedes evaluar. Pásalo con «Omitir».</div>
+              <form id="evaluarForm" class="ar-form-secciones" onsubmit="return false;">
+                <div class="ar-bloque">
+                  <h4>Controles y detección</h4>
+                  <div class="ar-sub">Lo que la empresa ya tiene hoy contra este riesgo.</div>
+                  <div class="row">
+                    <div class="col-sm-6 form-group"><label for="controlesInput">Controles actuales <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Lo que la empresa ya tiene para atacar este riesgo: procedimientos, políticas, ayudas visuales, equipo, capacitación."></i></label><input type="text" id="controlesInput" class="form-control" maxlength="4000" placeholder="Ej. Señalamientos, procedimiento, rondines"></div>
+                    <div class="col-sm-3 form-group"><label for="eficaciaSelect">Eficacia <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Qué tan bien funcionan hoy los controles actuales?"></i></label>
+                      <select id="eficaciaSelect" class="form-control"><option value="Efectivo">Efectivo</option><option value="Parcial" selected>Parcial</option><option value="Inexistente">Inexistente</option></select></div>
+                    <div class="col-sm-3 form-group"><label for="incidentesInput">Incidentes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Cuántas veces ocurrió este evento en los últimos 12 meses."></i></label><input type="number" id="incidentesInput" class="form-control" min="0" value="0"></div>
+                  </div>
+                  <div class="form-group"><label for="deteccionInput">¿Cómo detectamos este riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cómo nos daríamos cuenta de que el riesgo se está presentando? Ej. recorridos, auditorías, CCTV, reportes del monitorista."></i></label><input type="text" id="deteccionInput" class="form-control" maxlength="300" placeholder="Ej. Recorridos, auditorías, CCTV"></div>
+                </div>
+                <div class="ar-bloque">
+                  <h4>Evaluación</h4>
+                  <div class="ar-sub">Responde las dos preguntas; el sistema clasifica y calcula el nivel.</div>
+                  <div class="checkbox" id="mismoNivelGrupo"><label><input type="checkbox" id="mismoNivelCheck" checked> Mismo nivel de riesgo en todas las sedes</label></div>
+                  <div class="ar-tabla-scroll"><table class="ar-tabla"><thead><tr><th>Sede</th><th>Probabilidad</th><th>Consecuencia</th><th>Nivel</th></tr></thead><tbody id="filasEvaluacion"></tbody></table></div>
+                  <p style="margin-top:8px">Nivel resultante: <span id="nivelResultante">—</span></p>
+                  <div class="row">
+                    <div class="col-sm-4 form-group"><label for="metaSelect">Nivel meta <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El nivel que se quiere alcanzar después de las acciones. Solo puede ser igual o menos grave que el actual."></i></label><select id="metaSelect" class="form-control"></select></div>
+                    <div class="col-sm-4 form-group"><label for="tratamientoSelect">Tratamiento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Mitigar: reducir probabilidad o consecuencia. Evitar: dejar de hacer la actividad. Transferir: pasar el riesgo a un tercero (seguro, contrato). Aceptar: solo en niveles 5 y 6, con justificación."></i></label>
+                      <select id="tratamientoSelect" class="form-control"><option>Mitigar</option><option>Evitar</option><option>Transferir</option><option>Aceptar</option></select></div>
+                  </div>
+                  <div class="form-group" id="justificacionAceptacionGrupo" hidden><label for="justificacionAceptacionInput">Justificación para aceptar el riesgo</label><textarea id="justificacionAceptacionInput" class="form-control" rows="2" maxlength="4000" placeholder="¿Por qué los controles actuales son suficientes?"></textarea></div>
+                </div>
+                <div class="ar-bloque" id="accionBloque">
+                  <h4>Primera acción de tratamiento</h4>
+                  <div class="ar-sub">Se pueden agregar más después desde Acciones.</div>
+                  <div class="form-group"><label for="descripcionAccion">Acción recomendada</label><textarea class="form-control" id="descripcionAccion" rows="2" placeholder="Ej. Instalar control de préstamo de llaves"></textarea></div>
+                  <div class="row">
+                    <div class="col-sm-4 form-group"><label for="responsableSelect">Responsable</label><select class="form-control" id="responsableSelect"></select></div>
+                    <div class="col-sm-4 form-group"><label for="apoyoSelect">Apoyo para la acción</label><select class="form-control" id="apoyoSelect"></select></div>
+                    <div class="col-sm-4 form-group"><label for="fechaAccionInput">Fecha compromiso</label><input type="date" class="form-control" id="fechaAccionInput"><small class="text-muted" id="fechaSugeridaTexto"></small></div>
+                  </div>
                   <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionAccion">Justifica el plazo mayor al sugerido</label><textarea class="form-control" id="justificacionAccion" rows="2"></textarea></div>
                 </div>
+              </form>
+              <div class="ar-acciones" style="margin-top:14px;justify-content:flex-end">
+                <button type="button" class="btn btn-default" id="anteriorBoton"><i class="fa fa-arrow-left"></i> Anterior</button>
+                <button type="button" class="btn btn-default" id="omitirBoton">Omitir</button>
+                <button type="button" class="btn btn-success" id="guardarSiguienteBoton">Guardar y siguiente <i class="fa fa-arrow-right"></i></button>
               </div>
-            </form>
-            <div class="ar-acciones" style="margin-top:14px">
-              <button type="button" class="btn btn-default" id="omitirBoton">Omitir</button>
-              <button type="button" class="btn btn-success" id="guardarSiguienteBoton">Guardar y siguiente <i class="fa fa-arrow-right"></i></button>
             </div>
           </div>
         </div>

@@ -233,7 +233,9 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-sede-op{display:block;font-weight:400;margin:2px 0;white-space:nowrap}
 .ar-fila-error{background:#FFF5F4}
 .ar-estado-fila{min-width:150px;font-size:11px}
-.ar-proyeccion h2{font-family:'Outfit',sans-serif;margin:4px 0}
+.ar-proyeccion{background:var(--ar-ink);color:#fff;border-color:var(--ar-ink)}
+.ar-proyeccion h2{font-family:'Outfit',sans-serif;margin:4px 0;color:#F5A33B}
+.ar-proyeccion .ar-situacion{color:rgba(255,255,255,.65)}
 .ar-proy-texto{font-size:15px;line-height:1.4}
 .ar-lv-grande{font-size:18px;padding:3px 12px}
 
@@ -320,3 +322,10 @@ tr.ar-desactivado{opacity:.55}
 .ar-inactivos{margin-left:6px;white-space:nowrap;color:var(--ar-muted)}
 
 .ar-tendencia{width:100%;max-width:720px;height:auto;display:block}
+
+/* Modo taller, fase 2 */
+.ar-fila-progreso{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ar-progreso{height:6px;background:var(--ar-bd);border-radius:6px;margin-bottom:14px;overflow:hidden}
+.ar-progreso>div{height:100%;background:var(--ar-green-br);width:0;transition:width .2s}
+.ar-proy-k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;opacity:.65;margin:12px 0 2px}
+.ar-proy-grande{font-size:18px;font-weight:600}
