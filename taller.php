@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Modo taller";
 $archivo = "taller.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261153";
+$version = "20261154";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,15 +68,26 @@ $version = "20261153";
       </ul>
 
       <div id="faseUno" class="ar-card">
-        <div class="ar-sub">Solo identificación. Los riesgos entran <b>Sin evaluar</b> y no aparecen en el mapa de calor hasta evaluarse. Puedes pegar renglones copiados de Excel en situación, ¿por qué?, riesgo u origen (columnas separadas por tabulador).</div>
+        <div class="ar-callout">Fase 1: el grupo identifica todas las situaciones de riesgo <b>sin evaluarlas todavía</b>. Se capturan como en una hoja de cálculo; Tab avanza de campo. Los riesgos quedan <b>Sin evaluar</b> y no aparecen en el mapa de calor hasta la fase 2. Puedes pegar renglones copiados de Excel en situación, ¿por qué?, riesgo u origen (columnas separadas por tabulador).</div>
+        <div class="row ar-fecha-taller">
+          <div class="col-sm-3 form-group"><label for="fechaTallerInput">Fecha de detección <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cuándo se detectó el riesgo? Aquí es la fecha del taller y se aplica a todos los renglones de esta sesión."></i> <small>— fecha del taller</small></label><input type="date" id="fechaTallerInput" class="form-control"></div>
+          <div class="col-sm-9"><span class="text-muted">Se aplica a todos los renglones de esta sesión; si algún riesgo se detectó en otra fecha, se corrige después en su ficha (Editar).</span></div>
+        </div>
         <div class="ar-hoja"><table class="ar-tabla" id="hojaTaller">
-          <thead><tr><th>#</th><th>Subestándar</th><th>Departamento</th><th>Sedes</th><th>Situación</th><th>¿Por qué es un riesgo?</th><th>Riesgo</th><th>Fuente</th><th>¿Quién lo origina?</th><th>Estado</th><th></th></tr></thead>
+          <thead><tr><th>#</th><th>Subestándar <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Elige el estándar y subestándar OEA al que pertenece el riesgo. El item (1.1.1, 1.1.2…) se asigna solo al guardar."></i></th><th>Departamento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El área de la empresa donde está el riesgo."></i></th><th>Sedes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Todas las sedes o una o varias sedes específicas. Sin ninguna marcada se guarda como «Todas»."></i></th><th>Situación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Qué está pasando? Describe el hecho, no la consecuencia. Ej. No hay buena iluminación en algunas de las instalaciones."></i></th><th>¿Por qué es un riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Por qué esa situación es un riesgo? Ej. Podrían entrar personas a robar sin ser vistas."></i></th><th>Riesgo <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El evento que se quiere evitar. Ej. Robo a la empresa o al personal."></i></th><th>Fuente <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿El riesgo nace dentro de la empresa, fuera o ambos?"></i></th><th>¿Quién lo origina? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Quién o quiénes originan el riesgo. Ej. Personal de nuevo ingreso, transportistas subcontratados."></i></th><th>Estado</th><th></th></tr></thead>
           <tbody></tbody>
         </table></div>
         <div class="ar-acciones" style="margin-top:12px">
           <button type="button" class="btn btn-default" id="agregarFilasBoton"><i class="fa fa-plus"></i> Agregar 5 renglones</button>
-          <button type="button" class="btn btn-success" id="guardarLoteBoton"><i class="fa fa-save"></i> Guardar renglones</button>
+          <a class="btn btn-default" href="importar.php"><i class="fa fa-upload"></i> Importar Excel (solo fase 1)</a>
+          <button type="button" class="btn btn-success" id="guardarLoteBoton"><i class="fa fa-save"></i> Guardar riesgos identificados <i class="fa fa-arrow-right"></i></button>
         </div>
+      </div>
+      <div class="ar-card" id="pendientesCard" hidden>
+        <h3><span id="pendientesTitulo"></span></h3>
+        <div class="ar-sub">De talleres anteriores o importados.</div>
+        <ul class="ar-lista" id="pendientesLista"></ul>
+        <button type="button" class="btn btn-primary" id="pasarFase2Boton">Pasar a la fase 2: evaluar <i class="fa fa-arrow-right"></i></button>
       </div>
 
       <div id="faseDos" hidden>

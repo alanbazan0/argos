@@ -329,3 +329,7 @@ tr.ar-desactivado{opacity:.55}
 .ar-progreso>div{height:100%;background:var(--ar-green-br);width:0;transition:width .2s}
 .ar-proy-k{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;opacity:.65;margin:12px 0 2px}
 .ar-proy-grande{font-size:18px;font-weight:600}
+
+.ar-nav .ar-ct-sev{background:#6B4E9B}
+.ar-pendiente-eval{border-color:#C9B6EA}
+.ar-fecha-taller{margin-top:10px}

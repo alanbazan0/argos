@@ -19,6 +19,10 @@ $(function () {
       if (r && r.mensajeError === '' && r.valor.total > 0) {
         $('#campanaContador').text(r.valor.total > 99 ? '99+' : r.valor.total).show();
       }
+      // Modo taller: contador morado con los riesgos identificados que siguen Sin evaluar
+      if (r && r.mensajeError === '' && r.valor.sinEvaluar && r.valor.sinEvaluar.length > 0) {
+        $("a.ar-nav[href='taller.php']").append("<span class='ar-ct ar-ct-sev' title='Riesgos sin evaluar'>" + r.valor.sinEvaluar.length + "</span>");
+      }
     });
   }
 });
