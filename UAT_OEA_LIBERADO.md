@@ -1,7 +1,7 @@
 # Pruebas de aceptación (UAT) — opciones de OEA liberadas
 
 Opciones abiertas a todos los usuarios con permiso de ARGOS: **Mi bandeja**, **Registro de riesgos**, **Acciones** y **Calibración y catálogos**.
-Todo lo demás (Taller, Importar, Indicadores, Revisiones, Tutoriales y CTPAT) sigue solo para alanbazan@hotmail.com.
+Todo lo demás ( Importar, Indicadores, Revisiones, Tutoriales y CTPAT) sigue solo para alanbazan@hotmail.com.
 
 Probar con un usuario **Coordinador**, uno **Supervisor** y uno **Usuario de sede** de una empresa cliente (activar antes su permiso de ARGOS en la pantalla Usuarios).
 El Administrador puede usar «Ver como» para revisar cada rol sin cambiar de sesión (solo consulta).
@@ -40,3 +40,9 @@ El Administrador puede usar «Ver como» para revisar cada rol sin cambiar de se
 - Con un Coordinador, un Supervisor y un Usuario reales: Tablero abre desde el menú y muestra el mapa de calor, los riesgos por nivel y las acciones de su empresa.
 - El selector «Revisión AAAA» lista las revisiones aprobadas (si hay) y muestra el mapa a la fecha de aprobación.
 - Supervisor y Usuario no ven otras empresas; solo el Coordinador (corporativo) y el Administrador tienen el selector de empresa.
+
+## Modo taller (liberado 2026-11-06)
+
+- Coordinador y Supervisor: capturar varios riesgos en una sesión; cada uno queda con su item, su evaluación y (si se piden) sus acciones, y aparece en el Registro.
+- Un Usuario solo puede dar de alta riesgos y evaluar en su sede; intentar otra sede da error.
+- Cada riesgo creado en el taller queda en el historial (visible para el Administrador) con origen «Alta (taller)».

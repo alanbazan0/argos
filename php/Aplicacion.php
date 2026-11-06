@@ -59,7 +59,7 @@ class Aplicacion
     /** Pantallas liberadas para todos con permiso (el resto del menú sigue en puedeVerMenu). */
     public static function archivosLiberados()
     {
-        return array("bandeja.php", "tablero.php", "riesgos.php", "acciones.php", "configuracion_calibracion.php");
+        return array("bandeja.php", "tablero.php", "riesgos.php", "taller.php", "acciones.php", "configuracion_calibracion.php");
     }
 
     /**
