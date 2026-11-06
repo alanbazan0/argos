@@ -21,7 +21,7 @@ $titulo = "Estándares";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "estandares";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261145";
+$version = "20261146";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -116,7 +116,7 @@ $version = "20261145";
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Ventana de ejemplo</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body ar-form-secciones">
         <div class="ar-bloque">
           <h4>Identificación</h4>
           <div class="form-group">

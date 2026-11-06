@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261148";
+$version = "20261149";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -111,10 +111,10 @@ $version = "20261148";
         <h4 class="modal-title" id="formularioTitulo">Nuevo riesgo</h4>
       </div>
       <div class="modal-body">
-        <form id="riesgoForm" onsubmit="return false;">
+        <form id="riesgoForm" class="ar-form-secciones" onsubmit="return false;">
           <input type="hidden" id="riesgoId">
           <div class="ar-bloque">
-            <h4>Ubicación</h4>
+            <h4>Ubicación en el análisis</h4>
             <div id="ubicacionFija" class="ar-callout" hidden></div>
             <div id="ubicacionEdicion">
               <div class="row">
@@ -202,7 +202,7 @@ $version = "20261148";
         <h4 class="modal-title" id="evaluacionTitulo">Evaluar riesgo</h4>
       </div>
       <div class="modal-body">
-        <form id="evaluacionForm" onsubmit="return false;">
+        <form id="evaluacionForm" class="ar-form-secciones" onsubmit="return false;">
           <div class="ar-callout">La evaluación anterior no se modifica: cada evaluación se agrega con su fecha. El nivel lo calcula el sistema con la calibración vigente.</div>
           <div class="ar-bloque">
             <h4>Evaluación</h4>

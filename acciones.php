@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261145";
+$version = "20261146";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -97,7 +97,7 @@ $version = "20261145";
         <h4 class="modal-title">Nueva acción</h4>
       </div>
       <div class="modal-body">
-        <form id="accionForm" onsubmit="return false;">
+        <form id="accionForm" class="ar-form-secciones" onsubmit="return false;">
           <div class="ar-bloque">
             <h4>Riesgo</h4>
             <div class="form-group"><label for="riesgoSelect">Riesgo (evaluado y no aceptado)</label><select id="riesgoSelect" class="form-control"></select></div>
