@@ -2,6 +2,10 @@
 
 Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los planes de Servixia (C-00742); aquí va **lo que falta o está a medias** y lo que depende de una decisión.
 
+## Orden acordado: los correos van al final (2026-11-05)
+
+Decisión del usuario: todo lo que dependa de correo y tareas programadas (avisos de la bandeja, recordatorios, envío de cuestionarios CTPAT, plantillas, resumen semanal, cierre mensual por cron, decisión #4) se deja **para el final**. Antes: liberar el resto de opciones, UAT y pendientes que no necesitan correo.
+
 ## Decisiones abiertas (especificación OEA, sección 9)
 
 | # | Pregunta | Estado en el código |
