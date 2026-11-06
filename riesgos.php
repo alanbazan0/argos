@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261147";
+$version = "20261148";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -91,10 +91,10 @@ $version = "20261147";
             <tbody></tbody>
           </table>
         </div>
-        <div id="mapaRiesgos" hidden><div id="mapaCalor"></div><div class="ar-callout"><b>Regla:</b> esta vista respeta los mismos filtros que la tabla. Sin filtro de sede, un riesgo con niveles distintos por sede se ubica en su nivel más grave; con filtro de sede, se usa el nivel de esa sede. Los riesgos sin evaluar no aparecen en el mapa.</div></div>
+        <div id="mapaRiesgos" hidden><div id="mapaCalor"></div></div>
         <div class="ar-vacio" id="sinRiesgos" hidden><i class="fa fa-inbox"></i>No hay riesgos con esos filtros.</div>
-        <div class="ar-callout"><b>Regla:</b> <sup>*</sup> = el nivel varía por sede; la tabla muestra el más grave. Al filtrar por sede se muestra el nivel de esa sede.</div>
-        <div class="ar-callout"><b>Regla:</b> el <b>Item</b> se asigna solo: subestándar + consecutivo (1.1.1, 1.1.2…). Nunca se reutiliza un número, aunque el riesgo se cierre.</div>
+        
+        
       </div>
     </section>
 
