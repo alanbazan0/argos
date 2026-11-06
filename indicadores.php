@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Indicadores";
 $archivo = "indicadores.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261145";
+$version = "20261146";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,7 +80,7 @@ $version = "20261145";
             <div class="ar-vacio" id="sinUsuarios" hidden><i class="fa fa-inbox"></i>Aún no hay acciones asignadas.</div>
           </div>
         </div>
-        <div class="ar-card"><h3>Tendencia mensual</h3><div class="ar-sub">Promedio de las sedes en cada periodo guardado.</div><ul class="ar-lista" id="tendencia"></ul></div>
+        <div class="ar-card"><h3>Tendencia mensual</h3><div class="ar-sub">Promedio de las sedes en cada periodo guardado.</div><div id="tendencia"></div></div>
       </div>
     </section>
 

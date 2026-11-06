@@ -318,3 +318,5 @@ tr.ar-riesgo-fila:hover td{background:#F1F7EA}
 @media (max-width:900px){.ar-vercomo label{display:none}.ar-vercomo select{max-width:150px}}
 tr.ar-desactivado{opacity:.55}
 .ar-inactivos{margin-left:6px;white-space:nowrap;color:var(--ar-muted)}
+
+.ar-tendencia{width:100%;max-width:720px;height:auto;display:block}
