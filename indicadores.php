@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Indicadores";
 $archivo = "indicadores.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261152";
+$version = "20261160";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,6 +62,13 @@ $version = "20261152";
     </div>
 
     <section class="ar-main-contenido">
+      <div class="ar-grid ar-g4" id="kpisIndicadores">
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiGeneral">—</div><div class="ar-l">Cumplimiento general</div><div class="ar-t" id="kpiGeneralNota"></div></div>
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiSede">—</div><div class="ar-l">Sede con menor cumplimiento</div><div class="ar-t" id="kpiSedeNota"></div></div>
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiUsuario">—</div><div class="ar-l">Usuario con menor cumplimiento</div><div class="ar-t" id="kpiUsuarioNota"></div></div>
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiRojas">0</div><div class="ar-l">Sedes en rojo</div><div class="ar-t" id="kpiRojasNota"></div></div>
+      </div>
+
       <div class="ar-card">
         <form id="filtrosForm" class="ar-filtros" onsubmit="return false;">
           <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
@@ -73,15 +80,24 @@ $version = "20261152";
       <div class="ar-grid ar-g32">
         <div>
           <div class="ar-card"><h3>Cumplimiento por sede <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="60 % avance de las acciones (ponderado por el nivel del riesgo) + 40 % exposición (100 menos 10 por riesgo de nivel 1-2 y 3 por riesgo de nivel 3-4)."></i></h3>
-            <table class="ar-tabla" id="tablaSedes"><thead><tr><th>Sede</th><th>Avance</th><th>Exposición</th><th>Cumplimiento</th></tr></thead><tbody></tbody></table>
+            <table class="ar-tabla" id="tablaSedes"><thead><tr><th>Sede</th><th>Riesgos activos</th><th>Acciones</th><th>Avance</th><th>Exposición</th><th>Cumplimiento</th></tr></thead><tbody></tbody></table>
             <div class="ar-vacio" id="sinSedes" hidden><i class="fa fa-inbox"></i>Sin datos para este periodo.</div>
           </div>
           <div class="ar-card"><h3>Ranking de usuarios <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Avance de las acciones donde el usuario es responsable. Solo aparece quien tiene al menos una acción; los empates comparten lugar."></i></h3>
-            <table class="ar-tabla" id="tablaUsuarios"><thead><tr><th>#</th><th>Usuario</th><th>Acciones</th><th>Cumplimiento</th></tr></thead><tbody></tbody></table>
+            <table class="ar-tabla" id="tablaUsuarios"><thead><tr><th>#</th><th>Usuario</th><th>Acciones</th><th>Vencidas</th><th>Cumplimiento</th></tr></thead><tbody></tbody></table>
             <div class="ar-vacio" id="sinUsuarios" hidden><i class="fa fa-inbox"></i>Aún no hay acciones asignadas.</div>
           </div>
         </div>
         <div class="ar-card"><h3>Tendencia mensual</h3><div class="ar-sub">Promedio de las sedes en cada periodo guardado.</div><div id="tendencia"></div></div>
+      </div>
+
+      <div class="ar-card" id="comoSeCalcula">
+        <h3>¿Cómo se calcula?</h3>
+        <div class="ar-sub">Los pesos son parámetros configurables en Configuración › Parámetros.</div>
+        <div class="ar-grid ar-g2">
+          <div class="ar-explicacion" id="explicacionCalculo"></div>
+          <table class="ar-tabla" id="tablaPesos"><thead><tr><th>Nivel</th><th>Peso de la acción</th><th>Resta a exposición</th></tr></thead><tbody></tbody></table>
+        </div>
       </div>
     </section>
 

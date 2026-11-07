@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261150";
+$version = "20261156";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,6 +62,13 @@ $version = "20261150";
     </div>
 
     <section class="ar-main-contenido">
+      <div class="ar-grid ar-g4" id="kpisTablero">
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiActivos">0</div><div class="ar-l">Riesgos activos</div><div class="ar-t" id="kpiActivosNota"></div></div>
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiNivel12" style="color:var(--ar-l1)">0</div><div class="ar-l">Activos en nivel 1–2</div><div class="ar-t" style="color:var(--ar-l1)">plazo máximo 3 meses</div></div>
+        <div class="ar-card ar-kpi"><div class="ar-n" id="kpiVencidas" style="color:var(--ar-red)">0</div><div class="ar-l">Acciones vencidas</div><div class="ar-t" id="kpiVencidasNota"></div></div>
+        <a class="ar-card ar-kpi ar-kpi-enlace" href="revisiones.php"><div class="ar-n" id="kpiRevision">—</div><div class="ar-l" id="kpiRevisionTexto">Revisión anual</div><div class="ar-t" id="kpiRevisionNota"></div></a>
+      </div>
+
       <div class="ar-card">
         <form id="filtrosForm" class="ar-filtros" onsubmit="return false;">
           <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
@@ -81,11 +88,15 @@ $version = "20261150";
         </div>
         <div>
           <div class="ar-card"><h3>Cambios de nivel</h3><div class="ar-sub">Riesgos que subieron, bajaron o son nuevos contra el periodo anterior.</div><ul class="ar-lista" id="cambios"></ul></div>
-          <div class="ar-card"><h3>Acciones por responsable</h3>
-            <table class="ar-tabla" id="tablaResponsables"><thead><tr><th>Responsable</th><th>Total</th><th>Completadas</th><th>Vencidas</th></tr></thead><tbody></tbody></table>
-            <div class="ar-vacio" id="sinResponsables" hidden><i class="fa fa-inbox"></i>Aún no hay acciones.</div>
-          </div>
+          <div class="ar-card"><h3>Evolución por periodo</h3><div class="ar-sub">Riesgos por nivel en cada revisión aprobada y hoy</div><div class="ar-pbars" id="evolucionBarras"></div></div>
         </div>
+      </div>
+
+      <div class="ar-card">
+        <div class="ar-barra-titulo"><div><h3>Acciones por responsable</h3><div class="ar-sub">Clic en una persona para ver su lista de acciones</div></div>
+          <div class="ar-leyenda"><span><i style="background:var(--ar-red)"></i>Vencida</span><span><i style="background:#9AA6BD"></i>Pendiente</span><span><i style="background:var(--ar-orange)"></i>En proceso</span><span><i style="background:var(--ar-green-br)"></i>Completada</span></div></div>
+        <div id="barrasResponsables"></div>
+        <div class="ar-vacio" id="sinResponsables" hidden><i class="fa fa-inbox"></i>Aún no hay acciones.</div>
       </div>
     </section>
 

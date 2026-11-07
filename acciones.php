@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261148";
+$version = "20261160";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,9 +75,10 @@ $version = "20261148";
             <option value="">Todos los estados</option><option>Pendiente</option><option>En proceso</option><option>Vencida</option><option>Completada</option>
           </select>
         </form>
+        <div class="ar-callout" id="avisoSede" hidden></div>
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaAcciones">
-            <thead><tr><th>Riesgo</th><th>Acción</th><th>Responsable</th><th>Fecha compromiso</th><th>Sedes</th><th>Estado</th><th></th></tr></thead>
+            <thead><tr><th>Riesgo</th><th>Acción</th><th>Responsable</th><th>Apoyo</th><th>Fecha compromiso</th><th>Avance por sede</th><th>Estado</th><th></th></tr></thead>
             <tbody></tbody>
           </table>
         </div>

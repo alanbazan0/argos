@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261159";
+$version = "20261160";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,13 +81,16 @@ $version = "20261159";
             <option value="">Todos los estados</option><option>Sin evaluar</option><option>Abierto</option><option>En tratamiento</option>
             <option>Vencido</option><option>Cerrado</option><option>Aceptado</option>
           </select>
+          <select class="form-control" id="cambioFiltro" aria-label="Cambió de nivel">
+            <option value="">Cambió de nivel: cualquiera</option><option value="30">Cambió en los últimos 30 días</option><option value="90">Cambió en los últimos 90 días</option><option value="365">Cambió en el último año</option>
+          </select>
           <label class="checkbox-inline ar-inactivos"><input type="checkbox" id="inactivosCheck"> Ver desactivados</label>
           <span class="ar-sp"></span>
           <div class="btn-group ar-seg" id="vistaSeg"><button type="button" class="btn btn-default on" data-v="tabla"><i class="fa fa-th-list"></i> Tabla</button><button type="button" class="btn btn-default" data-v="mapa"><i class="fa fa-th"></i> Mapa de calor</button></div>
         </form>
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaRiesgos">
-            <thead><tr><th>Item</th><th>Situación / Riesgo</th><th>Depto.</th><th>Sedes</th><th>Fuente</th><th>Probabilidad</th><th>Consecuencia</th><th>Nivel</th><th>Meta</th><th>Acciones</th><th>Estado</th></tr></thead>
+            <thead><tr><th>Item</th><th>Situación / Riesgo</th><th>Depto.</th><th>Sedes</th><th>Fuente</th><th>Controles actuales</th><th>Probabilidad</th><th>Consecuencia</th><th>Nivel</th><th>Meta</th><th>Acciones</th><th>Estado</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
