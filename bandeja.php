@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Mi bandeja";
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261154";
+$version = "20261155";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -69,6 +69,8 @@ $version = "20261154";
         <div class="ar-card ar-kpi"><div class="ar-n" id="contRequieren">0</div><div class="ar-l">Requieren tu respuesta</div></div>
       </div>
 
+      <div class="ar-card ar-mi-cumplimiento" id="miCumplimiento" hidden></div>
+
       <div class="ar-card">
         <h3>Acciones por atender</h3>
         <div class="ar-sub">Ordenadas por urgencia: vencidas, vencen pronto, sin actualizar y en tiempo.</div>
@@ -115,6 +117,7 @@ $version = "20261154";
 
 <!-- Repositorio, Presentador y Vista de la pantalla (handel_api) -->
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/repositorios/argos_indicadores_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_bandeja_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_bandeja_presentador.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_bandeja_vista.js?v=<?php echo $version; ?>"></script>

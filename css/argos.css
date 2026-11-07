@@ -344,3 +344,27 @@ tr.ar-desactivado{opacity:.55}
 .ar-revision-curso{border-color:var(--ar-green-br);margin-bottom:16px}
 .ar-pasos-lista{padding-left:18px;margin:8px 0 12px}
 .ar-pasos-lista li{margin-bottom:8px}
+
+/* Mi cumplimiento (Mi bandeja) */
+.ar-mi-cumplimiento{margin-bottom:16px}
+.ar-mc-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.ar-mc-enlace{font-weight:600;font-size:12px;white-space:nowrap}
+.ar-mc-cuerpo{display:grid;grid-template-columns:240px 1fr 1fr;gap:24px;align-items:center}
+.ar-mc-vel{max-width:240px}
+.ar-velocimetro{width:100%;height:auto;display:block}
+.ar-vel-valor{font-family:'Outfit',sans-serif;font-weight:800;font-size:26px}
+.ar-mc-lugar-grande{font-family:'Outfit',sans-serif;font-size:38px;font-weight:800;color:var(--ar-ink);line-height:1}
+.ar-mc-lugar-grande small{font-size:17px;color:var(--ar-muted);font-weight:600}
+.ar-mc-dif{margin-top:6px;font-weight:700}
+.ar-mc-sube{color:#2B5A0A}.ar-mc-baja{color:#A92F2C}
+.ar-mc-msg{margin-top:8px;font-size:12.5px}
+.ar-mc-titulo{font-weight:600;color:var(--ar-muted);margin-bottom:6px}
+.ar-mc-fila{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px}
+.ar-mc-fila.ar-mc-yo{background:var(--ar-orange-lt)}
+.ar-mc-lugar{width:24px;text-align:center}
+.ar-mc-nombre{flex:1;font-size:12.5px}
+.ar-mc-puntos{text-align:center;color:var(--ar-muted)}
+.ar-mc-vacio{display:flex;align-items:center;gap:16px}
+.ar-mc-vacio>div{flex:1}
+.ar-mc-icono{font-size:28px}
+@media (max-width:900px){.ar-mc-cuerpo{grid-template-columns:1fr}.ar-mc-vel{margin:0 auto}}
