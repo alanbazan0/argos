@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261160";
+$version = "20261161";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -181,6 +181,25 @@ $version = "20261160";
             <div class="ar-bloque"><h4>Acciones</h4><ul class="ar-lista" id="detalleAcciones"></ul><a class="btn btn-default btn-xs" id="nuevaAccionLink" href="#" hidden><i class="fa fa-plus"></i> Nueva acción</a></div>
             <div class="ar-bloque"><h4>Evaluaciones</h4><div id="detalleTrayectoria"></div><ul class="ar-lista" id="detalleEvaluaciones"></ul></div>
             <div class="ar-bloque"><h4>Cambios registrados</h4><ul class="ar-lista" id="detalleBitacora"></ul></div>
+          </div>
+        </div>
+        <div class="ar-bloque ar-bitacora-ficha">
+          <h4>Bitácora</h4>
+          <ul class="ar-lista" id="bitacoraFicha"></ul>
+          <div id="bitacoraFormulario" hidden>
+            <h5 id="bitTitulo">Publicar</h5>
+            <div class="row">
+              <div class="col-sm-6 form-group"><label for="bitAccion">¿Sobre qué?</label><select id="bitAccion" class="form-control"></select></div>
+              <div class="col-sm-6 form-group"><label>Sedes donde publicas</label><div id="bitSedes"></div></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 form-group" id="bitEstadoGrupo"><label for="bitEstado">Estado de la acción</label>
+                <select id="bitEstado" class="form-control"><option value="">Sin cambio</option><option>Pendiente</option><option>En proceso</option><option>Completada</option></select></div>
+              <div class="col-sm-3 form-group" id="bitAvanceGrupo"><label for="bitAvance">Avance %</label><input type="number" id="bitAvance" class="form-control" min="0" max="100"></div>
+              <div class="col-sm-5 form-group"><label for="bitEnlace">Enlace de evidencia (opcional)</label><input type="url" id="bitEnlace" class="form-control" placeholder="https://…"></div>
+            </div>
+            <div class="form-group"><label for="bitTexto">Publicación (usa @nombre para mencionar a alguien)</label><textarea id="bitTexto" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <button type="button" class="btn btn-primary btn-sm" id="bitPublicar"><i class="fa fa-paper-plane"></i> Publicar</button>
           </div>
         </div>
       </div>
