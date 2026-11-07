@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Modo taller";
 $archivo = "taller.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261154";
+$version = "20261155";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,7 +68,7 @@ $version = "20261154";
       </ul>
 
       <div id="faseUno" class="ar-card">
-        <div class="ar-callout">Fase 1: el grupo identifica todas las situaciones de riesgo <b>sin evaluarlas todavía</b>. Se capturan como en una hoja de cálculo; Tab avanza de campo. Los riesgos quedan <b>Sin evaluar</b> y no aparecen en el mapa de calor hasta la fase 2. Puedes pegar renglones copiados de Excel en situación, ¿por qué?, riesgo u origen (columnas separadas por tabulador).</div>
+        <div class="ar-callout">Fase 1: el grupo identifica todas las situaciones de riesgo <b>sin evaluarlas todavía</b>. Se capturan como en una hoja de cálculo; Tab avanza de campo. Los riesgos quedan <b>Sin evaluar</b> y no aparecen en el mapa de calor hasta la fase 2. Puedes pegar renglones copiados de Excel: con las 8 columnas de la hoja (subestándar, departamento, sedes, situación, ¿por qué?, riesgo, fuente, origen) se llenan también las listas por nombre. Atajos: <b>Ctrl/Cmd + Enter</b> agrega un renglón; <b>Alt + ↑ / ↓</b> pasa al mismo campo del renglón de arriba o abajo.</div>
         <div class="row ar-fecha-taller">
           <div class="col-sm-3 form-group"><label for="fechaTallerInput">Fecha de detección <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cuándo se detectó el riesgo? Aquí es la fecha del taller y se aplica a todos los renglones de esta sesión."></i> <small>— fecha del taller</small></label><input type="date" id="fechaTallerInput" class="form-control"></div>
           <div class="col-sm-9"><span class="text-muted">Se aplica a todos los renglones de esta sesión; si algún riesgo se detectó en otra fecha, se corrige después en su ficha (Editar).</span></div>
