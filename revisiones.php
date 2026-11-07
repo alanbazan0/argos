@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Revisiones del Comité";
 $archivo = "revisiones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261152";
+$version = "20261157";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,13 +68,27 @@ $version = "20261152";
           <button type="button" class="btn btn-success" id="iniciarBoton"><i class="fa fa-play"></i> Iniciar revisión</button>
         </form>
       </div>
-      <div id="revisionesLista"></div>
+      <div id="revisionTrabajo"></div>
+      <div class="ar-grid ar-g2">
+        <div id="revisionesLista"></div>
+        <div class="ar-card"><h3>¿Cómo funciona una revisión?</h3>
+          <ol class="ar-pasos-lista">
+            <li><b>Iniciar.</b> Un Coordinador inicia la revisión del año; aparece la lista de todos los riesgos evaluados, incluidos los cerrados y aceptados.</li>
+            <li><b>Revisar cada riesgo.</b> «Sin cambios» o «Reevaluar». Cada uno deja una evaluación con el motivo «Revisión anual».</li>
+            <li><b>Riesgos nuevos.</b> Alta individual, Modo taller o importación desde Excel.</li>
+            <li><b>Aprobar.</b> Integrantes del Comité, fecha, enlace al acta y nota.</li>
+            <li><b>Fotografía.</b> Queda en el selector de periodo y en los reportes, y se programa la siguiente revisión a 12 meses.</li>
+          </ol>
+          <div class="ar-sub">Fuera de la revisión anual también se puede reevaluar un riesgo cuando hay un <b>incidente</b> o un <b>cambio en la empresa</b>, que son los otros dos disparadores del requisito 1.1.</div>
+        </div>
+      </div>
     </section>
 
     <div class="modal fade" id="aprobarModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document"><form class="modal-content" id="aprobarForm">
         <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">Aprobar revisión</h4></div>
         <div class="modal-body">
+          <div class="ar-callout" id="aprobarAviso" hidden></div>
           <div class="form-group"><label for="fechaAprobacionInput">Fecha de aprobación</label><input type="date" class="form-control" id="fechaAprobacionInput" required></div>
           <div class="form-group"><label>Participantes del Comité</label><div id="participantesLista" class="ar-participantes"></div></div>
           <div class="form-group"><label for="actaInput">Acta (enlace, opcional)</label><input type="url" class="form-control" id="actaInput" placeholder="https://"></div>

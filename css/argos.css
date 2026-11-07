@@ -340,3 +340,7 @@ tr.ar-desactivado{opacity:.55}
 .ar-zona-icono{font-size:46px;color:var(--ar-green)}
 .ar-zona-subida p{margin:8px 0 0;font-size:16px}
 .ar-zona-subida #archivoInsignia{margin-top:12px}
+
+.ar-revision-curso{border-color:var(--ar-green-br);margin-bottom:16px}
+.ar-pasos-lista{padding-left:18px;margin:8px 0 12px}
+.ar-pasos-lista li{margin-bottom:8px}
