@@ -333,3 +333,10 @@ tr.ar-desactivado{opacity:.55}
 .ar-nav .ar-ct-sev{background:#6B4E9B}
 .ar-pendiente-eval{border-color:#C9B6EA}
 .ar-fecha-taller{margin-top:10px}
+
+/* Zona para arrastrar y soltar archivos (mismo estilo que Convenios) */
+.ar-zona-subida{border:2px dashed #b5bcc7;border-radius:10px;background:#f7f9fb;text-align:center;padding:30px 16px;cursor:pointer;transition:border-color .15s,background .15s}
+.ar-zona-subida:hover,.ar-zona-subida:focus,.ar-zona-subida.ar-arrastrando{border-color:var(--ar-green-br);background:var(--ar-green-lt);outline:none}
+.ar-zona-icono{font-size:46px;color:var(--ar-green)}
+.ar-zona-subida p{margin:8px 0 0;font-size:16px}
+.ar-zona-subida #archivoInsignia{margin-top:12px}

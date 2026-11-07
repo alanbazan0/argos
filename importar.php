@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Importar desde Excel";
 $archivo = "importar.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261154";
+$version = "20261156";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,7 +68,12 @@ $version = "20261154";
       </div>
       <div class="ar-card">
         <h3>2. Sube tu archivo (.xlsx, máximo 200 renglones)</h3>
-        <input type="file" id="archivoInput" accept=".xlsx" class="form-control" style="max-width:420px">
+        <input type="file" id="archivoInput" accept=".xlsx" style="display:none">
+        <div id="zonaSubida" class="ar-zona-subida" tabindex="0" role="button">
+          <div class="ar-zona-icono"><i class="fa fa-file-excel-o"></i></div>
+          <p>Arrastra tu <b>.xlsx</b> aquí o haz clic para seleccionarlo</p>
+          <div id="archivoInsignia" hidden><span class="ar-st ar-st-completada"><i class="fa fa-paperclip"></i> <span id="archivoSeleccionado"></span></span></div>
+        </div>
       </div>
       <div class="ar-card" id="previaBloque" hidden>
         <h3>3. Revisa y confirma · <span id="archivoNombre"></span></h3>
