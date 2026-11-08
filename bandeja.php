@@ -19,10 +19,10 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Mi bandeja";
 $nombresTipo = array(1 => 'Administrador', 2 => 'Coordinador', 5 => 'Supervisor');
 $saludoRol = isset($nombresTipo[(int)$usuario->tipoUsuarioId]) ? $nombresTipo[(int)$usuario->tipoUsuarioId] : 'Usuario';
-$saludoAlcance = empty($usuario->sedeId) ? 'todas las sedes' : 'tu sede';
+$saludoAlcance = in_array((int)$usuario->tipoUsuarioId, array(1, 2), true) ? 'todas las sedes' : 'tus sedes';   // Supervisor/Usuario: el JS pone los nombres
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261174";
+$version = "20261175";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,7 +59,7 @@ $version = "20261174";
       <div>
         <div class="ar-crumb">ARGOS › OEA México</div>
         <h1>Hola, <?php echo htmlspecialchars(trim(explode(' ', trim($usuario->nombre))[0]), ENT_QUOTES, 'UTF-8'); ?> 👋</h1>
-        <p id="totalBandeja"><?php echo htmlspecialchars($saludoRol . ' · ' . $saludoAlcance, ENT_QUOTES, 'UTF-8'); ?> · esto es lo que necesita tu atención hoy</p>
+        <p id="totalBandeja"><?php echo htmlspecialchars($saludoRol, ENT_QUOTES, 'UTF-8'); ?> · <span id="alcanceBandeja"><?php echo htmlspecialchars($saludoAlcance, ENT_QUOTES, 'UTF-8'); ?></span> · esto es lo que necesita tu atención hoy</p>
       </div>
     </div>
 
