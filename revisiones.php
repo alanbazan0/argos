@@ -54,7 +54,7 @@ $version = "20261170";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Revisiones del Comité</h1>
         <p>Ciclo anual de revisión del Comité de Seguridad. Al aprobarse queda una fotografía del avance de acciones.</p>
       </div>

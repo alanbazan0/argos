@@ -54,7 +54,7 @@ $version = "20261170";
 
     <div class="ar-page-hd ar-sin-imprimir">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Reporte</h1>
         <p>Elige las secciones y usa «Imprimir» para guardarlo como PDF.</p>
       </div>

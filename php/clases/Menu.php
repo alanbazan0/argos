@@ -27,7 +27,7 @@ class Menu
             "titulo" => "OEA México",
             "inicio" => "panel.php",
             "secciones" => array(
-                "Análisis OEA" => array(
+                "Análisis de riesgo OEA" => array(
                     array("Mi bandeja",           "bandeja.php",              "fa-inbox",              null),
                     array("Tablero",              "tablero.php",              "fa-th-large",           null),
                     array("Registro de riesgos",  "riesgos.php",              "fa-list-alt",           null),

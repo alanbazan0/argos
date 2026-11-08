@@ -54,7 +54,7 @@ $version = "20261170";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Modo taller</h1>
         <p>Captura como en el taller: primero identifica los riesgos en la tabla; después evalúalos uno por uno.</p>
       </div>

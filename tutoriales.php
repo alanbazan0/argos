@@ -54,7 +54,7 @@ $version = "20261170";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Tutoriales</h1>
         <p>Videos cortos por estándar y subestándar. <span id="resumenTutoriales"></span></p>
       </div>

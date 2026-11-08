@@ -54,7 +54,7 @@ $version = "20261170";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Importar desde Excel</h1>
         <p>Carga la identificación de riesgos que ya tienes en Excel. Nada se guarda hasta que confirmes.</p>
       </div>

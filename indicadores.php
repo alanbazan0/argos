@@ -54,7 +54,7 @@ $version = "20261170";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis OEA</div>
+        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Indicadores</h1>
         <p>Cumplimiento del plan de acción y exposición al riesgo. <span id="periodoTexto"></span></p>
       </div>
