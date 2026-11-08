@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261170";
+$version = "20261173";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,7 +62,7 @@ $version = "20261170";
     </div>
 
     <section class="ar-main-contenido">
-      <div class="ar-grid ar-g4" id="kpisTablero">
+      <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisTablero">
         <div class="ar-card ar-kpi"><div class="ar-n" id="kpiActivos">0</div><div class="ar-l">Riesgos activos</div><div class="ar-t" id="kpiActivosNota"></div></div>
         <div class="ar-card ar-kpi"><div class="ar-n" id="kpiNivel12" style="color:var(--ar-l1)">0</div><div class="ar-l">Activos en nivel 1–2</div><div class="ar-t" style="color:var(--ar-l1)">plazo máximo 3 meses</div></div>
         <div class="ar-card ar-kpi"><div class="ar-n" id="kpiVencidas" style="color:var(--ar-red)">0</div><div class="ar-l">Acciones vencidas</div><div class="ar-t" id="kpiVencidasNota"></div></div>

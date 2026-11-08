@@ -86,6 +86,7 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-card .ar-sub{font-size:11.5px;color:var(--ar-muted);margin-bottom:14px}
 .ar-grid{display:grid;gap:16px}
 .ar-g4{grid-template-columns:repeat(4,1fr)}
+.ar-grid-kpis{margin-bottom:16px}   /* las tarjetas KPI no llevan margen propio: el espacio hacia lo siguiente es el mismo que entre tarjetas */
 .ar-g3{grid-template-columns:repeat(3,1fr)}
 .ar-g2{grid-template-columns:1fr 1fr}
 .ar-g32{grid-template-columns:1.25fr 1fr}

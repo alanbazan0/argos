@@ -12,7 +12,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Panel de control";
 $archivo = "panel.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261170";
+$version = "20261173";
 // El menú está en desarrollo: se libera de forma parcial (ver Aplicacion::puedeVerMenu).
 $menuCompleto = $aplicacion->puedeVerMenu($usuario);
 // Mi bandeja es la pantalla de inicio de todos los usuarios con permiso (ya liberada).

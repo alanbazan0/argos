@@ -22,7 +22,7 @@ $saludoRol = isset($nombresTipo[(int)$usuario->tipoUsuarioId]) ? $nombresTipo[(i
 $saludoAlcance = empty($usuario->sedeId) ? 'todas las sedes' : 'tu sede';
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261172";
+$version = "20261173";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -65,7 +65,7 @@ $version = "20261172";
 
     <section class="ar-main-contenido">
       <div class="ar-callout" id="avisoSinEvaluar" hidden></div>
-      <div class="ar-grid ar-g4">
+      <div class="ar-grid ar-g4 ar-grid-kpis">
         <div class="ar-card ar-kpi"><div class="ar-n" id="contVencidas" style="color:var(--ar-red)">0</div><div class="ar-l">Acciones vencidas</div></div>
         <div class="ar-card ar-kpi"><div class="ar-n" id="contVencen" style="color:var(--ar-orange-dk)">0</div><div class="ar-l">Vencen en los próximos 30 días</div></div>
         <div class="ar-card ar-kpi"><div class="ar-n" id="contSinActualizar" style="color:#6B4E9B">0</div><div class="ar-l">Sin actualizar en más de 30 días</div></div>

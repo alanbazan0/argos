@@ -32,7 +32,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plantilla";
 $archivo = "plantilla.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261170";
+$version = "20261173";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,7 +81,7 @@ $version = "20261170";
     <section class="ar-main-contenido">
 
       <!-- Indicadores rápidos -->
-      <div class="ar-grid ar-g4">
+      <div class="ar-grid ar-g4 ar-grid-kpis">
         <div class="ar-card ar-kpi"><div class="ar-n">128</div><div class="ar-l">Riesgos activos</div><div class="ar-t">+4 este mes</div></div>
         <div class="ar-card ar-kpi"><div class="ar-n">17</div><div class="ar-l">Acciones vencidas</div><div class="ar-t">3 por validar</div></div>
         <div class="ar-card ar-kpi"><div class="ar-n">9</div><div class="ar-l">Sin evaluar</div><div class="ar-t">en tus sedes</div></div>

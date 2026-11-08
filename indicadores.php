@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Indicadores";
 $archivo = "indicadores.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261170";
+$version = "20261173";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -62,7 +62,7 @@ $version = "20261170";
     </div>
 
     <section class="ar-main-contenido">
-      <div class="ar-grid ar-g4" id="kpisIndicadores">
+      <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisIndicadores">
         <div class="ar-card ar-kpi"><div class="ar-n" id="kpiGeneral">—</div><div class="ar-l">Cumplimiento general</div><div class="ar-t" id="kpiGeneralNota"></div></div>
         <div class="ar-card ar-kpi"><div class="ar-n" id="kpiSede">—</div><div class="ar-l">Sede con menor cumplimiento</div><div class="ar-t" id="kpiSedeNota"></div></div>
         <div class="ar-card ar-kpi"><div class="ar-n" id="kpiUsuario">—</div><div class="ar-l">Usuario con menor cumplimiento</div><div class="ar-t" id="kpiUsuarioNota"></div></div>
