@@ -22,7 +22,7 @@ $saludoRol = isset($nombresTipo[(int)$usuario->tipoUsuarioId]) ? $nombresTipo[(i
 $saludoAlcance = in_array((int)$usuario->tipoUsuarioId, array(1, 2), true) ? 'todas las sedes' : 'tus sedes';   // Supervisor/Usuario: el JS pone los nombres
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261175";
+$version = "20261176";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,9 +75,11 @@ $version = "20261175";
       <div class="ar-card ar-mi-cumplimiento" id="miCumplimiento" hidden></div>
 
       <div class="ar-card">
-        <h3>Acciones por atender</h3>
-        <div class="ar-sub">Ordenadas por urgencia: vencidas, vencen pronto, sin actualizar y en tiempo.</div>
-        <div class="ar-tabla-scroll">
+        <div class="ar-mc-cab">
+          <div><h3>Acciones por atender</h3><div class="ar-sub">Ordenadas por urgencia: vencidas, vencen pronto, sin actualizar y en tiempo.</div></div>
+          <a href="acciones.php" class="ar-mc-enlace">Ver todas las acciones →</a>
+        </div>
+        <div class="ar-tabla-scroll ar-tabla-pendientes">
           <table class="ar-tabla" id="tablaPendientes">
             <thead><tr><th>Urgencia</th><th>Riesgo</th><th>Acción / Riesgo</th><th>Fecha compromiso</th><th>Estado</th><th></th></tr></thead>
             <tbody></tbody>

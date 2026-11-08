@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261173";
+$version = "20261176";
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Parámetros del análisis";
 $archivo = "ctpat_parametros.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261173";
+$version = "20261176";
 ?>
 <!DOCTYPE html>
 <html lang="es">
