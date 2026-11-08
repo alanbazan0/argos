@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Reportes consolidados";
 $archivo = "ctpat_reportes.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261145";
+$version = "20261170";
 ?>
 <!DOCTYPE html>
 <html lang="es">
