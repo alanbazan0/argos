@@ -22,7 +22,7 @@ $saludoRol = isset($nombresTipo[(int)$usuario->tipoUsuarioId]) ? $nombresTipo[(i
 $saludoAlcance = empty($usuario->sedeId) ? 'todas las sedes' : 'tu sede';
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261173";
+$version = "20261174";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -79,7 +79,7 @@ $version = "20261173";
         <div class="ar-sub">Ordenadas por urgencia: vencidas, vencen pronto, sin actualizar y en tiempo.</div>
         <div class="ar-tabla-scroll">
           <table class="ar-tabla" id="tablaPendientes">
-            <thead><tr><th>Urgencia</th><th>Riesgo</th><th>Acción</th><th>Fecha compromiso</th><th>Estado</th><th></th></tr></thead>
+            <thead><tr><th>Urgencia</th><th>Riesgo</th><th>Acción / Riesgo</th><th>Fecha compromiso</th><th>Estado</th><th></th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
