@@ -17,9 +17,12 @@ $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Mi bandeja";
+$nombresTipo = array(1 => 'Administrador', 2 => 'Coordinador', 5 => 'Supervisor');
+$saludoRol = isset($nombresTipo[(int)$usuario->tipoUsuarioId]) ? $nombresTipo[(int)$usuario->tipoUsuarioId] : 'Usuario';
+$saludoAlcance = empty($usuario->sedeId) ? 'todas las sedes' : 'tu sede';
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261170";
+$version = "20261171";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,9 +57,9 @@ $version = "20261170";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
-        <h1>Mi bandeja</h1>
-        <p id="totalBandeja">Cargando…</p>
+        <div class="ar-crumb">ARGOS › OEA México</div>
+        <h1>Hola, <?php echo htmlspecialchars(trim(explode(' ', trim($usuario->nombre))[0]), ENT_QUOTES, 'UTF-8'); ?> 👋</h1>
+        <p id="totalBandeja"><?php echo htmlspecialchars($saludoRol . ' · ' . $saludoAlcance, ENT_QUOTES, 'UTF-8'); ?> · esto es lo que necesita tu atención hoy</p>
       </div>
     </div>
 
