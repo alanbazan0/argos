@@ -16,10 +16,10 @@ if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
 $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
-$titulo = "Preguntas críticas";
+$titulo = "Tipos de socio y cuestionarios";
 $archivo = "ctpat_tipos_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261177";
+$version = "20261178";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,7 +41,7 @@ $version = "20261177";
   <link rel="stylesheet" href="<?php echo getHandelAPI()?>/lib/toastr/toastr.min.css">
   <link rel="stylesheet" href="css/argos.css?v=<?php echo $version; ?>">
 </head>
-<body class="ar-app" data-pantalla="criticas" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
+<body class="ar-app" data-pantalla="catalogo" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
 <?php $menu->renderizarBarraSuperior($usuario, true, $modulo); ?>
 
@@ -52,11 +52,14 @@ $version = "20261177";
 
   <main class="ar-main">
 
-    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Tipos de socio y cuestionarios</h1><p>Marca o desmarca las preguntas críticas (solo las Debe). Cambiar una crítica recalcula los ejercicios abiertos.</p></div></div>
+    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Tipos de socio y cuestionarios</h1><p>Catálogo global de Händel; solo el Administrador Händel lo edita</p></div>
+      <button type="button" class="btn btn-default" disabled title="Próximamente: alta de tipos de socio"><i class="fa fa-plus"></i> Nuevo tipo de socio</button></div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card"><form class="ar-filtros" onsubmit="return false;"><select id="cuestionarioSelect" class="form-control" aria-label="Cuestionario"></select><select id="estandarSelect" class="form-control" aria-label="Estándar"></select></form>
-        <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaCriticas"><thead><tr><th>Est.</th><th>Criterio</th><th>Tipo</th><th>Pregunta</th><th>Crítica</th></tr></thead><tbody></tbody></table></div></div>
+      <div class="ar-catalogo">
+        <div class="ar-card ar-catalogo-tipos" id="catalogoTipos"></div>
+        <div class="ar-card" id="catalogoDetalle"></div>
+      </div>
     </section>
 
     <?php $menu->renderizarFooter(); ?>

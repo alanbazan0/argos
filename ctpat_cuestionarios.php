@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Cuestionarios";
 $archivo = "ctpat_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261177";
+$version = "20261178";
 ?>
 <!DOCTYPE html>
 <html lang="es">

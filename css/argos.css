@@ -413,3 +413,24 @@ a.ar-kpi-enlace:hover{box-shadow:var(--ar-sh-lg)}
 .ar-exp-desc{display:block;font-size:11.5px;color:var(--ar-muted);margin-top:4px}
 .ar-exp-cajas label{margin-right:14px;font-weight:400}
 @media (max-width:700px){.ar-exp-tarjetas{grid-template-columns:1fr}}
+
+/* CTPAT · Tipos de socio y cuestionarios (catálogo: lista a la izquierda, cuestionario a la derecha) */
+.ar-catalogo{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:start}
+.ar-catalogo-tipos{padding:8px}
+.ar-tipo-cuestionario{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer}
+.ar-tipo-cuestionario:hover{background:var(--ar-bg)}
+.ar-tipo-cuestionario.ar-activo{background:var(--ar-green-lt,#E8F3DC)}
+.ar-tipo-icono{font-size:18px}
+.ar-tipo-nombre{font-weight:600;color:var(--ar-ink)}
+.ar-tipo-acciones{white-space:nowrap}
+.ar-chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 6px}
+.ar-chip{display:inline-block;border:1px solid var(--ar-bd);border-radius:12px;padding:1px 9px;font-size:11.5px;color:var(--ar-ink);background:#fff}
+.ar-chip-debe{background:var(--ar-ink);color:#fff;border-color:var(--ar-ink)}
+.ar-chip-critica{background:#FDECEC;color:var(--ar-red);border-color:#F3C4C2}
+details.ar-estandar{border:1px solid var(--ar-bd);border-radius:10px;margin-top:10px;background:#fff}
+details.ar-estandar>summary{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;cursor:pointer;list-style:none}
+details.ar-estandar>summary::-webkit-details-marker{display:none}
+details.ar-estandar[open]>summary{border-bottom:1px solid var(--ar-bd)}
+details.ar-estandar .ar-tabla-scroll{padding:0 8px 8px}
+tr.ar-fila-critica td{background:#FFF7F6}
+@media (max-width:900px){.ar-catalogo{grid-template-columns:1fr}}
