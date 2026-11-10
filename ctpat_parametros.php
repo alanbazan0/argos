@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Parámetros del análisis";
 $archivo = "ctpat_parametros.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261176";
+$version = "20261177";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,17 +51,14 @@ $version = "20261176";
 
   <main class="ar-main">
 
-    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Parámetros del análisis</h1><p>Globales para todos los clientes. Cada cambio pide motivo y queda con usuario y fecha; aplica a ejercicios que se inicien después.</p></div></div>
+    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Parámetros del análisis</h1><p>Valores globales que usa ARGOS en todos los ejercicios CTPAT · solo el Administrador Händel los cambia. Cada cambio pide motivo y queda con usuario y fecha; aplica a los ejercicios que se inicien después.</p></div></div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaParametros"><thead><tr><th>Parámetro</th><th>Valor</th><th></th></tr></thead><tbody></tbody></table></div></div>
-      <div class="ar-card"><h3>Historial de cambios</h3><ul class="ar-lista" id="historialLista"></ul></div>
+      <div class="ar-grid ar-g32">
+        <div class="ar-card" id="parametrosForm"></div>
+        <div class="ar-card"><h3>Historial de cambios</h3><ul class="ar-lista" id="historialLista"></ul></div>
+      </div>
     </section>
-    <div class="modal fade" id="motivoModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
-      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Motivo del cambio</h4></div>
-      <div class="modal-body"><textarea id="motivoParametro" class="form-control" rows="3" maxlength="500"></textarea></div>
-      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="confirmarMotivoBoton">Guardar</button></div>
-    </div></div></div>
 
     <?php $menu->renderizarFooter(); ?>
   </main>

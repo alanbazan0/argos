@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Cadenas y socios";
 $archivo = "ctpat_socios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261176";
+$version = "20261177";
 ?>
 <!DOCTYPE html>
 <html lang="es">
