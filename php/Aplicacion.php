@@ -33,12 +33,12 @@ class Aplicacion
     }
 
     /**
-     * TEMPORAL: el menú de ARGOS está en desarrollo y se libera de forma parcial; por ahora solo lo ve esta cuenta.
-     * Los demás usuarios con permiso entran al panel pero sin menú. Ampliar la lista (o quitar la regla) al liberarlo.
+     * El menú completo (incluido CTPAT) está liberado para todos con permiso de ARGOS.
      */
     public function puedeVerMenu($usuario)
     {
-        return in_array(strtolower(trim($usuario->nombreUsuario)), array("alanbazan@hotmail.com"));
+        // CTPAT liberado el 2026-11-10 para todos con permiso de ARGOS. Para restringirlo otra vez, volver a una lista de correos.
+        return $this->tienePermiso($usuario);
     }
     
     /**
