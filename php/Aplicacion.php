@@ -33,12 +33,12 @@ class Aplicacion
     }
 
     /**
-     * El menú completo (incluido CTPAT) está liberado para todos con permiso de ARGOS.
+     * TEMPORAL: el menú de ARGOS está en desarrollo y se libera de forma parcial; por ahora solo lo ve esta cuenta.
+     * Los demás usuarios con permiso entran al panel pero sin menú. Ampliar la lista (o quitar la regla) al liberarlo.
      */
     public function puedeVerMenu($usuario)
     {
-        // CTPAT liberado el 2026-11-10 para todos con permiso de ARGOS. Para restringirlo otra vez, volver a una lista de correos.
-        return $this->tienePermiso($usuario);
+        return in_array(strtolower(trim($usuario->nombreUsuario)), array("alanbazan@hotmail.com"));
     }
     
     /**
@@ -59,7 +59,7 @@ class Aplicacion
     /** Pantallas liberadas para todos con permiso (el resto del menú sigue en puedeVerMenu). */
     public static function archivosLiberados()
     {
-        return array("bandeja.php", "tablero.php", "riesgos.php", "taller.php", "importar.php", "acciones.php", "indicadores.php", "revisiones.php", "tutoriales.php", "configuracion_calibracion.php");
+        return array("bandeja.php", "tablero.php", "riesgos.php", "taller.php", "importar.php", "acciones.php", "indicadores.php", "revisiones.php", "tutoriales.php", "configuracion_calibracion.php", "ctpat_parametros.php");
     }
 
     /**

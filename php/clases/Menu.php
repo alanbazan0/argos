@@ -112,7 +112,7 @@ class Menu
         $html .= "<div class='ar-empresa'><i class='fa fa-building-o'></i> <span>$empresa</span></div>";
         // Selector OEA/CTPAT para todos; a quien solo tiene opciones liberadas, CTPAT se le muestra apagado («próx.») hasta liberarlo
         if($conMenu)
-            $html .= $this->renderizarSelectorModulo($modulo);
+            $html .= $this->renderizarSelectorModulo($modulo, $usuario);
         // «Ver como»: solo para el Administrador de la sesión real (el servidor lo vuelve a validar)
         $real = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
         if(is_object($real) && isset($real->tipoUsuarioId) && (int)$real->tipoUsuarioId === 1)
@@ -130,8 +130,18 @@ class Menu
         echo $html;
     }
 
+    /** Primera pantalla del modulo que esta liberada (soloArchivos), o null si ninguna. */
+    private function primeraLiberada($modulo, $usuario)
+    {
+        foreach($modulo["secciones"] as $items)
+            foreach($items as $item)
+                if(in_array($item[1], $this->soloArchivos, true) && $this->existe($item[1]) && ($item[3] === null || in_array($usuario->tipoUsuarioId, $item[3])))
+                    return $item[1];
+        return null;
+    }
+
     /** Selector OEA / CTPAT. El modulo cuya pagina de inicio aun no existe se muestra apagado ("próx."). */
-    private function renderizarSelectorModulo($actual)
+    private function renderizarSelectorModulo($actual, $usuario)
     {
         $html = "<div class='ar-modulos' role='tablist'>";
         foreach($this->modulos as $clave => $modulo)
@@ -139,7 +149,9 @@ class Menu
             $titulo = htmlspecialchars($modulo["titulo"], ENT_QUOTES, 'UTF-8');
             if($clave == $actual)
                 $html .= "<span class='ar-mod ar-on' role='tab' aria-selected='true'>$titulo</span>";
-            else if($this->existe($modulo["inicio"]) && !($this->soloArchivos !== null && $clave != "oea"))
+            else if($this->soloArchivos !== null && $this->primeraLiberada($modulo, $usuario) !== null)
+                $html .= "<a class='ar-mod' role='tab' href='" . $this->primeraLiberada($modulo, $usuario) . "'>$titulo</a>";   // solo algunas pantallas liberadas: entra por la primera
+            else if($this->existe($modulo["inicio"]) && $this->soloArchivos === null)
                 $html .= "<a class='ar-mod' role='tab' href='" . $modulo["inicio"] . "'>$titulo</a>";
             else
                 $html .= "<span class='ar-mod ar-off' role='tab' title='En desarrollo'>$titulo<em>próx.</em></span>";
