@@ -434,3 +434,16 @@ details.ar-estandar[open]>summary{border-bottom:1px solid var(--ar-bd)}
 details.ar-estandar .ar-tabla-scroll{padding:0 8px 8px}
 tr.ar-fila-critica td{background:#FFF7F6}
 @media (max-width:900px){.ar-catalogo{grid-template-columns:1fr}}
+
+/* CTPAT · plantillas de correo: vista previa del correo */
+.ar-mprev{border:1px solid var(--ar-bd);border-radius:10px;overflow:hidden;background:var(--ar-bg)}
+.ar-mhead{background:#fff;padding:10px 14px;font-size:12.5px;border-bottom:1px solid var(--ar-bd);line-height:1.7}
+.ar-mbody{background:#fff;margin:14px;border-radius:8px;padding:20px 24px;font-size:13.5px;line-height:1.6;box-shadow:0 1px 4px rgba(7,26,64,.08)}
+.ar-mbody p{margin:0 0 10px}
+.ar-mlogo{border-bottom:2px solid var(--ar-ink);padding-bottom:10px;margin-bottom:14px}
+.ar-mlogo img{height:30px}
+.ar-mbtn{display:inline-block;background:var(--ar-orange);color:var(--ar-ink);font-weight:700;padding:10px 20px;border-radius:8px}
+.ar-mfoot{border-top:1px solid var(--ar-bd);margin-top:16px;padding-top:10px;font-size:11px;color:var(--ar-muted)}
+.ar-vchips{display:flex;flex-wrap:wrap;gap:4px}
+.ar-vchips .ar-chip{cursor:pointer;font-family:monospace;font-size:11px}
+.ar-vchips .ar-chip:hover{background:var(--ar-ink);color:#fff}

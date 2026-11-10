@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Reportes consolidados";
 $archivo = "ctpat_reportes.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261179";
+$version = "20261180";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,7 +41,7 @@ $version = "20261179";
   <link rel="stylesheet" href="<?php echo getHandelAPI()?>/lib/toastr/toastr.min.css">
   <link rel="stylesheet" href="css/argos.css?v=<?php echo $version; ?>">
 </head>
-<body class="ar-app" data-pantalla="reportes" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
+<body class="ar-app" data-pantalla="reportesGlobal" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
 <?php $menu->renderizarBarraSuperior($usuario, true, $modulo); ?>
 
@@ -51,19 +52,27 @@ $version = "20261179";
 
   <main class="ar-main">
 
-    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Reportes consolidados</h1><p>Documento consolidado que el cliente presenta en su renovación. Solo enlaces https de OneDrive o SharePoint: ARGOS guarda el enlace, no el archivo.</p></div></div>
+    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Reportes consolidados</h1><p>Enlace de OneDrive al documento consolidado del análisis de riesgo que cada cliente presenta en su renovación · solo consultores Händel</p></div></div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card" id="nuevoReporte" hidden>
-        <h3>Agregar documento</h3>
-        <div class="row"><div class="col-sm-8 form-group"><label for="reporteUrl">Enlace</label><input type="url" id="reporteUrl" class="form-control" placeholder="https://…sharepoint.com/…"></div>
-        <div class="col-sm-4 form-group"><label for="reporteEjercicio">Ejercicio</label><select id="reporteEjercicio" class="form-control"></select></div></div>
-        <div class="form-group"><label for="reporteNota">Nota</label><input type="text" id="reporteNota" class="form-control" maxlength="500"></div>
-        <label class="checkbox-inline"><input type="checkbox" id="reporteVisible"> Visible para el cliente (tarjeta «Ver documento» en su Resumen)</label>
-        <div style="margin-top:10px"><button type="button" class="btn btn-success" id="guardarReporteBoton">Guardar</button></div>
-      </div>
-      <div class="ar-card"><ul class="ar-lista" id="reportesLista"></ul></div>
+      <form class="ar-filtros" onsubmit="return false;">
+        <select id="reportesEmpresa" class="form-control" aria-label="Empresa" style="width:auto"></select>
+        <div class="btn-group" id="reportesSegmento"></div>
+      </form>
+      <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla" id="reportesGlobalTabla"><thead><tr><th>Empresa</th><th>Análisis de riesgo</th><th>Estado</th><th>Reporte consolidado</th><th class="text-center">Visible para el cliente</th><th style="width:200px"></th></tr></thead><tbody></tbody></table></div></div>
     </section>
+
+    <div class="modal fade" id="reporteModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title"><i class="fa fa-paperclip"></i> Reporte consolidado</h4></div>
+      <div class="modal-body">
+        <dl class="dl-horizontal" id="reporteDatos"></dl>
+        <div class="form-group"><label for="reporteUrlInput">URL del reporte (OneDrive o SharePoint) <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="En OneDrive: clic derecho en el archivo › Compartir › Copiar vínculo. Comparte con «cualquier persona con el vínculo» o con los usuarios del cliente."></i></label>
+          <input id="reporteUrlInput" class="form-control" maxlength="500" placeholder="https://…sharepoint.com/… o https://1drv.ms/…"><div class="text-danger" id="reporteUrlError" style="margin-top:4px"></div></div>
+        <div class="form-group"><label for="reporteNotaInput">Nota <small class="text-muted">(opcional, la ve el cliente)</small></label><input id="reporteNotaInput" class="form-control" maxlength="500" placeholder="Ej. Versión presentada en la renovación 2026"></div>
+        <label class="checkbox-inline"><input type="checkbox" id="reporteVisibleCheck"> Visible para el cliente en su Resumen</label>
+      </div>
+      <div class="modal-footer"><a class="btn btn-default pull-left" id="reporteProbar" href="#" target="_blank" rel="noopener noreferrer">Probar enlace</a><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarReporteUrlBoton">Guardar</button></div>
+    </div></div></div>
 
     <?php $menu->renderizarFooter(); ?>
   </main>
