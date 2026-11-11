@@ -91,7 +91,7 @@ $version = "20261183";
           <div class="ar-callout" id="aprobarAviso" hidden></div>
           <div class="form-group"><label for="fechaAprobacionInput">Fecha de aprobación</label><input type="date" class="form-control" id="fechaAprobacionInput" required></div>
           <div class="form-group"><label>Participantes del Comité</label><div id="participantesLista" class="ar-participantes"></div></div>
-          <div class="form-group"><label for="actaInput">Acta (enlace, opcional)</label><input type="url" class="form-control" id="actaInput" placeholder="https://"></div>
+          <div class="form-group"><label for="actaInput">Acta (enlace, opcional)</label><input type="url" class="form-control" id="actaInput" placeholder="https://onedrive.live.com/…/Acta_Comite_<?php echo date('Y'); ?>.pdf"></div>
           <div class="form-group"><label for="notaInput">Nota (opcional)</label><textarea class="form-control" id="notaInput" rows="2" maxlength="2000" placeholder="Ej. Se agregaron riesgos de llaves y de sellos; bajaron 3 riesgos"></textarea></div>
           <div class="ar-callout">Al aprobar se guarda la fotografía del avance de acciones y la revisión ya no se podrá modificar.</div>
         </div>

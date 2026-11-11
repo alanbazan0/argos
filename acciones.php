@@ -147,7 +147,7 @@ $version = "20261183";
               <div class="col-sm-3 form-group" id="avanceGrupo" hidden><label for="avancePublicacion">Avance (1–99 %)</label><input type="number" min="1" max="99" id="avancePublicacion" class="form-control" placeholder="% avance"></div>
             </div>
             <div class="form-group"><label for="textoPublicacion">Publicación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Menciona a alguien con @Nombre Apellido para avisarle."></i></label><textarea id="textoPublicacion" class="form-control" rows="2" maxlength="4000" placeholder="¿Qué se hizo? Describe el avance, el problema o el cierre… Usa @Nombre Apellido para mencionar a alguien."></textarea></div>
-            <div class="form-group"><label for="enlacePublicacion">Enlace de la evidencia (opcional)</label><input type="url" id="enlacePublicacion" class="form-control" maxlength="500" placeholder="https://…"></div>
+            <div class="form-group"><label for="enlacePublicacion">Enlace de la evidencia (opcional)</label><input type="url" id="enlacePublicacion" class="form-control" maxlength="500" placeholder="🔗 Enlace a evidencia (opcional)"></div>
             <button type="button" class="btn btn-primary" id="publicarButton">Publicar</button>
           </form>
         </div>

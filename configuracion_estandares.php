@@ -100,7 +100,7 @@ $version = "20261183";
     <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="catalogoTitulo"></h4></div>
     <div class="modal-body">
       <div class="form-group"><label for="catNombre">Nombre</label><input type="text" class="form-control" id="catNombre" maxlength="250" placeholder="Ej. Riesgos de ruta"></div>
-      <div class="form-group"><label for="catVideo">Enlace del video de YouTube (opcional)</label><input type="url" class="form-control" id="catVideo" placeholder="https://youtu.be/..."></div>
+      <div class="form-group"><label for="catVideo">Enlace del video de YouTube (opcional)</label><input type="url" class="form-control" id="catVideo" placeholder="https://youtu.be/…"></div>
       <div class="checkbox" id="catActivoGrupo"><label><input type="checkbox" id="catActivo"> Activo (un subestándar con riesgos no se borra: se desactiva)</label></div>
       <div class="ar-callout">Cambiar un nombre no cambia el item de los riesgos ya registrados. El código de los nuevos lo asigna el sistema.</div>
     </div>

@@ -68,7 +68,7 @@ $version = "20261183";
     <section class="ar-main-contenido">
       <div class="ar-card">
         <form id="filtrosForm" class="ar-filtros" onsubmit="return false;">
-          <input type="text" class="form-control" id="textoFiltro" placeholder="Buscar situación, riesgo o item">
+          <input type="text" class="form-control" id="textoFiltro" placeholder="🔎 Buscar situación, riesgo o item…">
           <select class="form-control" id="subestandarFiltro" aria-label="Subestándar"></select>
           <select class="form-control" id="departamentoFiltro" aria-label="Departamento"></select>
           <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
@@ -145,7 +145,7 @@ $version = "20261183";
             </div>
             <div class="row">
               <div class="col-sm-4 form-group"><label for="deteccionInput">¿Cómo detectamos este riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cómo nos daríamos cuenta de que el riesgo se está presentando? Ej. recorridos, auditorías, CCTV, reportes del monitorista."></i></label><input type="text" id="deteccionInput" class="form-control" maxlength="300" placeholder="Ej. Recorridos, auditorías, CCTV"></div>
-              <div class="col-sm-4 form-group"><label for="controlesInput">Controles actuales <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Lo que la empresa ya tiene para atacar este riesgo: procedimientos, políticas, ayudas visuales, equipo, capacitación."></i></label><textarea id="controlesInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Señalamientos, procedimiento, rondines"></textarea></div>
+              <div class="col-sm-4 form-group"><label for="controlesInput">Controles actuales <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Lo que la empresa ya tiene para atacar este riesgo: procedimientos, políticas, ayudas visuales, equipo, capacitación."></i></label><textarea id="controlesInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Señalamientos, procedimiento"></textarea></div>
               <div class="col-sm-2 form-group"><label for="eficaciaSelect">Eficacia <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Efectivo: el control funciona y hay evidencia. Parcial: existe pero no siempre se cumple. Inexistente: no hay control."></i></label><select id="eficaciaSelect" class="form-control"></select></div>
               <div class="col-sm-2 form-group"><label for="incidentesInput">Incidentes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Número de veces que el evento ocurrió en los últimos 12 meses. Ayuda a justificar la probabilidad."></i></label><input type="number" min="0" id="incidentesInput" class="form-control" placeholder="0"></div>
             </div>
@@ -201,7 +201,7 @@ $version = "20261183";
               <div class="col-sm-4 form-group" id="bitEstadoGrupo"><label for="bitEstado">Estado de la acción</label>
                 <select id="bitEstado" class="form-control"><option value="">Sin cambio</option><option>Pendiente</option><option>En proceso</option><option>Completada</option></select></div>
               <div class="col-sm-3 form-group" id="bitAvanceGrupo"><label for="bitAvance">Avance %</label><input type="number" id="bitAvance" class="form-control" min="0" max="100" placeholder="% avance"></div>
-              <div class="col-sm-5 form-group"><label for="bitEnlace">Enlace de evidencia (opcional)</label><input type="url" id="bitEnlace" class="form-control" placeholder="https://…"></div>
+              <div class="col-sm-5 form-group"><label for="bitEnlace">Enlace de evidencia (opcional)</label><input type="url" id="bitEnlace" class="form-control" placeholder="🔗 Enlace a evidencia (opcional)"></div>
             </div>
             <div class="form-group"><label for="bitTexto">Publicación (usa @nombre para mencionar a alguien)</label><textarea id="bitTexto" class="form-control" rows="2" maxlength="4000" placeholder="¿Qué se hizo? Describe el avance, el problema o el cierre… Usa @Nombre Apellido para mencionar a alguien."></textarea></div>
             <button type="button" class="btn btn-primary btn-sm" id="bitPublicar"><i class="fa fa-paper-plane"></i> Publicar</button>
@@ -257,9 +257,9 @@ $version = "20261183";
               <div class="col-sm-4 form-group"><label for="tratamientoSelect">Tratamiento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Mitigar: reducir probabilidad o consecuencia. Evitar: dejar de hacer la actividad. Transferir: pasar el riesgo a un tercero (seguro, contrato). Aceptar: solo en niveles 5 y 6, con justificación."></i></label>
                 <select id="tratamientoSelect" class="form-control"><option value="">Sin definir</option><option>Mitigar</option><option>Evitar</option><option>Transferir</option><option>Aceptar</option></select></div>
             </div>
-            <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionInput">Justificación de la aceptación</label><textarea id="justificacionInput" class="form-control" rows="2" maxlength="4000" placeholder="¿Por qué los controles actuales son suficientes?"></textarea></div>
+            <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionInput">Justificación para aceptar el riesgo</label><textarea id="justificacionInput" class="form-control" rows="2" maxlength="4000" placeholder="¿Por qué los controles actuales son suficientes?"></textarea></div>
           </div>
-          <div class="form-group"><label for="comentarioEvaluacion">Comentario (queda en la bitácora)</label><textarea id="comentarioEvaluacion" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Se revisó con el comité de seguridad"></textarea></div>
+          <div class="form-group"><label for="comentarioEvaluacion">Comentario <small class="text-muted">(se publica en la bitácora)</small></label><textarea id="comentarioEvaluacion" class="form-control" rows="2" maxlength="4000" placeholder="¿Qué cambió?"></textarea></div>
         </form>
       </div>
       <div class="modal-footer">
