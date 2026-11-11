@@ -2,6 +2,35 @@
 
 Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los planes de Servixia (C-00742); aquí va **lo que falta o está a medias** y lo que depende de una decisión.
 
+## Corte 2026-11-11: qué está liberado y qué falta (lista viva)
+
+**CTPAT liberado a Administradores** (el resto de usuarios lo ve «próx.»): Parámetros del análisis, Tipos de socio y cuestionarios (preguntas críticas), Acciones recomendadas, Plantillas de correo, Reportes consolidados, Resumen, Cadenas y socios (paso 1) y Cuestionarios. Mecanismo: `Aplicacion::archivosLiberados` + endpoints abiertos a Administradores; `LISTA_TEMPORAL` sigue con la cuenta de Alan para todo lo demás.
+
+**CTPAT por comparar con la maqueta y liberar (en este orden):** 2 · Amenazas · 3 · Vulnerabilidades · 4 · Plan de acción (y `seguimiento.php` del socio) · 5 · Procedimiento y expediente · Evolución · Biblioteca de amenazas · Guías de uso y videos.
+
+**CTPAT: funciones que faltan**
+- Edición de cuestionarios por versiones (Duplicar, Editar nueva versión, Nuevo tipo de socio, importar desde Excel); hoy los botones están apagados (R-00124).
+- Reutilizar respuestas por RFC ≤ 90 días (C-07); PDF de respuestas al socio; gráfica por estándar.
+- «Ajustar fecha límite» con motivo y socios agregados después de iniciar (misma fecha límite).
+- Alta de socio desde la etapa sin perder lo capturado; fusión y sugerencia de zonas parecidas; matriz de zonas con origen de cada evaluación.
+- Autoevaluación de la empresa y buenas prácticas como lista independiente (Vulnerabilidades); riesgo residual al verificar un estándar.
+- Exportar a PDF/Word con el formato exacto de los anexos A, C, D y E de CBP (hoy: impresión del navegador); exportar socios y flujo (anexo A) y «Exportar PDF» en Cadenas y socios; importar socios desde Excel.
+- Tarjeta «Ver documento» y guías ⓘ en cada pantalla del cliente; proteger los ejercicios cerrados de cambios de críticas (C-25).
+- `sistema_argos` por empresa (solo OEA, solo CTPAT o ambos).
+- Cuando haya correo/cron: envío de cuestionarios y recordatorios, aviso de no contestados («Contactar» en el Resumen), «Recordar a pendientes», avisos 60 días de biblioteca, correos de plan de acción y de procedimiento.
+
+**OEA: pendientes**
+- Capturar los enlaces de video de los tutoriales (Configuración › Estándares); sin video no aparece «▶ Ver tutorial» en el alta de riesgo.
+- Alta de riesgo con evaluación y primera acción dentro del mismo formulario (secciones 3 y 4 de la maqueta); hoy se evalúa aparte.
+- Revisar contra la maqueta, campo por campo, los formularios de bitácora, Revisiones, Taller y CTPAT que no se han comparado.
+- Avatares (ArgosAvatar) solo están en el Tablero: faltan en Acciones, Indicadores, Mi cumplimiento, bitácora y Revisiones.
+- Duplicado en el ranking de Mi cumplimiento («Alejandra De León» dos veces): revisar si son dos usuarios.
+- Mi bandeja usa siempre la empresa del usuario (sin selector de empresa).
+- Excel real de CMX (migración), validar pesos de Indicadores con un piloto, PDF generado en servidor (Dompdf) y «Administrador ARGOS» como permiso aparte (decisión del dueño).
+- Landing: «Agendar demo» sigue en Formspree.
+
+**Datos de ejemplo en producción (Garage systems, empresa 22):** OEA (sedes ficticias, usuarios sin acceso, 22 riesgos con 8 evaluaciones de cambio de nivel) y CTPAT (ejercicio 2026 en seguimiento, 9 socios, 2 cadenas, 6 zonas, 6+ cuestionarios con ~500 respuestas, amenazas, 4 acciones, procedimiento v1 en revisión, revisiones de vulnerabilidad, reporte consolidado). Scripts en `~/.config/handel/argos-ejemplo/` (`cargar.php`, `borrar.php`, `cargar_ctpat.php`, `agregar_cuestionarios_ctpat.php`, `agregar_pasos_ctpat.php`, `borrar_ctpat.php`). Borrar: `php borrar_ctpat.php 22` y luego `php borrar.php 22`. En local, borrar siempre después de probar: las pruebas cuentan filas.
+
 ## Orden acordado: los correos van al final (2026-11-05)
 
 Decisión del usuario: todo lo que dependa de correo y tareas programadas (avisos de la bandeja, recordatorios, envío de cuestionarios CTPAT, plantillas, resumen semanal, cierre mensual por cron, decisión #4) se deja **para el final**. Antes: liberar el resto de opciones, UAT y pendientes que no necesitan correo.
