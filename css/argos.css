@@ -543,3 +543,7 @@ tr.ar-fila-critica td{background:#FFF7F6}
 @media (max-width:900px){.ar-stepper{grid-template-columns:1fr 1fr}}
 .ar-stp-off{opacity:.6;cursor:default}.ar-stp-off:hover{box-shadow:none}
 .ar-pronto{font-style:normal;font-size:9px;background:var(--ar-orange-lt);color:#9A5200;padding:1px 6px;border-radius:10px;margin-left:4px;font-weight:600}
+
+/* Selector de ejercicio en el menú lateral de CTPAT */
+.ar-menu-select{width:calc(100% - 20px);margin:0 10px 8px;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-weight:600;font-size:13px}
+.ar-menu-select option{color:#14223D}

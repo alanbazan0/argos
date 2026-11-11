@@ -25,4 +25,35 @@ $(function () {
       }
     });
   }
+  // Menú de CTPAT: selector de ejercicio («2026 · en curso») y contador de cuestionarios por contestar (como la maqueta)
+  var cuest = $("a.ar-nav[href='ctpat_cuestionarios.php'], a.ar-nav[href='ctpat_resumen.php']");
+  if (cuest.length && typeof HANDEL_API !== 'undefined') {
+    var llamar = function (accion, criterios, fn) {
+      $.ajax({ url: HANDEL_API + '/php/repositorios/CtpatEjercicios.php', type: 'POST', data: { accion: accion, criteriosSeleccion: JSON.stringify(criterios || {}) },
+        success: function (r) { if (r && r.mensajeError === '') { fn(r.valor); } } });
+    };
+    llamar('consultar', {}, function (v) {
+      if (!v.ejercicios.length) { return; }
+      var guardado = null;
+      try { guardado = window.sessionStorage.getItem('ctpatEjercicioId'); } catch (e) {}
+      var actual = v.ejercicios.filter(function (x) { return String(x.id) === String(guardado); })[0] || v.ejercicios.filter(function (x) { return x.id === v.enCurso; })[0] || v.ejercicios[0];
+      var opciones = v.ejercicios.map(function (x) {
+        return '<option value="' + x.id + '"' + (x.id === actual.id ? ' selected' : '') + '>' + x.anio + ' · ' + (x.estado === 'cerrado' ? 'cerrado' : 'en curso') + '</option>';
+      }).join('');
+      var encabezado = $('.ar-sidebar .ar-seccion').filter(function () { return $(this).text().toLowerCase().indexOf('ejercicio ctpat') >= 0; }).first();
+      if (encabezado.length) {
+        encabezado.after('<select id="ctpatEjercicioMenu" class="ar-menu-select" title="Ejercicio CTPAT">' + opciones + '</select>');
+        $('#ctpatEjercicioMenu').on('change', function () {
+          try { window.sessionStorage.setItem('ctpatEjercicioId', this.value); } catch (e) {}
+          window.location.reload();
+        });
+      }
+      llamar('resumen', { ejercicioId: actual.id }, function (r) {
+        var faltan = r.detalle.socios.filter(function (x) { return x.estado !== 'ok'; }).length;
+        if (faltan > 0 && r.ejercicio.estado !== 'mapeo') {
+          $("a.ar-nav[href='ctpat_cuestionarios.php']").append("<span class='ar-ct' title='Cuestionarios por contestar'>" + faltan + "</span>");
+        }
+      });
+    });
+  }
 });

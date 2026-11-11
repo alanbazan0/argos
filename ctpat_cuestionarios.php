@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Cuestionarios";
 $archivo = "ctpat_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261188";
+$version = "20261189";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,23 +54,21 @@ $version = "20261188";
 
     <div class="ar-page-hd">
       <div>
-        <div class="ar-crumb">ARGOS › CTPAT</div>
-        <h1>Cuestionarios</h1>
-        <p>Cada socio sensible contesta su cuestionario con un enlace único, sin cuenta. <span id="fechaLimiteTexto"></span></p>
+        <div class="ar-crumb">ARGOS › CTPAT › Paso 1</div>
+        <h1>Cuestionarios a socios comerciales</h1>
+        <p id="subtituloCuestionarios">Enlace único por socio.</p>
       </div>
       <div class="ar-acciones">
         <select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select>
-        <button type="button" class="btn btn-primary" id="iniciarSeguimientoBoton" hidden><i class="fa fa-paper-plane"></i> Iniciar seguimiento</button>
+        <button type="button" class="btn btn-primary" id="iniciarSeguimientoBoton" hidden><i class="fa fa-play"></i> Iniciar seguimiento</button>
       </div>
     </div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card">
-        <form class="ar-filtros" onsubmit="return false;"><select id="filtroSelect" class="form-control" aria-label="Filtro"><option value="">Todos</option><option value="faltan">Faltan por contestar</option><option value="contestaron">Ya contestaron</option></select></form>
-        <div class="ar-callout">El envío del enlace por correo se activa cuando se defina el servicio de correo; mientras tanto copia el enlace de cada socio con el botón <i class="fa fa-link"></i> y envíaselo.</div>
-        <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaEnvios"><thead><tr><th>Socio</th><th>Cuestionario</th><th>Estado</th><th>Contestadas</th><th>Cumplimiento</th><th>Vulnerabilidad</th><th>Fecha límite</th><th></th></tr></thead><tbody></tbody></table></div>
-        <div class="ar-vacio" id="sinEnvios" hidden></div>
-      </div>
+      <div class="ar-hm-filtros"><div class="btn-group" id="filtroSegmento"></div></div>
+      <div class="ar-callout" style="margin:0 0 12px">El envío del enlace por correo se activa cuando se defina el servicio de correo; mientras tanto copia el enlace de cada socio con el botón <i class="fa fa-link"></i> y envíaselo.</div>
+      <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaEnvios"><thead><tr><th>Socio</th><th>Cuestionario</th><th>Contacto</th><th>Enviado</th><th>Recordatorios</th><th>Estado</th><th style="width:250px"></th></tr></thead><tbody></tbody></table></div>
+      <div class="ar-card ar-vacio" id="sinEnvios" hidden></div>
     </section>
 
     <div class="modal fade" id="respModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">

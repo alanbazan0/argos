@@ -22,7 +22,7 @@ $saludoRol = isset($nombresTipo[(int)$usuario->tipoUsuarioId]) ? $nombresTipo[(i
 $saludoAlcance = in_array((int)$usuario->tipoUsuarioId, array(1, 2), true) ? 'todas las sedes' : 'tus sedes';   // Supervisor/Usuario: el JS pone los nombres
 $archivo = "bandeja.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261188";
+$version = "20261189";
 ?>
 <!DOCTYPE html>
 <html lang="es">

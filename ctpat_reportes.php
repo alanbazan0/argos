@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Reportes consolidados";
 $archivo = "ctpat_reportes.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261188";
+$version = "20261189";
 ?>
 <!DOCTYPE html>
 <html lang="es">
