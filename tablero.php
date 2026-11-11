@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261183";
+$version = "20261184";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -94,7 +94,7 @@ $version = "20261183";
 
       <div class="ar-card">
         <div class="ar-barra-titulo"><div><h3>Acciones por responsable</h3><div class="ar-sub">Clic en una persona para ver su lista de acciones</div></div>
-          <div class="ar-leyenda"><span><i style="background:var(--ar-red)"></i>Vencida</span><span><i style="background:#9AA6BD"></i>Pendiente</span><span><i style="background:var(--ar-orange)"></i>En proceso</span><span><i style="background:var(--ar-green-br)"></i>Completada</span></div></div>
+          <div class="ar-leyenda"><span><i style="background:var(--ar-red)"></i>Vencida</span><span><i style="background:#C9D3E3"></i>Pendiente</span><span><i style="background:#5B9BD5"></i>En proceso</span><span><i style="background:var(--ar-green-br)"></i>Completada</span></div></div>
         <div id="barrasResponsables"></div>
         <div class="ar-vacio" id="sinResponsables" hidden><i class="fa fa-inbox"></i>Aún no hay acciones.</div>
       </div>
@@ -133,6 +133,7 @@ $version = "20261183";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_revisiones_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_tablero_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/presentadores/argos_tablero_presentador.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_avatar.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/argos_tablero_vista.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/componentes/argos_exportacion.js?v=<?php echo $version; ?>"></script>
 <script src="js/argos.js?v=<?php echo $version; ?>"></script>

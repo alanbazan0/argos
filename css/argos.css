@@ -389,7 +389,10 @@ a.ar-kpi-enlace:hover{box-shadow:var(--ar-sh-lg)}
 .ar-ubar{display:grid;grid-template-columns:210px 1fr 34px;align-items:center;gap:10px;padding:6px 4px;border-top:1px solid var(--ar-bd);cursor:pointer;border-radius:6px}
 .ar-ubar:hover{background:var(--ar-bg)}
 .ar-ubar .ar-bar{display:flex;height:14px;background:var(--ar-bg);border-radius:7px;overflow:hidden}
-.ar-ubar .ar-nm{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ar-ubar .ar-nm{font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:7px;min-width:0}
+.ar-ubar .ar-nm span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ar-ubar:hover .ar-nm{color:var(--ar-green)}
+.ar-ubar .ar-bar{height:18px;border-radius:5px}
 .ar-cambios-todos{border-top:1px solid var(--ar-bd);padding-top:8px;text-align:right;font-weight:600;font-size:12px}
 @media (max-width:900px){.ar-ubar{grid-template-columns:120px 1fr 28px}}
 
@@ -456,3 +459,7 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-pill.ar-on{background:var(--ar-ink);color:#fff}
 .ar-pill input:disabled{cursor:not-allowed}
 #formularioModal .modal-title .ar-chip{font-weight:500;font-size:12px;margin:0 6px}
+
+/* Avatar de usuario (ArgosAvatar): círculo de color con iniciales y foto encima */
+.ar-av{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-weight:700;font-family:'Outfit',sans-serif;flex-shrink:0}
+.ar-av img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:50%}

@@ -21,7 +21,7 @@ $titulo = "Parámetros";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "parametros";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261183";
+$version = "20261184";
 ?>
 <!DOCTYPE html>
 <html lang="es">
