@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Guías de uso y videos";
 $archivo = "ctpat_guias.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261184";
+$version = "20261185";
 ?>
 <!DOCTYPE html>
 <html lang="es">

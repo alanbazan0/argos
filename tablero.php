@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261184";
+$version = "20261185";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -69,21 +69,20 @@ $version = "20261184";
         <a class="ar-card ar-kpi ar-kpi-enlace" href="revisiones.php"><div class="ar-n" id="kpiRevision">—</div><div class="ar-l" id="kpiRevisionTexto">Revisión anual</div><div class="ar-t" id="kpiRevisionNota"></div></a>
       </div>
 
-      <div class="ar-card">
-        <form id="filtrosForm" class="ar-filtros" onsubmit="return false;">
-          <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
-          <select class="form-control" id="revisionSelect" aria-label="Periodo"><option value="">Hoy</option></select>
-          <label>Periodo al <input type="date" class="form-control" id="alFechaInput"></label>
-          <label class="checkbox-inline"><input type="checkbox" id="compararCheck"> Comparar</label>
-          <label id="comparaConGrupo" hidden>contra <input type="date" class="form-control" id="comparaConInput"></label>
-        </form>
-      </div>
-
       <div class="ar-grid ar-g32">
         <div class="ar-card">
-          <h3>Mapa de calor <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Cada celda cuenta los riesgos cuya evaluación vigente a la fecha del periodo cae en ese cruce. Sin filtro de sede se usa la sede más grave; con filtro, la de esa sede. Los riesgos sin evaluar no aparecen."></i></h3>
-          <div class="ar-sub"><b id="totalRiesgos">0</b> riesgos evaluados · <b id="totalSinEvaluar">0</b> sin evaluar. Haz clic en una celda para ver sus riesgos.</div>
-          <div class="ar-hm" id="mapaCalor"></div>
+          <div class="ar-hm-cab">
+            <div><h3>Mapa de calor <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Cada celda cuenta los riesgos cuya evaluación vigente a la fecha del periodo cae en ese cruce. Sin filtro de sede se usa la sede más grave; con filtro, la de esa sede. Los riesgos sin evaluar no aparecen."></i></h3>
+              <div class="ar-sub" style="margin-bottom:0"><b id="totalRiesgos">0</b> riesgos evaluados · <b id="totalSinEvaluar">0</b> sin evaluar. Clic en una celda para ver sus riesgos</div></div>
+          </div>
+          <form id="filtrosForm" class="ar-hm-filtros" onsubmit="return false;">
+            <select class="form-control" id="revisionSelect" aria-label="Periodo"><option value="">Actual (hoy)</option></select>
+            <select class="form-control" id="sedeFiltro" aria-label="Sede"></select>
+            <label class="ar-chk-comparar"><input type="checkbox" id="compararCheck"> <span id="compararTexto">Comparar</span></label>
+            <input type="hidden" id="alFechaInput"><input type="hidden" id="comparaConInput">
+          </form>
+          <div id="mapaCalor"></div>
+          <div class="ar-hm-leyenda" id="mapaLeyenda"></div>
           <ul class="ar-lista" id="riesgosCelda"></ul>
         </div>
         <div>
