@@ -447,3 +447,12 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-vchips{display:flex;flex-wrap:wrap;gap:4px}
 .ar-vchips .ar-chip{cursor:pointer;font-family:monospace;font-size:11px}
 .ar-vchips .ar-chip:hover{background:var(--ar-ink);color:#fff}
+
+/* Alta de riesgo: sedes como píldoras y reproductor de tutorial */
+.ar-sedes-box{border:1px solid var(--ar-bd);border-radius:10px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;background:#fff}
+#sedesCheckboxes{display:contents}
+.ar-pill{display:inline-flex;align-items:center;gap:6px;margin:0;padding:6px 12px;border-radius:999px;background:var(--ar-bg);font-weight:500;font-size:13px;cursor:pointer;color:var(--ar-ink)}
+.ar-pill input{margin:0}
+.ar-pill.ar-on{background:var(--ar-ink);color:#fff}
+.ar-pill input:disabled{cursor:not-allowed}
+#formularioModal .modal-title .ar-chip{font-weight:500;font-size:12px;margin:0 6px}

@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Procedimiento";
 $archivo = "ctpat_procedimiento.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -74,11 +74,11 @@ $version = "20261181";
             <div class="col-sm-8 form-group"><label for="frecuenciaRevision">Frecuencia de revisión del procedimiento</label><input type="text" id="frecuenciaRevision" class="form-control" maxlength="100" placeholder="Anual"></div>
           </div>
           <div class="form-group"><label>Disparadores del análisis</label><div id="disparadoresBloque"></div></div>
-          <div class="form-group"><label for="politicaVisitas">Política de visitas a socios</label><textarea id="politicaVisitas" class="form-control" rows="2"></textarea></div>
-          <div class="form-group"><label for="criterioSustitucion">Criterio para sustituir socios</label><textarea id="criterioSustitucion" class="form-control" rows="2"></textarea></div>
-          <div class="form-group"><label for="capacitacion">Capacitación del personal clave</label><textarea id="capacitacion" class="form-control" rows="2"></textarea></div>
-          <div class="row"><div class="col-sm-6 form-group"><label for="supervisor">Quién supervisa</label><input type="text" id="supervisor" class="form-control" maxlength="200"></div>
-          <div class="col-sm-6 form-group"><label for="frecuenciaReporte">Cada cuándo recibe reporte</label><input type="text" id="frecuenciaReporte" class="form-control" maxlength="100"></div></div>
+          <div class="form-group"><label for="politicaVisitas">Política de visitas a socios</label><textarea id="politicaVisitas" class="form-control" rows="2" placeholder="Ej. Todo visitante se registra y porta gafete visible"></textarea></div>
+          <div class="form-group"><label for="criterioSustitucion">Criterio para sustituir socios</label><textarea id="criterioSustitucion" class="form-control" rows="2" placeholder="Ej. Se sustituye al socio que no corrige en 90 días"></textarea></div>
+          <div class="form-group"><label for="capacitacion">Capacitación del personal clave</label><textarea id="capacitacion" class="form-control" rows="2" placeholder="Ej. Capacitación anual a todo el personal sobre seguridad de la cadena"></textarea></div>
+          <div class="row"><div class="col-sm-6 form-group"><label for="supervisor">Quién supervisa</label><input type="text" id="supervisor" class="form-control" maxlength="200" placeholder="Ej. Gerente de seguridad"></div>
+          <div class="col-sm-6 form-group"><label for="frecuenciaReporte">Cada cuándo recibe reporte</label><input type="text" id="frecuenciaReporte" class="form-control" maxlength="100" placeholder="Ej. Trimestral"></div></div>
           <button type="button" class="btn btn-success" id="guardarDatosBoton" hidden><i class="fa fa-save"></i> Guardar datos</button>
         </div>
         <div>
@@ -93,7 +93,7 @@ $version = "20261181";
 
     <div class="modal fade" id="aprobarModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Aprobar versión</h4></div>
-      <div class="modal-body"><div class="form-group"><label for="aproboNombre">Nombre de quien aprueba</label><input type="text" id="aproboNombre" class="form-control" maxlength="150"></div><div class="form-group"><label for="aproboPuesto">Puesto</label><input type="text" id="aproboPuesto" class="form-control" maxlength="100"></div>
+      <div class="modal-body"><div class="form-group"><label for="aproboNombre">Nombre de quien aprueba</label><input type="text" id="aproboNombre" class="form-control" maxlength="150" placeholder="Ej. Ana Torres"></div><div class="form-group"><label for="aproboPuesto">Puesto</label><input type="text" id="aproboPuesto" class="form-control" maxlength="100" placeholder="Ej. Directora general"></div>
         <div class="ar-callout">No se aprueba con elementos incompletos. Al aprobar, la versión se congela con las cifras de hoy; para cambiarla se crea una versión nueva.</div></div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="confirmarAprobarBoton">Aprobar</button></div>
     </div></div></div>

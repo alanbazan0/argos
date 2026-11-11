@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Vulnerabilidades";
 $archivo = "ctpat_vulnerabilidades.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -83,14 +83,14 @@ $version = "20261181";
         <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="certificacion"> Certificación CTPAT/OEA verificada</label>
         <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="visita"> Visita en sitio</label>
         <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="evidencia"> Evidencia documental</label>
-        <div class="form-group" style="margin-top:10px"><label for="notaRevision">Nota</label><textarea class="form-control" id="notaRevision" rows="2" maxlength="2000"></textarea></div>
+        <div class="form-group" style="margin-top:10px"><label for="notaRevision">Nota</label><textarea class="form-control" id="notaRevision" rows="2" maxlength="2000" placeholder="Ej. Se revisaron las respuestas con el responsable del socio"></textarea></div>
         <button type="button" class="btn btn-default" id="guardarRevisionBoton">Guardar método y nota</button>
         <hr>
         <h4>Ajustar la calificación de un estándar</h4>
         <div class="row"><div class="col-sm-8 form-group"><label for="ajusteEstandar">Estándar</label><select id="ajusteEstandar" class="form-control"></select></div>
         <div class="col-sm-4 form-group"><label for="ajusteCalificacion">Nueva calificación</label><select id="ajusteCalificacion" class="form-control"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div></div>
-        <div class="form-group"><label for="ajusteJustificacion">Justificación (obligatoria)</label><textarea class="form-control" id="ajusteJustificacion" rows="2" maxlength="2000"></textarea></div>
-        <div class="form-group"><label for="ajusteBuenaPractica">Buena práctica (opcional)</label><textarea class="form-control" id="ajusteBuenaPractica" rows="2" maxlength="2000"></textarea></div>
+        <div class="form-group"><label for="ajusteJustificacion">Justificación (obligatoria)</label><textarea class="form-control" id="ajusteJustificacion" rows="2" maxlength="2000" placeholder="Justificación del ajuste (obligatoria)"></textarea></div>
+        <div class="form-group"><label for="ajusteBuenaPractica">Buena práctica (opcional)</label><textarea class="form-control" id="ajusteBuenaPractica" rows="2" maxlength="2000" placeholder="Buena práctica identificada (opcional)"></textarea></div>
         <button type="button" class="btn btn-success" id="guardarAjusteBoton">Aplicar ajuste</button>
         <div class="ar-callout">Cambiar la revisión o ajustar un estándar quita la validación: hay que validar de nuevo.</div>
       </div>

@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Resumen CTPAT";
 $archivo = "ctpat_resumen.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -76,7 +76,7 @@ $version = "20261181";
     <div class="modal fade" id="nuevoModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nuevo ejercicio</h4></div>
       <div class="modal-body">
-        <div class="form-group"><label for="anioInput">Año</label><input type="number" class="form-control" id="anioInput" min="2000" max="2100"></div>
+        <div class="form-group"><label for="anioInput">Año</label><input type="number" class="form-control" id="anioInput" min="2000" max="2100" placeholder="Ej. 2026"></div>
         <div class="form-group"><label for="nombreInput">Nombre (opcional)</label><input type="text" class="form-control" id="nombreInput" maxlength="150" placeholder="Análisis de riesgo CTPAT 2026"></div>
         <div class="form-group"><label for="copiarDeSelect">Punto de partida</label><select class="form-control" id="copiarDeSelect"></select></div>
         <div class="ar-callout">Una copia trae las cadenas con sus etapas y las acciones que no se verificaron (marcadas «viene de» el año anterior). Los cuestionarios se envían de nuevo al iniciar el seguimiento.</div>
@@ -88,7 +88,7 @@ $version = "20261181";
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Cerrar ejercicio</h4></div>
       <div class="modal-body">
         <p id="pendientesTexto"></p>
-        <div class="form-group" id="motivoCierreGrupo"><label for="motivoCierreInput">Motivo del cierre</label><textarea class="form-control" id="motivoCierreInput" rows="3" maxlength="500"></textarea></div>
+        <div class="form-group" id="motivoCierreGrupo"><label for="motivoCierreInput">Motivo del cierre</label><textarea class="form-control" id="motivoCierreInput" rows="3" maxlength="500" placeholder="Ej. Cierre anual; las acciones abiertas pasan al siguiente ejercicio"></textarea></div>
         <div class="ar-callout">Al cerrar se guarda una fotografía de todo el ejercicio y queda de solo consulta: se pueden ver y exportar sus documentos, pero no se modifica nada.</div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" id="confirmarCierreBoton">Cerrar ejercicio</button></div>

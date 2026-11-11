@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Acciones recomendadas";
 $archivo = "ctpat_acciones_recomendadas.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,12 +68,12 @@ $version = "20261181";
       <div class="modal-body">
         <div class="ar-callout" style="margin:0 0 12px" id="accionPregunta"></div>
         <div class="row">
-          <div class="col-sm-6 form-group"><label for="accionEs">Acción recomendada (ES)</label><textarea id="accionEs" class="form-control" rows="3" maxlength="2000"></textarea></div>
-          <div class="col-sm-6 form-group"><label for="accionEn">Recommended action (EN)</label><textarea id="accionEn" class="form-control" rows="3" maxlength="2000"></textarea></div>
+          <div class="col-sm-6 form-group"><label for="accionEs">Acción recomendada (ES)</label><textarea id="accionEs" class="form-control" rows="3" maxlength="2000" placeholder="Ej. Elaborar una declaración de apoyo a la seguridad firmada por un alto directivo"></textarea></div>
+          <div class="col-sm-6 form-group"><label for="accionEn">Recommended action (EN)</label><textarea id="accionEn" class="form-control" rows="3" maxlength="2000" placeholder="Ej. Draft a statement of support for supply chain security signed by a senior executive"></textarea></div>
         </div>
         <div class="row">
-          <div class="col-sm-6 form-group"><label for="evidenciaEs">Evidencia esperada (ES)</label><input id="evidenciaEs" class="form-control" maxlength="1000"></div>
-          <div class="col-sm-6 form-group"><label for="evidenciaEn">Expected evidence (EN)</label><input id="evidenciaEn" class="form-control" maxlength="1000"></div>
+          <div class="col-sm-6 form-group"><label for="evidenciaEs">Evidencia esperada (ES)</label><input id="evidenciaEs" class="form-control" maxlength="1000" placeholder="Ej. Declaración firmada y fechada"></div>
+          <div class="col-sm-6 form-group"><label for="evidenciaEn">Expected evidence (EN)</label><input id="evidenciaEn" class="form-control" maxlength="1000" placeholder="Ej. Signed and dated statement"></div>
         </div>
         <div class="text-danger" id="accionError"></div>
       </div>

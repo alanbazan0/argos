@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -83,12 +83,12 @@ $version = "20261181";
         <div class="form-group"><label for="nuevaEstandar">Estándar (1 a 12)</label><input type="number" id="nuevaEstandar" class="form-control" min="1" max="12"></div>
         <div id="nuevaManual">
           <div class="form-group"><label for="nuevaPrioridad">Prioridad</label><select id="nuevaPrioridad" class="form-control"><option value="alto">Alto</option><option value="medio">Medio</option><option value="bajo">Bajo</option></select></div>
-          <div class="form-group"><label for="nuevaVuln">Vulnerabilidad identificada</label><textarea id="nuevaVuln" class="form-control" rows="2"></textarea></div>
-          <div class="form-group"><label for="nuevaAccionTxt">Acción correctiva o mitigación</label><textarea id="nuevaAccionTxt" class="form-control" rows="2"></textarea></div>
-          <div class="form-group"><label for="nuevaEvid">Evidencia esperada</label><input type="text" id="nuevaEvid" class="form-control"></div>
+          <div class="form-group"><label for="nuevaVuln">Vulnerabilidad identificada</label><textarea id="nuevaVuln" class="form-control" rows="2" placeholder="Ej. No existe control de acceso de visitantes"></textarea></div>
+          <div class="form-group"><label for="nuevaAccionTxt">Acción correctiva o mitigación</label><textarea id="nuevaAccionTxt" class="form-control" rows="2" placeholder="Ej. Implementar bitácora de visitantes y gafetes"></textarea></div>
+          <div class="form-group"><label for="nuevaEvid">Evidencia esperada</label><input type="text" id="nuevaEvid" class="form-control" placeholder="Ej. Procedimiento firmado y registros de las últimas 4 semanas"></div>
         </div>
         <div class="form-group"><label for="nuevaRespEmpresa">Responsable de la empresa</label><select id="nuevaRespEmpresa" class="form-control"></select></div>
-        <div class="form-group"><label for="nuevaRespSocio">Responsable del socio</label><input type="text" id="nuevaRespSocio" class="form-control" maxlength="150"></div>
+        <div class="form-group"><label for="nuevaRespSocio">Responsable del socio</label><input type="text" id="nuevaRespSocio" class="form-control" maxlength="150" placeholder="Ej. Gerente de seguridad del socio"></div>
         <div class="form-group"><label for="nuevaFecha">Fecha límite (vacío = la sugerida por la prioridad)</label><input type="date" id="nuevaFecha" class="form-control"></div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarNuevaBoton">Crear acción</button></div>
@@ -96,19 +96,19 @@ $version = "20261181";
 
     <div class="modal fade" id="descarteModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Descartar sugerencia</h4></div>
-      <div class="modal-body"><div class="form-group"><label for="motivoDescarte">Motivo (obligatorio)</label><textarea id="motivoDescarte" class="form-control" rows="3" maxlength="500"></textarea></div></div>
+      <div class="modal-body"><div class="form-group"><label for="motivoDescarte">Motivo (obligatorio)</label><textarea id="motivoDescarte" class="form-control" rows="3" maxlength="500" placeholder="Ej. El socio dejará de prestar el servicio en diciembre"></textarea></div></div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-danger" id="confirmarDescarteBoton">Descartar</button></div>
     </div></div></div>
 
     <div class="modal fade" id="evidenciaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Agregar evidencia</h4></div>
-      <div class="modal-body"><div class="form-group"><label for="evidenciaUrl">Enlace (https://)</label><input type="url" id="evidenciaUrl" class="form-control"></div><div class="form-group"><label for="evidenciaDesc">Descripción</label><input type="text" id="evidenciaDesc" class="form-control" maxlength="300"></div><div class="ar-callout">Las evidencias son enlaces; no se suben archivos.</div></div>
+      <div class="modal-body"><div class="form-group"><label for="evidenciaUrl">Enlace (https://)</label><input type="url" id="evidenciaUrl" class="form-control" placeholder="Enlace (OneDrive, SharePoint, Google Drive…)"></div><div class="form-group"><label for="evidenciaDesc">Descripción</label><input type="text" id="evidenciaDesc" class="form-control" maxlength="300" placeholder="Descripción"></div><div class="ar-callout">Las evidencias son enlaces; no se suben archivos.</div></div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarEvidenciaBoton">Agregar</button></div>
     </div></div></div>
 
     <div class="modal fade" id="reprogModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Reprogramar acción</h4></div>
-      <div class="modal-body"><div class="form-group"><label for="reprogFecha">Nueva fecha límite (posterior a hoy)</label><input type="date" id="reprogFecha" class="form-control"></div><div class="form-group"><label for="reprogMotivo">Motivo (obligatorio)</label><textarea id="reprogMotivo" class="form-control" rows="3" maxlength="500"></textarea></div></div>
+      <div class="modal-body"><div class="form-group"><label for="reprogFecha">Nueva fecha límite (posterior a hoy)</label><input type="date" id="reprogFecha" class="form-control"></div><div class="form-group"><label for="reprogMotivo">Motivo (obligatorio)</label><textarea id="reprogMotivo" class="form-control" rows="3" maxlength="500" placeholder="Ej. El proveedor de cámaras entrega en enero"></textarea></div></div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarReprogBoton">Reprogramar</button></div>
     </div></div></div>
 

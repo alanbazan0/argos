@@ -21,7 +21,7 @@ $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
 $pestana = "calibracion";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -123,7 +123,7 @@ $version = "20261181";
     <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Guardar nueva versión</h4></div>
     <div class="modal-body">
       <div class="form-group"><label for="vigenteDesdeInput">Vigente desde (vacío = hoy)</label><input type="date" class="form-control" id="vigenteDesdeInput"></div>
-      <div class="form-group"><label for="notaInput">Nota del cambio (obligatoria)</label><textarea class="form-control" id="notaInput" rows="3" maxlength="500"></textarea></div>
+      <div class="form-group"><label for="notaInput">Nota del cambio (obligatoria)</label><textarea class="form-control" id="notaInput" rows="3" maxlength="500" placeholder="Ej. Se ajustaron los plazos máximos del nivel 1"></textarea></div>
       <div class="ar-callout">Las evaluaciones ya hechas conservan su versión y su nivel; las nuevas usan esta versión desde la fecha indicada.</div>
     </div>
     <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="confirmarVersionBoton">Guardar versión</button></div>
@@ -143,7 +143,7 @@ $version = "20261181";
           <h4>Identificación</h4>
           <div class="form-group">
             <label for="ejemploSituacion">Situación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El hecho observado hoy."></i></label>
-            <textarea id="ejemploSituacion" class="form-control" rows="2"></textarea>
+            <textarea id="ejemploSituacion" class="form-control" rows="2" placeholder="Ej. No hay buena iluminación en el patio de remolques"></textarea>
           </div>
         </div>
       </div>

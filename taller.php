@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Modo taller";
 $archivo = "taller.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -116,7 +116,7 @@ $version = "20261181";
                     <div class="col-sm-6 form-group"><label for="controlesInput">Controles actuales <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Lo que la empresa ya tiene para atacar este riesgo: procedimientos, políticas, ayudas visuales, equipo, capacitación."></i></label><input type="text" id="controlesInput" class="form-control" maxlength="4000" placeholder="Ej. Señalamientos, procedimiento, rondines"></div>
                     <div class="col-sm-3 form-group"><label for="eficaciaSelect">Eficacia <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Qué tan bien funcionan hoy los controles actuales?"></i></label>
                       <select id="eficaciaSelect" class="form-control"><option value="Efectivo">Efectivo</option><option value="Parcial" selected>Parcial</option><option value="Inexistente">Inexistente</option></select></div>
-                    <div class="col-sm-3 form-group"><label for="incidentesInput">Incidentes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Cuántas veces ocurrió este evento en los últimos 12 meses."></i></label><input type="number" id="incidentesInput" class="form-control" min="0" value="0"></div>
+                    <div class="col-sm-3 form-group"><label for="incidentesInput">Incidentes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Cuántas veces ocurrió este evento en los últimos 12 meses."></i></label><input type="number" id="incidentesInput" class="form-control" min="0" value="0" placeholder="0"></div>
                   </div>
                   <div class="form-group"><label for="deteccionInput">¿Cómo detectamos este riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cómo nos daríamos cuenta de que el riesgo se está presentando? Ej. recorridos, auditorías, CCTV, reportes del monitorista."></i></label><input type="text" id="deteccionInput" class="form-control" maxlength="300" placeholder="Ej. Recorridos, auditorías, CCTV"></div>
                 </div>
@@ -142,7 +142,7 @@ $version = "20261181";
                     <div class="col-sm-4 form-group"><label for="apoyoSelect">Apoyo para la acción</label><select class="form-control" id="apoyoSelect"></select></div>
                     <div class="col-sm-4 form-group"><label for="fechaAccionInput">Fecha compromiso</label><input type="date" class="form-control" id="fechaAccionInput"><small class="text-muted" id="fechaSugeridaTexto"></small></div>
                   </div>
-                  <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionAccion">Justifica el plazo mayor al sugerido</label><textarea class="form-control" id="justificacionAccion" rows="2"></textarea></div>
+                  <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionAccion">Justifica el plazo mayor al sugerido</label><textarea class="form-control" id="justificacionAccion" rows="2" placeholder="Ej. La obra requiere presupuesto del siguiente ejercicio"></textarea></div>
                 </div>
               </form>
               <div class="ar-acciones" style="margin-top:14px;justify-content:flex-end">

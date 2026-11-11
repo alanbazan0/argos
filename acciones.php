@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Acciones";
 $archivo = "acciones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -107,14 +107,14 @@ $version = "20261181";
           </div>
           <div class="ar-bloque">
             <h4>Acción</h4>
-            <div class="form-group"><label for="descripcionAccion">Qué se va a hacer <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Qué se va a hacer para reducir el riesgo. Debe ser concreta y verificable."></i></label><textarea id="descripcionAccion" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <div class="form-group"><label for="descripcionAccion">Qué se va a hacer <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Qué se va a hacer para reducir el riesgo. Debe ser concreta y verificable."></i></label><textarea id="descripcionAccion" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Asignar y ejecutar presupuesto de mantenimiento para luminarias"></textarea></div>
             <div class="row">
               <div class="col-sm-6 form-group"><label for="responsableSelect">Responsable <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Usuario de ARGOS que ejecuta la acción. Recibe avisos por correo."></i></label><select id="responsableSelect" class="form-control"></select></div>
               <div class="col-sm-6 form-group"><label for="apoyoSelect">Apoyo <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Usuario de ARGOS que ayuda o autoriza la acción (por ejemplo, Dirección)."></i></label><select id="apoyoSelect" class="form-control"></select></div>
             </div>
             <div class="form-group"><label for="fechaAccionInput">Fecha compromiso <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Se sugiere según el nivel de riesgo: niveles 1–2, 3 meses; 3–4, 6 meses; 5–6, 9 meses. Si eliges una fecha posterior, se pide justificación."></i></label>
               <input type="date" id="fechaAccionInput" class="form-control"><span class="text-muted" id="fechaSugeridaTexto"></span></div>
-            <div class="form-group" id="justificacionPlazoGrupo" hidden><label for="justificacionPlazoInput">Justificación del plazo</label><textarea id="justificacionPlazoInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <div class="form-group" id="justificacionPlazoGrupo" hidden><label for="justificacionPlazoInput">Justificación del plazo</label><textarea id="justificacionPlazoInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. La obra requiere presupuesto del siguiente ejercicio"></textarea></div>
           </div>
         </form>
       </div>
@@ -144,9 +144,9 @@ $version = "20261181";
             <div class="row">
               <div class="col-sm-4 form-group"><label for="estadoPublicacion">Estado</label>
                 <select id="estadoPublicacion" class="form-control"><option value="">Selecciona…</option><option>Pendiente</option><option>En proceso</option><option>Completada</option></select></div>
-              <div class="col-sm-3 form-group" id="avanceGrupo" hidden><label for="avancePublicacion">Avance (1–99 %)</label><input type="number" min="1" max="99" id="avancePublicacion" class="form-control"></div>
+              <div class="col-sm-3 form-group" id="avanceGrupo" hidden><label for="avancePublicacion">Avance (1–99 %)</label><input type="number" min="1" max="99" id="avancePublicacion" class="form-control" placeholder="% avance"></div>
             </div>
-            <div class="form-group"><label for="textoPublicacion">Publicación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Menciona a alguien con @Nombre Apellido para avisarle."></i></label><textarea id="textoPublicacion" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <div class="form-group"><label for="textoPublicacion">Publicación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Menciona a alguien con @Nombre Apellido para avisarle."></i></label><textarea id="textoPublicacion" class="form-control" rows="2" maxlength="4000" placeholder="¿Qué se hizo? Describe el avance, el problema o el cierre… Usa @Nombre Apellido para mencionar a alguien."></textarea></div>
             <div class="form-group"><label for="enlacePublicacion">Enlace de la evidencia (opcional)</label><input type="url" id="enlacePublicacion" class="form-control" maxlength="500" placeholder="https://…"></div>
             <button type="button" class="btn btn-primary" id="publicarButton">Publicar</button>
           </form>

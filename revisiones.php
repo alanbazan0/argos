@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Revisiones del Comité";
 $archivo = "revisiones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -64,7 +64,7 @@ $version = "20261181";
       <div class="ar-card">
         <div id="cicloEstado"></div>
         <form class="ar-filtros" id="iniciarGrupo" onsubmit="return false;" style="margin:12px 0 0">
-          <label>Año <input type="number" class="form-control" id="anioInput" min="2000" max="2100" style="width:100px"></label>
+          <label>Año <input type="number" class="form-control" id="anioInput" min="2000" max="2100" style="width:100px" placeholder="Ej. 2026"></label>
           <button type="button" class="btn btn-success" id="iniciarBoton"><i class="fa fa-play"></i> Iniciar revisión</button>
         </form>
       </div>
@@ -92,7 +92,7 @@ $version = "20261181";
           <div class="form-group"><label for="fechaAprobacionInput">Fecha de aprobación</label><input type="date" class="form-control" id="fechaAprobacionInput" required></div>
           <div class="form-group"><label>Participantes del Comité</label><div id="participantesLista" class="ar-participantes"></div></div>
           <div class="form-group"><label for="actaInput">Acta (enlace, opcional)</label><input type="url" class="form-control" id="actaInput" placeholder="https://"></div>
-          <div class="form-group"><label for="notaInput">Nota (opcional)</label><textarea class="form-control" id="notaInput" rows="2" maxlength="2000"></textarea></div>
+          <div class="form-group"><label for="notaInput">Nota (opcional)</label><textarea class="form-control" id="notaInput" rows="2" maxlength="2000" placeholder="Ej. Se agregaron riesgos de llaves y de sellos; bajaron 3 riesgos"></textarea></div>
           <div class="ar-callout">Al aprobar se guarda la fotografía del avance de acciones y la revisión ya no se podrá modificar.</div>
         </div>
         <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="submit" class="btn btn-success">Aprobar</button></div>

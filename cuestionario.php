@@ -1,7 +1,7 @@
 <?php
 // Enlace único del socio comercial (CTPAT): sin inicio de sesión. La credencial es el token del enlace.
 include 'php/configuracion.php';
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,8 +25,8 @@ $version = "20261181";
   <div class="ar-card" id="firmaBloque" hidden>
     <h3 id="firmaTitulo"></h3>
     <p id="firmaTexto"></p>
-    <div class="row"><div class="col-sm-6 form-group"><label id="firmaNombreEt" for="firmaNombre"></label><input type="text" class="form-control" id="firmaNombre" maxlength="150"></div>
-    <div class="col-sm-6 form-group"><label id="firmaPuestoEt" for="firmaPuesto"></label><input type="text" class="form-control" id="firmaPuesto" maxlength="100"></div></div>
+    <div class="row"><div class="col-sm-6 form-group"><label id="firmaNombreEt" for="firmaNombre"></label><input type="text" class="form-control" id="firmaNombre" maxlength="150" placeholder="Ej. Raúl Sandoval"></div>
+    <div class="col-sm-6 form-group"><label id="firmaPuestoEt" for="firmaPuesto"></label><input type="text" class="form-control" id="firmaPuesto" maxlength="100" placeholder="Ej. Gerente de operaciones"></div></div>
     <button type="button" class="btn btn-success" id="enviarBoton"></button>
   </div>
   <div class="ar-publico-pie"><button type="button" class="btn btn-default" id="guardarBoton"></button> <span id="avanceTexto"></span></div>

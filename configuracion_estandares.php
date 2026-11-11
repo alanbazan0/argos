@@ -21,7 +21,7 @@ $titulo = "Estándares";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "estandares";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -99,7 +99,7 @@ $version = "20261181";
   <div class="modal-dialog" role="document"><div class="modal-content">
     <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="catalogoTitulo"></h4></div>
     <div class="modal-body">
-      <div class="form-group"><label for="catNombre">Nombre</label><input type="text" class="form-control" id="catNombre" maxlength="250"></div>
+      <div class="form-group"><label for="catNombre">Nombre</label><input type="text" class="form-control" id="catNombre" maxlength="250" placeholder="Ej. Riesgos de ruta"></div>
       <div class="form-group"><label for="catVideo">Enlace del video de YouTube (opcional)</label><input type="url" class="form-control" id="catVideo" placeholder="https://youtu.be/..."></div>
       <div class="checkbox" id="catActivoGrupo"><label><input type="checkbox" id="catActivo"> Activo (un subestándar con riesgos no se borra: se desactiva)</label></div>
       <div class="ar-callout">Cambiar un nombre no cambia el item de los riesgos ya registrados. El código de los nuevos lo asigna el sistema.</div>
@@ -121,7 +121,7 @@ $version = "20261181";
           <h4>Identificación</h4>
           <div class="form-group">
             <label for="ejemploSituacion">Situación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El hecho observado hoy."></i></label>
-            <textarea id="ejemploSituacion" class="form-control" rows="2"></textarea>
+            <textarea id="ejemploSituacion" class="form-control" rows="2" placeholder="Ej. No hay buena iluminación en el patio de remolques"></textarea>
           </div>
         </div>
       </div>

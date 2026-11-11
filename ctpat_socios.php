@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Cadenas y socios";
 $archivo = "ctpat_socios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -91,26 +91,26 @@ $version = "20261181";
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="socioTitulo"></h4></div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-sm-8 form-group"><label for="razonSocial">Razón social</label><input type="text" class="form-control" id="razonSocial" maxlength="200"></div>
-          <div class="col-sm-4 form-group"><label for="rfcTaxid">RFC o Tax ID</label><input type="text" class="form-control" id="rfcTaxid" maxlength="25"></div>
+          <div class="col-sm-8 form-group"><label for="razonSocial">Razón social</label><input type="text" class="form-control" id="razonSocial" maxlength="200" placeholder="Ej. Transportes del Norte S.A. de C.V."></div>
+          <div class="col-sm-4 form-group"><label for="rfcTaxid">RFC o Tax ID</label><input type="text" class="form-control" id="rfcTaxid" maxlength="25" placeholder="Ej. TTE980101XY2"></div>
         </div>
         <div class="row">
           <div class="col-sm-6 form-group"><label for="tipoSocio">Tipo de socio</label><select id="tipoSocio" class="form-control"></select></div>
-          <div class="col-sm-3 form-group"><label for="paisSocio">País</label><input type="text" class="form-control" id="paisSocio" maxlength="60"></div>
-          <div class="col-sm-3 form-group"><label for="ciudadSocio">Ciudad</label><input type="text" class="form-control" id="ciudadSocio" maxlength="100"></div>
+          <div class="col-sm-3 form-group"><label for="paisSocio">País</label><input type="text" class="form-control" id="paisSocio" maxlength="60" placeholder="Ej. México"></div>
+          <div class="col-sm-3 form-group"><label for="ciudadSocio">Ciudad</label><input type="text" class="form-control" id="ciudadSocio" maxlength="100" placeholder="Ej. Monterrey, N.L."></div>
         </div>
         <div class="checkbox" id="cruzaGrupo" hidden><label><input type="checkbox" id="cruzaEua"> ¿Cruza la carga a Estados Unidos? (recibe el cuestionario de Transfer / cruce)</label></div>
         <div class="row">
           <div class="col-sm-4 form-group"><label for="certificacionSocio">Certificación</label><input type="text" class="form-control" id="certificacionSocio" maxlength="100" placeholder="CTPAT, OEA…"></div>
-          <div class="col-sm-4 form-group"><label for="aniosSocio">Años de relación</label><input type="number" class="form-control" id="aniosSocio" min="0" max="100"></div>
+          <div class="col-sm-4 form-group"><label for="aniosSocio">Años de relación</label><input type="number" class="form-control" id="aniosSocio" min="0" max="100" placeholder="Ej. 5"></div>
           <div class="col-sm-4 form-group"><label for="seleccionadoPor">Lo selecciona</label><select id="seleccionadoPor" class="form-control"><option value="">—</option><option value="empresa">Nuestra empresa</option><option value="cliente">Cliente en EUA</option><option value="socio">Otro socio</option></select></div>
         </div>
         <div class="form-group"><label>Criterios de socio sensible</label><div id="criteriosSocio"></div></div>
         <div class="row">
-          <div class="col-sm-4 form-group"><label for="contactoNombre">Contacto</label><input type="text" class="form-control" id="contactoNombre" maxlength="150"></div>
-          <div class="col-sm-3 form-group"><label for="contactoPuesto">Puesto</label><input type="text" class="form-control" id="contactoPuesto" maxlength="100"></div>
-          <div class="col-sm-3 form-group"><label for="contactoCorreo">Correo</label><input type="email" class="form-control" id="contactoCorreo" maxlength="150"></div>
-          <div class="col-sm-2 form-group"><label for="contactoTel">Teléfono</label><input type="text" class="form-control" id="contactoTel" maxlength="40"></div>
+          <div class="col-sm-4 form-group"><label for="contactoNombre">Contacto</label><input type="text" class="form-control" id="contactoNombre" maxlength="150" placeholder="Ej. Raúl Sandoval"></div>
+          <div class="col-sm-3 form-group"><label for="contactoPuesto">Puesto</label><input type="text" class="form-control" id="contactoPuesto" maxlength="100" placeholder="Ej. Gerente de operaciones"></div>
+          <div class="col-sm-3 form-group"><label for="contactoCorreo">Correo</label><input type="email" class="form-control" id="contactoCorreo" maxlength="150" placeholder="Ej. contacto@empresa.com"></div>
+          <div class="col-sm-2 form-group"><label for="contactoTel">Teléfono</label><input type="text" class="form-control" id="contactoTel" maxlength="40" placeholder="Ej. +52 81 1234 5678"></div>
         </div>
         <div class="form-group" style="max-width:200px"><label for="idiomaSocio">Idioma del cuestionario</label><select id="idiomaSocio" class="form-control"><option value="es">Español</option><option value="en">English</option></select></div>
       </div>
@@ -120,9 +120,9 @@ $version = "20261181";
     <div class="modal fade" id="cadenaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nueva cadena de exportación</h4></div>
       <div class="modal-body">
-        <div class="form-group"><label for="cadenaNombre">Nombre</label><input type="text" class="form-control" id="cadenaNombre" maxlength="150"></div>
-        <div class="row"><div class="col-sm-6 form-group"><label for="cadenaOrigen">Origen</label><input type="text" class="form-control" id="cadenaOrigen" maxlength="150"></div><div class="col-sm-6 form-group"><label for="cadenaDestino">Destino en EUA</label><input type="text" class="form-control" id="cadenaDestino" maxlength="150"></div></div>
-        <div class="row"><div class="col-sm-5 form-group"><label for="cadenaModo">Modo</label><select id="cadenaModo" class="form-control"></select></div><div class="col-sm-7 form-group"><label for="cadenaCarga">Tipo de carga</label><input type="text" class="form-control" id="cadenaCarga" maxlength="150"></div></div>
+        <div class="form-group"><label for="cadenaNombre">Nombre</label><input type="text" class="form-control" id="cadenaNombre" maxlength="150" placeholder="Ej. Planta Monterrey → Laredo, TX"></div>
+        <div class="row"><div class="col-sm-6 form-group"><label for="cadenaOrigen">Origen</label><input type="text" class="form-control" id="cadenaOrigen" maxlength="150" placeholder="Ej. Planta Monterrey"></div><div class="col-sm-6 form-group"><label for="cadenaDestino">Destino en EUA</label><input type="text" class="form-control" id="cadenaDestino" maxlength="150" placeholder="Ej. Centro de distribución, Dallas, TX"></div></div>
+        <div class="row"><div class="col-sm-5 form-group"><label for="cadenaModo">Modo</label><select id="cadenaModo" class="form-control"></select></div><div class="col-sm-7 form-group"><label for="cadenaCarga">Tipo de carga</label><input type="text" class="form-control" id="cadenaCarga" maxlength="150" placeholder="Ej. Autopartes"></div></div>
         <div class="form-group"><label for="cadenaCopiar">Etapas</label><select id="cadenaCopiar" class="form-control"></select></div>
         <div class="ar-callout">Solo cadenas de exportación hacia Estados Unidos.</div>
       </div>
@@ -134,9 +134,9 @@ $version = "20261181";
       <div class="modal-body">
         <div class="form-group"><label for="etapaSocio">Socio</label><select id="etapaSocio" class="form-control"></select></div>
         <div class="form-group"><label for="etapaProceso">Proceso</label><input type="text" class="form-control" id="etapaProceso" maxlength="200" placeholder="Manufactura, transporte, cruce…"></div>
-        <div class="form-group"><label for="etapaMovimiento">Movimiento de la carga</label><input type="text" class="form-control" id="etapaMovimiento" maxlength="300"></div>
+        <div class="form-group"><label for="etapaMovimiento">Movimiento de la carga</label><input type="text" class="form-control" id="etapaMovimiento" maxlength="300" placeholder="Ej. Recoge la caja en planta y la lleva al patio de Nuevo Laredo"></div>
         <div class="form-group"><label for="etapaZona">Zona</label><input type="text" class="form-control" id="etapaZona" list="zonasLista" maxlength="150" placeholder="Nuevo Laredo, Tamps. o Saltillo – Nuevo Laredo"></div>
-        <div class="row"><div class="col-sm-6 form-group"><label for="etapaDias">Días en reposo</label><input type="number" class="form-control" id="etapaDias" min="0" max="3650"></div><div class="col-sm-6 form-group"><label for="etapaModo">Modo</label><select id="etapaModo" class="form-control"></select></div></div>
+        <div class="row"><div class="col-sm-6 form-group"><label for="etapaDias">Días en reposo</label><input type="number" class="form-control" id="etapaDias" min="0" max="3650" placeholder="0"></div><div class="col-sm-6 form-group"><label for="etapaModo">Modo</label><select id="etapaModo" class="form-control"></select></div></div>
         <div class="checkbox" id="etapaUltimaGrupo"><label><input type="checkbox" id="etapaUltima"> Es la última etapa de la cadena</label></div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarEtapaBoton">Guardar</button></div>

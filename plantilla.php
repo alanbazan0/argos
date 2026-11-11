@@ -32,7 +32,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Plantilla";
 $archivo = "plantilla.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -187,7 +187,7 @@ $version = "20261181";
           <h4>Identificación</h4>
           <div class="form-group">
             <label for="ejemploSituacion">Situación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El hecho observado hoy."></i></label>
-            <textarea id="ejemploSituacion" class="form-control" rows="2"></textarea>
+            <textarea id="ejemploSituacion" class="form-control" rows="2" placeholder="Ej. No hay buena iluminación en el patio de remolques"></textarea>
           </div>
         </div>
       </div>

@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261181";
+$version = "20261183";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -111,7 +111,7 @@ $version = "20261181";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="formularioTitulo">Nuevo riesgo</h4>
+        <h4 class="modal-title"><span id="formularioTitulo">Nuevo riesgo</span> <span class="ar-chip">OEA México</span> <small class="ar-situacion" style="font-weight:400">Pasa el cursor sobre <i class="fa fa-info-circle ar-info"></i> para ver qué capturar en cada campo</small></h4>
       </div>
       <div class="modal-body">
         <form id="riesgoForm" class="ar-form-secciones" onsubmit="return false;">
@@ -119,38 +119,35 @@ $version = "20261181";
           <div class="ar-bloque">
             <h4>Ubicación en el análisis</h4>
             <div id="ubicacionFija" class="ar-callout" hidden></div>
-            <div id="ubicacionEdicion">
-              <div class="row">
-                <div class="col-sm-6 form-group"><label for="estandarSelect">Estándar <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Estándar y subestándar de OEA México donde se presenta el riesgo. Si no corresponde a un estándar, usa las categorías adicionales (ruta, climatológicos, geográficos, legales)."></i></label><select id="estandarSelect" class="form-control"></select></div>
-                <div class="col-sm-6 form-group"><label for="subestandarSelect">Subestándar</label><select id="subestandarSelect" class="form-control"></select><a href="tutoriales.php" target="_blank" rel="noopener" id="verTutorialLink" hidden style="font-size:12px"><i class="fa fa-play-circle"></i> Ver tutorial</a></div>
-              </div>
-              <div class="form-group"><label>Sedes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Sedes donde se presenta la situación. Con «Todas las sedes», cada sede reporta por separado el avance de las acciones."></i></label>
-                <div><label class="checkbox-inline"><input type="checkbox" id="todasSedesCheck"> <b>Todas las sedes</b></label></div>
-                <div id="sedesCheckboxes"></div>
-              </div>
+            <div class="row">
+              <div class="col-sm-5 form-group" id="ubicacionEdicion"><label for="subestandarSelect">Estándar / subestándar <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Estándar y subestándar de OEA México donde se presenta el riesgo. Si no corresponde a un estándar, usa las categorías adicionales (ruta, climatológicos, geográficos, legales)."></i> <a href="#" id="verTutorialLink" hidden style="margin-left:6px;font-weight:600"><i class="fa fa-play"></i> Ver tutorial</a></label><select id="subestandarSelect" class="form-control"></select></div>
+              <div class="col-sm-3 form-group" id="itemGrupo"><label for="itemInput">Item <small class="text-muted">(automático)</small></label><input type="text" id="itemInput" class="form-control" disabled></div>
+              <div class="col-sm-4 form-group"><label for="fechaInput">Fecha de detección <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Fecha en que se identificó el riesgo. Por defecto es hoy."></i></label><input type="date" id="fechaInput" class="form-control"></div>
             </div>
             <div class="row">
-              <div class="col-sm-6 form-group"><label for="departamentoSelect">Departamento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Departamento donde se presenta la situación. Viene del catálogo de departamentos de la empresa."></i></label><select id="departamentoSelect" class="form-control"></select></div>
-              <div class="col-sm-6 form-group"><label for="fechaInput">Fecha de detección <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Fecha en que se identificó el riesgo. Por defecto es hoy."></i></label><input type="date" id="fechaInput" class="form-control"></div>
+              <div class="col-sm-5 form-group"><label for="departamentoSelect">Departamento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Departamento donde se presenta la situación. Viene del catálogo de departamentos de la empresa."></i></label><select id="departamentoSelect" class="form-control"></select></div>
+              <div class="col-sm-7 form-group" id="sedesGrupo"><label>Sedes afectadas <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Sedes donde se presenta la situación. Con «Todas las sedes», cada sede reporta por separado el avance de las acciones."></i></label>
+                <div class="ar-sedes-box"><label class="ar-pill ar-pill-todas"><input type="checkbox" id="todasSedesCheck"> Todas las sedes</label><span id="sedesCheckboxes"></span></div>
+                <div class="ar-situacion" id="avisoTodasSedes" style="color:var(--ar-orange-dk)" hidden>Con «Todas las sedes», cada acción se crea con un seguimiento independiente por sede: cada sede debe reportar su propio avance.</div>
+              </div>
             </div>
           </div>
           <div class="ar-bloque">
             <h4>Identificación</h4>
-            <div class="form-group"><label for="situacionInput">Situación <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Describe el hecho que observas tal como es hoy, sin juzgarlo. Ej. «No hay buena iluminación en el patio de remolques»."></i></label><textarea id="situacionInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
-            <div class="form-group"><label for="porqueInput">¿Por qué es un riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Explica qué podría pasar a partir de esa situación. Ej. «Podrían entrar personas sin ser vistas»."></i></label><textarea id="porqueInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
-            <div class="form-group"><label for="riesgoInput">Riesgo <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El evento que se quiere evitar, en pocas palabras. Ej. «Robo de mercancía», «Contaminación de carga»."></i></label><textarea id="riesgoInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <div class="form-group"><label for="situacionInput">Situación <small class="text-muted">— ¿qué está pasando?</small> <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Describe el hecho que observas tal como es hoy, sin juzgarlo. Ej. «No hay buena iluminación en el patio de remolques»."></i></label><textarea id="situacionInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. No hay buena iluminación en algunas de las instalaciones"></textarea></div>
             <div class="row">
-              <div class="col-sm-4 form-group"><label for="fuenteSelect">Fuente <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Interno: lo origina la propia empresa (personal, procesos, instalaciones). Externo: lo origina alguien o algo fuera de la empresa (delincuencia, clima, socios). Interno y externo: los dos."></i></label><select id="fuenteSelect" class="form-control"></select></div>
-              <div class="col-sm-8 form-group"><label for="origenInput">¿Quién o quiénes originan el riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Quién o quiénes originan el riesgo? Ej. «Personal de nuevo ingreso», «Transportistas subcontratados», «Delincuencia en la carretera 57»."></i></label><input type="text" id="origenInput" class="form-control" maxlength="300"></div>
+              <div class="col-sm-6 form-group"><label for="porqueInput">¿Por qué se considera un riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Explica qué podría pasar a partir de esa situación. Ej. «Podrían entrar personas sin ser vistas»."></i></label><textarea id="porqueInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Podrían entrar personas a robar sin ser vistas"></textarea></div>
+              <div class="col-sm-6 form-group"><label for="riesgoInput">Riesgo <small class="text-muted">— el evento que se quiere evitar</small> <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="El evento que se quiere evitar, en pocas palabras. Ej. «Robo de mercancía», «Contaminación de carga»."></i></label><textarea id="riesgoInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Robo a la empresa o al personal"></textarea></div>
             </div>
-          </div>
-          <div class="ar-bloque">
-            <h4>Análisis</h4>
-            <div class="form-group"><label for="controlesInput">Controles actuales <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Lo que la empresa ya tiene para atacar este riesgo: procedimientos, políticas, ayudas visuales, equipo, capacitación."></i></label><textarea id="controlesInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
             <div class="row">
-              <div class="col-sm-4 form-group"><label for="eficaciaSelect">Eficacia de los controles <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Efectivo: el control funciona y hay evidencia. Parcial: existe pero no siempre se cumple. Inexistente: no hay control."></i></label><select id="eficaciaSelect" class="form-control"></select></div>
-              <div class="col-sm-5 form-group"><label for="deteccionInput">Detección <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cómo nos daríamos cuenta de que el riesgo se está presentando? Ej. recorridos, auditorías, CCTV, reportes del monitorista."></i></label><input type="text" id="deteccionInput" class="form-control" maxlength="300"></div>
-              <div class="col-sm-3 form-group"><label for="incidentesInput">Incidentes 12 m <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Número de veces que el evento ocurrió en los últimos 12 meses. Ayuda a justificar la probabilidad."></i></label><input type="number" min="0" id="incidentesInput" class="form-control"></div>
+              <div class="col-sm-5 form-group"><label for="fuenteSelect">Fuente <small class="text-muted">— ¿nace dentro o fuera de la empresa?</small> <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Interno: lo origina la propia empresa (personal, procesos, instalaciones). Externo: lo origina alguien o algo fuera de la empresa (delincuencia, clima, socios). Interno y externo: los dos."></i></label><select id="fuenteSelect" class="form-control"></select></div>
+              <div class="col-sm-7 form-group"><label for="origenInput">¿Quién o quiénes originan el riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Quién o quiénes originan el riesgo? Ej. «Personal de nuevo ingreso», «Transportistas subcontratados», «Delincuencia en la carretera 57»."></i></label><input type="text" id="origenInput" class="form-control" maxlength="300" placeholder="Ej. Personal de nuevo ingreso, transportistas subcontratados"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 form-group"><label for="deteccionInput">¿Cómo detectamos este riesgo? <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="¿Cómo nos daríamos cuenta de que el riesgo se está presentando? Ej. recorridos, auditorías, CCTV, reportes del monitorista."></i></label><input type="text" id="deteccionInput" class="form-control" maxlength="300" placeholder="Ej. Recorridos, auditorías, CCTV"></div>
+              <div class="col-sm-4 form-group"><label for="controlesInput">Controles actuales <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Lo que la empresa ya tiene para atacar este riesgo: procedimientos, políticas, ayudas visuales, equipo, capacitación."></i></label><textarea id="controlesInput" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Señalamientos, procedimiento, rondines"></textarea></div>
+              <div class="col-sm-2 form-group"><label for="eficaciaSelect">Eficacia <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Efectivo: el control funciona y hay evidencia. Parcial: existe pero no siempre se cumple. Inexistente: no hay control."></i></label><select id="eficaciaSelect" class="form-control"></select></div>
+              <div class="col-sm-2 form-group"><label for="incidentesInput">Incidentes <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Número de veces que el evento ocurrió en los últimos 12 meses. Ayuda a justificar la probabilidad."></i></label><input type="number" min="0" id="incidentesInput" class="form-control" placeholder="0"></div>
             </div>
           </div>
           <p class="text-muted">La evaluación (probabilidad, consecuencia y nivel) se registra aparte, desde el detalle del riesgo.</p>
@@ -158,10 +155,18 @@ $version = "20261181";
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="guardarButton">Guardar</button>
+        <button type="button" class="btn btn-primary" id="guardarButton">Guardar riesgo</button>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Tutorial en video del subestándar -->
+<div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="tutorialTitulo"></h4></div>
+    <div class="modal-body"><div class="ar-video"><iframe id="tutorialVideo" allowfullscreen frameborder="0"></iframe></div></div>
+  </div></div>
 </div>
 
 <!-- Detalle del riesgo -->
@@ -195,10 +200,10 @@ $version = "20261181";
             <div class="row">
               <div class="col-sm-4 form-group" id="bitEstadoGrupo"><label for="bitEstado">Estado de la acción</label>
                 <select id="bitEstado" class="form-control"><option value="">Sin cambio</option><option>Pendiente</option><option>En proceso</option><option>Completada</option></select></div>
-              <div class="col-sm-3 form-group" id="bitAvanceGrupo"><label for="bitAvance">Avance %</label><input type="number" id="bitAvance" class="form-control" min="0" max="100"></div>
+              <div class="col-sm-3 form-group" id="bitAvanceGrupo"><label for="bitAvance">Avance %</label><input type="number" id="bitAvance" class="form-control" min="0" max="100" placeholder="% avance"></div>
               <div class="col-sm-5 form-group"><label for="bitEnlace">Enlace de evidencia (opcional)</label><input type="url" id="bitEnlace" class="form-control" placeholder="https://…"></div>
             </div>
-            <div class="form-group"><label for="bitTexto">Publicación (usa @nombre para mencionar a alguien)</label><textarea id="bitTexto" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <div class="form-group"><label for="bitTexto">Publicación (usa @nombre para mencionar a alguien)</label><textarea id="bitTexto" class="form-control" rows="2" maxlength="4000" placeholder="¿Qué se hizo? Describe el avance, el problema o el cierre… Usa @Nombre Apellido para mencionar a alguien."></textarea></div>
             <button type="button" class="btn btn-primary btn-sm" id="bitPublicar"><i class="fa fa-paper-plane"></i> Publicar</button>
           </div>
         </div>
@@ -252,9 +257,9 @@ $version = "20261181";
               <div class="col-sm-4 form-group"><label for="tratamientoSelect">Tratamiento <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Mitigar: reducir probabilidad o consecuencia. Evitar: dejar de hacer la actividad. Transferir: pasar el riesgo a un tercero (seguro, contrato). Aceptar: solo en niveles 5 y 6, con justificación."></i></label>
                 <select id="tratamientoSelect" class="form-control"><option value="">Sin definir</option><option>Mitigar</option><option>Evitar</option><option>Transferir</option><option>Aceptar</option></select></div>
             </div>
-            <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionInput">Justificación de la aceptación</label><textarea id="justificacionInput" class="form-control" rows="2" maxlength="4000"></textarea></div>
+            <div class="form-group" id="justificacionGrupo" hidden><label for="justificacionInput">Justificación de la aceptación</label><textarea id="justificacionInput" class="form-control" rows="2" maxlength="4000" placeholder="¿Por qué los controles actuales son suficientes?"></textarea></div>
           </div>
-          <div class="form-group"><label for="comentarioEvaluacion">Comentario (queda en la bitácora)</label><textarea id="comentarioEvaluacion" class="form-control" rows="2" maxlength="4000"></textarea></div>
+          <div class="form-group"><label for="comentarioEvaluacion">Comentario (queda en la bitácora)</label><textarea id="comentarioEvaluacion" class="form-control" rows="2" maxlength="4000" placeholder="Ej. Se revisó con el comité de seguridad"></textarea></div>
         </form>
       </div>
       <div class="modal-footer">
