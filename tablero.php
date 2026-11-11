@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tablero";
 $archivo = "tablero.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261185";
+$version = "20261186";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,7 +86,7 @@ $version = "20261185";
           <ul class="ar-lista" id="riesgosCelda"></ul>
         </div>
         <div>
-          <div class="ar-card"><h3>Cambios de nivel</h3><div class="ar-sub">Riesgos que subieron, bajaron o son nuevos contra el periodo anterior.</div><ul class="ar-lista" id="cambios"></ul></div>
+          <div class="ar-card"><h3 id="cambiosTitulo">Cambios de nivel</h3><div class="ar-sub">Riesgos que subieron, bajaron o se dieron de alta</div><div id="cambios"></div></div>
           <div class="ar-card"><h3>Evolución por periodo</h3><div class="ar-sub">Riesgos por nivel en cada revisión aprobada y hoy</div><div class="ar-pbars" id="evolucionBarras"></div></div>
         </div>
       </div>

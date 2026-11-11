@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Indicadores";
 $archivo = "indicadores.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261185";
+$version = "20261186";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,11 +80,11 @@ $version = "20261185";
       <div class="ar-grid ar-g32">
         <div>
           <div class="ar-card"><h3>Cumplimiento por sede <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="60 % avance de las acciones (ponderado por el nivel del riesgo) + 40 % exposición (100 menos 10 por riesgo de nivel 1-2 y 3 por riesgo de nivel 3-4)."></i></h3>
-            <table class="ar-tabla" id="tablaSedes"><thead><tr><th>Sede</th><th>Riesgos activos</th><th>Acciones</th><th>Avance</th><th>Exposición</th><th>Cumplimiento</th></tr></thead><tbody></tbody></table>
+            <table class="ar-tabla" id="tablaSedes"><thead><tr><th>Sede</th><th>Riesgos activos</th><th>Acciones</th><th>Avance</th><th>Exposición</th><th style="width:170px">Cumplimiento</th></tr></thead><tbody></tbody></table>
             <div class="ar-vacio" id="sinSedes" hidden><i class="fa fa-inbox"></i>Sin datos para este periodo.</div>
           </div>
           <div class="ar-card"><h3>Ranking de usuarios <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Avance de las acciones donde el usuario es responsable. Solo aparece quien tiene al menos una acción; los empates comparten lugar."></i></h3>
-            <table class="ar-tabla" id="tablaUsuarios"><thead><tr><th>#</th><th>Usuario</th><th>Acciones</th><th>Vencidas</th><th>Cumplimiento</th></tr></thead><tbody></tbody></table>
+            <table class="ar-tabla" id="tablaUsuarios"><thead><tr><th>#</th><th>Usuario</th><th>Acciones</th><th>Vencidas</th><th style="width:170px">Cumplimiento</th></tr></thead><tbody></tbody></table>
             <div class="ar-vacio" id="sinUsuarios" hidden><i class="fa fa-inbox"></i>Aún no hay acciones asignadas.</div>
           </div>
         </div>

@@ -100,11 +100,12 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 /* ---------- Barra de filtros y tablas ---------- */
 .ar-filtros{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
 .ar-filtros .form-control{width:auto;min-width:150px;display:inline-block}
-.ar-tabla{width:100%;border-collapse:collapse;background:#fff}
-.ar-tabla th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ar-muted);font-weight:700;text-align:left;padding:9px 10px;border-bottom:2px solid var(--ar-bd);white-space:nowrap}
-.ar-tabla td{padding:9px 10px;border-bottom:1px solid var(--ar-bd);vertical-align:top}
-.ar-tabla tbody tr:hover{background:#F8FAFD}
-.ar-tabla .ar-grupo td{background:var(--ar-bg);font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink)}
+.ar-tabla{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--ar-bd);border-radius:12px;overflow:hidden}
+.ar-tabla th{background:#F7F9FC;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ar-muted);font-weight:700;text-align:left;padding:9px 10px;border-bottom:1px solid var(--ar-bd);white-space:nowrap}
+.ar-tabla td{padding:9px 10px;border-bottom:1px solid #EEF1F6;vertical-align:top}
+.ar-tabla tbody tr:hover td{background:#F8FBF4}
+.ar-tabla .ar-grupo td{background:var(--ar-ink);color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;padding:7px 10px}
+.ar-tabla .ar-grupo:hover td{background:var(--ar-ink)}
 .ar-tabla .ar-item{font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink);white-space:nowrap}
 .ar-tabla .ar-situacion{display:block;color:var(--ar-muted);font-size:11.5px}
 .ar-tabla-scroll{overflow-x:auto}
@@ -488,3 +489,34 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-hm-leyenda{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--ar-muted);margin-top:10px}
 .ar-hm-leyenda span{display:inline-flex;align-items:center;gap:4px}
 .ar-hm-leyenda .ar-hm-nota{margin-left:auto}
+
+/* Etiquetas de urgencia de la bandeja (maqueta TAGC) */
+.ar-st-vence-pronto{background:var(--ar-orange-lt);color:#9A5200}
+.ar-st-sin-actualizar{background:#F3EEFB;color:#6B4E9B}
+.ar-st-en-tiempo{background:var(--ar-green-lt);color:#2B5A0A}
+/* Etiqueta «riesgo adicional» (categorías fuera de los estándares) */
+.ar-tag-extra{font-size:9.5px;background:var(--ar-orange-lt);color:#9A5200;padding:1px 6px;border-radius:8px;margin-left:6px;font-weight:700;text-transform:uppercase}
+/* Barra de cumplimiento de Indicadores (maqueta kbar) */
+.ar-kbar{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.ar-kbar-pista{flex:1;height:10px;background:var(--ar-bg);border-radius:6px;overflow:hidden;min-width:90px}
+.ar-kbar-pista>div{height:100%}
+.ar-kbar b{font-family:'Outfit',sans-serif;font-size:15px;width:44px;text-align:right}
+
+/* Tablero · cambios de nivel (maqueta): item, riesgo y situación, nivel anterior → actual y si mejora o empeora */
+.ar-cambio{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--ar-bd);text-decoration:none;color:inherit}
+.ar-cambio:hover{background:var(--ar-bg)}
+.ar-cambio-item{font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink);white-space:nowrap}
+.ar-cambio-txt{flex:1;min-width:0;font-size:12px}
+.ar-cambio-txt b{display:block;font-weight:600;color:var(--ar-ink)}
+.ar-cambio-txt span{display:block;color:var(--ar-muted)}
+.ar-cambio-niv{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.ar-cambio-flecha{color:var(--ar-muted)}
+.ar-cambio-niv b{font-size:11px}
+.ar-cambio-mal{color:#A92F2C}
+.ar-cambio-bien{color:#2B5A0A}
+
+/* Botón principal = naranja como la maqueta (.btn.pri); btn-success se usa en varias pantallas para «Guardar» */
+.ar-app .btn-success{background:var(--ar-orange);border-color:var(--ar-orange);color:var(--ar-ink)}
+.ar-app .btn-success:hover,.ar-app .btn-success:focus,.ar-app .btn-success:active{background:var(--ar-orange-dk);border-color:var(--ar-orange-dk);color:var(--ar-ink)}
+
+.ar-tabla .ar-subgrupo td{background:#EEF2F8;color:var(--ar-ink);font-weight:600;font-size:11.5px;padding:6px 10px}

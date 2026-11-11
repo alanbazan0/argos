@@ -21,7 +21,7 @@ $titulo = "Calibración";
 $archivo = "configuracion_calibracion.php";
 $pestana = "calibracion";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261185";
+$version = "20261186";
 ?>
 <!DOCTYPE html>
 <html lang="es">
