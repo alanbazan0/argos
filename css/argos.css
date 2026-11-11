@@ -576,3 +576,18 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-flow-fin{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:110px;padding:10px 12px;margin-left:12px;border:2px solid #2E7D32;border-radius:12px;background:#fff;font-size:22px;align-self:center}
 .ar-flow-fin span{font-size:12px;font-weight:800;color:#2E7D32}
 .ar-flow-fin small{font-size:10.5px;color:var(--ar-muted);text-align:center;max-width:130px}
+
+/* CTPAT · Amenazas por zona (como la maqueta: calificaciones, etiquetas de riesgo, factores) */
+.ar-nb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;font-weight:800;font-size:11.5px}
+.ar-nb.ar-big{width:28px;height:28px;font-size:13px}
+.ar-nb.n1{background:#DDF1D6;color:#2B5A0A}.ar-nb.n2{background:#FFF1C2;color:#7A5A00}.ar-nb.n3{background:#F9D3D0;color:#A92F2C}.ar-nb.n0{background:#F1F2F5;color:#9AA3B2}
+.ar-risk-tag{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:20px;letter-spacing:.02em}
+.ar-risk-tag.hi{background:#C0392B;color:#fff}.ar-risk-tag.md{background:#FFF1C2;color:#7A5A00}.ar-risk-tag.lo{background:#DDF1D6;color:#2B5A0A}
+.ar-amz th.c,.ar-amz td.c{text-align:center}
+.ar-amz-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ar-fz{border:1px solid var(--ar-bd);border-radius:10px;padding:10px 12px;margin:8px 0}
+.ar-fz-hd{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ar-fz .ar-seg button.n1.on{background:#2E7D32;border-color:#2E7D32}.ar-fz .ar-seg button.n2.on{background:#C9A000;border-color:#C9A000}.ar-fz .ar-seg button.n3.on{background:#C0392B;border-color:#C0392B}
+.ar-fz-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+@media(max-width:700px){.ar-fz-2{grid-template-columns:1fr}.ar-fz-hd{flex-wrap:wrap}}
+.ar-tdm{color:var(--ar-muted);font-size:12px}

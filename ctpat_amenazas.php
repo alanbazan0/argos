@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Amenazas";
 $archivo = "ctpat_amenazas.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261191";
+$version = "20261192";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,15 +56,19 @@ $version = "20261191";
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Paso 2</div>
         <h1>Amenazas por zona</h1>
-        <p>La amenaza es externa: se evalúa por zona (anexo C), no por socio. Calificación de la zona = su factor más alto; una cadena es de alto riesgo si alguna zona tiene un 3.</p>
+        <p>Amenazas externas, fuera del control de la empresa, en cada lugar y tramo por donde pasa la carga (anexo C)</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton"><i class="fa fa-file-excel-o"></i> Excel</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones"><a class="btn btn-default" href="ctpat_biblioteca.php">📚 Biblioteca de amenazas</a><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar anexo C</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
     </div>
 
     <section class="ar-main-contenido">
-      <div id="zonasLista"></div>
-      <h3>Por cadena</h3>
+      <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisAmenazas"></div>
+      <div class="ar-tabm" id="pestanasAmenazas">
+        <button type="button" class="ar-on" data-p="cad">Por cadena <span class="ar-tabm-n" id="tabCadN">0</span></button>
+        <button type="button" data-p="mat">Matriz de zonas <span class="ar-tabm-n" id="tabMatN">0</span></button>
+      </div>
       <div id="cadenasAmenaza"></div>
+      <div id="zonasLista" style="display:none"></div>
     </section>
 
     <div class="modal fade" id="evaluarModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">

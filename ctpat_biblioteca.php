@@ -18,7 +18,7 @@ $menu->setHandelAPI(getHandelAPI());
 $titulo = "Biblioteca de amenazas";
 $archivo = "ctpat_biblioteca.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261191";
+$version = "20261192";
 ?>
 <!DOCTYPE html>
 <html lang="es">
