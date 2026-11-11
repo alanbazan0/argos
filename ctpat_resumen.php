@@ -7,18 +7,20 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
+$liberadas = $aplicacion->puedeVerMenu($usuario) ? "todas" : implode(",", Aplicacion::archivosLiberados());
 $titulo = "Resumen CTPAT";
 $archivo = "ctpat_resumen.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261187";
+$version = "20261188";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,7 +42,7 @@ $version = "20261187";
   <link rel="stylesheet" href="<?php echo getHandelAPI()?>/lib/toastr/toastr.min.css">
   <link rel="stylesheet" href="css/argos.css?v=<?php echo $version; ?>">
 </head>
-<body class="ar-app" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
+<body class="ar-app" data-liberadas="<?php echo htmlspecialchars($liberadas, ENT_QUOTES, 'UTF-8'); ?>" <?php $menu->renderizarUsuarioJSON($usuario); ?>>
 
 <?php $menu->renderizarBarraSuperior($usuario, true, $modulo); ?>
 
@@ -54,21 +56,32 @@ $version = "20261187";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › CTPAT</div>
-        <h1>Resumen CTPAT</h1>
-        <p>Análisis de riesgo de la cadena de suministro con la guía de 5 pasos de CBP.</p>
+        <h1 id="tituloEjercicio">Resumen CTPAT</h1>
+        <p id="subtituloEjercicio">Análisis de riesgo de la cadena de suministro con la guía de 5 pasos de CBP.</p>
       </div>
       <div class="ar-acciones">
         <select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select>
         <button type="button" class="btn btn-primary" id="nuevoEjercicioBoton" hidden><i class="fa fa-plus"></i> Nuevo ejercicio</button>
         <button type="button" class="btn btn-default" id="cerrarEjercicioBoton" hidden><i class="fa fa-lock"></i> Cerrar ejercicio</button>
+        <a class="btn btn-primary" id="cuestionariosBoton" href="ctpat_cuestionarios.php" hidden></a>
       </div>
     </div>
 
     <section class="ar-main-contenido">
       <div class="ar-card ar-vacio" id="sinEjercicio" hidden><i class="fa fa-folder-open-o"></i>Aún no hay un ejercicio CTPAT. Inicia el de este año para empezar con el mapeo de socios y cadenas.</div>
       <div id="pasosBloque" hidden>
-        <div class="ar-card"><div id="ejercicioEstado"></div></div>
-        <div class="ar-pasos" id="pasos"></div>
+        <div class="ar-stepper" id="pasos"></div>
+        <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisResumen"></div>
+        <div class="ar-grid ar-g32">
+          <div class="ar-card"><h3>Avance de los cuestionarios</h3><div class="ar-sub">Socios sensibles de todas las cadenas</div>
+            <div id="avanceBarra"></div>
+            <div class="ar-tabla-scroll" style="margin-top:14px"><table class="ar-tabla" id="tablaSociosResumen"><thead><tr><th>Socio</th><th>Tipo</th><th>Estado</th></tr></thead><tbody></tbody></table></div>
+          </div>
+          <div style="align-content:start">
+            <div class="ar-card"><h3>Atención</h3><div class="ar-sub">Lo que detiene el ejercicio</div><div id="atencionLista"></div></div>
+            <div class="ar-card"><h3>Días en reposo por cadena</h3><div class="ar-sub">«La carga en reposo es carga en riesgo»</div><div id="reposoCadenas"></div><div class="ar-situacion">Pasa el cursor sobre cada tramo para ver dónde está detenida la carga.</div></div>
+          </div>
+        </div>
         <div class="ar-card"><h3>Bitácora del ejercicio</h3><div class="ar-sub">Todo cambio de estatus, fecha, calificación o configuración queda con usuario y fecha.</div><ul class="ar-lista" id="bitacoraLista"></ul></div>
       </div>
     </section>
