@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Cadenas y socios";
 $archivo = "ctpat_socios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261189";
+$version = "20261190";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,34 +55,32 @@ $version = "20261189";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Paso 1</div>
-        <h1>Cadenas y socios</h1>
-        <p>Primero registra los socios comerciales y después las cadenas de exportación hacia EUA con sus etapas (anexo A).</p>
+        <h1>Cadenas de exportación y socios comerciales</h1>
+        <p>Mapeo del flujo de la carga hacia Estados Unidos e identificación de los socios sensibles</p>
       </div>
-      <div class="ar-acciones"><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones">
+        <select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select>
+        <button type="button" class="btn btn-primary" id="nuevaCadenaBoton" hidden><i class="fa fa-plus"></i> Nueva cadena</button>
+      </div>
     </div>
 
     <section class="ar-main-contenido">
-      <ul class="nav nav-tabs ar-tabs" id="pestanas">
-        <li class="active"><a href="#" data-p="socios">① Socios comerciales</a></li>
-        <li><a href="#" data-p="cadenas">② Cadenas de exportación</a></li>
-      </ul>
+      <div class="ar-tabm" id="pestanas">
+        <button type="button" class="ar-on" data-p="socios">① Socios comerciales <span class="ar-tabm-n" id="tabSociosN">0</span></button>
+        <button type="button" data-p="cadenas">② Cadenas de exportación <span class="ar-tabm-n" id="tabCadenasN">0</span></button>
+      </div>
 
       <div id="panelSocios">
-        <div class="ar-card">
-          <div class="ar-acciones" style="margin-bottom:10px"><button type="button" class="btn btn-primary" id="nuevoSocioBoton" hidden><i class="fa fa-plus"></i> Agregar socio</button></div>
-          <div class="ar-callout">Es <b>sensible</b> el socio que cumple al menos un criterio (maneja la carga o su información, entra a instalaciones o medios de transporte, subcontrata, manufactura o almacena). Solo los sensibles reciben cuestionario, aunque estén certificados.</div>
-          <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaSocios"><thead><tr><th>Razón social</th><th>RFC / Tax ID</th><th>Tipo</th><th>Ubicación</th><th>Sensible</th><th>Cuestionario</th><th>Idioma</th><th></th></tr></thead><tbody></tbody></table></div>
-          <div class="ar-vacio" id="sinSocios" hidden><i class="fa fa-inbox"></i>Aún no hay socios comerciales.</div>
-        </div>
+        <div class="ar-hm-filtros" style="justify-content:space-between"><div class="btn-group" id="filtroSociosSegmento"></div>
+          <button type="button" class="btn btn-primary" id="nuevoSocioBoton" hidden><i class="fa fa-plus"></i> Nuevo socio</button></div>
+        <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaSocios"><thead><tr><th>Socio comercial</th><th>Tipo</th><th>Ubicación</th><th>¿Por qué es sensible?</th><th>Certificación</th><th>Cadenas</th><th>Contacto</th><th>Cuestionario</th><th></th></tr></thead><tbody></tbody></table></div>
+        <div class="ar-card ar-vacio" id="sinSocios" hidden><i class="fa fa-inbox"></i>Aún no hay socios comerciales.</div>
+        <div class="ar-callout">Es <b>sensible</b> el socio que cumple al menos un criterio: maneja la carga o su información, entra a instalaciones o medios de transporte, subcontrata, manufactura o almacena mercancía de exportación. Solo los sensibles reciben cuestionario.</div>
       </div>
 
       <div id="panelCadenas" hidden>
-        <div class="ar-acciones" style="margin-bottom:10px">
-          <button type="button" class="btn btn-primary" id="nuevaCadenaBoton" hidden><i class="fa fa-plus"></i> Nueva cadena</button>
-          <button type="button" class="btn btn-default" id="verFlujoBoton"><i class="fa fa-share-alt"></i> Flujo</button>
-          <button type="button" class="btn btn-default" id="verTablaBoton"><i class="fa fa-table"></i> Tabla</button>
-        </div>
         <div id="cadenasLista"></div>
+        <div class="ar-callout">Cada variación que cambia el movimiento de la carga o a quién la maneja es una cadena distinta (carga completa o consolidada, otro puerto, otro modo de transporte). Solo cadenas de exportación hacia Estados Unidos. Un socio puede aparecer en varias etapas y cadenas, pero se evalúa una sola vez por ejercicio.</div>
       </div>
     </section>
 
@@ -118,7 +117,7 @@ $version = "20261189";
     </div></div></div>
 
     <div class="modal fade" id="cadenaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
-      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nueva cadena de exportación</h4></div>
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="cadenaTitulo">Nueva cadena de exportación</h4></div>
       <div class="modal-body">
         <div class="form-group"><label for="cadenaNombre">Nombre</label><input type="text" class="form-control" id="cadenaNombre" maxlength="150" placeholder="Ej. Planta Monterrey → Laredo, TX"></div>
         <div class="row"><div class="col-sm-6 form-group"><label for="cadenaOrigen">Origen</label><input type="text" class="form-control" id="cadenaOrigen" maxlength="150" placeholder="Ej. Planta Monterrey"></div><div class="col-sm-6 form-group"><label for="cadenaDestino">Destino en EUA</label><input type="text" class="form-control" id="cadenaDestino" maxlength="150" placeholder="Ej. Centro de distribución, Dallas, TX"></div></div>

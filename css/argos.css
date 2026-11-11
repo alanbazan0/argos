@@ -547,3 +547,32 @@ tr.ar-fila-critica td{background:#FFF7F6}
 /* Selector de ejercicio en el menú lateral de CTPAT */
 .ar-menu-select{width:calc(100% - 20px);margin:0 10px 8px;padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-weight:600;font-size:13px}
 .ar-menu-select option{color:#14223D}
+
+/* CTPAT · Cadenas y socios (maqueta): pestañas, nodos del flujo, criterios */
+.ar-tabm{display:flex;gap:4px;border-bottom:2px solid var(--ar-bd);margin-bottom:16px}
+.ar-tabm button{border:none;background:none;padding:10px 16px;font-weight:600;font-size:13px;color:var(--ar-muted);border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer}
+.ar-tabm button.ar-on{color:var(--ar-ink);border-bottom-color:var(--ar-orange)}
+.ar-tabm-n{background:var(--ar-orange);color:var(--ar-ink);border-radius:10px;padding:0 7px;font-size:11px;margin-left:5px}
+.ar-rk{cursor:pointer}
+.ar-crit{display:inline-block;font-size:10px;padding:1px 6px;border-radius:8px;background:var(--ar-orange-lt);color:#9A5200;margin:1px 2px 1px 0;white-space:nowrap}
+.ar-cadena-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.ar-cadena-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
+.ar-cadena-acc{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ar-modo{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:12px;background:var(--ar-green-lt);color:var(--ar-green)}
+.ar-flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:14px 2px 12px}
+.ar-nodo{min-width:178px;max-width:178px;background:#fff;border:1px solid var(--ar-bd);border-radius:12px;padding:10px 12px;position:relative;cursor:pointer;transition:box-shadow .15s,border-color .15s;display:flex;flex-direction:column;gap:3px}
+.ar-nodo:hover{border-color:var(--ar-green);box-shadow:var(--ar-sh)}
+.ar-nodo.ar-propio{background:var(--ar-bg);border-style:dashed}
+.ar-nodo .ar-np{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ar-green)}
+.ar-nodo .ar-nn{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:var(--ar-ink);line-height:1.25}
+.ar-nodo .ar-nl{font-size:11px;color:var(--ar-muted)}
+.ar-nodo .ar-reposo{position:absolute;top:-9px;right:10px;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;background:#FBE3E1;color:#A92F2C}
+.ar-nodo .ar-reposo.ar-z{background:var(--ar-bg);color:var(--ar-muted)}
+.ar-nodo .ar-etapa-acc{margin-top:6px}
+.ar-flecha-m{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:46px;color:var(--ar-muted);font-size:10px;text-align:center}
+.ar-flecha-m b{font-size:20px;color:var(--ar-ink);line-height:1}
+.ar-add-nodo{min-width:120px;border:2px dashed var(--ar-bd);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--ar-green);font-weight:600;font-size:12px;cursor:pointer}
+.ar-add-nodo:hover{border-color:var(--ar-green)}
+.ar-flow-fin{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:110px;padding:10px 12px;margin-left:12px;border:2px solid #2E7D32;border-radius:12px;background:#fff;font-size:22px;align-self:center}
+.ar-flow-fin span{font-size:12px;font-weight:800;color:#2E7D32}
+.ar-flow-fin small{font-size:10.5px;color:var(--ar-muted);text-align:center;max-width:130px}
