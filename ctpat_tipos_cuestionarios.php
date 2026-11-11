@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tipos de socio y cuestionarios";
 $archivo = "ctpat_tipos_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261190";
+$version = "20261191";
 ?>
 <!DOCTYPE html>
 <html lang="es">
