@@ -6,7 +6,7 @@ Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los
 
 **CTPAT liberado a Administradores** (el resto de usuarios lo ve «próx.»): Parámetros del análisis, Tipos de socio y cuestionarios (preguntas críticas), Acciones recomendadas, Plantillas de correo, Reportes consolidados, Resumen, Cadenas y socios (paso 1) y Cuestionarios. Mecanismo: `Aplicacion::archivosLiberados` + endpoints abiertos a Administradores; `LISTA_TEMPORAL` sigue con la cuenta de Alan para todo lo demás.
 
-**CTPAT por comparar con la maqueta y liberar (en este orden; 2 · Amenazas ya liberada 2026-11-11 a Administradores — falta: tipo de zona editable en el modal y exportar anexo C en PDF/Word):** 3 · Vulnerabilidades · 4 · Plan de acción (y `seguimiento.php` del socio) · 5 · Procedimiento y expediente · Evolución · Biblioteca de amenazas · Guías de uso y videos.
+**CTPAT por comparar con la maqueta y liberar (en este orden; 2 · Amenazas ya liberada 2026-11-11 a Administradores — falta: tipo de zona editable en el modal y exportar anexo C en PDF/Word):** 3 · Vulnerabilidades (ya liberada 2026-11-12 a Administradores; falta: autoevaluación de «Nuestra empresa», exportar anexo D en PDF/Word, buena práctica sin ajuste de calificación) · 4 · Plan de acción (y `seguimiento.php` del socio) · 5 · Procedimiento y expediente · Evolución · Biblioteca de amenazas · Guías de uso y videos.
 
 **CTPAT: funciones que faltan**
 - Edición de cuestionarios por versiones (Duplicar, Editar nueva versión, Nuevo tipo de socio, importar desde Excel); hoy los botones están apagados (R-00124).

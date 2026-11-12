@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Vulnerabilidades";
 $archivo = "ctpat_vulnerabilidades.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261195";
+$version = "20261197";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,46 +56,51 @@ $version = "20261195";
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Paso 3</div>
         <h1>Vulnerabilidades y riesgo</h1>
-        <p>Vulnerabilidad del socio = su estándar con la calificación más alta (anexo D). Riesgo de la etapa = amenaza de su zona × vulnerabilidad de su socio.</p>
+        <p>Debilidades de cada socio frente a los criterios mínimos de seguridad (anexo D), combinadas con la amenaza de la zona</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton"><i class="fa fa-file-excel-o"></i> Excel</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
     </div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card">
-        <h3>Vulnerabilidad por socio</h3>
-        <div class="ar-sub">Calificación 1 cumple todo · 2 falla una Debe no crítica o una Debería · 3 falla una Debe crítica. Sin respuestas a la fecha límite: 3. El asterisco marca un ajuste del consultor.</div>
-        <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaSocios"><thead><tr><th>Socio</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>Vuln.</th><th>Validación</th><th></th></tr></thead><tbody></tbody></table></div>
-        <div class="ar-vacio" id="sinSocios" hidden><i class="fa fa-inbox"></i>Aún no hay socios en las cadenas.</div>
+      <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisVuln"></div>
+      <div class="ar-tabm" id="pestanasVuln">
+        <button type="button" class="ar-on" data-p="soc">Vulnerabilidad por socio <span class="ar-tabm-n" id="tabSocN">0</span></button>
+        <button type="button" data-p="cad">Riesgo por cadena <span class="ar-tabm-n" id="tabCadN">0</span></button>
+        <button type="button" data-p="mat">Matriz de riesgo <span class="ar-tabm-n" id="tabMatN">0</span></button>
       </div>
-      <div class="ar-grid ar-g32">
-        <div class="ar-card"><h3>Matriz de riesgo 3 × 3</h3><div class="ar-sub">Número de etapas por celda. 1-2 bajo · 3-4 medio · 6-9 alto.</div><div class="ar-hm ar-hm-riesgo" id="matrizRiesgo"></div></div>
-        <div class="ar-card"><h3>Etapas de la celda</h3><ul class="ar-lista" id="etapasCelda"></ul></div>
+      <div id="panelSoc">
+        <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla ar-amz" id="tablaSocios"><thead></thead><tbody></tbody></table></div>
+          <div class="ar-vacio" id="sinSocios" hidden><i class="fa fa-inbox"></i>Aún no hay socios en las cadenas.</div>
+          <div class="ar-situacion" id="leyendaEstandares" style="margin-top:8px"></div></div>
       </div>
-      <h3>Riesgo por cadena</h3>
-      <div id="cadenasRiesgo"></div>
+      <div id="panelCad" style="display:none"><div id="cadenasRiesgo"></div></div>
+      <div id="panelMat" style="display:none">
+        <div class="ar-grid ar-g32">
+          <div class="ar-card"><h3>Etapas por amenaza y vulnerabilidad</h3><div class="ar-situacion" style="margin-bottom:8px">Vulnerabilidad del socio →  ·  Amenaza de la zona ↑</div><div class="ar-hm ar-hm-riesgo" id="matrizRiesgo"></div><div class="ar-situacion" id="leyendaMatriz" style="margin-top:8px"></div></div>
+          <div class="ar-card"><h3 id="tituloCelda">Etapas de riesgo alto</h3><ul class="ar-lista" id="etapasCelda"></ul></div>
+        </div>
+      </div>
     </section>
 
     <div class="modal fade" id="revisionModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="revisionTitulo"></h4></div>
       <div class="modal-body">
-        <h4>Método de verificación</h4>
-        <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="cuestionario"> Cuestionario</label>
-        <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="certificacion"> Certificación CTPAT/OEA verificada</label>
-        <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="visita"> Visita en sitio</label>
-        <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="evidencia"> Evidencia documental</label>
-        <div class="form-group" style="margin-top:10px"><label for="notaRevision">Nota</label><textarea class="form-control" id="notaRevision" rows="2" maxlength="2000" placeholder="Ej. Se revisaron las respuestas con el responsable del socio"></textarea></div>
-        <button type="button" class="btn btn-default" id="guardarRevisionBoton">Guardar método y nota</button>
-        <hr>
-        <h4>Ajustar la calificación de un estándar</h4>
-        <div class="row"><div class="col-sm-8 form-group"><label for="ajusteEstandar">Estándar</label><select id="ajusteEstandar" class="form-control"></select></div>
-        <div class="col-sm-4 form-group"><label for="ajusteCalificacion">Nueva calificación</label><select id="ajusteCalificacion" class="form-control"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div></div>
-        <div class="form-group"><label for="ajusteJustificacion">Justificación (obligatoria)</label><textarea class="form-control" id="ajusteJustificacion" rows="2" maxlength="2000" placeholder="Justificación del ajuste (obligatoria)"></textarea></div>
-        <div class="form-group"><label for="ajusteBuenaPractica">Buena práctica (opcional)</label><textarea class="form-control" id="ajusteBuenaPractica" rows="2" maxlength="2000" placeholder="Buena práctica identificada (opcional)"></textarea></div>
-        <button type="button" class="btn btn-success" id="guardarAjusteBoton">Aplicar ajuste</button>
-        <div class="ar-callout">Cambiar la revisión o ajustar un estándar quita la validación: hay que validar de nuevo.</div>
+        <div id="revisionResumen"></div>
+        <div class="ar-form-secciones">
+        <div class="ar-bloque"><h4>Método de verificación</h4>
+        <div class="ar-sedes-box">
+          <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="cuestionario"> Cuestionario</label>
+          <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="certificacion"> Certificación CTPAT/OEA verificada</label>
+          <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="visita"> Visita en sitio</label>
+          <label class="checkbox-inline"><input type="checkbox" class="metodo-vuln" value="evidencia"> Evidencia documental</label>
+        </div></div>
+        <div class="ar-bloque"><h4>Calificación por estándar</h4>
+        <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaEstandares"><thead><tr><th>Estándar</th><th style="text-align:center">Cumpl.</th><th style="text-align:center">Cuestionario</th><th>Final</th><th>Vulnerabilidades identificadas</th></tr></thead><tbody></tbody></table></div></div>
+        </div>
+        <div class="form-group" style="margin-top:12px"><label for="notaRevision">Notas de la revisión</label><textarea class="form-control" id="notaRevision" rows="2" maxlength="2000" placeholder="Ej. Se revisaron las respuestas con el responsable del socio"></textarea></div>
+        <div id="revisionError" class="text-danger"></div>
       </div>
-      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></div>
+      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-default" id="guardarRevisionBoton">Guardar</button><button type="button" class="btn btn-success" id="guardarValidarBoton">✓ Guardar y validar</button></div>
     </div></div></div>
 
     <?php $menu->renderizarFooter(); ?>
