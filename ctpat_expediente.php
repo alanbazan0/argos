@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Expediente";
 $archivo = "ctpat_procedimiento.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261199";
+$version = "20261201";
 ?>
 <!DOCTYPE html>
 <html lang="es">

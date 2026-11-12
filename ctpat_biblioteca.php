@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Biblioteca de amenazas";
 $archivo = "ctpat_biblioteca.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261199";
+$version = "20261201";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,14 +55,14 @@ $version = "20261199";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Configuración</div>
-        <h1>Biblioteca de amenazas</h1>
-        <p>Una evaluación por zona, reutilizable entre clientes. Vigencia de 12 meses. Solo se muestra cuántos ejercicios usan cada zona, nunca qué clientes.</p>
+        <h1>Catálogo de zonas y biblioteca de amenazas</h1>
+        <p>Zonas (ubicaciones y tramos de ruta) que usan las cadenas de todos los clientes, con la evaluación de amenazas que mantiene Händel</p>
       </div>
-      <div class="ar-acciones"><select id="filtroBiblioteca" class="form-control" aria-label="Filtro"><option value="">Todas</option><option value="vigentes">Vigentes</option><option value="vencidas">Vencidas</option><option value="sin_evaluar">Sin evaluar</option></select></div>
     </div>
 
     <section class="ar-main-contenido">
-      <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaBiblioteca"><thead><tr><th>Zona</th><th>Estado</th><th>Amenaza</th><th>Evaluación → vence</th><th>Ejercicios que la usan</th></tr></thead><tbody></tbody></table></div>
+      <div class="ar-tabm" id="pestanasBiblioteca"></div>
+      <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla ar-amz" id="tablaBiblioteca"><thead></thead><tbody></tbody></table></div>
       <div class="ar-vacio" id="sinBiblioteca" hidden><i class="fa fa-inbox"></i>Aún no hay zonas.</div></div>
     </section>
 

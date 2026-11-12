@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Evolución";
 $archivo = "ctpat_evolucion.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261199";
+$version = "20261201";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,12 +52,12 @@ $version = "20261199";
 
   <main class="ar-main">
 
-    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT</div><h1>Evolución</h1><p>Compara los ejercicios por año: cumplimiento, amenazas, riesgo, avance del plan y acciones que quedaron abiertas.</p></div></div>
+    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT</div><h1>Evolución entre ejercicios</h1><p>Cómo ha cambiado el riesgo de la cadena de suministro de un año a otro</p></div></div>
     <section class="ar-main-contenido">
       <div class="ar-card ar-vacio" id="sinEvolucion" hidden><i class="fa fa-line-chart"></i>Aún no hay ejercicios que comparar.</div>
       <div id="evolucionBloque" hidden>
-        <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaEvolucion"></table></div></div>
-        <div class="ar-card"><div class="ar-tabla-scroll" id="detalleEvolucion"></div></div>
+        <div class="ar-card" id="tablaEvolucion"></div>
+        <div class="ar-card" id="detalleEvolucion"></div>
       </div>
     </section>
 

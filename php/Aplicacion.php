@@ -59,7 +59,7 @@ class Aplicacion
     /** Pantallas liberadas para todos con permiso (el resto del menú sigue en puedeVerMenu). */
     public static function archivosLiberados()
     {
-        return array("bandeja.php", "tablero.php", "riesgos.php", "taller.php", "importar.php", "acciones.php", "indicadores.php", "revisiones.php", "tutoriales.php", "configuracion_calibracion.php", "ctpat_parametros.php", "ctpat_tipos_cuestionarios.php", "ctpat_acciones_recomendadas.php", "ctpat_reportes.php", "ctpat_plantillas.php", "ctpat_resumen.php", "ctpat_cuestionarios.php", "ctpat_socios.php", "ctpat_amenazas.php", "ctpat_vulnerabilidades.php", "ctpat_plan.php");
+        return array("bandeja.php", "tablero.php", "riesgos.php", "taller.php", "importar.php", "acciones.php", "indicadores.php", "revisiones.php", "tutoriales.php", "configuracion_calibracion.php", "ctpat_parametros.php", "ctpat_tipos_cuestionarios.php", "ctpat_acciones_recomendadas.php", "ctpat_reportes.php", "ctpat_plantillas.php", "ctpat_resumen.php", "ctpat_cuestionarios.php", "ctpat_socios.php", "ctpat_amenazas.php", "ctpat_vulnerabilidades.php", "ctpat_plan.php", "ctpat_procedimiento.php", "ctpat_expediente.php", "ctpat_evolucion.php", "ctpat_biblioteca.php", "ctpat_guias.php");
     }
 
     /**

@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Procedimiento";
 $archivo = "ctpat_procedimiento.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261199";
+$version = "20261201";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,41 +56,52 @@ $version = "20261199";
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Paso 5</div>
         <h1>Procedimiento documentado</h1>
-        <p>ARGOS redacta el procedimiento con tus datos generales y las cifras reales del ejercicio. <b id="avanceElementos"></b></p>
+        <p>Cómo hace la empresa su análisis de riesgo: lo que CBP revisa en la validación. ARGOS lo redacta con lo capturado en los pasos 1 a 4.</p>
       </div>
-      <div class="ar-acciones"><a href="ctpat_expediente.php" class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Expediente completo</a></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="datosBoton">✎ Datos del procedimiento</button><button type="button" class="btn btn-default" id="verProcedimientoBoton">👁 Ver procedimiento</button><a href="ctpat_expediente.php" class="btn btn-primary">📦 Expediente completo</a></div>
     </div>
 
     <section class="ar-main-contenido">
       <div class="ar-grid ar-g32">
-        <div class="ar-card">
-          <h3>Datos generales</h3>
+        <div class="ar-card"><div class="ar-amz-hd"><h3 style="margin:0">Elementos mínimos (guía de 5 pasos)</h3><span class="ar-crit" id="avanceElementos"></span></div><div id="elementosLista"></div></div>
+        <div>
+          <div class="ar-card" style="margin-bottom:14px"><div class="ar-amz-hd"><h3 style="margin:0" id="versionActualTitulo">Versión</h3><span id="versionActualEstado"></span></div>
+            <dl class="dl-horizontal" id="versionActualDatos" style="margin:8px 0 0"></dl>
+            <div id="versionActualAcciones" style="margin-top:10px"></div>
+            <div class="ar-situacion" id="versionFaltan" style="margin-top:6px;color:#8A6A00"></div>
+            <div class="form-group" style="margin-top:10px" id="notaVersionBloque" hidden><input type="text" id="notaVersion" class="form-control" maxlength="500" placeholder="Ej. Se integra ARGOS: cuestionarios por tipo de socio y biblioteca de amenazas"></div>
+            <button type="button" class="btn btn-default btn-sm" id="nuevaVersionBoton" hidden>＋ Nueva versión</button></div>
+          <div class="ar-card"><h3>Historial de versiones</h3><ul class="ar-lista" id="versionesLista"></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal fade" id="datosModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Datos del procedimiento</h4></div>
+      <div class="modal-body">
           <div class="row">
             <div class="col-sm-4 form-group"><label for="fechaEstablecimiento">Fecha de establecimiento</label><input type="date" id="fechaEstablecimiento" class="form-control"></div>
-            <div class="col-sm-4 form-group"><label for="responsableSelect">Responsable</label><select id="responsableSelect" class="form-control"></select></div>
+            <div class="col-sm-4 form-group"><label for="responsableSelect">Responsable del proceso</label><select id="responsableSelect" class="form-control"></select></div>
             <div class="col-sm-4 form-group"><label for="suplenteSelect">Suplente</label><select id="suplenteSelect" class="form-control"></select></div>
           </div>
           <div class="row">
-            <div class="col-sm-4 form-group"><label for="frecuenciaSelect">Frecuencia del análisis</label><select id="frecuenciaSelect" class="form-control"></select></div>
-            <div class="col-sm-8 form-group"><label for="frecuenciaRevision">Frecuencia de revisión del procedimiento</label><input type="text" id="frecuenciaRevision" class="form-control" maxlength="100" placeholder="Anual"></div>
+            <div class="col-sm-6 form-group"><label for="frecuenciaSelect">Frecuencia del análisis de riesgo <i class="fa fa-info-circle ar-info" title="La guía recomienda cada tres meses para transportistas por carretera."></i></label><select id="frecuenciaSelect" class="form-control"></select></div>
+            <div class="col-sm-6 form-group"><label for="frecuenciaRevision">Revisión del procedimiento</label><input type="text" id="frecuenciaRevision" class="form-control" maxlength="100" placeholder="Ej. Anual"></div>
           </div>
-          <div class="form-group"><label>Disparadores del análisis</label><div id="disparadoresBloque"></div></div>
-          <div class="form-group"><label for="politicaVisitas">Política de visitas a socios</label><textarea id="politicaVisitas" class="form-control" rows="2" placeholder="Ej. Todo visitante se registra y porta gafete visible"></textarea></div>
-          <div class="form-group"><label for="criterioSustitucion">Criterio para sustituir socios</label><textarea id="criterioSustitucion" class="form-control" rows="2" placeholder="Ej. Se sustituye al socio que no corrige en 90 días"></textarea></div>
-          <div class="form-group"><label for="capacitacion">Capacitación del personal clave</label><textarea id="capacitacion" class="form-control" rows="2" placeholder="Ej. Capacitación anual a todo el personal sobre seguridad de la cadena"></textarea></div>
-          <div class="row"><div class="col-sm-6 form-group"><label for="supervisor">Quién supervisa</label><input type="text" id="supervisor" class="form-control" maxlength="200" placeholder="Ej. Gerente de seguridad"></div>
-          <div class="col-sm-6 form-group"><label for="frecuenciaReporte">Cada cuándo recibe reporte</label><input type="text" id="frecuenciaReporte" class="form-control" maxlength="100" placeholder="Ej. Trimestral"></div></div>
-          <button type="button" class="btn btn-success" id="guardarDatosBoton" hidden><i class="fa fa-save"></i> Guardar datos</button>
-        </div>
-        <div>
-          <div class="ar-card"><h3>Elementos mínimos</h3><ul class="ar-lista" id="elementosLista"></ul></div>
-          <div class="ar-card"><h3>Versiones</h3><ul class="ar-lista" id="versionesLista"></ul>
-            <div class="form-group"><input type="text" id="notaVersion" class="form-control" maxlength="500" placeholder="Nota de la versión (opcional)"></div>
-            <button type="button" class="btn btn-default" id="nuevaVersionBoton" hidden><i class="fa fa-plus"></i> Nueva versión</button></div>
-        </div>
+          <div class="form-group"><label>Además, se hace un análisis cuando…</label><div class="ar-sedes-box" id="disparadoresBloque"></div></div>
+          <div class="form-group"><label for="politicaVisitas">Seguimiento de acciones: visitas a socios</label><textarea id="politicaVisitas" class="form-control" rows="2" placeholder="Ej. Visita en sitio a los socios con vulnerabilidad 3 antes de la fecha límite de sus acciones"></textarea></div>
+          <div class="form-group"><label for="criterioSustitucion">Seguimiento de acciones: cuándo se sustituye a un socio</label><textarea id="criterioSustitucion" class="form-control" rows="2" placeholder="Ej. Se sustituye al socio que no corrige una vulnerabilidad crítica después de dos plazos vencidos"></textarea></div>
+          <div class="form-group"><label for="capacitacion">Capacitación del personal clave</label><textarea id="capacitacion" class="form-control" rows="3" placeholder="Ej. Al asignar el puesto y una vez al año: metodología de 5 pasos, uso de ARGOS y revisión de cuestionarios"></textarea></div>
+          <div class="row"><div class="col-sm-6 form-group"><label for="supervisor">Supervisión: quién aprueba y recibe los reportes</label><input type="text" id="supervisor" class="form-control" maxlength="200" placeholder="Ej. Director general"></div>
+          <div class="col-sm-6 form-group"><label for="frecuenciaReporte">Frecuencia del reporte a la dirección</label><input type="text" id="frecuenciaReporte" class="form-control" maxlength="100" placeholder="Ej. Trimestral"></div></div>
       </div>
-      <div class="ar-card"><h3>Texto del procedimiento (vista previa)</h3><pre class="ar-proc-texto" id="textoProcedimiento"></pre></div>
-    </section>
+      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarDatosBoton">Guardar</button></div>
+    </div></div></div>
+
+    <div class="modal fade" id="textoModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Procedimiento de análisis de riesgo (vista previa)</h4></div>
+      <div class="modal-body"><pre class="ar-proc-texto" id="textoProcedimiento"></pre></div>
+    </div></div></div>
 
     <div class="modal fade" id="aprobarModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Aprobar versión</h4></div>

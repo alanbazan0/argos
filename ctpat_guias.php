@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Guías de uso y videos";
 $archivo = "ctpat_guias.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261199";
+$version = "20261201";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,9 +52,23 @@ $version = "20261199";
 
   <main class="ar-main">
 
-    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Guías de uso y videos</h1><p>Por pantalla: descripción, pasos, puntos de atención y enlace a un video no listado de YouTube (se reproduce con youtube-nocookie).</p></div></div>
+    <div class="ar-page-hd"><div><div class="ar-crumb">ARGOS › CTPAT › Configuración</div><h1>Guías de uso y videos</h1><p>Guía rápida (ícono ⓘ junto al título) y video explicativo de cada pantalla · global para todos los clientes</p></div></div>
 
     <section class="ar-main-contenido"><div id="guiasLista"></div></section>
+    <div class="modal fade" id="guiaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="guiaTitulo"></h4></div>
+      <div class="modal-body">
+        <div class="form-group"><label for="guiaVideo">Enlace del video (YouTube no listado) <i class="fa fa-info-circle ar-info" title="Déjalo vacío si la pantalla no tiene video."></i></label><input type="url" id="guiaVideo" class="form-control" placeholder="Ej. https://youtu.be/AbCdEfGhIjK"></div>
+        <div class="form-group"><label for="guiaDesc">Descripción</label><input type="text" id="guiaDesc" class="form-control" placeholder="Ej. Aquí se registran los socios comerciales y las cadenas de exportación"></div>
+        <div class="form-group"><label for="guiaPasos">Cómo usar esta pantalla (un paso por renglón)</label><textarea id="guiaPasos" class="form-control" rows="5" placeholder="Ej. Registra los socios que intervienen en la cadena"></textarea></div>
+        <div class="form-group"><label for="guiaAtencion">Pon atención (un punto por renglón)</label><textarea id="guiaAtencion" class="form-control" rows="3" placeholder="Ej. Solo los socios sensibles reciben cuestionario"></textarea></div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarGuiaBoton">Guardar</button></div>
+    </div></div></div>
+    <div class="modal fade" id="guiaVerModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="guiaVerTitulo"></h4></div>
+      <div class="modal-body" id="guiaVerCuerpo"></div>
+    </div></div></div>
 
     <?php $menu->renderizarFooter(); ?>
   </main>
