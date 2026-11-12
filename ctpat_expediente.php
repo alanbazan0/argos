@@ -7,8 +7,8 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
-if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
+// CTPAT liberado para todos con permiso de ARGOS; las opciones de edición las valida cada repositorio por tipo de usuario.
+if(!$aplicacion->puedeVerRegistro($usuario))
 {
     header('Location: panel.php');
     exit;
