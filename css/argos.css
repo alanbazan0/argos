@@ -602,3 +602,31 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-hm-riesgo .ar-hm-delta{display:block;position:static;font-size:10.5px;font-weight:600;opacity:.75;margin-top:2px}
 .ar-q-reu{background:#F3EEFB;color:#6B4E9B}
 .ar-ckb{flex:none;width:22px;height:22px;border-radius:50%;background:#E8EDF6;color:#6B7A99;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center}.ar-ckb.ar-ok{background:#DDF1D6;color:#2B5A0A}
+
+/* ---------- Expediente CTPAT: vista previa en hojas (como la maqueta) ---------- */
+.ar-pub-bar{background:#fff;border:1px solid var(--ar-bd);border-radius:12px;padding:10px 18px;display:flex;align-items:center;gap:14px;position:sticky;top:calc(var(--ar-barra) + 6px);z-index:5;margin-bottom:14px}
+.ar-pub-bar img{height:32px}
+.ar-xwrap{padding:6px 0 60px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.ar-xpage{width:820px;max-width:100%;background:#fff;box-shadow:0 2px 14px rgba(7,26,64,.12);padding:34px 40px;font-size:12px;color:#1d2433}
+.ar-xpage.ar-xwide{width:1060px}
+.ar-xpage h1{font-size:18px;margin:14px 0 10px}
+.ar-xh{display:flex;gap:14px;align-items:center;border-bottom:2px solid var(--ar-ink);padding-bottom:10px}
+.ar-xh img{height:30px}.ar-xh .ar-xd{margin-left:auto;color:var(--ar-muted);font-size:11px}
+.ar-xt,.ar-xk{width:100%;border-collapse:collapse;margin:8px 0}
+.ar-xt th,.ar-xt td,.ar-xk td{border:1px solid #C9CED8;padding:6px 8px;vertical-align:top;text-align:left}
+.ar-xt th{background:#EEF1F6;font-size:11px}
+.ar-xk td:nth-child(odd){background:#F7F9FC;font-weight:600;width:20%}
+.ar-xt td.c{text-align:center}
+.ar-xwide .ar-xt{font-size:10.5px}
+.ar-xn{color:var(--ar-muted);font-size:11px}
+.ar-xtot{margin-top:10px;font-size:13px;text-align:right}
+.ar-xr{display:inline-block;min-width:22px;padding:2px 6px;border-radius:5px;text-align:center}
+.ar-xr.r1{background:#DDF1D6}.ar-xr.r2{background:#FFF1C2}.ar-xr.r3{background:#F9D3D0}
+@media print{
+  .ar-pub-bar{display:none!important}
+  .ar-xwrap{display:block;padding:0}
+  .ar-xpage,.ar-xpage.ar-xwide{width:auto;box-shadow:none;padding:0;break-after:page}
+  .ar-xr,.ar-xt th,.ar-xk td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ar-xt tr{break-inside:avoid}
+}
+.ar-xpage h2.ar-xs{font-size:13.5px;margin:14px 0 4px;color:var(--ar-ink)}.ar-xpage p{margin:4px 0;line-height:1.55}.ar-xpage ul{margin:4px 0 4px 18px}

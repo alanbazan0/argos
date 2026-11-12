@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Expediente";
 $archivo = "ctpat_procedimiento.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261201";
+$version = "20261203";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,13 +55,12 @@ $version = "20261201";
     <div class="ar-page-hd ar-sin-imprimir">
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Paso 5</div>
-        <h1>Expediente</h1>
-        <p>Un solo documento con el procedimiento y los anexos A, C, D y E, listo para la validación de CBP. Usa «Imprimir» para guardarlo como PDF.</p>
+        <h1>Expediente completo</h1>
+        <p>Un solo documento con el procedimiento y los anexos A, C, D y E, listo para la validación de CBP</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-danger" id="imprimirBoton"><i class="fa fa-print"></i> Imprimir / Guardar PDF</button></div>
     </div>
-    <section class="ar-main-contenido"><div id="expediente" class="ar-reporte"></div></section>
-
+    <div class="ar-pub-bar ar-sin-imprimir"><img src="img/argos-logo.png" alt="ARGOS" onerror="this.style.display='none'"><span class="ar-situacion" id="expedienteResumen">Vista previa del expediente</span><div style="flex:1"></div><button type="button" class="btn btn-primary btn-sm" id="imprimirBoton">⬇ PDF</button><a href="ctpat_procedimiento.php" class="btn btn-default btn-sm">✕ Cerrar</a></div>
+    <section class="ar-main-contenido"><div id="expediente" class="ar-xwrap"></div></section>
     <?php $menu->renderizarFooter(); ?>
   </main>
 </div>
