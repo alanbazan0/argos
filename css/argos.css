@@ -591,3 +591,10 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-fz-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
 @media(max-width:700px){.ar-fz-2{grid-template-columns:1fr}.ar-fz-hd{flex-wrap:wrap}}
 .ar-tdm{color:var(--ar-muted);font-size:12px}
+
+/* Criterios de socio sensible: casillas dentro del recuadro, en dos columnas */
+#criteriosSocio{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+#criteriosSocio .checkbox{margin:0}
+#criteriosSocio .checkbox label{display:flex;align-items:center;gap:8px;padding-left:0;font-weight:600}
+#criteriosSocio .checkbox input[type=checkbox]{position:static;margin:0;flex:none}
+@media(max-width:700px){#criteriosSocio{grid-template-columns:1fr}}

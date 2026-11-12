@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Cadenas y socios";
 $archivo = "ctpat_socios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261192";
+$version = "20261194";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -75,7 +75,7 @@ $version = "20261192";
           <button type="button" class="btn btn-primary" id="nuevoSocioBoton" hidden><i class="fa fa-plus"></i> Nuevo socio</button></div>
         <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaSocios"><thead><tr><th>Socio comercial</th><th>Tipo</th><th>Ubicación</th><th>¿Por qué es sensible?</th><th>Certificación</th><th>Cadenas</th><th>Contacto</th><th>Cuestionario</th><th></th></tr></thead><tbody></tbody></table></div>
         <div class="ar-card ar-vacio" id="sinSocios" hidden><i class="fa fa-inbox"></i>Aún no hay socios comerciales.</div>
-        <div class="ar-callout">Es <b>sensible</b> el socio que cumple al menos un criterio: maneja la carga o su información, entra a instalaciones o medios de transporte, subcontrata, manufactura o almacena mercancía de exportación. Solo los sensibles reciben cuestionario.</div>
+        <div class="ar-callout">Es <b>sensible</b> el socio que cumple al menos un criterio: maneja la carga o su información, traslada o cruza la carga en la frontera, entra a instalaciones o medios de transporte, subcontrata, manufactura o almacena mercancía de exportación. Solo los sensibles reciben cuestionario.</div>
       </div>
 
       <div id="panelCadenas" hidden>

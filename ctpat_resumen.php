@@ -20,7 +20,7 @@ $liberadas = $aplicacion->puedeVerMenu($usuario) ? "todas" : implode(",", Aplica
 $titulo = "Resumen CTPAT";
 $archivo = "ctpat_resumen.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261192";
+$version = "20261194";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -90,7 +90,7 @@ $version = "20261192";
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nuevo ejercicio</h4></div>
       <div class="modal-body">
         <div class="form-group"><label for="anioInput">Año</label><input type="number" class="form-control" id="anioInput" min="2000" max="2100" placeholder="Ej. 2026"></div>
-        <div class="form-group"><label for="nombreInput">Nombre (opcional)</label><input type="text" class="form-control" id="nombreInput" maxlength="150" placeholder="Análisis de riesgo CTPAT 2026"></div>
+        <div class="form-group"><label for="nombreInput">Nombre</label><input type="text" class="form-control" id="nombreInput" maxlength="150" required placeholder="Ej. Análisis de riesgo CTPAT 2026"></div>
         <div class="form-group"><label for="copiarDeSelect">Punto de partida</label><select class="form-control" id="copiarDeSelect"></select></div>
         <div class="ar-callout">Una copia trae las cadenas con sus etapas y las acciones que no se verificaron (marcadas «viene de» el año anterior). Los cuestionarios se envían de nuevo al iniciar el seguimiento.</div>
       </div>
