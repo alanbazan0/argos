@@ -21,10 +21,10 @@ Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los
 
 **OEA: pendientes**
 - Capturar los enlaces de video de los tutoriales (Configuración › Estándares); sin video no aparece «▶ Ver tutorial» en el alta de riesgo.
-- Alta de riesgo con evaluación y primera acción dentro del mismo formulario (secciones 3 y 4 de la maqueta); hoy se evalúa aparte.
+- Alta de riesgo con evaluación y primera acción dentro del mismo formulario (secciones 3 y 4 de la maqueta): **hecho como flujo guiado 2026-11-12** (al guardar el riesgo se abre su evaluación y luego se ofrece crear la primera acción); falta, si se quiere, fundirlo en una sola ventana con las 4 secciones.
 - Revisar contra la maqueta, campo por campo, los formularios de bitácora, Revisiones, Taller y CTPAT que no se han comparado.
 - Avatares (ArgosAvatar) solo están en el Tablero: faltan en Acciones, Indicadores, Mi cumplimiento, bitácora y Revisiones.
-- Duplicado en el ranking de Mi cumplimiento («Alejandra De León» dos veces): revisar si son dos usuarios.
+- Ranking de Mi cumplimiento con «Alejandra De León» dos veces: **no es un error de código**; en producción hay varias cuentas distintas con ese nombre (limpieza de datos de usuarios).
 - Mi bandeja usa siempre la empresa del usuario (sin selector de empresa).
 - Excel real de CMX (migración), validar pesos de Indicadores con un piloto, PDF generado en servidor (Dompdf) y «Administrador ARGOS» como permiso aparte (decisión del dueño).
 - Landing: «Agendar demo» sigue en Formspree.
@@ -123,3 +123,9 @@ Decisión del usuario: todo lo que dependa de correo y tareas programadas (aviso
 - **Hecho:** pestaña «✉️ Plantillas de correo» en Calibración y catálogos (solo Administrador): 7 plantillas del paquete del programador (`plantillas_correo.json`), vista previa, editor con variables, interruptor y «Remitente y pie»; migración `20261112_argos_plantillas_correo*.sql` (tablas `arg_plantilla_correo` y `arg_correo_config`). Envío por evento: **Acción asignada** (responsable y apoyo), **Mención en la bitácora** y **Evidencia por validar** (responsable y Coordinadores); todo sale de `noreply@apps-handel.com`.
 - **Falta (necesita tarea programada en el servidor, decisión #4):** «Acción por vencer» (15 días antes), «Acción vencida» (día siguiente), «Revisión anual próxima» (30 días antes) y «Resumen semanal» (lunes 8:00); envío una sola vez por aviso (tabla `arg_notificacion`), un correo por persona aunque tenga dos papeles, y los parámetros nuevos de `parametros.json` (60 días de la mención en Mi bandeja, día y hora del resumen). Hoy esas 4 plantillas existen y se pueden editar y probar, pero no se envían solas.
 - **Prueba:** `php/cronjobs/prueba_correos_oea.php` (Administrador con sesión) manda las 7 a alanbazan@hotmail.com y eduardo@handel-sce.com; quitar al terminar.
+
+## OEA: avances 2026-11-12
+- Mi bandeja y la campana siguen la empresa elegida en el selector de la barra (Administrador y Coordinador).
+- Avatares en la bitácora (acciones y ficha del riesgo) y en los participantes del Comité (Revisiones); encabezado de Revisiones como la maqueta.
+- Bitácora y Modo taller: ya tenían los mismos campos que la maqueta; sin cambios.
+- **Siguen esperando datos o decisión del usuario:** Excel de CMX (falta el archivo), pesos de Indicadores del piloto (falta la decisión) y PDF generado en el servidor (decidir con qué herramienta).
