@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261209";
+$version = "20261210";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,7 +58,7 @@ $version = "20261209";
         <h1>Plan de acción</h1>
         <p>Acciones para corregir las vulnerabilidades del paso 3, con responsable de la empresa y del socio, fechas y evidencia (anexo E)</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar anexo E</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select><button type="button" class="btn btn-primary" id="nuevaAccionBoton" hidden>＋ Nueva acción</button></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar anexo E</button><button type="button" class="btn btn-default" id="pdfBoton">⬇ PDF anexo E</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select><button type="button" class="btn btn-primary" id="nuevaAccionBoton" hidden>＋ Nueva acción</button></div>
     </div>
     <section class="ar-main-contenido">
       <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisPlan"></div>

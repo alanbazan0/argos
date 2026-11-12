@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Procedimiento";
 $archivo = "ctpat_procedimiento.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261209";
+$version = "20261210";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,7 +58,7 @@ $version = "20261209";
         <h1>Procedimiento documentado</h1>
         <p>Cómo hace la empresa su análisis de riesgo: lo que CBP revisa en la validación. ARGOS lo redacta con lo capturado en los pasos 1 a 4.</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-default" id="datosBoton">✎ Datos del procedimiento</button><button type="button" class="btn btn-default" id="verProcedimientoBoton">👁 Ver procedimiento</button><a href="ctpat_expediente.php" class="btn btn-primary">📦 Expediente completo</a></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="datosBoton">✎ Datos del procedimiento</button><button type="button" class="btn btn-default" id="verProcedimientoBoton">👁 Ver procedimiento</button><button type="button" class="btn btn-default" id="pdfProcedimientoBoton">⬇ PDF</button><a href="ctpat_expediente.php" class="btn btn-primary">📦 Expediente completo</a></div>
     </div>
 
     <section class="ar-main-contenido">

@@ -14,7 +14,7 @@ Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los
 - «Ajustar fecha límite» con motivo y socios agregados después de iniciar (misma fecha límite).
 - Alta de socio desde la etapa sin perder lo capturado; fusión y sugerencia de zonas parecidas; matriz de zonas con origen de cada evaluación.
 - Autoevaluación de la empresa y buenas prácticas como lista independiente (Vulnerabilidades); riesgo residual al verificar un estándar.
-- Exportar a PDF/Word con el formato exacto de los anexos A, C, D y E de CBP (hoy: impresión del navegador); exportar socios y flujo (anexo A) y «Exportar PDF» en Cadenas y socios; importar socios desde Excel.
+- Exportar a Word, y ajustar los PDF de los anexos al formato exacto de CBP (los PDF de FPDF ya salen con el contenido de cada anexo); exportar socios y flujo (anexo A) y «Exportar PDF» en Cadenas y socios; importar socios desde Excel.
 - Tarjeta «Ver documento» y guías ⓘ en cada pantalla del cliente; proteger los ejercicios cerrados de cambios de críticas (C-25).
 - `sistema_argos` por empresa (solo OEA, solo CTPAT o ambos).
 - Cuando haya correo/cron: envío de cuestionarios y recordatorios, aviso de no contestados («Contactar» en el Resumen), «Recordar a pendientes», avisos 60 días de biblioteca, correos de plan de acción y de procedimiento.
@@ -26,7 +26,7 @@ Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los
 - Avatares (ArgosAvatar) solo están en el Tablero: faltan en Acciones, Indicadores, Mi cumplimiento, bitácora y Revisiones.
 - Ranking de Mi cumplimiento con «Alejandra De León» dos veces: **no es un error de código**; en producción hay varias cuentas distintas con ese nombre (limpieza de datos de usuarios).
 - Mi bandeja usa siempre la empresa del usuario (sin selector de empresa).
-- Excel real de CMX (migración), validar pesos de Indicadores con un piloto, PDF generado en servidor (FPDF, hecho 2026-11-12 para el reporte OEA: portada con logo, resumen, registro, plan, bitácora y firmas; falta el mapa de calor y el PDF de los anexos de CTPAT) y «Administrador ARGOS» como permiso aparte (decisión del dueño).
+- Excel real de CMX (migración), validar pesos de Indicadores con un piloto, PDF generado en servidor (FPDF, hecho 2026-11-12: reporte OEA con portada, resumen, mapa de calor, registro, plan, bitácora y firmas; y CTPAT con expediente completo y PDF por separado del procedimiento y de los anexos A, C, D y E; clases `ArgosPdf`, `CtpatPdf` y `ArgosPdfBase`) y «Administrador ARGOS» como permiso aparte (decisión del dueño).
 - Landing: «Agendar demo» sigue en Formspree.
 
 **Datos de ejemplo en producción (Garage systems, empresa 22):** OEA (sedes ficticias, usuarios sin acceso, 22 riesgos con 8 evaluaciones de cambio de nivel) y CTPAT (ejercicio 2026 en seguimiento, 9 socios, 2 cadenas, 6 zonas, 6+ cuestionarios con ~500 respuestas, amenazas, 4 acciones, procedimiento v1 en revisión, revisiones de vulnerabilidad, reporte consolidado). Scripts en `~/.config/handel/argos-ejemplo/` (`cargar.php`, `borrar.php`, `cargar_ctpat.php`, `agregar_cuestionarios_ctpat.php`, `agregar_pasos_ctpat.php`, `borrar_ctpat.php`). Borrar: `php borrar_ctpat.php 22` y luego `php borrar.php 22`. En local, borrar siempre después de probar: las pruebas cuentan filas.

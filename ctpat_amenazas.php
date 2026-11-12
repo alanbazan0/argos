@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Amenazas";
 $archivo = "ctpat_amenazas.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261209";
+$version = "20261210";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,7 +58,7 @@ $version = "20261209";
         <h1>Amenazas por zona</h1>
         <p>Amenazas externas, fuera del control de la empresa, en cada lugar y tramo por donde pasa la carga (anexo C)</p>
       </div>
-      <div class="ar-acciones"><a class="btn btn-default" href="ctpat_biblioteca.php">📚 Biblioteca de amenazas</a><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar anexo C</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones"><a class="btn btn-default" href="ctpat_biblioteca.php">📚 Biblioteca de amenazas</a><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar anexo C</button><button type="button" class="btn btn-default" id="pdfBoton">⬇ PDF anexo C</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
     </div>
 
     <section class="ar-main-contenido">

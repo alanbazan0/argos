@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Vulnerabilidades";
 $archivo = "ctpat_vulnerabilidades.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261209";
+$version = "20261210";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,7 +58,7 @@ $version = "20261209";
         <h1>Vulnerabilidades y riesgo</h1>
         <p>Debilidades de cada socio frente a los criterios mínimos de seguridad (anexo D), combinadas con la amenaza de la zona</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar</button><button type="button" class="btn btn-default" id="pdfBoton">⬇ PDF anexo D</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select></div>
     </div>
 
     <section class="ar-main-contenido">
