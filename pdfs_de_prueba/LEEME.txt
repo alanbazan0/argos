@@ -1,0 +1,14 @@
+PDF de prueba generados en el servidor con FPDF, con datos reales de Garage systems (producción, solo lectura).
+
+OEA (reporte del análisis de riesgo)
+  OEA_1_Reporte_completo.pdf ........ portada con logo, resumen, mapa de calor, registro, plan de acción, bitácora y firmas
+  OEA_2_Reporte_resumen_y_mapa.pdf .. solo resumen y mapa de calor
+  OEA_3_Reporte_registro_y_plan.pdf . solo registro de riesgos y plan de acción
+
+CTPAT (ejercicio 2026 en seguimiento y ejercicio 2025 cerrado)
+  CTPAT_<año>_0_Expediente_completo.pdf ... portada + procedimiento + anexos A, C, D y E
+  CTPAT_<año>_1_Procedimiento.pdf
+  CTPAT_<año>_2_Anexo_A_Flujo.pdf ......... flujo de la carga por cadena
+  CTPAT_<año>_3_Anexo_C_Amenazas.pdf ...... amenazas por zona
+  CTPAT_<año>_4_Anexo_D_Vulnerabilidades.pdf riesgo por etapa y una hoja por socio
+  CTPAT_<año>_5_Anexo_E_Plan.pdf .......... plan de acción

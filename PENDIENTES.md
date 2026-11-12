@@ -129,3 +129,5 @@ Decisión del usuario: todo lo que dependa de correo y tareas programadas (aviso
 - Avatares en la bitácora (acciones y ficha del riesgo) y en los participantes del Comité (Revisiones); encabezado de Revisiones como la maqueta.
 - Bitácora y Modo taller: ya tenían los mismos campos que la maqueta; sin cambios.
 - **Siguen esperando datos o decisión del usuario:** Excel de CMX (falta el archivo), pesos de Indicadores del piloto (falta la decisión) y PDF generado en el servidor (decidir con qué herramienta).
+
+- 2026-11-13: botón «✉ Reenviar» por socio en Cuestionarios CTPAT (seguimiento en curso, socio con correo y sin terminar; cuenta como recordatorio; queda en la bitácora del ejercicio).
