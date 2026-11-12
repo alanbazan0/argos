@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Cuestionarios";
 $archivo = "ctpat_cuestionarios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261194";
+$version = "20261195";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -66,7 +66,7 @@ $version = "20261194";
 
     <section class="ar-main-contenido">
       <div class="ar-hm-filtros"><div class="btn-group" id="filtroSegmento"></div></div>
-      <div class="ar-callout" style="margin:0 0 12px">El envío del enlace por correo se activa cuando se defina el servicio de correo; mientras tanto copia el enlace de cada socio con el botón <i class="fa fa-link"></i> y envíaselo.</div>
+      <div class="ar-callout" style="margin:0 0 12px">Al iniciar el seguimiento cada socio con correo de contacto recibe su enlace por correo (desde noreply@apps-handel.com). Si alguno no lo recibe, copia su enlace con el botón <i class="fa fa-link"></i> y envíaselo.</div>
       <div class="ar-tabla-scroll"><table class="ar-tabla" id="tablaEnvios"><thead><tr><th>Socio</th><th>Cuestionario</th><th>Contacto</th><th>Enviado</th><th>Recordatorios</th><th>Estado</th><th style="width:250px"></th></tr></thead><tbody></tbody></table></div>
       <div class="ar-card ar-vacio" id="sinEnvios" hidden></div>
     </section>
