@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Guías de uso y videos";
 $archivo = "ctpat_guias.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261206";
+$version = "20261207";
 ?>
 <!DOCTYPE html>
 <html lang="es">

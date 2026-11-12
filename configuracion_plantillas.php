@@ -21,7 +21,7 @@ $titulo = "Plantillas de correo";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "plantillas";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261206";
+$version = "20261207";
 ?>
 <!DOCTYPE html>
 <html lang="es">

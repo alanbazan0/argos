@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Revisiones del Comité";
 $archivo = "revisiones.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261206";
+$version = "20261207";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,8 +55,8 @@ $version = "20261206";
     <div class="ar-page-hd">
       <div>
         <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
-        <h1>Revisiones del Comité</h1>
-        <p>Ciclo anual de revisión del Comité de Seguridad. Al aprobarse queda una fotografía del avance de acciones.</p>
+        <h1>Revisiones del Comité de Seguridad</h1>
+        <p>El registro es continuo; cada revisión anual guarda una fotografía aprobada por el Comité</p>
       </div>
     </div>
 
@@ -123,6 +123,7 @@ $version = "20261206";
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_base_repositorio.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/argos_bandeja_repositorio.js?v=<?php echo $version; ?>"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_avatar.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261110a"></script>
 
 <!-- Repositorios, Presentador y Vista de la pantalla (handel_api) -->

@@ -630,3 +630,4 @@ tr.ar-fila-critica td{background:#FFF7F6}
   .ar-xt tr{break-inside:avoid}
 }
 .ar-xpage h2.ar-xs{font-size:13.5px;margin:14px 0 4px;color:var(--ar-ink)}.ar-xpage p{margin:4px 0;line-height:1.55}.ar-xpage ul{margin:4px 0 4px 18px}
+.ar-lista li::after{content:'';display:block;clear:both}

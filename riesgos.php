@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Registro de riesgos";
 $archivo = "riesgos.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261206";
+$version = "20261207";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -288,6 +288,7 @@ $version = "20261206";
 <script src="<?php echo getHandelAPI()?>/js/componentes/tabla.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/repositorio.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/repositorios/usuarios_repositorio.js"></script>
+<script src="<?php echo getHandelAPI()?>/js/componentes/argos_avatar.js?v=<?php echo $version; ?>"></script>
 <script src="<?php echo getHandelAPI()?>/js/vistas/vista.js?v=20261110a"></script>
 
 <!-- Repositorio, Presentador y Vista de la pantalla (handel_api) -->
