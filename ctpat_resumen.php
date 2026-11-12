@@ -20,7 +20,7 @@ $liberadas = $aplicacion->puedeVerMenu($usuario) ? "todas" : implode(",", Aplica
 $titulo = "Resumen CTPAT";
 $archivo = "ctpat_resumen.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261203";
+$version = "20261205";
 ?>
 <!DOCTYPE html>
 <html lang="es">

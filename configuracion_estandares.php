@@ -21,7 +21,7 @@ $titulo = "Estándares";
 $archivo = "configuracion_calibracion.php";   // la opción del menú es una sola: Calibración y catálogos
 $pestana = "estandares";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261203";
+$version = "20261205";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -68,6 +68,7 @@ $version = "20261203";
       <li<?php echo $pestana == 'estandares' ? ' class="active"' : ''; ?>><a href="configuracion_estandares.php">Estándares y subestándares</a></li>
 <?php if((int)$usuario->tipoUsuarioId === 1) { ?>
       <li<?php echo $pestana == 'parametros' ? ' class="active"' : ''; ?>><a href="configuracion_parametros.php">Parámetros</a></li>
+      <li<?php echo $pestana == 'plantillas' ? ' class="active"' : ''; ?>><a href="configuracion_plantillas.php">✉️ Plantillas de correo</a></li>
 <?php } ?>
     </ul>
 
