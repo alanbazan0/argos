@@ -21,7 +21,7 @@ Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los
 
 **OEA: pendientes**
 - Capturar los enlaces de video de los tutoriales (Configuración › Estándares); sin video no aparece «▶ Ver tutorial» en el alta de riesgo.
-- Alta de riesgo con evaluación y primera acción dentro del mismo formulario (secciones 3 y 4 de la maqueta): **hecho como flujo guiado 2026-11-12** (al guardar el riesgo se abre su evaluación y luego se ofrece crear la primera acción); falta, si se quiere, fundirlo en una sola ventana con las 4 secciones.
+- Alta de riesgo con evaluación y primera acción dentro del mismo formulario (secciones 3 y 4 de la maqueta): **hecho como flujo guiado 2026-11-12** (al guardar el riesgo se abre su evaluación y luego se ofrece crear la primera acción). No se hará una sola ventana: no está en la maqueta.
 - Revisar contra la maqueta, campo por campo, los formularios de bitácora, Revisiones, Taller y CTPAT que no se han comparado.
 - Avatares (ArgosAvatar) solo están en el Tablero: faltan en Acciones, Indicadores, Mi cumplimiento, bitácora y Revisiones.
 - Ranking de Mi cumplimiento con «Alejandra De León» dos veces: **no es un error de código**; en producción hay varias cuentas distintas con ese nombre (limpieza de datos de usuarios).
