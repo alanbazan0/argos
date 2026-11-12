@@ -7,18 +7,19 @@ include 'php/clases/Menu.php';
 
 $aplicacion = new Aplicacion();
 $usuario = $aplicacion->iniciar();
-// Mientras el menú esté en desarrollo, esta pantalla solo la ve quien puede ver el menú.
-if(!$aplicacion->puedeVerMenu($usuario))
+// Liberada para los Administradores; el resto de CTPAT sigue en desarrollo (puedeVerMenu).
+if(!$aplicacion->puedeVerMenu($usuario) && (int)$usuario->tipoUsuarioId !== 1)
 {
     header('Location: panel.php');
     exit;
 }
 $menu = new Menu();
 $menu->setHandelAPI(getHandelAPI());
+$menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::archivosLiberados());
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261197";
+$version = "20261199";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -55,27 +56,30 @@ $version = "20261197";
       <div>
         <div class="ar-crumb">ARGOS › CTPAT › Paso 4</div>
         <h1>Plan de acción</h1>
-        <p>Anexo E. Prioridad = riesgo más alto de las etapas del socio; plazo 30, 60 o 90 días. Sin evidencia no se verifica una acción.</p>
+        <p>Acciones para corregir las vulnerabilidades del paso 3, con responsable de la empresa y del socio, fechas y evidencia (anexo E)</p>
       </div>
-      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton"><i class="fa fa-file-excel-o"></i> Excel</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select><button type="button" class="btn btn-primary" id="nuevaAccionBoton" hidden><i class="fa fa-plus"></i> Nueva acción</button></div>
+      <div class="ar-acciones"><button type="button" class="btn btn-default" id="exportarBoton">⬇ Exportar anexo E</button><select id="ejercicioSelect" class="form-control" aria-label="Ejercicio"></select><button type="button" class="btn btn-primary" id="nuevaAccionBoton" hidden>＋ Nueva acción</button></div>
     </div>
-
     <section class="ar-main-contenido">
-      <ul class="nav nav-tabs ar-tabs" id="planTabs">
-        <li class="active"><a href="#" data-p="plan">Plan de acción</a></li>
-        <li><a href="#" data-p="sugeridas">Sugeridas <span class="ar-chip" id="contSugeridas">0</span></a></li>
-        <li><a href="#" data-p="descartadas">Descartadas</a></li>
-      </ul>
-
-      <div id="panelPlan" class="ar-card">
-        <form class="ar-filtros" onsubmit="return false;"><select id="filtroSelect" class="form-control" aria-label="Filtro"><option value="todas">Todas</option><option value="sin_verificar">Sin verificar</option><option value="vencidas">Vencidas</option><option value="por_verificar">Por verificar</option><option value="verificadas">Verificadas</option></select></form>
-        <div class="ar-tabla-scroll"><table class="ar-tabla" id="accionesTabla"><thead><tr><th>Socio</th><th>Vulnerabilidad</th><th>Acción</th><th>Responsables</th><th>Fechas</th><th>Estatus y evidencia</th><th></th></tr></thead><tbody></tbody></table></div>
-        <div class="ar-vacio" id="sinAcciones" hidden><i class="fa fa-inbox"></i>Aún no hay acciones.</div>
+      <div class="ar-grid ar-g4 ar-grid-kpis" id="kpisPlan"></div>
+      <div class="ar-tabm" id="planTabs">
+        <button type="button" class="ar-on" data-p="plan">Plan de acción <span class="ar-tabm-n" id="contPlan">0</span></button>
+        <button type="button" data-p="sugeridas">Sugeridas <span class="ar-tabm-n" id="contSugeridas">0</span></button>
+        <button type="button" data-p="socio">Por socio <span class="ar-tabm-n" id="contSocio">0</span></button>
       </div>
-      <div id="panelSugeridas" hidden><div id="sugerenciasLista"></div></div>
-      <div id="panelDescartadas" class="ar-card" hidden><ul class="ar-lista" id="descartadasLista"></ul></div>
+      <div id="panelPlan">
+        <div class="ar-hm-filtros"><div class="btn-group" id="filtroPlan"></div></div>
+        <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla" id="accionesTabla"><thead><tr><th>Prioridad</th><th>Socio · estándar</th><th>Vulnerabilidad</th><th>Acción</th><th>Responsables</th><th>Revisión</th><th>Fecha límite</th><th>Evidencia</th><th>Estatus</th></tr></thead><tbody></tbody></table></div>
+        <div class="ar-vacio" id="sinAcciones" hidden><i class="fa fa-inbox"></i>Sin acciones con este filtro.</div></div>
+      </div>
+      <div id="panelSugeridas" hidden><div id="sugerenciasLista"></div><details class="ar-estandar" id="descartadasBloque"><summary><b>Descartadas</b> <span class="ar-situacion" id="contDescartadas">0</span></summary><ul class="ar-lista" id="descartadasLista" style="padding:0 12px 8px"></ul></details></div>
+      <div id="panelSocio" hidden></div>
     </section>
-
+    <div class="modal fade" id="accionModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="accionTitulo"></h4></div>
+      <div class="modal-body" id="accionCuerpo"></div>
+      <div class="modal-footer" id="accionPie"></div>
+    </div></div></div>
     <div class="modal fade" id="nuevaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="nuevaTitulo"></h4></div>
       <div class="modal-body">
