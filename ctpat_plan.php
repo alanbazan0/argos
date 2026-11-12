@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261211";
+$version = "20261212";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -93,7 +93,7 @@ $version = "20261211";
         </div>
         <div class="form-group"><label for="nuevaRespEmpresa">Responsable de la empresa</label><select id="nuevaRespEmpresa" class="form-control"></select></div>
         <div class="form-group"><label for="nuevaRespSocio">Responsable del socio</label><input type="text" id="nuevaRespSocio" class="form-control" maxlength="150" placeholder="Ej. Gerente de seguridad del socio"></div>
-        <div class="form-group"><label for="nuevaFecha">Fecha límite (vacío = la sugerida por la prioridad)</label><input type="date" id="nuevaFecha" class="form-control"></div>
+        <div class="form-group"><label for="nuevaFecha" id="nuevaFechaEtiqueta">Fecha límite (vacío = la sugerida por la prioridad)</label><input type="date" id="nuevaFecha" class="form-control"></div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarNuevaBoton">Crear acción</button></div>
     </div></div></div>
