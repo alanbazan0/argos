@@ -20,7 +20,7 @@ class Menu
     /**
      * Los dos analisis de ARGOS son modulos independientes (una empresa puede tener uno, otro o ambos) y se cambian
      * con el selector de la barra superior. Cada modulo tiene su pagina de inicio y su menu lateral.
-     * modulo => [titulo, pagina de inicio, secciones]; seccion => [ [titulo, archivo, icono Font Awesome 4, tipos de usuario que la ven (null = todos)] ]
+     * modulo => [titulo, pagina de inicio, secciones]; seccion => [ [titulo, archivo, emoji como en la maqueta, tipos de usuario que la ven (null = todos)] ]
      */
     private $modulos = array(
         "oea" => array(
@@ -28,19 +28,19 @@ class Menu
             "inicio" => "panel.php",
             "secciones" => array(
                 "Análisis de riesgo OEA" => array(
-                    array("Mi bandeja",           "bandeja.php",              "fa-inbox",              null),
-                    array("Tablero",              "tablero.php",              "fa-th-large",           null),
-                    array("Registro de riesgos",  "riesgos.php",              "fa-list-alt",           null),
-                    array("Acciones",             "acciones.php",             "fa-tasks",              null),
-                    array("Modo taller",          "taller.php",               "fa-pencil-square-o",    null),
+                    array("Mi bandeja",           "bandeja.php",              "🏠",              null),
+                    array("Tablero",              "tablero.php",              "📊",           null),
+                    array("Registro de riesgos",  "riesgos.php",              "📋",           null),
+                    array("Acciones",             "acciones.php",             "✅",              null),
+                    array("Modo taller",          "taller.php",               "🧑‍🏫",    null),
                 ),
                 "Seguimiento" => array(
-                    array("Indicadores",          "indicadores.php",          "fa-line-chart",         null),
-                    array("Revisiones del Comité","revisiones.php",           "fa-calendar-check-o",   null),
-                    array("Tutoriales",           "tutoriales.php",           "fa-graduation-cap",     null),
+                    array("Indicadores",          "indicadores.php",          "📈",         null),
+                    array("Revisiones del Comité","revisiones.php",           "👥",   null),
+                    array("Tutoriales",           "tutoriales.php",           "🎬",     null),
                 ),
                 "Configuración" => array(
-                    array("Calibración y catálogos", "configuracion_calibracion.php", "fa-sliders", null),
+                    array("Calibración y catálogos", "configuracion_calibracion.php", "⚙️", null),
                 ),
             ),
         ),
@@ -49,23 +49,23 @@ class Menu
             "inicio" => "ctpat_resumen.php",
             "secciones" => array(
                 "Ejercicio CTPAT" => array(
-                    array("Resumen",                  "ctpat_resumen.php",      "fa-dashboard",          null),
-                    array("Evolución",                "ctpat_evolucion.php",    "fa-line-chart",         null),
-                    array("1 · Cadenas y socios",     "ctpat_socios.php",       "fa-map-o",              null),
-                    array("Cuestionarios",            "ctpat_cuestionarios.php","fa-envelope-o",         null),
-                    array("2 · Amenazas",             "ctpat_amenazas.php",     "fa-globe",              null),
-                    array("3 · Vulnerabilidades",     "ctpat_vulnerabilidades.php", "fa-search",         null),
-                    array("4 · Plan de acción",       "ctpat_plan.php",         "fa-wrench",             null),
-                    array("5 · Procedimiento",        "ctpat_procedimiento.php","fa-file-text-o",        null),
+                    array("Resumen",                  "ctpat_resumen.php",      "📊",          null),
+                    array("Evolución",                "ctpat_evolucion.php",    "📈",         null),
+                    array("1 · Cadenas y socios",     "ctpat_socios.php",       "🗺️",              null),
+                    array("Cuestionarios",            "ctpat_cuestionarios.php","✉️",         null),
+                    array("2 · Amenazas",             "ctpat_amenazas.php",     "🌎",              null),
+                    array("3 · Vulnerabilidades",     "ctpat_vulnerabilidades.php", "🔍",         null),
+                    array("4 · Plan de acción",       "ctpat_plan.php",         "🛠️",             null),
+                    array("5 · Procedimiento",        "ctpat_procedimiento.php","📄",        null),
                 ),
                 "Configuración" => array(
-                    array("Parámetros del análisis",  "ctpat_parametros.php",   "fa-cog",                array(TipoUsuario::ADMINISTRADOR)),
-                    array("Tipos de socio y cuestionarios", "ctpat_tipos_cuestionarios.php", "fa-list-ol", array(TipoUsuario::ADMINISTRADOR)),
-                    array("Acciones recomendadas",    "ctpat_acciones_recomendadas.php", "fa-check-square-o", array(TipoUsuario::ADMINISTRADOR)),
-                    array("Plantillas de correo",     "ctpat_plantillas.php",   "fa-envelope",           array(TipoUsuario::ADMINISTRADOR)),
-                    array("Reportes consolidados",    "ctpat_reportes.php",     "fa-paperclip",          array(TipoUsuario::ADMINISTRADOR)),
-                    array("Biblioteca de amenazas",   "ctpat_biblioteca.php",   "fa-book",               array(TipoUsuario::ADMINISTRADOR)),
-                    array("Guías de uso y videos",    "ctpat_guias.php",        "fa-film",               array(TipoUsuario::ADMINISTRADOR)),
+                    array("Parámetros del análisis",  "ctpat_parametros.php",   "🔧",                array(TipoUsuario::ADMINISTRADOR)),
+                    array("Tipos de socio y cuestionarios", "ctpat_tipos_cuestionarios.php", "⚙️", array(TipoUsuario::ADMINISTRADOR)),
+                    array("Acciones recomendadas",    "ctpat_acciones_recomendadas.php", "📋", array(TipoUsuario::ADMINISTRADOR)),
+                    array("Plantillas de correo",     "ctpat_plantillas.php",   "✉️",           array(TipoUsuario::ADMINISTRADOR)),
+                    array("Reportes consolidados",    "ctpat_reportes.php",     "📎",          array(TipoUsuario::ADMINISTRADOR)),
+                    array("Biblioteca de amenazas",   "ctpat_biblioteca.php",   "📚",               array(TipoUsuario::ADMINISTRADOR)),
+                    array("Guías de uso y videos",    "ctpat_guias.php",        "🎬",               array(TipoUsuario::ADMINISTRADOR)),
                 ),
             ),
         ),
@@ -206,9 +206,9 @@ class Menu
     {
         $titulo = htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8');
         if(!$this->existe($archivo))
-            return "<span class='ar-nav ar-nav-off' title='En desarrollo'><i class='fa $icono'></i>$titulo<em>pronto</em></span>";
+            return "<span class='ar-nav ar-nav-off' title='En desarrollo'><span class='ar-emoji'>$icono</span>$titulo<em>pronto</em></span>";
         $clase = $activa ? "ar-nav ar-activo" : "ar-nav";
-        return "<a class='$clase' href='$archivo'><i class='fa $icono'></i>$titulo</a>";
+        return "<a class='$clase' href='$archivo'><span class='ar-emoji'>$icono</span>$titulo</a>";
     }
 
     public function renderizarFooter()
