@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Tutoriales";
 $archivo = "tutoriales.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261211";
+$version = "20261212";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,7 +56,7 @@ $version = "20261211";
       <div>
         <div class="ar-crumb">ARGOS › Análisis de riesgo OEA</div>
         <h1>Tutoriales</h1>
-        <p>Videos cortos por estándar y subestándar. <span id="resumenTutoriales"></span></p>
+        <p>Videos cortos sobre qué tipo de riesgos identificar en cada estándar y subestándar. <span id="resumenTutoriales"></span></p>
       </div>
     </div>
 

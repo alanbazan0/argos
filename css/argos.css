@@ -215,10 +215,16 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 }
 
 /* ---------- Tutoriales (R-00118) ---------- */
-.ar-tutoriales{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-.ar-tutorial{border:1px solid var(--ar-bd);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;background:#fff}
-.ar-tutorial-cod{font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-green)}
-.ar-tutorial-nom{flex:1;font-size:12.5px}
+.ar-tutoriales{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.ar-tutorial-card{background:#fff;border:1px solid var(--ar-bd);border-radius:12px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s}
+.ar-tutorial-card:hover,.ar-tutorial-card:focus{box-shadow:0 6px 18px rgba(7,26,64,.14);transform:translateY(-1px);outline:none}
+.ar-tutorial-prev{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--ar-ink),var(--ar-ink-md));display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ar-tutorial-prev img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+.ar-tutorial-play{position:relative;width:54px;height:54px;border-radius:50%;background:var(--ar-orange);color:var(--ar-ink);display:flex;align-items:center;justify-content:center;font-size:20px;padding-left:3px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.ar-tutorial-cod{position:absolute;top:10px;left:12px;font-family:'Outfit',sans-serif;font-weight:800;color:#fff;font-size:18px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.ar-tutorial-pie{padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.ar-tutorial-tipo{font-size:12px;color:var(--ar-muted)}
+.ar-tutorial-nom{font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;color:var(--ar-ink)}
 .ar-video{position:relative;padding-top:56.25%}
 .ar-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:8px}
 @media print{.ar-video{display:none}}
