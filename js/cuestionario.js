@@ -34,7 +34,7 @@ function dibujar()
 			ultimo = p.estandar;
 			h += "<h3 class='ar-pub-est'>" + t.estandar + " " + p.estandar + " · " + esc(datos.estandares[p.estandar] || "") + "</h3>";
 		}
-		h += "<div class='ar-pregunta'><div>" + esc(p.texto) + " <span class='ar-chip'>" + (p.tipo == "debe" ? t.debe : t.deberia) + "</span></div><div class='ar-resp' data-id='" + p.id + "'>";
+		h += "<div class='ar-pregunta'><div>" + esc(p.texto) + "</div><div class='ar-resp' data-id='" + p.id + "'>";
 		["si", "no", "na"].forEach(function(v){ h += "<label class='radio-inline'><input type='radio' name='p" + p.id + "' value='" + v + "'" + (respuestas[p.id] == v ? " checked" : "") + (datos.soloLectura ? " disabled" : "") + "> " + t[v] + "</label>"; });
 		h += "</div></div>";
 	}
