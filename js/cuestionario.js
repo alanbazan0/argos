@@ -6,18 +6,18 @@ var T = {
 	es: { titulo: "Cuestionario de seguridad de la cadena de suministro", intro: "Contesta cada pregunta con Sí, No o No aplica. Puedes guardar y continuar después con este mismo enlace.", si: "Sí", no: "No", na: "No aplica",
 		debe: "Debe", deberia: "Debería", guardar: "Guardar y continuar", guardado: "Avance guardado.", avance: "contestadas", firmaTitulo: "Declaración de veracidad",
 		firmaTexto: "Declaro que las respuestas de este cuestionario son verdaderas y completas a mi leal saber y entender.", nombre: "Nombre", puesto: "Puesto", enviar: "Firmar y enviar",
-		gracias: "Gracias. Tu cuestionario fue enviado. Folio: ", leido: "Este cuestionario ya fue enviado o está cerrado; solo se puede consultar.", error: "No se pudo abrir el enlace.", faltan: "Faltan preguntas por contestar.", estandar: "Estándar" },
+		gracias: "Gracias. Tu cuestionario fue enviado. Folio: ", leido: "Este cuestionario ya fue enviado o está cerrado; solo se puede consultar.", error: "No se pudo abrir el enlace.", errorEnvio: "No se pudo enviar tu información. Revisa tu conexión a internet y vuelve a intentarlo en unos minutos: tus respuestas siguen en esta pantalla y no se pierden. Si el problema continúa, escribe a la persona que te envió este cuestionario.", faltan: "Faltan preguntas por contestar.", estandar: "Estándar" },
 	en: { titulo: "Supply chain security questionnaire", intro: "Answer each question with Yes, No or Not applicable. You can save and continue later with this same link.", si: "Yes", no: "No", na: "Not applicable",
 		debe: "Must", deberia: "Should", guardar: "Save and continue", guardado: "Progress saved.", avance: "answered", firmaTitulo: "Declaration of truthfulness",
 		firmaTexto: "I declare that the answers in this questionnaire are true and complete to the best of my knowledge.", nombre: "Name", puesto: "Position", enviar: "Sign and submit",
-		gracias: "Thank you. Your questionnaire was submitted. Reference: ", leido: "This questionnaire was already submitted or is closed; it is read-only.", error: "The link could not be opened.", faltan: "Some questions are unanswered.", estandar: "Standard" }
+		gracias: "Thank you. Your questionnaire was submitted. Reference: ", leido: "This questionnaire was already submitted or is closed; it is read-only.", error: "The link could not be opened.", errorEnvio: "We could not submit your information. Check your internet connection and try again in a few minutes: your answers are still on this screen and are not lost. If the problem continues, contact the person who sent you this questionnaire.", faltan: "Some questions are unanswered.", estandar: "Standard" }
 };
 var datos = null, idioma = "es", respuestas = {}, token = (/[?&]t=([a-f0-9]{40})/.exec(window.location.search) || [])[1];
 
 function api(accion, extra, ok)
 {
 	$.ajax({ url: HANDEL_API + "/php/repositorios/CtpatPublico.php", type: "POST", data: $.extend({ accion: accion, token: token }, extra),
-		success: function(r){ ok(r); }, error: function(){ ok({ mensajeError: T[idioma].error }); } });
+		success: function(r){ ok(r); }, error: function(){ ok({ mensajeError: accion == "obtener" ? T[idioma].error : T[idioma].errorEnvio }); } });
 }
 function esc(t){ return $("<div>").text(t == null ? "" : t).html(); }
 
