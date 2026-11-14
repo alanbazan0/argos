@@ -2,6 +2,8 @@
 
 Documento vivo: se actualiza en cada corte. Lo hecho está en el README y en los planes de Servixia (C-00742); aquí va **lo que falta o está a medias** y lo que depende de una decisión.
 
+> **Estado 2026-11-14:** el usuario da ARGOS (OEA + CTPAT) por terminado por ahora; se espera a que el cliente indique qué falta. Lo listado abajo como «falta» queda en pausa hasta entonces.
+
 ## Corte 2026-11-11: qué está liberado y qué falta (lista viva)
 
 **CTPAT liberado a Administradores** (el resto de usuarios lo ve «próx.»): Parámetros del análisis, Tipos de socio y cuestionarios (preguntas críticas), Acciones recomendadas, Plantillas de correo, Reportes consolidados, Resumen, Cadenas y socios (paso 1) y Cuestionarios. Mecanismo: `Aplicacion::archivosLiberados` + endpoints abiertos a Administradores; `LISTA_TEMPORAL` sigue con la cuenta de Alan para todo lo demás.
