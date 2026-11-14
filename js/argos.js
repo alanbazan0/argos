@@ -29,6 +29,11 @@ $(function () {
   var cuest = $("a.ar-nav[href='ctpat_cuestionarios.php'], a.ar-nav[href='ctpat_resumen.php']");
   if (cuest.length && typeof HANDEL_API !== 'undefined') {
     var llamar = function (accion, criterios, fn) {
+      // Empresa elegida en el selector de la barra (si no, el servidor usa la propia del usuario)
+      var empresa = null;
+      try { empresa = window.sessionStorage.getItem('argosEmpresaId'); } catch (e) {}
+      criterios = criterios || {};
+      if (empresa && !criterios.empresaId) { criterios.empresaId = parseInt(empresa, 10); }
       $.ajax({ url: HANDEL_API + '/php/repositorios/CtpatEjercicios.php', type: 'POST', data: { accion: accion, criteriosSeleccion: JSON.stringify(criterios || {}) },
         success: function (r) { if (r && r.mensajeError === '') { fn(r.valor); } } });
     };
