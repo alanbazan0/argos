@@ -196,6 +196,7 @@ describe('cuestionario público', () => {
       await esperar(80);
       expect(guardados()).toHaveLength(1);
       expect(document.getElementById('avisoVentana').textContent).toContain('ya no se puede modificar');
+      expect(document.getElementById('estadoGuardado').textContent).toBe('No se pudo guardar');   // no dice «reintentando»
     });
 
     test('al enviar solo manda lo que falta por guardar y luego firma', async () => {

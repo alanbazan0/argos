@@ -4,11 +4,11 @@
  */
 var T = {
 	es: { titulo: "Cuestionario de seguridad de la cadena de suministro", intro: "Contesta cada pregunta con Sí, No o No aplica. Puedes guardar y continuar después con este mismo enlace.", si: "Sí", no: "No", na: "No aplica",
-		debe: "Debe", deberia: "Debería", guardar: "Guardar y continuar", guardado: "Avance guardado.", guardando: "Guardando…", autoGuardado: "Guardado automáticamente", reintentando: "No se pudo guardar; reintentando…", avance: "contestadas", firmaTitulo: "Declaración de veracidad",
+		debe: "Debe", deberia: "Debería", guardar: "Guardar y continuar", guardado: "Avance guardado.", guardando: "Guardando…", autoGuardado: "Guardado automáticamente", reintentando: "No se pudo guardar; reintentando…", noGuardado: "No se pudo guardar", avance: "contestadas", firmaTitulo: "Declaración de veracidad",
 		firmaTexto: "Declaro que las respuestas de este cuestionario son verdaderas y completas a mi leal saber y entender.", nombre: "Nombre", puesto: "Puesto", enviar: "Firmar y enviar",
 		gracias: "Gracias. Tu cuestionario fue enviado. Folio: ", leido: "Este cuestionario ya fue enviado o está cerrado; solo se puede consultar.", error: "No se pudo abrir el enlace.", errorEnvio: "No se pudo enviar tu información. Revisa tu conexión a internet y vuelve a intentarlo en unos minutos: tus respuestas siguen en esta pantalla y no se pierden. Si el problema continúa, escribe a la persona que te envió este cuestionario.", faltan: "Faltan preguntas por contestar.", estandar: "Estándar" },
 	en: { titulo: "Supply chain security questionnaire", intro: "Answer each question with Yes, No or Not applicable. You can save and continue later with this same link.", si: "Yes", no: "No", na: "Not applicable",
-		debe: "Must", deberia: "Should", guardar: "Save and continue", guardado: "Progress saved.", guardando: "Saving…", autoGuardado: "Saved automatically", reintentando: "Could not save; retrying…", avance: "answered", firmaTitulo: "Declaration of truthfulness",
+		debe: "Must", deberia: "Should", guardar: "Save and continue", guardado: "Progress saved.", guardando: "Saving…", autoGuardado: "Saved automatically", reintentando: "Could not save; retrying…", noGuardado: "Could not save", avance: "answered", firmaTitulo: "Declaration of truthfulness",
 		firmaTexto: "I declare that the answers in this questionnaire are true and complete to the best of my knowledge.", nombre: "Name", puesto: "Position", enviar: "Sign and submit",
 		gracias: "Thank you. Your questionnaire was submitted. Reference: ", leido: "This questionnaire was already submitted or is closed; it is read-only.", error: "The link could not be opened.", errorEnvio: "We could not submit your information. Check your internet connection and try again in a few minutes: your answers are still on this screen and are not lost. If the problem continues, contact the person who sent you this questionnaire.", faltan: "Some questions are unanswered.", estandar: "Standard" }
 };
@@ -115,9 +115,16 @@ function autoguardar()
 		guardando = false;
 		if(r.mensajeError)
 		{
-			estadoGuardado(T[idioma].reintentando, "ar-eg-error");
-			if(r.detalle) temporizador = setTimeout(autoguardar, Math.min(30000, (window.ESPERA_REINTENTO || 3000) * ++reintentos));   // falla de red: reintenta con espera creciente
-			else aviso("error", esc(r.mensajeError));                                                                                    // el servidor lo rechazó: no tiene caso repetirlo
+			if(r.detalle)   // falla de red: reintenta con espera creciente
+			{
+				estadoGuardado(T[idioma].reintentando, "ar-eg-error");
+				temporizador = setTimeout(autoguardar, Math.min(30000, (window.ESPERA_REINTENTO || 3000) * ++reintentos));
+			}
+			else            // el servidor lo rechazó (p. ej. ya fue enviado): no tiene caso repetirlo
+			{
+				estadoGuardado(T[idioma].noGuardado, "ar-eg-error");
+				aviso("error", esc(r.mensajeError));
+			}
 			return;
 		}
 		reintentos = 0;
