@@ -29,6 +29,8 @@ jobs:
             **/.claude/**
             **/node_modules/**
             **/tests/**
+            **/package.json
+            **/package-lock.json
             **/*.md
             **/.project
             **/.buildpath

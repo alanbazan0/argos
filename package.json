@@ -1,0 +1,19 @@
+{
+  "name": "argos-pruebas-js",
+  "private": true,
+  "description": "Pruebas unitarias del JavaScript de ARGOS (Jest + jsdom). No se despliega.",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "<rootDir>/tests/js/**/*.test.js"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "jquery": "^3.3.1"
+  }
+}

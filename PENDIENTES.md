@@ -131,3 +131,11 @@ Decisión del usuario: todo lo que dependa de correo y tareas programadas (aviso
 - **Siguen esperando datos o decisión del usuario:** Excel de CMX (falta el archivo), pesos de Indicadores del piloto (falta la decisión) y PDF generado en el servidor (decidir con qué herramienta).
 
 - 2026-11-13: botón «✉ Reenviar» por socio en Cuestionarios CTPAT (seguimiento en curso, socio con correo y sin terminar; cuenta como recordatorio; queda en la bitácora del ejercicio).
+
+## CTPAT: correos y avisos (2026-11-14)
+- **Cron:** `php/cronjobs/argos_avisos.php` (en `handel_api`, solo línea de comandos, cada hora) corre primero los avisos de OEA y luego los de CTPAT (`CtpatAvisosRepositorio`). Opciones: `--simular`, `--solo=correo`, `--ahora="AAAA-MM-DD HH:MM:SS"`. **Falta programarlo en el cPanel**; hasta entonces no sale nada desde producción. Probar primero con `--simular`.
+- **Por evento:** el socio termina su cuestionario (avisa a Coordinadores y Supervisores), acción asignada, terminada y reprogramada. **Por cron:** recordatorio de cuestionario al socio, avance de acciones (revisión y vencidas), plazos vencidos, revisión del procedimiento (supuesto: 12 meses desde la aprobación, avisa 30 días antes) y zonas por vencer (60 días antes de los 12 meses de vigencia). Una sola vez por referencia (`ctpat_correo_bitacora`); los correos `.invalid` (datos de ejemplo) nunca se mandan.
+- **No implementado a propósito:** `fec` y `seg` (la función no existe), `rcb` (necesita el PDF de respuestas al socio), la variante «todos terminaron» de `qok` e `inv` para socios nuevos.
+- **Supuestos por confirmar:** la plantilla `proc` dice «lista para revisión y aprobación» pero el aviso es de 30 días antes de la próxima revisión; los avisos de acciones no se agrupan (un correo por acción).
+- **Cuestionario público:** si el envío falla con `HTTP 0` el servidor sí responde bien (probado con curl y con un guardado real); pedir al usuario la captura del «Detalle técnico» y probar en ventana privada.
+- **Empresa elegida (2026-11-14):** corregidos Mi bandeja (acciones de la empresa propia del Administrador), contador del menú de CTPAT e importación de riesgos. Pendiente de decisión: un Coordinador con otra empresa elegida no puede abrir sus ejercicios de CTPAT (`CtpatBaseRepositorio::cargarEjercicio` solo deja ver empresas ajenas al Administrador).
