@@ -4,11 +4,11 @@
  */
 var T = {
 	es: { titulo: "Cuestionario de seguridad de la cadena de suministro", intro: "Contesta cada pregunta con Sí, No o No aplica. Puedes guardar y continuar después con este mismo enlace.", si: "Sí", no: "No", na: "No aplica",
-		debe: "Debe", deberia: "Debería", guardar: "Guardar y continuar", guardado: "Avance guardado.", avance: "contestadas", firmaTitulo: "Declaración de veracidad",
+		debe: "Debe", deberia: "Debería", guardar: "Guardar y continuar", guardado: "Avance guardado.", sinGuardar: "Cambios sin guardar…", guardando: "Guardando…", autoGuardado: "Guardado automáticamente", reintentando: "No se pudo guardar; reintentando…", avance: "contestadas", firmaTitulo: "Declaración de veracidad",
 		firmaTexto: "Declaro que las respuestas de este cuestionario son verdaderas y completas a mi leal saber y entender.", nombre: "Nombre", puesto: "Puesto", enviar: "Firmar y enviar",
 		gracias: "Gracias. Tu cuestionario fue enviado. Folio: ", leido: "Este cuestionario ya fue enviado o está cerrado; solo se puede consultar.", error: "No se pudo abrir el enlace.", errorEnvio: "No se pudo enviar tu información. Revisa tu conexión a internet y vuelve a intentarlo en unos minutos: tus respuestas siguen en esta pantalla y no se pierden. Si el problema continúa, escribe a la persona que te envió este cuestionario.", faltan: "Faltan preguntas por contestar.", estandar: "Estándar" },
 	en: { titulo: "Supply chain security questionnaire", intro: "Answer each question with Yes, No or Not applicable. You can save and continue later with this same link.", si: "Yes", no: "No", na: "Not applicable",
-		debe: "Must", deberia: "Should", guardar: "Save and continue", guardado: "Progress saved.", avance: "answered", firmaTitulo: "Declaration of truthfulness",
+		debe: "Must", deberia: "Should", guardar: "Save and continue", guardado: "Progress saved.", sinGuardar: "Unsaved changes…", guardando: "Saving…", autoGuardado: "Saved automatically", reintentando: "Could not save; retrying…", avance: "answered", firmaTitulo: "Declaration of truthfulness",
 		firmaTexto: "I declare that the answers in this questionnaire are true and complete to the best of my knowledge.", nombre: "Name", puesto: "Position", enviar: "Sign and submit",
 		gracias: "Thank you. Your questionnaire was submitted. Reference: ", leido: "This questionnaire was already submitted or is closed; it is read-only.", error: "The link could not be opened.", errorEnvio: "We could not submit your information. Check your internet connection and try again in a few minutes: your answers are still on this screen and are not lost. If the problem continues, contact the person who sent you this questionnaire.", faltan: "Some questions are unanswered.", estandar: "Standard" }
 };
@@ -86,19 +86,69 @@ function actualizarAvance()
 	$("#avanceTexto").text(Object.keys(respuestas).length + " / " + datos.preguntas.length + " " + T[idioma].avance);
 }
 
+// Guardado automático: cada respuesta nueva se manda al servidor tras una pausa corta (solo las que cambiaron, no las 100 de golpe).
+var pendientes = {}, temporizador = null, guardando = false, reintentos = 0, retardo = window.RETARDO_AUTOGUARDADO || 1500;
+
+function estadoGuardado(texto, clase){ $("#estadoGuardado").text(texto || "").attr("class", "ar-estado-guardado " + (clase || "")); }
+function hayPendientes(){ return Object.keys(pendientes).length > 0; }
+
+// Manda las respuestas pendientes; las que lleguen bien dejan de estar pendientes (salvo que el usuario las haya cambiado mientras tanto).
+function enviarPendientes(fin)
+{
+	clearTimeout(temporizador); temporizador = null;
+	var lote = $.extend({}, pendientes);
+	api("guardar", { respuestas: JSON.stringify(lote), idioma: idioma }, function(r)
+	{
+		if(!r.mensajeError) Object.keys(lote).forEach(function(k){ if(pendientes[k] === lote[k]) delete pendientes[k]; });
+		fin(r);
+	});
+}
+
+function programarAutoguardado()
+{
+	clearTimeout(temporizador);
+	temporizador = setTimeout(autoguardar, retardo);
+	estadoGuardado(T[idioma].sinGuardar, "ar-eg-pend");
+}
+
+function autoguardar()
+{
+	if(guardando){ temporizador = setTimeout(autoguardar, retardo); return; }
+	if(!hayPendientes()) return;
+	guardando = true;
+	estadoGuardado(T[idioma].guardando, "ar-eg-pend");
+	enviarPendientes(function(r)
+	{
+		guardando = false;
+		if(r.mensajeError)
+		{
+			estadoGuardado(T[idioma].reintentando, "ar-eg-error");
+			if(r.detalle) temporizador = setTimeout(autoguardar, Math.min(30000, (window.ESPERA_REINTENTO || 3000) * ++reintentos));   // falla de red: reintenta con espera creciente
+			else aviso("error", esc(r.mensajeError));                                                      // el servidor lo rechazó: no tiene caso repetirlo
+			return;
+		}
+		reintentos = 0;
+		if(hayPendientes()) programarAutoguardado();
+		else estadoGuardado(T[idioma].autoGuardado + " · " + new Date().toTimeString().slice(0, 5), "ar-eg-ok");
+	});
+}
+
 function guardar(alTerminar)
 {
-	api("guardar", { respuestas: JSON.stringify(respuestas), idioma: idioma }, function(r)
+	enviarPendientes(function(r)
 	{
 		if(r.mensajeError){ aviso("error", esc(r.mensajeError), r.detalle); return; }
+		estadoGuardado(T[idioma].autoGuardado + " · " + new Date().toTimeString().slice(0, 5), "ar-eg-ok");
 		if(alTerminar) alTerminar(); else aviso("ok", esc(T[idioma].guardado));
 	});
 }
 
+$(window).on("beforeunload", function(){ if(hayPendientes()) return "pendientes"; });
+
 $(function()
 {
 	if(!token){ $("#titulo").text(T.es.error); return; }
-	$("#preguntas").on("change", "input[type=radio]", function(){ respuestas[$(this).closest(".ar-resp").attr("data-id")] = this.value; $(this).closest(".ar-pregunta").removeClass("ar-falta").addClass("ar-contestada"); actualizarAvance(); });
+	$("#preguntas").on("change", "input[type=radio]", function(){ var id = $(this).closest(".ar-resp").attr("data-id"); respuestas[id] = this.value; pendientes[id] = this.value; programarAutoguardado(); $(this).closest(".ar-pregunta").removeClass("ar-falta").addClass("ar-contestada"); actualizarAvance(); });
 	$("#idiomaBloque").on("click", "button", function(){ idioma = $(this).attr("data-idioma"); if(datos){ dibujar(); } });
 	$("#guardarBoton").on("click", function(){ guardar(null); });
 	$("#enviarBoton").on("click", function()

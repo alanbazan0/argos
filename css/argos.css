@@ -648,3 +648,5 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-pregunta.ar-falta{border:2px solid #dc2626;background:#fef2f2}
 .ar-pub-est.ar-falta-est{color:#b91c1c}
 .ar-falta-n{font-size:.8em;font-weight:500}
+.ar-estado-guardado{font-size:12px;margin-left:8px}
+.ar-eg-pend{color:#64748b}.ar-eg-ok{color:#15803d}.ar-eg-error{color:#b91c1c;font-weight:700}

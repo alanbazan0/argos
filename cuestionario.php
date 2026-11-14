@@ -1,7 +1,7 @@
 <?php
 // Enlace único del socio comercial (CTPAT): sin inicio de sesión. La credencial es el token del enlace.
 include 'php/configuracion.php';
-$version = "20261219";
+$version = "20261220";
 header("Cache-Control: no-store");   // la página del enlace nunca se sirve desde la caché del navegador
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ header("Cache-Control: no-store");   // la página del enlace nunca se sirve des
     <div class="col-sm-6 form-group"><label id="firmaPuestoEt" for="firmaPuesto"></label><input type="text" class="form-control" id="firmaPuesto" maxlength="100" placeholder="Ej. Gerente de operaciones"></div></div>
     <button type="button" class="btn btn-success" id="enviarBoton"></button>
   </div>
-  <div class="ar-publico-pie"><button type="button" class="btn btn-default" id="guardarBoton"></button> <span id="avanceTexto"></span> <small class="text-muted" title="Versión de la página">v<?php echo $version; ?></small></div>
+  <div class="ar-publico-pie"><button type="button" class="btn btn-default" id="guardarBoton"></button> <span id="avanceTexto"></span> <span id="estadoGuardado" class="ar-estado-guardado" aria-live="polite"></span> <small class="text-muted" title="Versión de la página">v<?php echo $version; ?></small></div>
 </main>
 <script src="<?php echo getHandelAPI()?>/lib/jquery-3.3.1/jquery.min.js"></script>
 <script src="<?php echo getHandelAPI()?>/js/clases/configuracion.js"></script>

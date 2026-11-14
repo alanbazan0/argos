@@ -78,7 +78,7 @@ Secretos en GitHub: `FTP_SERVER`, `FTP_USER`, `FTP_PASS`, `APP_URL` y `MIGRATE_T
 ## Reglas que ya nos costaron un error
 
 - **Empresa elegida:** toda llamada a `handel_api` que dependa de la empresa debe llevar el `empresaId` del selector de la barra (`sessionStorage.argosEmpresaId`). Los repositorios JS que heredan de `ArgosBaseRepositorio` lo agregan solos a `criteriosSeleccion`/`criterios`/`datos`; las llamadas `$.ajax` directas (menú de CTPAT en `js/argos.js`, vista previa y plantilla de la importación) lo agregan a mano. Sin eso, un Administrador ve los datos de su propia empresa (Handel) con otra elegida.
-- **Cuestionario público (`cuestionario.php`):** los avisos salen en ventana emergente (`aviso()`), con «Detalle técnico» si falla la red (`HTTP 0` = el navegador no recibió respuesta). Antes de enviar, `marcarFaltantes()` marca en rojo las preguntas y secciones sin contestar. La página no se cachea (`Cache-Control: no-store`) y muestra su versión junto al avance.
+- **Cuestionario público (`cuestionario.php`):** los avisos salen en ventana emergente (`aviso()`), con «Detalle técnico» si falla la red (`HTTP 0` = el navegador no recibió respuesta). **Guardado automático:** cada respuesta se manda sola 1.5 s después del último clic (solo las que cambiaron, no las 100 de golpe; `pendientes` en `js/cuestionario.js`); si falla la red conserva lo pendiente y reintenta con espera creciente, y si el servidor la rechaza avisa una vez. Las preguntas contestadas se sombrean de verde. Antes de enviar, `marcarFaltantes()` marca en rojo las preguntas y secciones sin contestar. La página no se cachea (`Cache-Control: no-store`) y muestra su versión junto al avance.
 
 ## Desarrollo local
 
