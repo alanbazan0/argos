@@ -119,4 +119,18 @@ describe('cuestionario público', () => {
     window.$('#avisoCerrar').trigger('click');
     expect(document.getElementById('avisoVentana')).toBeNull();
   });
+
+  test('la pregunta contestada se sombrea de verde (sin importar la respuesta) y las pendientes no', async () => {
+    const d = datosBase(); d.respuestas = { 11: 'no' };                      // una ya guardada antes
+    cargar({ obtener: { mensajeError: '', valor: d } });
+    await listo();
+    const caja = id => document.querySelector(`.ar-resp[data-id='${id}']`).closest('.ar-pregunta');
+    expect(caja(11).classList.contains('ar-contestada')).toBe(true);
+    expect(caja(12).classList.contains('ar-contestada')).toBe(false);
+    contestar(12, 'na');
+    expect(caja(12).classList.contains('ar-contestada')).toBe(true);
+    contestar(21, 'si');
+    expect(document.querySelectorAll('.ar-pregunta.ar-contestada')).toHaveLength(3);
+    expect(caja(22).classList.contains('ar-contestada')).toBe(false);
+  });
 });

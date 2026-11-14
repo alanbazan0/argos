@@ -68,7 +68,7 @@ function dibujar()
 			ultimo = p.estandar;
 			h += "<h3 class='ar-pub-est'>" + t.estandar + " " + p.estandar + " · " + esc(datos.estandares[p.estandar] || "") + "</h3>";
 		}
-		h += "<div class='ar-pregunta'><div>" + esc(p.texto) + "</div><div class='ar-resp' data-id='" + p.id + "'>";
+		h += "<div class='ar-pregunta" + (respuestas[p.id] ? " ar-contestada" : "") + "'><div>" + esc(p.texto) + "</div><div class='ar-resp' data-id='" + p.id + "'>";
 		["si", "no", "na"].forEach(function(v){ h += "<label class='radio-inline'><input type='radio' name='p" + p.id + "' value='" + v + "'" + (respuestas[p.id] == v ? " checked" : "") + (datos.soloLectura ? " disabled" : "") + "> " + t[v] + "</label>"; });
 		h += "</div></div>";
 	}
@@ -98,7 +98,7 @@ function guardar(alTerminar)
 $(function()
 {
 	if(!token){ $("#titulo").text(T.es.error); return; }
-	$("#preguntas").on("change", "input[type=radio]", function(){ respuestas[$(this).closest(".ar-resp").attr("data-id")] = this.value; $(this).closest(".ar-pregunta").removeClass("ar-falta"); actualizarAvance(); });
+	$("#preguntas").on("change", "input[type=radio]", function(){ respuestas[$(this).closest(".ar-resp").attr("data-id")] = this.value; $(this).closest(".ar-pregunta").removeClass("ar-falta").addClass("ar-contestada"); actualizarAvance(); });
 	$("#idiomaBloque").on("click", "button", function(){ idioma = $(this).attr("data-idioma"); if(datos){ dibujar(); } });
 	$("#guardarBoton").on("click", function(){ guardar(null); });
 	$("#enviarBoton").on("click", function()

@@ -1,7 +1,7 @@
 <?php
 // Enlace único del socio comercial (CTPAT): sin inicio de sesión. La credencial es el token del enlace.
 include 'php/configuracion.php';
-$version = "20261218";
+$version = "20261219";
 header("Cache-Control: no-store");   // la página del enlace nunca se sirve desde la caché del navegador
 ?>
 <!DOCTYPE html>
