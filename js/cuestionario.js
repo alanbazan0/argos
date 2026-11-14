@@ -31,6 +31,30 @@ function aviso(tipo, texto, detalle)
 }
 function esc(t){ return $("<div>").text(t == null ? "" : t).html(); }
 
+// Marca en rojo las preguntas sin contestar y su sección; lleva a la primera. Devuelve true si no falta ninguna.
+function marcarFaltantes()
+{
+	$(".ar-pregunta").removeClass("ar-falta"); $(".ar-pub-est").removeClass("ar-falta-est").find(".ar-falta-n").remove();
+	var faltan = 0, primera = null, porSeccion = {};
+	$(".ar-resp").each(function()
+	{
+		var id = $(this).attr("data-id");
+		if(respuestas[id]) return;
+		faltan++;
+		var caja = $(this).closest(".ar-pregunta").addClass("ar-falta");
+		if(!primera) primera = caja;
+		var est = caja.prevAll(".ar-pub-est").first();
+		est.addClass("ar-falta-est");
+		porSeccion[est.index()] = (porSeccion[est.index()] || 0) + 1;
+		est.data("n", porSeccion[est.index()]);
+	});
+	$(".ar-falta-est").each(function(){ $(this).append(" <span class='ar-falta-n'>(" + $(this).data("n") + (idioma == "en" ? " missing" : " sin contestar") + ")</span>"); });
+	if(!faltan) return true;
+	aviso("error", (idioma == "en" ? "There are " + faltan + " unanswered questions. They are highlighted in red." : "Faltan " + faltan + " preguntas por contestar. Están marcadas en rojo."));
+	$("#avisoCerrar").one("click", function(){ primera[0].scrollIntoView({ behavior: "smooth", block: "center" }); });
+	return false;
+}
+
 function dibujar()
 {
 	var t = T[idioma], h = "", ultimo = null;
@@ -74,11 +98,12 @@ function guardar(alTerminar)
 $(function()
 {
 	if(!token){ $("#titulo").text(T.es.error); return; }
-	$("#preguntas").on("change", "input[type=radio]", function(){ respuestas[$(this).closest(".ar-resp").attr("data-id")] = this.value; actualizarAvance(); });
+	$("#preguntas").on("change", "input[type=radio]", function(){ respuestas[$(this).closest(".ar-resp").attr("data-id")] = this.value; $(this).closest(".ar-pregunta").removeClass("ar-falta"); actualizarAvance(); });
 	$("#idiomaBloque").on("click", "button", function(){ idioma = $(this).attr("data-idioma"); if(datos){ dibujar(); } });
 	$("#guardarBoton").on("click", function(){ guardar(null); });
 	$("#enviarBoton").on("click", function()
 	{
+		if(!marcarFaltantes()) return;
 		guardar(function()
 		{
 			api("firmar", { nombre: $("#firmaNombre").val(), puesto: $("#firmaPuesto").val() }, function(r)
