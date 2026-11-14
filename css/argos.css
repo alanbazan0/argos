@@ -637,3 +637,10 @@ tr.ar-fila-critica td{background:#FFF7F6}
 }
 .ar-xpage h2.ar-xs{font-size:13.5px;margin:14px 0 4px;color:var(--ar-ink)}.ar-xpage p{margin:4px 0;line-height:1.55}.ar-xpage ul{margin:4px 0 4px 18px}
 .ar-lista li::after{content:'';display:block;clear:both}
+
+/* Aviso emergente del cuestionario público */
+.ar-aviso-fondo{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;z-index:2000;padding:16px}
+.ar-aviso{background:#fff;border-radius:12px;max-width:460px;width:100%;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.3);border-top:6px solid #16a34a;text-align:center}
+.ar-aviso-error{border-top-color:#dc2626}
+.ar-aviso p{font-size:15px;margin:0 0 12px}
+.ar-aviso small{display:block;color:#64748b;margin-bottom:14px;word-break:break-word}

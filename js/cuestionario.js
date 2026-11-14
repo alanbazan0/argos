@@ -17,7 +17,17 @@ var datos = null, idioma = "es", respuestas = {}, token = (/[?&]t=([a-f0-9]{40})
 function api(accion, extra, ok)
 {
 	$.ajax({ url: HANDEL_API + "/php/repositorios/CtpatPublico.php", type: "POST", data: $.extend({ accion: accion, token: token }, extra),
-		success: function(r){ ok(r); }, error: function(){ ok({ mensajeError: accion == "obtener" ? T[idioma].error : T[idioma].errorEnvio }); } });
+		success: function(r){ ok(r); }, error: function(x, estado, causa){ ok({ mensajeError: accion == "obtener" ? T[idioma].error : T[idioma].errorEnvio, detalle: accion + " · HTTP " + x.status + " · " + estado + (causa ? " · " + causa : "") }); } });
+}
+// Aviso en ventana emergente (visible aunque la persona esté al final de un cuestionario largo)
+function aviso(tipo, texto, detalle)
+{
+	$("#avisoVentana").remove();
+	var cierre = idioma == "en" ? "Close" : "Cerrar";
+	$("body").append("<div id='avisoVentana' class='ar-aviso-fondo' role='alertdialog' aria-modal='true'><div class='ar-aviso ar-aviso-" + tipo + "'><p>" + texto + "</p>"
+		+ (detalle ? "<small>" + (idioma == "en" ? "Technical detail: " : "Detalle técnico: ") + esc(detalle) + "</small>" : "")
+		+ "<button type='button' class='btn btn-success' id='avisoCerrar'>" + cierre + "</button></div></div>");
+	$("#avisoCerrar").on("click", function(){ $("#avisoVentana").remove(); }).focus();
 }
 function esc(t){ return $("<div>").text(t == null ? "" : t).html(); }
 
@@ -56,8 +66,8 @@ function guardar(alTerminar)
 {
 	api("guardar", { respuestas: JSON.stringify(respuestas), idioma: idioma }, function(r)
 	{
-		if(r.mensajeError){ $("#mensaje").html("<div class='alert alert-danger'>" + esc(r.mensajeError) + "</div>"); return; }
-		if(alTerminar) alTerminar(); else $("#mensaje").html("<div class='alert alert-success'>" + T[idioma].guardado + "</div>");
+		if(r.mensajeError){ aviso("error", esc(r.mensajeError), r.detalle); return; }
+		if(alTerminar) alTerminar(); else aviso("ok", esc(T[idioma].guardado));
 	});
 }
 
@@ -73,9 +83,11 @@ $(function()
 		{
 			api("firmar", { nombre: $("#firmaNombre").val(), puesto: $("#firmaPuesto").val() }, function(r)
 			{
-				if(r.mensajeError){ $("#mensaje").html("<div class='alert alert-danger'>" + esc(r.mensajeError) + "</div>"); return; }
+				if(r.mensajeError){ aviso("error", esc(r.mensajeError), r.detalle); return; }
 				$("#preguntas, #firmaBloque, .ar-publico-pie").hide();
 				$("#mensaje").html("<div class='alert alert-success'>" + T[idioma].gracias + "<b>" + esc(r.valor.folio) + "</b></div>");
+				window.scrollTo(0, 0);
+				aviso("ok", T[idioma].gracias + "<b>" + esc(r.valor.folio) + "</b>");
 			});
 		});
 	});
