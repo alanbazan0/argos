@@ -650,3 +650,5 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-falta-n{font-size:.8em;font-weight:500}
 .ar-estado-guardado{font-size:12px;margin-left:8px}
 .ar-eg-pend{color:#64748b}.ar-eg-ok{color:#15803d}.ar-eg-error{color:#b91c1c;font-weight:700}
+.ar-lista li.ar-pend-item{cursor:pointer;padding-left:6px;padding-right:6px;border-radius:6px}
+.ar-lista li.ar-pend-item:hover,.ar-lista li.ar-pend-item:focus{background:#F3EEFB;outline:0}
