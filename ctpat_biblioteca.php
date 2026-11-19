@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Biblioteca de amenazas";
 $archivo = "ctpat_biblioteca.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261217";
+$version = "20261224";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -65,6 +65,12 @@ $version = "20261217";
       <div class="ar-card"><div class="ar-tabla-scroll"><table class="ar-tabla ar-amz" id="tablaBiblioteca"><thead></thead><tbody></tbody></table></div>
       <div class="ar-vacio" id="sinBiblioteca" hidden><i class="fa fa-inbox"></i>Aún no hay zonas.</div></div>
     </section>
+
+    <div class="modal fade" id="evaluarModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="evaluarTitulo"></h4></div>
+      <div class="modal-body"><div id="factoresForm"></div></div>
+      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarEvaluacionBoton">Guardar</button></div>
+    </div></div></div>
 
     <?php $menu->renderizarFooter(); ?>
   </main>
