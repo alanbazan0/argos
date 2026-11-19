@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Biblioteca de amenazas";
 $archivo = "ctpat_biblioteca.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261224";
+$version = "20261225";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,6 +58,7 @@ $version = "20261224";
         <h1>Catálogo de zonas y biblioteca de amenazas</h1>
         <p>Zonas (ubicaciones y tramos de ruta) que usan las cadenas de todos los clientes, con la evaluación de amenazas que mantiene Händel</p>
       </div>
+      <div class="ar-acciones"><button type="button" class="btn btn-primary" id="nuevaZonaBoton">＋ Nueva zona</button></div>
     </div>
 
     <section class="ar-main-contenido">
@@ -70,6 +71,20 @@ $version = "20261224";
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="evaluarTitulo"></h4></div>
       <div class="modal-body"><div id="factoresForm"></div></div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarEvaluacionBoton">Guardar</button></div>
+    </div></div></div>
+
+    <div class="modal fade" id="nuevaZonaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Nueva zona</h4></div>
+      <div class="modal-body">
+        <div class="form-group"><label for="zonaNombreInput">Nombre <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Ubicación: ciudad y estado (Monterrey, N.L.). Tramo: origen – destino (Monterrey – Nuevo Laredo)."></i></label>
+          <input type="text" id="zonaNombreInput" class="form-control" maxlength="150" placeholder="Ej. Monterrey, N.L. o Monterrey – Nuevo Laredo" autocomplete="off">
+          <div id="zonaNombreAviso" class="ar-situacion" style="margin-top:4px"></div></div>
+        <div class="row">
+          <div class="col-sm-6 form-group"><label for="zonaNuevaTipo">Tipo</label><select id="zonaNuevaTipo" class="form-control"><option value="ubicacion">Ubicación</option><option value="tramo">Tramo de ruta</option></select></div>
+          <div class="col-sm-6 form-group"><label for="zonaNuevaPais">País</label><select id="zonaNuevaPais" class="form-control"><option>México</option><option>EUA</option><option>Canadá</option><option>Internacional</option><option>Otro</option></select></div>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-default" id="agregarZonaBoton">Agregar al catálogo</button><button type="button" class="btn btn-primary" id="agregarZonaEvaluarBoton">Agregar y evaluar amenazas</button></div>
     </div></div></div>
 
     <?php $menu->renderizarFooter(); ?>
