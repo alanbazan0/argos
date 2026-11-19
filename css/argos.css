@@ -663,3 +663,5 @@ tr.ar-fila-critica td{background:#FFF7F6}
 /* Evaluar riesgo: situación bajo el título */
 .ar-evaluacion-situacion{margin-top:4px;font-size:14px;color:var(--ar-ink)}
 .ar-evaluacion-situacion:empty{display:none}
+/* Evaluar riesgo: el título y los botones (Cancelar / Guardar evaluación) quedan siempre a la vista; solo el formulario se desplaza */
+#evaluacionModal .modal-body{max-height:calc(100vh - 190px);overflow-y:auto}
