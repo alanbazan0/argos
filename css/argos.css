@@ -650,5 +650,13 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-falta-n{font-size:.8em;font-weight:500}
 .ar-estado-guardado{font-size:12px;margin-left:8px}
 .ar-eg-pend{color:#64748b}.ar-eg-ok{color:#15803d}.ar-eg-error{color:#b91c1c;font-weight:700}
-.ar-lista li.ar-pend-item{cursor:pointer;padding-left:6px;padding-right:6px;border-radius:6px}
-.ar-lista li.ar-pend-item:hover,.ar-lista li.ar-pend-item:focus{background:#F3EEFB;outline:0}
+/* Lista de riesgos pendientes de evaluar (Modo taller): un renglón por riesgo, como la maqueta */
+.ar-pend-fila{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 0;border-top:1px solid var(--ar-bd);cursor:pointer}
+.ar-pend-fila:hover,.ar-pend-fila:focus{background:#F6F8FB;outline:0}
+.ar-pend-fila .ar-pend-sit{flex:1;min-width:180px}
+.ar-pend-fila .ar-pend-ref{font-size:12px;color:var(--ar-muted)}
+.ar-ir-riesgo{display:flex;align-items:center;gap:8px}
+.ar-ir-riesgo select{max-width:340px;width:auto;display:inline-block}
+.ar-guardado{text-align:center;padding:36px}
+.ar-guardado-icono{font-size:38px}
+.ar-guardado-nivel{margin:6px 0 16px;font-size:12.5px}

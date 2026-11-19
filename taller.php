@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Modo taller";
 $archivo = "taller.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261219";
+$version = "20261220";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,15 +85,16 @@ $version = "20261219";
       </div>
       <div class="ar-card" id="pendientesCard" hidden>
         <h3><span id="pendientesTitulo"></span></h3>
-        <div class="ar-sub">De talleres anteriores o importados.</div>
-        <ul class="ar-lista" id="pendientesLista"></ul>
-        <button type="button" class="btn btn-primary" id="pasarFase2Boton">Pasar a la fase 2: evaluar <i class="fa fa-arrow-right"></i></button>
+        <div class="ar-sub">De talleres anteriores o importados</div>
+        <div id="pendientesLista"></div>
+        <button type="button" class="btn btn-dark" id="pasarFase2Boton" style="margin-top:10px">Pasar a la fase 2: evaluar <i class="fa fa-arrow-right"></i></button>
       </div>
 
       <div id="faseDos" hidden>
         <div class="ar-card ar-vacio" id="faseDosVacio" hidden></div>
+        <div id="faseDosGuardado" hidden></div>
         <div id="faseDosContenido">
-          <div class="ar-fila-progreso"><b id="avanceFase2"></b><span class="text-muted">Ideal para proyectar en pantalla durante el taller</span></div>
+          <div class="ar-fila-progreso"><b id="avanceFase2"></b><div class="ar-ir-riesgo"><span class="text-muted">Ir al riesgo:</span><select id="irAlRiesgoSelect" class="form-control input-sm" aria-label="Ir al riesgo"></select></div></div>
           <div class="ar-progreso"><div id="barraFase2"></div></div>
           <div class="ar-grid ar-g32">
             <div class="ar-card ar-proyeccion">
@@ -148,7 +149,7 @@ $version = "20261219";
               <div class="ar-acciones" style="margin-top:14px;justify-content:flex-end">
                 <button type="button" class="btn btn-default" id="anteriorBoton"><i class="fa fa-arrow-left"></i> Anterior</button>
                 <button type="button" class="btn btn-default" id="omitirBoton">Omitir</button>
-                <button type="button" class="btn btn-default" id="guardarBoton"><i class="fa fa-save"></i> Guardar</button>
+                <button type="button" class="btn btn-dark" id="guardarBoton">💾 Guardar este riesgo</button>
                 <button type="button" class="btn btn-success" id="guardarSiguienteBoton">Guardar y siguiente <i class="fa fa-arrow-right"></i></button>
               </div>
             </div>
