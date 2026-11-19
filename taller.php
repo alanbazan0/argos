@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Modo taller";
 $archivo = "taller.php";
 $modulo = "oea";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261218";
+$version = "20261219";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -148,6 +148,7 @@ $version = "20261218";
               <div class="ar-acciones" style="margin-top:14px;justify-content:flex-end">
                 <button type="button" class="btn btn-default" id="anteriorBoton"><i class="fa fa-arrow-left"></i> Anterior</button>
                 <button type="button" class="btn btn-default" id="omitirBoton">Omitir</button>
+                <button type="button" class="btn btn-default" id="guardarBoton"><i class="fa fa-save"></i> Guardar</button>
                 <button type="button" class="btn btn-success" id="guardarSiguienteBoton">Guardar y siguiente <i class="fa fa-arrow-right"></i></button>
               </div>
             </div>
