@@ -660,3 +660,9 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-guardado{text-align:center;padding:36px}
 .ar-guardado-icono{font-size:38px}
 .ar-guardado-nivel{margin:6px 0 16px;font-size:12.5px}
+/* Evaluar riesgo: situación bajo el título e información del riesgo en solo lectura */
+.ar-evaluacion-situacion{margin-top:4px;font-size:14px;color:var(--ar-ink)}
+.ar-evaluacion-situacion:empty{display:none}
+.ar-info-riesgo{background:var(--ar-bg);border:1px solid var(--ar-bd);border-radius:10px;padding:10px 14px;margin-bottom:12px;max-height:230px;overflow:auto;font-size:13px}
+.ar-info-riesgo p{margin:0 0 8px}
+.ar-info-riesgo:empty{display:none}
