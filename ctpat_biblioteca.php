@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Biblioteca de amenazas";
 $archivo = "ctpat_biblioteca.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261227";
+$version = "20261228";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -81,7 +81,7 @@ $version = "20261227";
           <div id="zonaNombreAviso" class="ar-situacion" style="margin-top:4px"></div></div>
         <div class="row">
           <div class="col-sm-6 form-group"><label for="zonaNuevaTipo">Tipo</label><select id="zonaNuevaTipo" class="form-control"><option value="ubicacion">Ubicación</option><option value="tramo">Tramo de ruta</option></select></div>
-          <div class="col-sm-6 form-group"><label for="zonaNuevaPais">País</label><select id="zonaNuevaPais" class="form-control"><option>México</option><option>EUA</option><option>Canadá</option><option>Internacional</option><option>Otro</option></select></div>
+          <div class="col-sm-6 form-group"><label for="zonaNuevaPais">País</label><select id="zonaNuevaPais" class="form-control"></select></div>
         </div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-default" id="agregarZonaBoton">Agregar al catálogo</button><button type="button" class="btn btn-primary" id="agregarZonaEvaluarBoton">Agregar y evaluar amenazas</button></div>
