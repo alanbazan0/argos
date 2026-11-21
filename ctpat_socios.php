@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Cadenas y socios";
 $archivo = "ctpat_socios.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261217";
+$version = "20261231";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -137,6 +137,9 @@ $version = "20261217";
         <div class="form-group"><label for="etapaMovimiento">Movimiento de la carga</label><input type="text" class="form-control" id="etapaMovimiento" maxlength="300" placeholder="Ej. Recoge la caja en planta y la lleva al patio de Nuevo Laredo"></div>
         <div class="form-group"><label for="etapaZona">Zona</label><input type="text" class="form-control" id="etapaZona" list="zonasLista" maxlength="150" placeholder="Nuevo Laredo, Tamps. o Saltillo – Nuevo Laredo"></div>
         <div class="row"><div class="col-sm-6 form-group"><label for="etapaDias">Días en reposo</label><input type="number" class="form-control" id="etapaDias" min="0" max="3650" placeholder="0"></div><div class="col-sm-6 form-group"><label for="etapaModo">Modo</label><select id="etapaModo" class="form-control"></select></div></div>
+        <div class="form-group" id="etapaAlternosGrupo" style="display:none"><label>Otros transportistas que pueden realizar esta etapa <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="Úsalo cuando el socio principal (por ejemplo el 3PL o la logística) asigna esta etapa a distintos transportistas según el embarque. Cada transportista debe estar registrado como socio comercial y recibe su propio cuestionario. El riesgo de la etapa se calcula con la PEOR vulnerabilidad entre el socio principal y estos transportistas."></i> <a href="#" class="pull-right" id="registrarSocioDeEtapa" onclick="return false">＋ Registrar socio nuevo</a></label>
+          <div id="etapaAlternos" class="ar-altl"></div>
+          <div class="ar-situacion" style="margin-top:4px">Se ignora el socio que ya es principal de la etapa. Si un transportista no aparece, regístralo como socio comercial de tipo transportista.</div></div>
         <div class="checkbox" id="etapaUltimaGrupo"><label><input type="checkbox" id="etapaUltima"> Es la última etapa de la cadena</label></div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarEtapaBoton">Guardar</button></div>
