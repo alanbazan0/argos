@@ -172,6 +172,8 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-form-secciones .ar-bloque>h4{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;text-transform:none;letter-spacing:0;color:var(--ar-ink);margin:0 0 10px}
 .ar-form-secciones .ar-bloque>h4::before{counter-increment:arsec;content:counter(arsec);flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--ar-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
 .ar-info{color:var(--ar-muted);cursor:help;margin-left:4px}
+.tooltip-inner{background:#071A40;border-radius:10px;padding:10px 14px;max-width:340px;text-align:left;font-size:13px;line-height:1.45}
+.tooltip.top .tooltip-arrow{border-top-color:#071A40}.tooltip.bottom .tooltip-arrow{border-bottom-color:#071A40}.tooltip.in{opacity:1}
 
 /* ---------- Listas de historial (evaluaciones, cambios) ---------- */
 .ar-lista{list-style:none;margin:0;padding:0}
