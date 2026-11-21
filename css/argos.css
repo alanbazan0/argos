@@ -575,6 +575,7 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-nodo .ar-nn{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:var(--ar-ink);line-height:1.25}
 .ar-nodo .ar-nl{font-size:11px;color:var(--ar-muted)}
 .ar-nodo .ar-alt-n{color:#2563eb;font-weight:600}
+#etapaModal .modal-body{max-height:calc(100vh - 190px);overflow-y:auto}   /* el Guardar siempre a la vista: si el formulario es largo, se desplaza el cuerpo y no el pie */
 .ar-altl{max-height:180px;overflow-y:auto;border:1px solid var(--ar-line,#e3e8f2);border-radius:8px;padding:6px 10px}
 .ar-altl .checkbox{margin:4px 0;padding-left:0}
 .ar-altl .checkbox input[type=checkbox]{position:static;margin:0 8px 0 0;vertical-align:middle}
