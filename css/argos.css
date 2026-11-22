@@ -162,6 +162,7 @@ a.ar-mod:hover{color:var(--ar-ink);background:#fff;text-decoration:none}
 .ar-app .form-control:focus{border-color:var(--ar-green);box-shadow:0 0 0 3px rgba(59,122,14,.15)}
 .ar-app label{font-weight:600;color:var(--ar-ink);font-size:12px}
 .ar-app .modal-content{border-radius:14px;border:0;box-shadow:var(--ar-sh-lg)}
+.ar-app .modal-body{max-height:calc(100vh - 190px);overflow-y:auto}   /* en cualquier ventana: si el contenido es largo se desplaza el cuerpo y el pie (Guardar) queda a la vista */
 .ar-app .modal-header{border-bottom:1px solid var(--ar-bd)}
 .ar-app .modal-title{font-family:'Outfit',sans-serif;font-weight:700;color:var(--ar-ink)}
 .ar-bloque{border:1px solid var(--ar-bd);border-radius:10px;padding:14px;margin-bottom:14px}
