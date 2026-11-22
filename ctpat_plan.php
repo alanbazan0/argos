@@ -19,7 +19,7 @@ $menu->setSoloArchivos($aplicacion->puedeVerMenu($usuario) ? null : Aplicacion::
 $titulo = "Plan de acción";
 $archivo = "ctpat_plan.php";
 $modulo = "ctpat";   // oea | ctpat: define el menú lateral y el selector de la barra superior
-$version = "20261240";
+$version = "20261241";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,7 +80,7 @@ $version = "20261240";
       <div class="modal-body" id="accionCuerpo"></div>
       <div class="modal-footer" id="accionPie"></div>
     </div></div></div>
-    <div class="modal fade" id="nuevaModal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">
+    <div class="modal fade" id="nuevaModal" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content">
       <div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title" id="nuevaTitulo"></h4></div>
       <div class="modal-body">
         <div class="form-group"><label for="nuevaSocio">Socio</label><select id="nuevaSocio" class="form-control"></select></div>
@@ -93,7 +93,8 @@ $version = "20261240";
         </div>
         <div class="form-group"><label for="nuevaRespEmpresa">Responsable de la empresa</label><select id="nuevaRespEmpresa" class="form-control"></select></div>
         <div class="form-group"><label for="nuevaRespSocio">Responsable del socio</label><input type="text" id="nuevaRespSocio" class="form-control" maxlength="150" placeholder="Ej. Gerente de seguridad del socio"></div>
-        <div class="form-group"><label for="nuevaFecha" id="nuevaFechaEtiqueta">Fecha límite (vacío = la sugerida por la prioridad)</label><input type="date" id="nuevaFecha" class="form-control"></div>
+        <div class="form-group" id="nuevaPlazoGrupo"><label>Plazo de la acción <i class="fa fa-info-circle ar-info" data-toggle="tooltip" title="ARGOS recomienda el plazo según la prioridad de la acción (el riesgo más alto de las etapas del socio): Alto 30 días, Medio 60, Bajo 90. La revisión de avance se programa a la mitad del plazo. Puedes elegir otro plazo o una fecha personalizada."></i></label><div class="ar-plz" id="nuevaPlazoBox"></div></div>
+        <div class="form-group"><label for="nuevaFecha" id="nuevaFechaEtiqueta">Fecha límite</label><input type="date" id="nuevaFecha" class="form-control"></div>
       </div>
       <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><button type="button" class="btn btn-success" id="guardarNuevaBoton">Crear acción</button></div>
     </div></div></div>

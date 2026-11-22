@@ -673,3 +673,14 @@ tr.ar-fila-critica td{background:#FFF7F6}
 .ar-evaluacion-situacion:empty{display:none}
 /* Evaluar riesgo: el título y los botones (Cancelar / Guardar evaluación) quedan siempre a la vista; solo el formulario se desplaza */
 #evaluacionModal .modal-body{max-height:calc(100vh - 190px);overflow-y:auto}
+
+/* Selector de plazo de la acción (C-31) */
+.ar-plz{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ar-plzb{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px 10px 14px;border:1.5px solid var(--ar-bd);border-radius:10px;background:#fff;cursor:pointer;text-align:left;font:inherit;color:var(--ar-ink);border-left-width:6px}
+.ar-plzb b{font-size:13px}.ar-plzb span{font-size:12px;color:#6b7280}
+.ar-plzb i{font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.02em;margin-top:3px;padding:1px 7px;border-radius:20px;background:var(--ar-ink);color:#fff}
+.ar-plzb.alto{border-left-color:#C0392B}.ar-plzb.medio{border-left-color:#E0A800}.ar-plzb.bajo{border-left-color:#4C9A2A}.ar-plzb.cus{border-left-color:#8A94A6}
+.ar-plzb:hover{border-color:var(--ar-ink)}
+.ar-plzb.on{border-color:var(--ar-ink);box-shadow:0 0 0 2px var(--ar-ink)}
+.ar-plzb.on.alto{background:#FDECEA}.ar-plzb.on.medio{background:#FFF7DB}.ar-plzb.on.bajo{background:#EEF8E9}.ar-plzb.on.cus{background:#F1F3F7}
+@media (max-width:640px){.ar-plz{grid-template-columns:1fr 1fr}}
